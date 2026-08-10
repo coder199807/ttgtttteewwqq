@@ -1,0 +1,78 @@
+name: Build IPTV M3U
+
+on:
+  schedule:
+    # Every Monday at 03:00 UTC (06:00 TR)
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build.js"
+      - ".github/workflows/build.yml"
+      - "package.json"
+
+concurrency:
+  group: build-m3u
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Clone iptv-org/epg
+        run: |
+          if [ ! -d external/epg/.git ]; then
+            git clone --depth 1 https://github.com/iptv-org/epg.git external/epg
+          fi
+
+      - name: Cache iptv-org/epg node_modules
+        uses: actions/cache@v4
+        with:
+          path: external/epg/node_modules
+          key: iptvorg-epg-${{ hashFiles('external/epg/package-lock.json') }}
+
+      - name: Install iptv-org/epg deps
+        working-directory: external/epg
+        run: npm ci --no-audit --no-progress
+
+      - name: Grab TR EPG (digiturk, dsmart, turksatkablo, tvplus)
+        working-directory: external/epg
+        continue-on-error: true
+        timeout-minutes: 20
+        run: |
+          npm run grab --- \
+            --sites=digiturk.com.tr,dsmart.com.tr,turksatkablo.com.tr,tvplus.com.tr \
+            --lang=tr \
+            --maxConnections=5 \
+            --output=guides/{site}.xml || true
+          ls -la guides/ || true
+
+      - name: Generate iptv.m3u and epg.xml
+        env:
+          PROXY_BASE: ${{ vars.PROXY_BASE }}
+          IPTVORG_GRAB_DIR: external/epg/guides
+        run: npm run build
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain iptv.m3u epg.xml)" ]]; then
+            git add iptv.m3u epg.xml
+            git commit -m "chore: update iptv.m3u / epg.xml ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          else
+            echo "No changes in iptv.m3u or epg.xml"
+          fi
