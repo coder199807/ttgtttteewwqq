@@ -415,18 +415,25 @@ export default {
           return new Response('Desteklenmeyen dosya türü', { status: 403, headers: corsHeaders() });
         }
 
+        // Use the same headers as the initial /play/ resolution first — the
+        // upstream CDN session/token appears to be bound to the requester's
+        // User-Agent, so switching UA between the master fetch and the
+        // follow-up playlist/segment fetches causes playback to die right
+        // after the first buffer (looks "fine" then closes instantly).
         let response = await fetch(upstreamUrl, {
-          headers: getPlaylistHeaders()
+          headers: getStreamHeaders()
         });
 
         if (response.status === 403 || response.status === 401) {
           response = await fetch(upstreamUrl, {
-            headers: getStreamHeaders()
+            headers: getPlaylistHeaders()
           });
         }
 
+        console.log(`[vavoo] hls-proxy ${describeUrl(upstreamUrl)} -> ${response.status}`);
+
         if (!response.ok) {
-          return new Response(`Yayın sunucusu hatası: ${response.status}`, { status: response.status });
+          return new Response(`Yayın sunucusu hatası: ${response.status}`, { status: response.status, headers: corsHeaders() });
         }
 
         const contentType = response.headers.get('content-type') || '';
@@ -456,7 +463,7 @@ export default {
 
       } catch (error) {
         console.log(`[vavoo] Proxy hatası: ${error.message}`);
-        return new Response(`Proxy hatası: ${error.message}`, { status: 500 });
+        return new Response(`Proxy hatası: ${error.message}`, { status: 500, headers: corsHeaders() });
       }
     }
 
@@ -482,8 +489,10 @@ async function proxyStream(baseUrl, streamUrl) {
     headers: getStreamHeaders()
   });
 
+  console.log(`[vavoo] play ${describeUrl(streamUrl)} -> ${response.status} (${response.headers.get('content-type') || 'no content-type'})`);
+
   if (!response.ok) {
-    return new Response(`Yayın hatası: ${response.status}`, { status: response.status });
+    return new Response(`Yayın hatası: ${response.status}`, { status: response.status, headers: corsHeaders() });
   }
 
   const contentType = response.headers.get('content-type') || '';
