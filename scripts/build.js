@@ -5,7 +5,10 @@ const path = require("node:path");
 const zlib = require("node:zlib");
 
 const CATALOG_URL = "https://vavoo.to/mediahubmx-catalog.json";
-const GROUP = "Turkey";
+
+// Gruppen, die abgerufen werden sollen
+const GROUPS = ["Turkey", "Germany"];
+
 const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const EPG_FILE = path.join(__dirname, "..", "epg.xml");
 const FETCH_TIMEOUT_MS = 20000;
@@ -16,25 +19,24 @@ const EPG_UPSTREAM_URL =
   "https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz";
 
 // Optional directory of iptv-org/epg grab outputs (XMLTV per site).
-// Provided by CI when the grab step runs; overrides epgshare01 when a channel is present.
 const IPTVORG_GRAB_DIR = process.env.IPTVORG_GRAB_DIR || "";
 
-// iptv-org public metadata for channel logos (name/alt_names → logo url).
+// iptv-org public metadata for channel logos
 const IPTVORG_CHANNELS_URL =
   process.env.IPTVORG_CHANNELS_URL ||
   "https://iptv-org.github.io/api/channels.json";
 const IPTVORG_LOGOS_URL =
   process.env.IPTVORG_LOGOS_URL || "https://iptv-org.github.io/api/logos.json";
 
-// Cloudflare Workers proxy base (no trailing slash). Set via GitHub Actions variable.
+// Cloudflare Workers proxy base (no trailing slash)
 const PROXY_BASE = (process.env.PROXY_BASE || "").replace(/\/+$/, "");
 
-// Where players should fetch the generated XMLTV EPG.
+// Where players should fetch the generated XMLTV EPG
 const EPG_URL =
   process.env.EPG_URL ||
   "https://raw.githubusercontent.com/kadirmetin/vavoo-iptv/main/epg.xml";
 
-// Vavoo requires browser-like headers or it returns { error: "Validation error" }
+// Vavoo requires browser-like headers
 const HEADERS = {
   "content-type": "application/json; charset=utf-8",
   accept: "*/*",
@@ -55,7 +57,31 @@ const HEADERS = {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
 };
 
-function buildBody(cursor) {
+// Whitelist für relevante deutsche Hauptsender & Sportkanäle (DE/AT/CH)
+const GERMAN_ALLOWED_KEYWORDS = [
+  // Hauptsender
+  "RTL", "PROSIEBEN", "PRO7", "SAT.1", "SAT1", "VOX", "ZDF", "ARD", "DAS ERSTE",
+  "NICKELODEON", "SUPER RTL", "RTL2", "RTL 2", "RTL II", "NITRO", "RTL NITRO",
+  "RTL+", "RTL PLUS", "TELE 5", "SIXX", "PROSIEBEN MAXX", "KABEL EINS", "KABEL 1",
+  "DMAX", "DISCOVERY", "WELT", "N24", "NTY", "N-TV", "PHOENIX", "TAGESSCHAU24",
+  "DISNEY CHANNEL", "TOGGO", "KIKA",
+
+  // Pay-TV & Cinema
+  "SKY ATLANTIC", "SKY ONE", "SKY CRIME", "SKY CINEMA", "SKY REPLAY", "SKY SHOWCASE",
+  "13TH STREET", "SYFY", "AXN", "WARNER TV", "TNT",
+
+  // Sport (DE / AT / CH)
+  "DAZN", "SKY SPORT", "SKY BULI", "BUNDESLIGA", "SPORT1", "EUROSPORT",
+  "MAGENTA SPORT", "MAGENTASPORT", "ORF SPORT", "ORF 1", "ORF 2", "SRF ZWEI", "SRF 2",
+  "SRF INFO", "BLUE SPORT", "SERVUSTV", "SERVUS TV", "RED BULL TV", "SPORTDIGITAL"
+];
+
+function isAllowedGermanChannel(channelName) {
+  const nameUpper = String(channelName || "").toUpperCase();
+  return GERMAN_ALLOWED_KEYWORDS.some((keyword) => nameUpper.includes(keyword));
+}
+
+function buildBody(group, cursor) {
   return JSON.stringify({
     language: "de",
     region: "DE",
@@ -64,13 +90,13 @@ function buildBody(cursor) {
     adult: false,
     search: "",
     sort: "name",
-    filter: { group: GROUP },
+    filter: { group },
     cursor,
   });
 }
 
-async function fetchPage(cursor) {
-  const body = buildBody(cursor);
+async function fetchPage(group, cursor) {
+  const body = buildBody(group, cursor);
   let lastErr;
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
@@ -92,7 +118,7 @@ async function fetchPage(cursor) {
       lastErr = err;
       const wait = 1000 * attempt;
       console.warn(
-        `Attempt ${attempt} failed (${err.message}). Retrying in ${wait}ms...`
+        `[${group}] Attempt ${attempt} failed (${err.message}). Retrying in ${wait}ms...`
       );
       await new Promise((r) => setTimeout(r, wait));
     }
@@ -100,44 +126,70 @@ async function fetchPage(cursor) {
   throw lastErr;
 }
 
-async function fetchAll() {
+async function fetchAllForGroup(group) {
   const items = [];
   let cursor = null;
   let page = 0;
-  // Safety cap to avoid infinite loops if the API misbehaves
   const MAX_PAGES = 200;
+
   do {
     page++;
-    const data = await fetchPage(cursor);
-    if (Array.isArray(data.items)) items.push(...data.items);
+    const data = await fetchPage(group, cursor);
+    if (Array.isArray(data.items)) {
+      for (const item of data.items) {
+        // Bei der Gruppe "Germany" wenden wir den Filter an
+        if (group === "Germany") {
+          if (isAllowedGermanChannel(item.name)) {
+            items.push(item);
+          }
+        } else {
+          // Türkische Kanäle werden alle übernommen
+          items.push(item);
+        }
+      }
+    }
     console.log(
-      `Page ${page}: fetched ${data.items?.length ?? 0} items, nextCursor=${data.nextCursor ?? "null"}`
+      `Group ${group} - Page ${page}: fetched ${data.items?.length ?? 0} items, added ${items.length} valid items total.`
     );
     cursor = data.nextCursor ?? null;
     if (page >= MAX_PAGES) {
-      console.warn(`Reached MAX_PAGES (${MAX_PAGES}), stopping.`);
+      console.warn(`[${group}] Reached MAX_PAGES (${MAX_PAGES}), stopping.`);
       break;
     }
   } while (cursor !== null && cursor !== undefined);
+
   return items;
+}
+
+async function fetchAll() {
+  const allItems = [];
+  const seenIds = new Set();
+
+  for (const group of GROUPS) {
+    console.log(`Fetching catalog for group="${group}"...`);
+    const groupItems = await fetchAllForGroup(group);
+    for (const item of groupItems) {
+      const itemId = item?.ids?.id;
+      if (itemId && !seenIds.has(itemId)) {
+        seenIds.add(itemId);
+        allItems.push(item);
+      }
+    }
+  }
+
+  return allItems;
 }
 
 // -- categorization --------------------------------------------------------
 
-// Strip "4K TR:" prefix, quality tags and .b/.c/.s source suffixes for matching
-// only — the displayed name is unchanged.
 function normalizeForCategory(name) {
   let s = String(name || "")
-    .replace(/^\s*4K TR:\s*/i, "")
+    .replace(/^\s*(?:4K TR:|DE:|AT:|CH:)\s*/i, "")
     .replace(/\s+(?:UHD|FHD|HD\+|HD|SD|HEVC|RAW|H265|H\.265|FEED)(?=\s|$)/gi, " ")
     .replace(/\s*\.(?:b|c|s)\b/gi, "")
     .replace(/\s+/g, " ")
     .trim();
 
-  // Vavoo often strips Turkish characters (İ, Ü, Ç, Ş, Ğ, Ö), leaving single-letter
-  // fragments like "T RK" (TÜRK), "AK T" (AKİT), "BENG T RK" (BENGÜTÜRK),
-  // "S NEMA" (SİNEMA), "M N KA" (MİNİKA), "OCUK" (ÇOCUK). Restore common
-  // patterns so category regexes can match them.
   s = s
     .replace(/\bT RK\b/g, "TURK")
     .replace(/\bT RKIYEM\b/g, "TURKIYEM")
@@ -158,28 +210,38 @@ function normalizeForCategory(name) {
   return s;
 }
 
-// Rules are evaluated top-to-bottom. First match wins, so specific rules
-// (Çocuk, Spor, Belgesel) come before broad ones (Ulusal, Yerel).
 const CATEGORY_RULES = [
+  // Sport (International / DE / AT / CH / TR)
+  {
+    name: "Sport",
+    re: /DAZN|SKY SPORT|SKY BULI|BUNDESLIGA|EUROSPORT|MAGENTA SPORT|MAGENTASPORT|ORF SPORT|SRF ZWEI|SRF 2|BLUE SPORT|SPORT1|SPORTDIGITAL|BEIN SPO[RT]{0,3}S?|\bBEIN 1\b|S[- ]?SPORTS?|\bS SPORT\b|SPOR SMART|\bNBA\b|TJK TV|TIVIBU ?SPOR|TIVIBUSPOR|TRT SPOR|TABII SPOR|EXXEN SPO[RT]?|\bHT SPOR\b|EKOL SPOR|SPORTS TV|IDMAN TV|GALATASARAY TV|\bFB TV\b|\bGS TV\b|SARAN SPORT|SMART SPOR|\bSPOR\b|\bSPORT\b/i,
+  },
+  // Deutsche Haupt- & Pay-TV Sender
+  {
+    name: "Deutschland",
+    re: /\b(RTL|PROSIEBEN|PRO7|SAT\.1|SAT1|VOX|ZDF|ARD|DAS ERSTE|SUPER RTL|RTL2|RTL 2|RTL II|NITRO|RTL NITRO|RTL\+|RTL PLUS|TELE 5|SIXX|KABEL EINS|KABEL 1|WELT|N24|N-TV|PHOENIX|TAGESSCHAU24|TOGGO|SKY ATLANTIC|SKY ONE|SKY CRIME|SKY CINEMA|SKY REPLAY|SKY SHOWCASE|13TH STREET|SYFY|AXN|WARNER TV|TNT)\b/i,
+  },
+  // Kinder
+  {
+    name: "Çocuk / Kinder",
+    re: /CARTOON|BOOMERANG|DISNEY|NICK(?:ELODEON|TOONS|JR|JUNIOR|\b)|BABY ?TV|BABYTV|M[İI]?N ?KA|MINIKA|KIKA|TOGGO|TRT ?[ÇC]?OCUK|\bCOCUK\b|\b[ÇC]OCUK\b|DISNEY CHANNEL/i,
+  },
+  // Doku & Belgesel
+  {
+    name: "Belgesel / Doku",
+    re: /DISCOVERY|NATIONAL GEOGRAPHIC|NAT ?GEO|\bHISTORY\b|ANIMAL PLANET|DA VINCI(?! KIDS)|VIASAT|BBC EARTH|LOVE NATURE|TRT BELGESEL|EPIC DRAMA|TARIH TV|TARIM TV|TGRT BELGESEL|INVESTIGATION|DMAX|DOCUBOX|DOCU SCREEN|SCIENCE|\bIZ TV\b|YABAN|OUTDOOR|CHASSE|ANIMAUX|AGRO TV|CIFTCI TV|REDBULL TV|\bTLC\b/i,
+  },
+  {
+    name: "Österreich / Schweiz",
+    re: /\b(ORF|SRF|SERVUSTV|SERVUS TV|BLUE SPORT)\b/i,
+  },
   {
     name: "Radyo",
     re: /\b(RADIO|RADYO)\b|\b(FM|MBAT FM|EFKAR FM|FMTV|F ?M)\b(?!\s*TV)|POWERTURK|POWER FM|SHOW RADYO|ALEM (?:FM|RADYO)|BABA RADYO|KRAL POP RADYO|PAL STATION|X NOSTALJI|RADIO ROCK|STANBUL FM/i,
   },
   {
-    name: "Çocuk",
-    re: /CARTOON|BOOMERANG|DISNEY|NICK(?:ELODEON|TOONS|JR|JUNIOR|\b)|BABY ?TV|BABYTV|M[İI]?N ?KA|MINIKA|POKEMON|POKÉMON|ANIMATION|ANIMASYON|TRT ?[ÇC]?OCUK|OCUK HD|\bCOCUK\b|\b[ÇC]OCUK\b|BEN ?10|ANGRY BIRDS|CAILLOU|PEPPA|PEPE|HEIDI|SIRINLER|TOM & JERRY|S[ÜU]NGER|SPIDERMAN|BARBIE|PIJAMA|PIRIL|RAFADAN|KELOGLAN|KUKULI|KUKILI|KOSTEBEK|CHICKY|BOOBA|WAKFU|GABBY|TAYO|NILOYA|PISI|LEYLEK|MASAL|CANIM KARDESIM|ADIBESA|MOMO|ALVIN|VIKINGLER|TRANSFORMERS|TROL AVCILARI|SMART COCUK|ILAHI COCUK|CILGIN ORMAN|KRAL SAKIR|SERCE KUS|ITFAYECI SAM|MUFFETIS|MAYMUNLAR|ELIF VE|ELIFIN|MIMOCAN|HAPSUU|RUYA TRENI|MASA KOCAAYI|PAK PIRPIR|LIMON ZEYTIN|GONCA TV|NASREDDIN|SEKER HOCA|SEVIMLI DOSTLAR|PAW PETROL|OSCAR COLLERDE|SL NILOYA|CBEEBIES|DUCK TV|JIM ?JAM|ENGLISH CLUB TV|EBA TV|TAV[SŞ]AN|PATRON BEBEK|D[İI]YARI|BAHA\b|SEF ROKKA|BULMACA KULESI|AKILLI TAV[SŞ]AN|AKLILI|CANIM KARDESIM|DA VINC KIDS|DA VINCI KIDS|DINAMIK ANIMASYON|DREAM ANIMASYON|MAX ANIMASYON|ENO ANIMASYON|BEST ANIMASYON|YILDIZ KIZ|KONU[SŞ]AN TOM|JURASSIC WORLD|MONTAG/i,
-  },
-  {
-    name: "Belgesel",
-    re: /DISCOVERY|NATIONAL GEOGRAPHIC|NAT ?GEO|\bHISTORY\b|ANIMAL PLANET|DA VINCI(?! KIDS)|VIASAT|BBC EARTH|LOVE NATURE|TRT BELGESEL|EPIC DRAMA|TARIH TV|TARIM TV|TGRT BELGESEL|INVESTIGATION|DMAX|DOCUBOX|DOCU SCREEN|SCIENCE|\bIZ TV\b|YABAN|OUTDOOR|CHASSE|ANIMAUX|AGRO TV|CIFTCI TV|REDBULL TV|\bTLC\b/i,
-  },
-  {
-    name: "Spor",
-    re: /BEIN SPO[RT]{0,3}S?|\bBEIN 1\b|S[- ]?SPORTS?|\bS SPORT\b|SPOR SMART|EUROSPORT|\bNBA\b|TJK TV|TIVIBU ?SPOR|TIVIBUSPOR|TRT SPOR|TABII SPOR|EXXEN SPO[RT]?|\bHT SPOR\b|EKOL SPOR|SPORTS TV|IDMAN TV|GALATASARAY TV|\bFB TV\b|\bGS TV\b|SARAN SPORT|SMART SPOR|\bSPOR\b|\bSPORT\b/i,
-  },
-  {
     name: "Film",
-    re: /SINEMA|S[İI]NEMA|S NEMA|CINEMA|SINEMAX|SINEVIZYON|\bMOVIES?\b|MOVIEMAX|MOVIESMART|BEIN MOVIES|BEIN BOX|BOX OFFICE|\bFX\b|FX HD|YESILCAM|YE ?I ?L ?[ÇC] ?AM|YE ?I ?L ?AM|YEŞ?[İI]LC?AM|GLOBAL BOX|PROTURK|FIX CINEMA|KINGBOX|ARENA BOX|SHOWMAX|SHOW MAX|REAL BOX|SMART BOX|BEST (?:AKSIYON|BILIMKURGU|DRAM|HABABAM|IMBD|KOMEDI|KORKU|LOCA|NETFLIX|SALON|SAVAS|TURK|WESTERN|YESILCAM)|MAX (?:007|AKSIYON|GOLD|ORJINAL|PREMIER|STAR WARS|TURK|VIZYON|WESTERN)|DINAMIK (?:AKSIYON|BILIMKURGU|DRAM|IMBD|KOMEDI|KORKU|TURK|VIZYON|WESTERN|YESILCAM)|DREAM (?:AKSIYON|BEIN OFFICE|BOX|DRAM|KEMAL|KOMEDI|KORKU|LOCA|NETFLIX|SAVAS|WESTERN)|ULTRA (?:AKSIYON|BILIMKURGU|IMBD|KEMAL|KOMEDI|KORKU|TURK)|ENO (?:AKSIYON|VIZYON|WESTERN)|\bLOCA\b|\bSALON\b|\bVIZYON\b|AKSIYON|AKS[İIY]?YON|AKS YON|KOMED[İI]|\bKORKU\b|\bDRAM\b|WESTERN|BILIM ?KURGU|\bSAVAS\b|\bIMBD\b|\bIMDB\b|\bFILM\b|FILMBOX|HORROR|OSCAR|KEMAL SUNAL|\b007\b|\bCINE ?1\b|SIFIR TV|SON C BOOM|\bYERL[İI]\b|SPIDERMAN(?! TV)|ARENA BOX|MOVIE SMART|\bM ?T[UÜ]RK TV\b|\bM TURK TV\b|\bM T RK TV\b/i,
+    re: /SINEMA|S[İI]NEMA|S NEMA|CINEMA|SINEMAX|SINEVIZYON|\bMOVIES?\b|MOVIEMAX|MOVIESMART|BEIN MOVIES|BEIN BOX|BOX OFFICE|\bFX\b|FX HD|YESILCAM|YE ?I ?L ?[ÇC] ?AM|YE ?I ?L ?AM|YEŞ?[İI]LC?AM|GLOBAL BOX|PROTURK|FIX CINEMA|KINGBOX|ARENA BOX|SHOWMAX|SHOW MAX|REAL BOX|SMART BOX/i,
   },
   {
     name: "Dizi",
@@ -187,27 +249,27 @@ const CATEGORY_RULES = [
   },
   {
     name: "Müzik",
-    re: /POWER T[UÜ]RK|POWER ?TV|POWERTURK|POWER (?:DANCE|LOVE|HD)|\bPOWER\b|KRAL POP|KRAL ?TV|\bKRAL\b|TRT M[UÜ]?Z[İI]?K|TRT MUZIK|NR ?1|NUMBER ?1|NUMBER ONE|DAMAR|ARABESK|AKUS ?T[İI]K|AHMET KAYA|IBRAHIM ERKAL|IBRAHIM TATLISES|\bTATLISES\b|ZERRIN OZER|SEZEN AKSU|TARKAN|SELDA BAGCAN|CENGIZ KURTOGLU|MAHSUN KIRMIZIGUL|MUSLUM GURSES|YILDIZ TILBE|FERDI TAYFUR|DURSUN AL|MTV LIVE|VINTAGE MUSIC|RETRO T ?RK|RETRO TURK|T[UÜ]?RK ?E POP|T RK E POP|T RK E KLASIK|SLOW KARADENIZ|\bSLOW\b|\bZARA\b|\bSONER ARICA\b|M[UÜ]Z[İI]K|\bFM TV\b|\bFMTV\b|REDBOX/i,
+    re: /POWER T[UÜ]RK|POWER ?TV|POWERTURK|KRAL POP|KRAL ?TV|\bKRAL\b|TRT M[UÜ]?Z[İI]?K|NR ?1|NUMBER ?1|NUMBER ONE|MTV LIVE|VINTAGE MUSIC|RETRO T ?RK|M[UÜ]Z[İI]K/i,
   },
   {
     name: "Haber",
-    re: /\bHABER\b|\bNEWS\b|BLOOMBERG|\bCNN\b|EKOTURK|\bEKO ?T[UÜ]RK\b|\bEKOL\b|A ?PARA|APARA|PARANIN|HALK TV|TELE ?1|SOZCU|S ZC|\bSZC\b|BENGU ?T[UÜ]RK|BENGUTURK|TRT WORLD|\bDHA\b|LIDER HABER|FLASH HABER|MEDYA HABER|GLOBAL HABER|TRABZON HABER|BEIN SPORTS HABER|T[UÜ]RKHABER|HABERT[UÜ]RK|HABERT RK|\bARTI TV\b/i,
+    re: /\bHABER\b|\bNEWS\b|BLOOMBERG|\bCNN\b|EKOTURK|A ?PARA|APARA|HALK TV|TELE ?1|SOZCU|TRT WORLD|LIDER HABER|FLASH HABER|GLOBAL HABER|HABERT[UÜ]RK/i,
   },
   {
     name: "Dini",
-    re: /D[İI]YANET|\bAK[İIY]?T\b|MEHTAP|H[İI]LAL|KUDUS|KUDÜS|KUD S|SEMERKAND|LALEGUL|LÂLEGÜL|L[AÂ]LEG[UÜ]L|MERCAN TV|VUSLAT|KARDELEN|DIYAR TV|\bDOST TV\b|\bYOL TV\b|\bKANAL 7\b|HAYAT|HAYIRLI|HZ MERYEM|HZ OMER|HZ YUSUF|MAM EBU|ASHABI KEHF|HASAN VE HUSEYIN|SAT ?7 T[UÜ]RK|TVNET|TRT DIYANET|\bTV ?5\b|\bTV5\b|REHBER|ILAHI|ILKE TV|MESAJ TV|SURELER|T[UÜ]RK ?E MEAL|DURSUN AL ERZINCANLI|YUNUS EMRE|CEM TV|BARBAROS TV|ASLAN TV|TYT TURK|SATRAN[ÇC]|FASIL/i,
+    re: /D[İI]YANET|\bAK[İIY]?T\b|MEHTAP|H[İI]LAL|KUDUS|SEMERKAND|LALEGUL|MERCAN TV|VUSLAT|KARDELEN|DIYAR TV|\bDOST TV\b|\bYOL TV\b|\bKANAL 7\b|TVNET|TRT DIYANET/i,
   },
   {
     name: "Yaşam",
-    re: /24 KITCHEN|GURME|BEIN GURME|LIFESTYLE|\bLIFE TV\b|FASHION|WM TV|EGE ILE GAGA|24 RAW|\bTVEM\b|\bTV EM\b|AUTOMOTO|LINE TV|BILGILENDIRME|WOMAN|TELEGRAM/i,
+    re: /24 KITCHEN|GURME|BEIN GURME|LIFESTYLE|\bLIFE TV\b|FASHION|AUTOMOTO|LINE TV/i,
   },
   {
-    name: "Ulusal",
-    re: /^24$|\bTRT\b|\bTRT 1\b|\bTRT ?2\b|TRT2|\bTRT 3\b|TRT AVAZ|TRT T[UÜ]RK|TRT TURK|TRT KURD[İI]?|TRT WORLD|TRT 4K|TRT EBA|\bKANAL D\b|\bATV\b|ATV AVRUPA|ATV EUROPA|STAR TV|\bSTAR\b|STAR HD|SHOW TV|SHOW T[UÜ]RK|\bSHOW\b|\bFOX\b|NOW ?TV|\bNOW\b|TV ?8|TV8[.,]5|BEYAZ TV|BEYAZ HD|\bBEYAZ\b|\b360\b|24 TV|\bA2\b|A HABER|A NEWS|A PARA|A SPOR|TV ?100|TV ?4|FLASH TV|TEVE ?2|TEVE2|CNN T[UÜ]RK|CNN TURK|\bKRT\b|ULUSAL KANAL|DREAM T[UÜ]RK|DREAM TURK|\bDREAM TV\b|\bBRT ?[0-9]|\bBRTV\b|EURO ?D|EURO ?STAR|\bNTV\b|EXXEN TV|TIVI ?T[UÜ]RK|TABII|OLAY T[UÜ]RK|OLAY TURK|24 HD|24 HABER|24 KITCHEN|LKE ?TV|[UÜ]LKE ?TV|ULKE ?TV|ULKETV|TV DEN|TVDEN|KANAL AVRUPA|KANAL 7 (?:AVRUPA|EUROPA)|LKE TV|EURO D|EURO STAR|SHOW TV EUROPA|BENGU ?T[UÜ]RK|BENGU TURK|BENGUTURK|TGRT EU|D ?[ĞG] ?N TV|\bTBMM\b|TV NET|\bTV 1\b|TVO TV|BEIN IZ|\bMAX\b/i,
+    name: "Ulusal (TR)",
+    re: /^24$|\bTRT\b|\bTRT 1\b|\bTRT ?2\b|TRT2|\bTRT 3\b|TRT AVAZ|TRT T[UÜ]RK|TRT KURD[İI]?|TRT WORLD|TRT 4K|\bKANAL D\b|\bATV\b|STAR TV|\bSTAR\b|SHOW TV|\bFOX\b|NOW ?TV|\bNOW\b|TV ?8|TV8[.,]5|BEYAZ TV|\b360\b|24 TV|\bA2\b|A HABER|TV ?100|TEVE2|CNN T[UÜ]RK|\bNTV\b/i,
   },
   {
-    name: "Yerel",
-    re: /ADANA|AD[İI]YAMAN|AFYON|AKSARAY|ALANYA|ANAKKALE|\bANKARA\b|ANKA TV|ANKARA T[UÜ]RKIYEM|ANLIURFA|ANTALYA|\bBURSA\b|ELAZIG|ERCIS|ERZURUM|ESK[İI]SEHIR|ESK EH R|\bES TV\b|\bER TV\b|ETV KAYSERI|ETV MANISA|GAZIANTEP|\bICEL\b|K[İI]MARAS|KAHRAMANMARA|K MARAS|KAYSERI|KOCAELI|KON TV|KONYA|MALATYA|MERSIN|ORDU|ALTAS TV|SIVAS|TRABZON|TUNCELI|DERSIM|\bURFA\b|IZMIR TV|TON TV|KIBRIS|EDIRNE|DENIZLI|\bKAY TV\b|KENT T[UÜ]RK|KENT T RK|HUNAT|\bOBB\b|KANAL 12|KANAL 15|KANAL 23|KANAL 24|KANAL 26|KANAL 3\b|KANAL 32|KANAL 33|KANAL 34|KANAL 360|KANAL 42|KANAL 58|KANAL 68|KANAL FIRAT|KANAL URFA|KANAL V\b|\bKANAL Z\b|KANAL T\b|KANAL HAYAT|KANAL 68|KARADENIZ|GUNEYDOGU|GÜNEYDOĞU|\bEGE\b|MELTEM|CAY TV|TEK RUMEL|YENI KOCAELI|OLAY TV|\bGRT\b|SUN RTV|SUN TV|\bK[ÖO]Y TV\b|IZMIR|TIVI 6|TV 41|TV 42|TV 52|TV 264|KOZA TV|MC EU|MERCAN|KADIRGA|\bFANATIK\b|AS TV|ISVI|GURBET24|T\.A\.Y|TAY TV|\bTAY\b|\bTMB\b|AV TV|MAVI KARADENIZ|EGE ILE GAGA|GAZIANTEP GRT|VIYANA TV|LUYS|EDESSA|BIR TV|ANA[DK]OLU|B[İI]R TV|D[İI]YAR|ERTV|HRT|SIVAS|VIZYON 58|ADA TV|CAN TV|DEHA|SIFIR|EKIN T[UÜ]RK|AFROTURK|ARAS|ARKADAG|VATAN|D[ÖO]RU|AKSU TV|KARE TV|ON 4|ON 6|PAMUKKALE|UCANKUS|64 KARE|DENIZ POSTASI/i,
+    name: "Yerel (TR)",
+    re: /ADANA|AD[İI]YAMAN|AFYON|AKSARAY|ALANYA|ANAKKALE|\bANKARA\b|ANTALYA|\bBURSA\b|ELAZIG|ERZURUM|ESK[İI]SEHIR|GAZIANTEP|KAYSERI|KOCAELI|KONYA|MALATYA|MERSIN|ORDU|SIVAS|TRABZON|IZMIR/i,
   },
 ];
 
@@ -249,8 +311,7 @@ function toM3U(items, vavooToEpgId, logoResolver) {
     if (!name) continue;
     const logo = resolveLogo(name, it.logo, logoResolver);
     const group = categorize(name);
-    // Route tvg-id to the upstream EPG channel id when we have a match,
-    // so TiviMate can bind the guide. Fallback to the Vavoo id.
+
     const tvgId = (vavooToEpgId && vavooToEpgId.get(vavooId)) || vavooId;
     lines.push(
       `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}",${name}`
@@ -261,7 +322,6 @@ function toM3U(items, vavooToEpgId, logoResolver) {
   return lines.join("\n");
 }
 
-// iptv-org logo > Vavoo logo > "" (empty). Vavoo mostly returns "" anyway.
 function resolveLogo(name, vavooLogo, logoResolver) {
   if (logoResolver) {
     const l = logoResolver(name);
@@ -295,7 +355,7 @@ function xmltvTime(sec) {
   );
 }
 
-// -- Upstream EPG (epgshare01 etc.) ----------------------------------------
+// -- Upstream EPG ----------------------------------------------------------
 
 async function fetchUpstreamXmltv(url) {
   const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
@@ -307,7 +367,6 @@ async function fetchUpstreamXmltv(url) {
   return bytes.toString("utf8");
 }
 
-// Load and merge all XMLTV files inside a directory (iptv-org grab output).
 async function loadGrabDir(dir) {
   const combined = { channels: new Map(), progByChannel: new Map() };
   if (!dir) return combined;
@@ -338,10 +397,9 @@ async function loadGrabDir(dir) {
   return combined;
 }
 
-// Parse XMLTV via regex (no dependency). Sufficient for well-formed feeds.
 function parseXmltv(xml) {
-  const channels = new Map(); // id -> { names[], icon }
-  const programmes = []; // { start, stop, channel, titleXml, descXml, categoryXml }
+  const channels = new Map();
+  const programmes = [];
 
   const chRe = /<channel\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/channel>/gi;
   for (const m of xml.matchAll(chRe)) {
@@ -370,15 +428,13 @@ function parseXmltv(xml) {
   return { channels, programmes };
 }
 
-// Loose ASCII normalization used ONLY for cross-source name matching.
 function normalizeForMatch(name) {
   let s = String(name || "")
     .toUpperCase()
-    .replace(/^\s*4K TR:\s*/i, "")
+    .replace(/^\s*(?:4K TR:|DE:|AT:|CH:)\s*/i, "")
     .replace(/\s*\.(?:B|C|S)\b/gi, "")
     .replace(/\[[^\]]*\]/g, " ")
     .replace(/\([^\)]*\)/g, " ")
-    // Restore Vavoo's stripped Turkish characters BEFORE ASCII fold.
     .replace(/\bT RK\b/g, "TURK")
     .replace(/\bAK T\b/g, "AKIT")
     .replace(/\bS NEMA\b/g, "SINEMA")
@@ -463,7 +519,6 @@ function toXMLTV(
     }
 
     const displayName = sourceCh?.names?.[0] || name;
-    // Logo priority: iptv-org > EPG source icon > Vavoo logo > empty
     const iptvorgLogo = logoResolver ? logoResolver(name) : "";
     const icon = iptvorgLogo || sourceCh?.icon || it.logo || "";
     const iconTag = icon ? `\n    <icon src="${xmlEscape(icon)}"/>` : "";
@@ -514,10 +569,9 @@ async function buildLogoIndex() {
     fetchJson(IPTVORG_CHANNELS_URL),
     fetchJson(IPTVORG_LOGOS_URL),
   ]);
-  const trChannels = channels.filter((c) => c && c.country === "TR");
+  const trChannels = channels.filter((c) => c && (c.country === "TR" || c.country === "DE"));
   const trIds = new Set(trChannels.map((c) => c.id));
 
-  // Prefer in_use=true logos; fall back to first available.
   const chosen = new Map();
   for (const l of logos) {
     if (!l || !trIds.has(l.channel) || !l.url) continue;
@@ -555,7 +609,7 @@ function makeLogoResolver(idx) {
 }
 
 async function main() {
-  console.log(`Fetching group="${GROUP}" from ${CATALOG_URL} ...`);
+  console.log(`Fetching groups=${JSON.stringify(GROUPS)} from ${CATALOG_URL} ...`);
   if (PROXY_BASE) {
     console.log(`Using PROXY_BASE=${PROXY_BASE}`);
   } else {
@@ -563,13 +617,10 @@ async function main() {
       "WARNING: PROXY_BASE is empty. Raw vavoo.to URLs will be written; players without VPN may fail."
     );
   }
-  console.log(`EPG URL (published): ${EPG_URL}`);
-  console.log(`EPG UPSTREAM (source): ${EPG_UPSTREAM_URL}`);
 
   const items = await fetchAll();
-  console.log(`Total items: ${items.length}`);
+  console.log(`Total filtered items combined: ${items.length}`);
 
-  // Deterministic order for clean git diffs
   items.sort((a, b) => {
     const an = String(a.name ?? "").toLocaleLowerCase("tr-TR");
     const bn = String(b.name ?? "").toLocaleLowerCase("tr-TR");
@@ -591,9 +642,6 @@ async function main() {
         upstreamProgByChannel.set(p.channel, []);
       upstreamProgByChannel.get(p.channel).push(p);
     }
-    console.log(
-      `Upstream EPG (epgshare01): ${upstreamChannels.size} channels, ${parsed.programmes.length} programmes`
-    );
   } catch (err) {
     console.warn(
       `Upstream EPG unavailable (${err.message}); falling back to Vavoo inline EPG only.`
@@ -601,24 +649,10 @@ async function main() {
   }
 
   const grab = await loadGrabDir(IPTVORG_GRAB_DIR);
-  if (grab.channels.size > 0) {
-    const grabProgCount = [...grab.progByChannel.values()].reduce(
-      (s, a) => s + a.length,
-      0
-    );
-    console.log(
-      `iptv-org grab: ${grab.channels.size} channels, ${grabProgCount} programmes (dir: ${IPTVORG_GRAB_DIR})`
-    );
-  } else if (IPTVORG_GRAB_DIR) {
-    console.warn(
-      `iptv-org grab dir "${IPTVORG_GRAB_DIR}" empty or missing; only epgshare01 + Vavoo inline will be used.`
-    );
-  }
 
   let logoIdx = new Map();
   try {
     logoIdx = await buildLogoIndex();
-    console.log(`Logo index: ${logoIdx.size} name keys → iptv-org TR logos`);
   } catch (err) {
     console.warn(`Logo index unavailable (${err.message}); logos will be empty.`);
   }
@@ -628,39 +662,27 @@ async function main() {
   const upstreamIdx = buildMatchIndex(upstreamChannels);
   const vavooToEpgId = new Map();
   const idSource = new Map();
-  let grabMatched = 0;
-  let upstreamMatched = 0;
-  let logoMatched = 0;
+
   for (const it of items) {
     const vavooId = it?.ids?.id;
     if (!vavooId) continue;
     const name = sanitizeName(it.name);
     if (!name) continue;
 
-    // Priority: iptv-org grab (real TR descriptions) > epgshare01 (title-only) > Vavoo inline
     const grabId = matchUpstreamId(name, grabIdx);
     if (grabId) {
       vavooToEpgId.set(vavooId, grabId);
       idSource.set(grabId, "grab");
-      grabMatched++;
     } else {
       const upstreamId = matchUpstreamId(name, upstreamIdx);
       if (upstreamId) {
         vavooToEpgId.set(vavooId, upstreamId);
         idSource.set(upstreamId, "epgshare01");
-        upstreamMatched++;
       } else {
         vavooToEpgId.set(vavooId, vavooId);
       }
     }
-    if (logoResolver && logoResolver(name)) logoMatched++;
   }
-  console.log(
-    `Channel binding: grab=${grabMatched}, epgshare01=${upstreamMatched}, vavoo-only=${items.length - grabMatched - upstreamMatched} (total ${items.length})`
-  );
-  console.log(
-    `Logo binding:    ${logoMatched}/${items.length} Vavoo channels matched an iptv-org logo`
-  );
 
   const m3u = toM3U(items, vavooToEpgId, logoResolver);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
@@ -677,11 +699,7 @@ async function main() {
     logoResolver
   );
   await fs.writeFile(EPG_FILE, epg, "utf8");
-  const programmeCount = (epg.match(/<programme /g) || []).length;
-  const channelCount = (epg.match(/<channel /g) || []).length;
-  console.log(
-    `Wrote ${EPG_FILE} (${epg.length} bytes, ${channelCount} channels, ${programmeCount} programmes)`
-  );
+  console.log(`Wrote ${EPG_FILE} successfully.`);
 
   const dist = new Map();
   for (const it of items) {
@@ -692,7 +710,7 @@ async function main() {
   }
   console.log("\nCategory distribution:");
   for (const [c, n] of [...dist.entries()].sort((a, b) => b[1] - a[1])) {
-    console.log(`  ${c.padEnd(10)}: ${n}`);
+    console.log(`  ${c.padEnd(20)}: ${n}`);
   }
 }
 
