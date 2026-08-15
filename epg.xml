@@ -12,10 +12,6 @@
     <display-name>13TH STREET HD (BACKUP) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png"/>
   </channel>
-  <channel id="3854738303acabe63483d0">
-    <display-name>13TH STREET HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png"/>
-  </channel>
   <channel id="19361793832d56e72aa006">
     <display-name>13TH STREET HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png"/>
@@ -54,10 +50,6 @@
     <display-name>a2</display-name>
     <icon src="https://iatv.tmgrup.com.tr/site/v2/a2tv/i/a2tv-logo.png"/>
   </channel>
-  <channel id="344558568784e9a5583953">
-    <display-name>4K TR: AK T TV HD .b</display-name>
-    <icon src="https://i.imgur.com/oGto929.png"/>
-  </channel>
   <channel id="ATV.am@SD">
     <display-name>Atv</display-name>
     <icon src="https://i.imgur.com/HyVUwFC.png"/>
@@ -85,10 +77,6 @@
   <channel id="41034540643b582da308f">
     <display-name>4K TR: DA VINCI .b</display-name>
     <icon src="https://i.imgur.com/iBx7K1M.png"/>
-  </channel>
-  <channel id="67e5c4c6cfef0b3744c556fa">
-    <display-name>DMAX</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png"/>
   </channel>
   <channel id="DisneyJr.tr@SD">
     <display-name>Disney Junior</display-name>
@@ -222,10 +210,6 @@
     <display-name>Spor Smart</display-name>
     <icon src="https://i.imgur.com/blu6v6P.png"/>
   </channel>
-  <channel id="SportsTV.tr@SD">
-    <display-name>Sports Tv</display-name>
-    <icon src="https://i.imgur.com/tGTVcVe.jpg"/>
-  </channel>
   <channel id="219297129315c074c03f8e">
     <display-name>4K TR: STAR TV HD .b</display-name>
     <icon src="https://i.imgur.com/9O3DHRB.png"/>
@@ -262,17 +246,9 @@
     <display-name>TRT Haber</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png"/>
   </channel>
-  <channel id="1707">
-    <display-name>TRT Kurdî</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/TRT_Kurd%C3%AE_logo.svg/960px-TRT_Kurd%C3%AE_logo.svg.png"/>
-  </channel>
   <channel id="TRTMuzik.tr@SD">
     <display-name>TRT Müzik</display-name>
     <icon src="https://i.imgur.com/JgUzRH8.png"/>
-  </channel>
-  <channel id="30291805064bacb8a4036d">
-    <display-name>4K TR: TRT OCUK HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png"/>
   </channel>
   <channel id="TRTSpor.tr@SD">
     <display-name>TRT Spor</display-name>
@@ -336,16 +312,16 @@
     <display-name>ANIMAL PLANET .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png"/>
   </channel>
-  <channel id="3913298991ebe0634b3649">
-    <display-name>ANIMAL PLANET HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png"/>
-  </channel>
   <channel id="2103702130b5451883e2a7">
     <display-name>ANIMAUX .b</display-name>
   </channel>
   <channel id="9314064096e814315889b">
     <display-name>APARA HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=931406409.png"/>
+  </channel>
+  <channel id="23303429766cb1c7046b8e">
+    <display-name>ARD ALPHA .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/ARD_alpha.svg/960px-ARD_alpha.svg.png"/>
   </channel>
   <channel id="32556499551d3f7f00e1a3">
     <display-name>ARD ALPHA .c</display-name>
@@ -375,12 +351,6 @@
   <channel id="3150125078e40bb1f5ac0">
     <display-name>AXN BLACK .c</display-name>
     <icon src="https://i.imgur.com/Peo1QiZ.png"/>
-  </channel>
-  <channel id="3306956371427f33d38d36">
-    <display-name>AXN HD (BACKUP) .b</display-name>
-  </channel>
-  <channel id="33911158650eccddb037b3">
-    <display-name>AXN HD .b</display-name>
   </channel>
   <channel id="BabyTV.uk@France">
     <display-name>Baby TV</display-name>
@@ -418,6 +388,10 @@
   </channel>
   <channel id="391012970274e1f1b46029">
     <display-name>BEIN BOX OFFICE 2 .c</display-name>
+    <icon src="https://i.imgur.com/Kg7oOcO.png"/>
+  </channel>
+  <channel id="152264090d704f6769888">
+    <display-name>BEIN BOX OFFICE 2 .s</display-name>
     <icon src="https://i.imgur.com/Kg7oOcO.png"/>
   </channel>
   <channel id="35641061340ab1a36ee3bd">
@@ -505,10 +479,6 @@
   </channel>
   <channel id="2729088606df69156b1eda">
     <display-name>BEIN SPORTS 1 FEED .c</display-name>
-  </channel>
-  <channel id="24034250314fd9aa349685">
-    <display-name>BEIN SPORTS 1 H265 .b</display-name>
-    <icon src="https://logo.huhu.to/logo?c=2403425031.png"/>
   </channel>
   <channel id="5934938605e361d7e0ff0">
     <display-name>BEIN SPORTS 1 HD (TURKEY) .b</display-name>
@@ -613,9 +583,6 @@
     <display-name>BEIN SPORTS MAX 1 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1221587067.png"/>
   </channel>
-  <channel id="283243053554cc6eb0a10a">
-    <display-name>BEIN SPORTS MAX 1 .s</display-name>
-  </channel>
   <channel id="4071474743dbe8a60b9395">
     <display-name>BEIN SPORTS MAX 1 FHD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=4071474743.png"/>
@@ -627,9 +594,6 @@
   <channel id="25896823596a84e43dd09">
     <display-name>BEIN SPORTS MAX 2 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=258968235.png"/>
-  </channel>
-  <channel id="4017295127660d677c32f9">
-    <display-name>BEIN SPORTS MAX 2 .s</display-name>
   </channel>
   <channel id="3407936242f95c33ae8820">
     <display-name>BEIN SPORTS MAX 2 FHD .b</display-name>
@@ -673,12 +637,12 @@
     <display-name>Da Vinci Learning</display-name>
     <icon src="https://i.imgur.com/iBx7K1M.png"/>
   </channel>
-  <channel id="2814908252b478398f430e">
-    <display-name>DAS ERSTE .c</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
-  </channel>
   <channel id="2781626432d1535952983f">
     <display-name>DAS ERSTE .s</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
+  </channel>
+  <channel id="259560614200209e77dfb0">
+    <display-name>DAS ERSTE [SAT] [] .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
   </channel>
   <channel id="5927186007ea11004d769">
@@ -801,11 +765,18 @@
   <channel id="1484263760fa8328adf7a6">
     <display-name>DAZN 4 (MATCH TIME) HD .b</display-name>
   </channel>
+  <channel id="3349320398ce8ea3c4a5e9">
+    <display-name>DAZN 5 (MATCH TIME) HD .b</display-name>
+  </channel>
   <channel id="31664415170397a67c6455">
     <display-name>DAZN 6 (MATCH TIME) HD .b</display-name>
   </channel>
   <channel id="1869814941aa982b6bd0a0">
     <display-name>DAZN 8 (MATCH TIME) HD .b</display-name>
+  </channel>
+  <channel id="14745367131ac295081561">
+    <display-name>DAZN BAR 1 [] .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=1474536713.png"/>
   </channel>
   <channel id="30757699713fe2a8880b52">
     <display-name>DAZN BAR 1 FHD .s</display-name>
@@ -862,9 +833,6 @@
   <channel id="222932870521a08b37c6a">
     <display-name>DAZN EVENT 3 HD .b</display-name>
   </channel>
-  <channel id="126658207cee20e2a089d">
-    <display-name>DAZN EVENT 4 HD .b</display-name>
-  </channel>
   <channel id="3408307713f7109510b3a2">
     <display-name>DAZN EVENT 5 HD .b</display-name>
   </channel>
@@ -893,6 +861,9 @@
     <display-name>DAZN FAST+ .c</display-name>
     <icon src="https://i.postimg.cc/Kc3mP7Qt/cbimage.png"/>
   </channel>
+  <channel id="2833035201254713df8805">
+    <display-name>DAZN LFC TV HD .b</display-name>
+  </channel>
   <channel id="1476666167a4181c256f0d">
     <display-name>DAZN MBL HD .b</display-name>
   </channel>
@@ -917,6 +888,10 @@
   </channel>
   <channel id="3654985152b903b48cb843">
     <display-name>DAZN SPORTDIGITAL HD .b</display-name>
+  </channel>
+  <channel id="67e5c4c6cfef0b3744c556fa">
+    <display-name>DMAX</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png"/>
   </channel>
   <channel id="67a3521bcfef0b3744abd66d">
     <display-name>Docu Screen</display-name>
@@ -1085,6 +1060,9 @@
   <channel id="26821973885526df1430a7">
     <display-name>EUROSPORT 360 HD 12 .b</display-name>
   </channel>
+  <channel id="27304417886ccf0cf19185">
+    <display-name>EUROSPORT 360 HD 13 .b</display-name>
+  </channel>
   <channel id="2789130686711975bca9f">
     <display-name>EUROSPORT 360 HD 14 .b</display-name>
   </channel>
@@ -1100,6 +1078,9 @@
   <channel id="36755317391a3736695ded">
     <display-name>EUROSPORT 360 HD 4 .b</display-name>
   </channel>
+  <channel id="38663619638634dbe0b8ca">
+    <display-name>EUROSPORT 360 HD 5 .b</display-name>
+  </channel>
   <channel id="2715056827a74c954bc614">
     <display-name>EUROSPORT 360 HD 6 .b</display-name>
   </channel>
@@ -1108,6 +1089,9 @@
   </channel>
   <channel id="518309082e3dac33da059">
     <display-name>EUROSPORT 360 HD 8 .b</display-name>
+  </channel>
+  <channel id="595914090ca0bbf8798b4">
+    <display-name>EUROSPORT 360 HD 9 .b</display-name>
   </channel>
   <channel id="3793200644fd418f955402">
     <display-name>EUROSPORT1 HD .b</display-name>
@@ -1140,6 +1124,9 @@
   </channel>
   <channel id="375666582074de424d42bf">
     <display-name>EXXEN SPORTS 6 .s</display-name>
+  </channel>
+  <channel id="38006954042bb57163b020">
+    <display-name>EXXEN SPORTS 7 .s</display-name>
   </channel>
   <channel id="1624937917c024524dfe03">
     <display-name>EXXEN SPORTS 8 .s</display-name>
@@ -1180,9 +1167,6 @@
   <channel id="3343300331c5663b93a430">
     <display-name>EXXEN TV SPOR 7 .b</display-name>
   </channel>
-  <channel id="11590782026618befbb16b">
-    <display-name>EXXEN TV SPOR 8 .b</display-name>
-  </channel>
   <channel id="3806979011e0d72cfb10fc">
     <display-name>FLASH HABER TV .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=3806979011.png"/>
@@ -1194,6 +1178,10 @@
   <channel id="1498459094c86300dd688c">
     <display-name>FOX .s</display-name>
     <icon src="https://i.imgur.com/kXoadQC.png"/>
+  </channel>
+  <channel id="31503810386e1be804a835">
+    <display-name>FOX CRIME HEVC .b</display-name>
+    <icon src="https://i.imgur.com/htrPojY.png"/>
   </channel>
   <channel id="140294889322f1c6411b3">
     <display-name>FIX CINEMA ACTION .b</display-name>
@@ -1372,14 +1360,6 @@
   <channel id="348853224424490830f4fe">
     <display-name>KANAL 360 UHD .b</display-name>
   </channel>
-  <channel id="916532487174bf814970d">
-    <display-name>KANAL 7 AVRUPA .c</display-name>
-    <icon src="https://i.imgur.com/wlfyj5l.png"/>
-  </channel>
-  <channel id="4986459771133ab4a2f33">
-    <display-name>KANAL 7 AVRUPA .s</display-name>
-    <icon src="https://i.imgur.com/wlfyj5l.png"/>
-  </channel>
   <channel id="326498336471980dd56f67">
     <display-name>KANAL 7 EUROPA .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3264983364.png"/>
@@ -1387,6 +1367,14 @@
   <channel id="127011060769330a43e05e">
     <display-name>KARDELEN TV .c</display-name>
     <icon src="https://i.imgur.com/0RATxcN.png"/>
+  </channel>
+  <channel id="1198414561ad7fab54a200">
+    <display-name>KARDELEN TV .s</display-name>
+    <icon src="https://i.imgur.com/0RATxcN.png"/>
+  </channel>
+  <channel id="211438405134cf6d8a4129">
+    <display-name>KUDUS TV .b</display-name>
+    <icon src="https://i.imgur.com/lwRA84B.png"/>
   </channel>
   <channel id="5220502681f663a2e6cbe">
     <display-name>KUDUS TV .s</display-name>
@@ -1402,10 +1390,6 @@
   </channel>
   <channel id="162124518c6ac036885e3">
     <display-name>KIKA HD .b</display-name>
-    <icon src="https://i.imgur.com/vZdNp5S.png"/>
-  </channel>
-  <channel id="3645283043839c06f50d86">
-    <display-name>KIKA HEVC .b</display-name>
     <icon src="https://i.imgur.com/vZdNp5S.png"/>
   </channel>
   <channel id="3186688793d82687fd0609">
@@ -1457,9 +1441,6 @@
     <display-name>MAGENTA SPORT 12 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=788645582.png"/>
   </channel>
-  <channel id="3474801522c4e690e747bc">
-    <display-name>MAGENTA SPORT 12 .s</display-name>
-  </channel>
   <channel id="993576913bef5db3c0905">
     <display-name>MAGENTA SPORT 12 HD .b</display-name>
   </channel>
@@ -1473,9 +1454,6 @@
   <channel id="26886275669823d5bb6095">
     <display-name>MAGENTA SPORT 14 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2688627566.png"/>
-  </channel>
-  <channel id="4250390102ba7f9d7be353">
-    <display-name>MAGENTA SPORT 14 HD .b</display-name>
   </channel>
   <channel id="263619247831a32a5a85a5">
     <display-name>MAGENTA SPORT 15 .c</display-name>
@@ -1491,12 +1469,12 @@
   <channel id="3211970859d3ea1ffadc00">
     <display-name>MAGENTA SPORT 16 HD .b</display-name>
   </channel>
-  <channel id="3890301374bb35aed1dbc5">
-    <display-name>MAGENTA SPORT 17 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=3890301374.png"/>
-  </channel>
   <channel id="19435872538fbe17cd8dc0">
     <display-name>MAGENTA SPORT 17 HD .b</display-name>
+  </channel>
+  <channel id="17061556318f1778ae7b87">
+    <display-name>MAGENTA SPORT 18 .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=1706155631.png"/>
   </channel>
   <channel id="28684357375ee4035cb1ab">
     <display-name>MAGENTA SPORT 18 HD .b</display-name>
@@ -1504,16 +1482,8 @@
   <channel id="3628839705dad56197db12">
     <display-name>MAGENTA SPORT 2 .b</display-name>
   </channel>
-  <channel id="2335883109581e3c33381b">
-    <display-name>MAGENTA SPORT 2 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=2335883109.png"/>
-  </channel>
   <channel id="74305452074b371b4fb35">
     <display-name>MAGENTA SPORT 2 .s</display-name>
-  </channel>
-  <channel id="3545622272c7a59aad977f">
-    <display-name>MAGENTA SPORT 20 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=3545622272.png"/>
   </channel>
   <channel id="38448401058066b4e83ced">
     <display-name>MAGENTA SPORT 3 .b</display-name>
@@ -1545,19 +1515,8 @@
   <channel id="2657796264bdb87c7b7d2e">
     <display-name>MAGENTA SPORT 5 .s</display-name>
   </channel>
-  <channel id="21261254776f2e028c1d41">
-    <display-name>MAGENTA SPORT 6 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=2126125477.png"/>
-  </channel>
-  <channel id="3653941880fc2dbbc4b55c">
-    <display-name>MAGENTA SPORT 6 .s</display-name>
-  </channel>
-  <channel id="2796575778ee303859a15">
-    <display-name>MAGENTA SPORT 7 .b</display-name>
-  </channel>
-  <channel id="1138372629ac781aad5910">
-    <display-name>MAGENTA SPORT 7 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=1138372629.png"/>
+  <channel id="768284121965d97f6be4d">
+    <display-name>MAGENTA SPORT 6 .b</display-name>
   </channel>
   <channel id="38363842009ce71f63f846">
     <display-name>MAGENTA SPORT 7 .s</display-name>
@@ -1605,14 +1564,17 @@
   <channel id="3597292408836ecd197e13">
     <display-name>MOVIE SMART CLASSIC .s</display-name>
   </channel>
+  <channel id="180020415986f47cb1ef85">
+    <display-name>MOVIE SMART PLATIN 2 .s</display-name>
+  </channel>
   <channel id="3830353405310275288203">
     <display-name>MOVIE SMART PREMIUM .s</display-name>
   </channel>
   <channel id="1194009782ac827b0f13a8">
     <display-name>MOVIE SMART PREMIUM 2 .s</display-name>
   </channel>
-  <channel id="21783643006813b50b82f3">
-    <display-name>MOVIEMAX TURK .s</display-name>
+  <channel id="353384054fb5f9b63f6c7">
+    <display-name>MOVIE SMART TURK .s</display-name>
   </channel>
   <channel id="MovieSmartClassic.tr@SD">
     <display-name>MovieSmart Classic</display-name>
@@ -1663,6 +1625,10 @@
   <channel id="3084650651e1ec9a0dbc4f">
     <display-name>N24 DOKU HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/N24Doku.svg/960px-N24Doku.svg.png"/>
+  </channel>
+  <channel id="184566063009c2eced111a">
+    <display-name>NAT GEO .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=1845660630.png"/>
   </channel>
   <channel id="1960546091bcaf052d3800">
     <display-name>NAT GEO .s</display-name>
@@ -1717,6 +1683,9 @@
   <channel id="17128499338be117e18642">
     <display-name>NTV HABER HEVC .b</display-name>
   </channel>
+  <channel id="3916966300e4e588958124">
+    <display-name>NUMBER ONE FM YABANCI M ZIK BURDA .b</display-name>
+  </channel>
   <channel id="85708551c8303cc96ebd">
     <display-name>NICK JR .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nick_Jr._logo_2023_(outline).svg/960px-Nick_Jr._logo_2023_(outline).svg.png"/>
@@ -1761,10 +1730,6 @@
     <display-name>NITRO .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
   </channel>
-  <channel id="37113674340e202ce3537">
-    <display-name>NITRO .s</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
-  </channel>
   <channel id="4230071189482aee4551dd">
     <display-name>NITRO HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
@@ -1775,10 +1740,6 @@
   </channel>
   <channel id="429612901b967d5473621">
     <display-name>NITRO HEVC (BACKUP) .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
-  </channel>
-  <channel id="30851987644ad37427b4da">
-    <display-name>NITRO HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
   </channel>
   <channel id="2631956300d8a6a6b2de1e">
@@ -1797,6 +1758,9 @@
   </channel>
   <channel id="1960168154f6946cfaefc9">
     <display-name>ORF SPORT+ RAW .b</display-name>
+  </channel>
+  <channel id="17362928703b87a6c8217">
+    <display-name>OUTDOOR .b</display-name>
   </channel>
   <channel id="42015485361f438f2db763">
     <display-name>PAL STATION YABANCI M ZIK .b</display-name>
@@ -1828,6 +1792,9 @@
   <channel id="314057941084097b270b95">
     <display-name>PLUTO TV N24 DOKU .c</display-name>
   </channel>
+  <channel id="1299417291527618a1ccab">
+    <display-name>POWER FM YABANCI M ZIK .b</display-name>
+  </channel>
   <channel id="3999710514ace24ffdde1d">
     <display-name>PRO7 FUN HD .b</display-name>
   </channel>
@@ -1850,10 +1817,6 @@
     <display-name>PROSIEBEN .b</display-name>
     <icon src="https://i.imgur.com/zZOk3nh.png"/>
   </channel>
-  <channel id="4292555000bb7b3ef5f704">
-    <display-name>PROSIEBEN .c</display-name>
-    <icon src="https://i.imgur.com/zZOk3nh.png"/>
-  </channel>
   <channel id="705341427a52c1e59cee1">
     <display-name>PROSIEBEN FUN .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/ProSieben_FUN_Logo_2021.svg/960px-ProSieben_FUN_Logo_2021.svg.png"/>
@@ -1864,10 +1827,6 @@
   </channel>
   <channel id="3997044696fd3d6d555e6f">
     <display-name>PROSIEBEN HD (BACKUP) .b</display-name>
-    <icon src="https://i.imgur.com/zZOk3nh.png"/>
-  </channel>
-  <channel id="3488435572cb9067893c14">
-    <display-name>PROSIEBEN HD .b</display-name>
     <icon src="https://i.imgur.com/zZOk3nh.png"/>
   </channel>
   <channel id="42027732266f99eefad2c3">
@@ -1906,6 +1865,9 @@
   </channel>
   <channel id="1869786551e81df83971f4">
     <display-name>PROTURK LOCA 1 .c</display-name>
+  </channel>
+  <channel id="684906343ecf22d87e7ec">
+    <display-name>PROTURK LOCA 2 .c</display-name>
   </channel>
   <channel id="50689293e297d5f4e349">
     <display-name>PROTURK MACERA .c</display-name>
@@ -1993,18 +1955,16 @@
     <display-name>RTL HD+ .b</display-name>
     <icon src="https://i.imgur.com/94K94k2.png"/>
   </channel>
-  <channel id="58366919512e4682442d4">
-    <display-name>RTL HEVC .b</display-name>
-    <icon src="https://i.imgur.com/94K94k2.png"/>
-  </channel>
-  <channel id="1082703593c754bc53c802">
-    <display-name>RTL LUXEMBOURG .s</display-name>
-  </channel>
-  <channel id="35959086591b1805164683">
-    <display-name>RTL LUXEMBOURG 2 .s</display-name>
-  </channel>
   <channel id="41548305517a8567383c85">
     <display-name>RTL LIVING (BACKUP) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RTL_Living_Logo_2021.svg/960px-RTL_Living_Logo_2021.svg.png"/>
+  </channel>
+  <channel id="1961896622c359e8a0304">
+    <display-name>RTL LIVING .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RTL_Living_Logo_2021.svg/960px-RTL_Living_Logo_2021.svg.png"/>
+  </channel>
+  <channel id="20292744146321cd738b0f">
+    <display-name>RTL LIVING .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RTL_Living_Logo_2021.svg/960px-RTL_Living_Logo_2021.svg.png"/>
   </channel>
   <channel id="1949189696eba707f6538b">
@@ -2025,10 +1985,6 @@
   </channel>
   <channel id="11042275094d3a50c8bf4f">
     <display-name>RTL NITRO HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
-  </channel>
-  <channel id="141752470739b3dfcd465">
-    <display-name>RTL NITRO HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
   </channel>
   <channel id="3131644541d59112de277d">
@@ -2064,15 +2020,8 @@
   <channel id="1239232735b52ef627879c">
     <display-name>RTL SHINE .c</display-name>
   </channel>
-  <channel id="15721447168ef387e5dba0">
-    <display-name>RTL UP .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=1572144716.png"/>
-  </channel>
   <channel id="1198260913079cb7e1caac">
     <display-name>RTL UP .s</display-name>
-  </channel>
-  <channel id="677761203e3b8be588e5c">
-    <display-name>RTL UP HD .b</display-name>
   </channel>
   <channel id="28775826376d4353b0d91d">
     <display-name>RTL ZWEI .c</display-name>
@@ -2119,6 +2068,9 @@
   <channel id="1853551406e4d58cd366f9">
     <display-name>RTL+ SPORT EVENT 1 .b</display-name>
   </channel>
+  <channel id="3689230926e17b504772c6">
+    <display-name>RTL+ SPORT EVENT 1 [LIVE DURING EVENTS ONLY] .s</display-name>
+  </channel>
   <channel id="20248491742c30cbaa06a4">
     <display-name>RTL+ SPORT EVENT 10 .b</display-name>
   </channel>
@@ -2139,9 +2091,6 @@
     <display-name>RTL+ SPORT EVENT 2 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=48717032.png"/>
   </channel>
-  <channel id="33688809570750f8b011a4">
-    <display-name>RTL+ SPORT EVENT 2 [LIVE DURING EVENTS ONLY] .s</display-name>
-  </channel>
   <channel id="3548335857138d7fcf15f9">
     <display-name>RTL+ SPORT EVENT 3 (BACKUP) .b</display-name>
   </channel>
@@ -2152,9 +2101,6 @@
     <display-name>RTL+ SPORT EVENT 3 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1065842008.png"/>
   </channel>
-  <channel id="3324699628ff3450ced582">
-    <display-name>RTL+ SPORT EVENT 3 [LIVE DURING EVENTS ONLY] .s</display-name>
-  </channel>
   <channel id="30651771375f472c894398">
     <display-name>RTL+ SPORT EVENT 4 (BACKUP) .b</display-name>
   </channel>
@@ -2164,6 +2110,9 @@
   <channel id="237657530447038cc41979">
     <display-name>RTL+ SPORT EVENT 4 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2376575304.png"/>
+  </channel>
+  <channel id="4003297755fc9aae9dbc5a">
+    <display-name>RTL+ SPORT EVENT 4 [LIVE DURING EVENTS ONLY] .s</display-name>
   </channel>
   <channel id="7338079436fdc2174d328">
     <display-name>RTL+ SPORT EVENT 5 (BACKUP) .b</display-name>
@@ -2287,6 +2236,9 @@
   <channel id="3962972352ea44b8b75128">
     <display-name>SARAN SPORT 1 .s</display-name>
   </channel>
+  <channel id="287875534435a082281e3f">
+    <display-name>SARAN SPORT 2 .s</display-name>
+  </channel>
   <channel id="301792595767e47e67347c">
     <display-name>SAT.1 EMOTIONS .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/SAT.1_emotions_Logo_2019.png/960px-SAT.1_emotions_Logo_2019.png"/>
@@ -2311,8 +2263,8 @@
     <display-name>SAT.1 HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png"/>
   </channel>
-  <channel id="5384150814a48eb3296d0">
-    <display-name>SAT.1 HEVC .b</display-name>
+  <channel id="3184769607d8aa40c41d1d">
+    <display-name>SAT.1 RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png"/>
   </channel>
   <channel id="4188119721d54405415c0f">
@@ -2320,6 +2272,9 @@
   </channel>
   <channel id="2341562915776a2be51890">
     <display-name>SEMERKAND .s</display-name>
+  </channel>
+  <channel id="372623895787d90dff9a7c">
+    <display-name>SEMERKAND RAW .b</display-name>
   </channel>
   <channel id="786317112675e7c9749f1">
     <display-name>SEMERKAND TV .c</display-name>
@@ -2419,9 +2374,6 @@
     <display-name>SKY BUNDESLIGA 10 [SPIELTAG] .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2728972434.png"/>
   </channel>
-  <channel id="3934518884051d64962fbf">
-    <display-name>SKY BUNDESLIGA 10 HD (BACKUP 2) .b</display-name>
-  </channel>
   <channel id="31776053118538604d51e4">
     <display-name>SKY BUNDESLIGA 10 HD (BACKUP) .b</display-name>
   </channel>
@@ -2430,6 +2382,9 @@
   </channel>
   <channel id="26643128355c54e350dc52">
     <display-name>SKY BUNDESLIGA 10 HD+ .b</display-name>
+  </channel>
+  <channel id="8314839020a88ebb88691">
+    <display-name>SKY BUNDESLIGA 10 RAW .b</display-name>
   </channel>
   <channel id="30711047167fbfb5cf3d75">
     <display-name>SKY BUNDESLIGA 2 (ONLY DURING EVENTS) .s</display-name>
@@ -2541,6 +2496,9 @@
   <channel id="18838973c4f198e334f5">
     <display-name>SKY BUNDESLIGA 5 HD+ .b</display-name>
   </channel>
+  <channel id="29254067845097ea9c054a">
+    <display-name>SKY BUNDESLIGA 5 RAW .b</display-name>
+  </channel>
   <channel id="31802941255ce1356d49dc">
     <display-name>SKY BUNDESLIGA 6 (MATCH TIME) .s</display-name>
   </channel>
@@ -2623,6 +2581,9 @@
     <display-name>SKY BUNDESLIGA 9 [SPIELTAG] .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=3035257752.png"/>
   </channel>
+  <channel id="1996874222fccef5f9a6ec">
+    <display-name>SKY BUNDESLIGA 9 HD (BACKUP) .b</display-name>
+  </channel>
   <channel id="345186149427e40f652f99">
     <display-name>SKY BUNDESLIGA 9 HD .b</display-name>
   </channel>
@@ -2631,6 +2592,9 @@
   </channel>
   <channel id="38783894177ab66f7ae917">
     <display-name>SKY BUNDESLIGA 9 HD+ .b</display-name>
+  </channel>
+  <channel id="12149620041d5a5c465166">
+    <display-name>SKY BUNDESLIGA 9 RAW .b</display-name>
   </channel>
   <channel id="2960701259e45fe6f288f6">
     <display-name>SKY BUNDESLIGA HD .b</display-name>
@@ -2646,6 +2610,10 @@
   </channel>
   <channel id="3948160239d040a5149193">
     <display-name>SKY BUNDESLIGA1 .b</display-name>
+  </channel>
+  <channel id="4064931426eff4b3b91a74">
+    <display-name>SKY CRIME .c</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png"/>
   </channel>
   <channel id="1054042790e5af6bc827b3">
     <display-name>SKY CRIME HD .b</display-name>
@@ -2674,10 +2642,6 @@
     <display-name>SKY CINEMA ACTION .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
   </channel>
-  <channel id="3129337035089b5b0d918c">
-    <display-name>SKY CINEMA ACTION .s</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
-  </channel>
   <channel id="22171411489f84ed3ff7c4">
     <display-name>SKY CINEMA ACTION HD (BACKUP) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
@@ -2698,9 +2662,6 @@
     <display-name>SKY CINEMA ACTION RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
   </channel>
-  <channel id="227712345007279b49b40c">
-    <display-name>SKY CINEMA BEST .s</display-name>
-  </channel>
   <channel id="1506084946f625257b4975">
     <display-name>SKY CINEMA BEST OF .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
@@ -2713,6 +2674,10 @@
     <display-name>SKY CINEMA BEST OF HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
   </channel>
+  <channel id="1779919359802f2c8cd069">
+    <display-name>SKY CINEMA BEST OF HD+ .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
   <channel id="65180453812a20399b7d8">
     <display-name>SKY CINEMA BEST OF HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
@@ -2723,14 +2688,6 @@
   </channel>
   <channel id="3175728367b5709d53f49e">
     <display-name>SKY CINEMA CLASSICS .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="6244253771d6ad515707">
-    <display-name>SKY CINEMA CLASSICS .c</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="311131418932a320ad54c1">
-    <display-name>SKY CINEMA CLASSICS .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="1859918457bef7381e0c2">
@@ -2746,6 +2703,9 @@
   </channel>
   <channel id="7584313479fe18bee2495">
     <display-name>SKY CINEMA DOCUMENTARIES .s</display-name>
+  </channel>
+  <channel id="75068099388ef97789690">
+    <display-name>SKY CINEMA EMOTION .b</display-name>
   </channel>
   <channel id="1260704553a0fd2c0d406">
     <display-name>SKY CINEMA EMOTION .c</display-name>
@@ -2789,6 +2749,14 @@
     <display-name>SKY CINEMA FUN .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png"/>
   </channel>
+  <channel id="824805225a91b33aa1e51">
+    <display-name>SKY CINEMA HIGHLIGHTS .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=824805225.png"/>
+  </channel>
+  <channel id="233190625557da9d7af3cb">
+    <display-name>SKY CINEMA HITS .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
   <channel id="36500348677afe90e35ed0">
     <display-name>SKY CINEMA HITS .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
@@ -2799,10 +2767,6 @@
   </channel>
   <channel id="631616247786c3788e7af">
     <display-name>SKY CINEMA NOSTALGIE .c</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="2973887952cd4dd5ba5f">
-    <display-name>SKY CINEMA NOSTALGIE .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="3965128200ab108788f108">
@@ -2822,8 +2786,8 @@
   <channel id="491492893ab12d2da98a7">
     <display-name>SKY CINEMA PREMIEREN +24 HD .b</display-name>
   </channel>
-  <channel id="1606366206fb96e8c26931">
-    <display-name>SKY CINEMA PREMIEREN +24 HEVC .b</display-name>
+  <channel id="21371346036acfbf33d80d">
+    <display-name>SKY CINEMA PREMIEREN +24 RAW .b</display-name>
   </channel>
   <channel id="4117277461bb80bd4382ae">
     <display-name>SKY CINEMA PREMIEREN .c</display-name>
@@ -2832,9 +2796,6 @@
   <channel id="3507019421158db3217f80">
     <display-name>SKY CINEMA PREMIEREN .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="1743038820629ac0ff6adc">
-    <display-name>SKY CINEMA PREMIEREN 24 .s</display-name>
   </channel>
   <channel id="345871600084df3b16963a">
     <display-name>SKY CINEMA PREMIEREN HD .b</display-name>
@@ -2873,10 +2834,6 @@
     <display-name>SKY CINEMA THRILLER HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="2858004521eb8237cf5536">
-    <display-name>SKY CINEMA THRILLER RAW .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="2869771674c3bea91a978b">
     <display-name>SKY ONE .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sky_One_-_Logo_2020.png/960px-Sky_One_-_Logo_2020.png"/>
@@ -2891,10 +2848,6 @@
   </channel>
   <channel id="2339352940be5b636efa08">
     <display-name>SKY REPLAY .s</display-name>
-    <icon src="https://i.imgur.com/YBHWMJ5.png"/>
-  </channel>
-  <channel id="4101674354c9f1f56f608e">
-    <display-name>SKY REPLAY HD (FOX) .b</display-name>
     <icon src="https://i.imgur.com/YBHWMJ5.png"/>
   </channel>
   <channel id="15131838968a694dd75044">
@@ -2927,10 +2880,6 @@
   </channel>
   <channel id="1385766515724a7ed7e603">
     <display-name>SKY SPORT 1 [LIVE DURING EVENTS ONLY] .s</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="19963508922248a1c117f0">
-    <display-name>SKY SPORT 1 HD (BACKUP) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="291076412194711c91a9e">
@@ -2977,10 +2926,6 @@
     <display-name>SKY SPORT 2 .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="627555880a78576fcd1f8">
-    <display-name>SKY SPORT 2 HD (BACKUP) .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="2681634527bbf39411d248">
     <display-name>SKY SPORT 2 HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png"/>
@@ -2993,6 +2938,10 @@
     <display-name>SKY SPORT 2 HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png"/>
   </channel>
+  <channel id="176826495e611e2af5da3">
+    <display-name>SKY SPORT 2 RAW .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png"/>
+  </channel>
   <channel id="21615404072a4a3293c721">
     <display-name>SKY SPORT 3 (MATCH TIME) .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png"/>
@@ -3003,6 +2952,10 @@
   </channel>
   <channel id="27305874996560cac1cdec">
     <display-name>SKY SPORT 3 HD (BACKUP) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="1400667713f36e234020fe">
+    <display-name>SKY SPORT 3 HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="2997904321b80940bb795e">
@@ -3087,10 +3040,6 @@
   </channel>
   <channel id="2972030035baf7f7dca0a2">
     <display-name>SKY SPORT 7 .c</display-name>
-    <icon src="https://i.imgur.com/XeflUV9.png"/>
-  </channel>
-  <channel id="35196320365418e35df134">
-    <display-name>SKY SPORT 7 HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/XeflUV9.png"/>
   </channel>
   <channel id="3610669243ccffe705cd01">
@@ -3179,10 +3128,6 @@
     <display-name>SKY SPORT F1 HD (LOCAL) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
   </channel>
-  <channel id="1819080331481d1db415bd">
-    <display-name>SKY SPORT F1 HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
-  </channel>
   <channel id="337630640722b02d8184c4">
     <display-name>SKY SPORT F1 HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
@@ -3201,10 +3146,6 @@
   </channel>
   <channel id="3799248107afb04959ad59">
     <display-name>SKY SPORT GOLF [LIVE DURING EVENTS ONLY] .s</display-name>
-    <icon src="https://i.imgur.com/nhhbHvs.png"/>
-  </channel>
-  <channel id="3617198388b3b01c80151e">
-    <display-name>SKY SPORT GOLF HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/nhhbHvs.png"/>
   </channel>
   <channel id="378692218956c8e84fedcc">
@@ -3287,6 +3228,10 @@
     <display-name>SKY SPORT TENNIS .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sky_Sport_Tennis.svg/960px-Sky_Sport_Tennis.svg.png"/>
   </channel>
+  <channel id="49755114794a615615475">
+    <display-name>SKY SPORT TENNIS [LIVE DURING EVENTS ONLY] .s</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sky_Sport_Tennis.svg/960px-Sky_Sport_Tennis.svg.png"/>
+  </channel>
   <channel id="1690401777c2405c408f0d">
     <display-name>SKY SPORT TENNIS HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sky_Sport_Tennis.svg/960px-Sky_Sport_Tennis.svg.png"/>
@@ -3311,6 +3256,9 @@
     <display-name>SKY SPORT TOP EVENT UHD .b</display-name>
     <icon src="https://i.imgur.com/kQ6cVNx.png"/>
   </channel>
+  <channel id="999102646bc32696167e5">
+    <display-name>SKY SPORT UHD .b</display-name>
+  </channel>
   <channel id="21611914607ee60510dea5">
     <display-name>SKY SPORTS F1 .s</display-name>
   </channel>
@@ -3320,25 +3268,14 @@
   <channel id="3310537792544cdc86ebe5">
     <display-name>SMART BOX ACTION .c</display-name>
   </channel>
+  <channel id="4277750275dc95e89a7a22">
+    <display-name>SMART COCUK .s</display-name>
+  </channel>
   <channel id="81357489557fd83fc1e55">
     <display-name>SMART COCUK HD .b</display-name>
   </channel>
   <channel id="4137962062d812f45c58bd">
     <display-name>SMART SPOR 1 .s</display-name>
-  </channel>
-  <channel id="106995237576219296ae85">
-    <display-name>SONY AXN (AXN BLACK) .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=1069952375.png"/>
-  </channel>
-  <channel id="38962417460828fbc8be04">
-    <display-name>SONY AXN (AXN WHITE) .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=3896241746.png"/>
-  </channel>
-  <channel id="3593288083170f89099e79">
-    <display-name>SONY AXN .s</display-name>
-  </channel>
-  <channel id="55712198587e2cf3d88be">
-    <display-name>SONY AXN HD .b</display-name>
   </channel>
   <channel id="1098172953a40c7864dfeb">
     <display-name>SOZCU SZC TV SD .b</display-name>
@@ -3362,10 +3299,6 @@
     <display-name>SPORT1 FHD .b</display-name>
     <icon src="https://i.imgur.com/Tsjt7v9.png"/>
   </channel>
-  <channel id="1454842700e240dd0732ee">
-    <display-name>SPORT1 HD (BACKUP 2) .b</display-name>
-    <icon src="https://i.imgur.com/Tsjt7v9.png"/>
-  </channel>
   <channel id="234402177240db5e40a907">
     <display-name>SPORT1 HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/Tsjt7v9.png"/>
@@ -3374,20 +3307,12 @@
     <display-name>SPORT1 HD .b</display-name>
     <icon src="https://i.imgur.com/Tsjt7v9.png"/>
   </channel>
-  <channel id="33851078765f53557d713f">
-    <display-name>SPORT1 HD+ .b</display-name>
-    <icon src="https://i.imgur.com/Tsjt7v9.png"/>
-  </channel>
   <channel id="3670271178b86d6ca2acfc">
     <display-name>SPORT1 HEVC .b</display-name>
     <icon src="https://i.imgur.com/Tsjt7v9.png"/>
   </channel>
   <channel id="1720056409ae11e317335f">
     <display-name>SPORT1 RAW .b</display-name>
-    <icon src="https://i.imgur.com/Tsjt7v9.png"/>
-  </channel>
-  <channel id="6635090684eca4561a362">
-    <display-name>SPORT1+ .s</display-name>
     <icon src="https://i.imgur.com/Tsjt7v9.png"/>
   </channel>
   <channel id="117574747020b918c74551">
@@ -3424,6 +3349,10 @@
   <channel id="28379199293367dcbad771">
     <display-name>SPORTDIGITALL FUSSBALL .s</display-name>
   </channel>
+  <channel id="SportsTV.tr@SD">
+    <display-name>Sports Tv</display-name>
+    <icon src="https://i.imgur.com/tGTVcVe.jpg"/>
+  </channel>
   <channel id="StarTV.tr@SD">
     <display-name>Star</display-name>
     <icon src="https://i.imgur.com/9O3DHRB.png"/>
@@ -3434,6 +3363,10 @@
   </channel>
   <channel id="20200351284d2f7e268665">
     <display-name>STAR TV FHD .b</display-name>
+    <icon src="https://i.imgur.com/9O3DHRB.png"/>
+  </channel>
+  <channel id="272055669263af9be64671">
+    <display-name>STAR TV HD .b</display-name>
     <icon src="https://i.imgur.com/9O3DHRB.png"/>
   </channel>
   <channel id="1386325794720c26c4132">
@@ -3480,16 +3413,8 @@
     <display-name>SYFY HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/4fMWhUE.png"/>
   </channel>
-  <channel id="1680063305516b13d90821">
-    <display-name>SYFY HD .b</display-name>
-    <icon src="https://i.imgur.com/4fMWhUE.png"/>
-  </channel>
   <channel id="3160192054d41c843c461e">
     <display-name>SYFY HD+ .b</display-name>
-    <icon src="https://i.imgur.com/4fMWhUE.png"/>
-  </channel>
-  <channel id="320728011da29568448a3">
-    <display-name>SYFY RAW .b</display-name>
     <icon src="https://i.imgur.com/4fMWhUE.png"/>
   </channel>
   <channel id="SozcuTV.tr@SD">
@@ -3506,10 +3431,6 @@
   </channel>
   <channel id="129312789771362713c30c">
     <display-name>SINEMA AKSIYON 1 .s</display-name>
-  </channel>
-  <channel id="179563017fcc76df8dfba">
-    <display-name>SINEMA AKSIYON 2 .s</display-name>
-    <icon src="https://i.imgur.com/oy8Nq1r.png"/>
   </channel>
   <channel id="424550844375a964b5b3e5">
     <display-name>SINEMA AILE 1 .s</display-name>
@@ -3540,6 +3461,15 @@
   <channel id="3562169936e24369ffef8d">
     <display-name>SINEVIZYON 1 .s</display-name>
   </channel>
+  <channel id="1434492924511874701343">
+    <display-name>SINEVIZYON 15 .s</display-name>
+  </channel>
+  <channel id="567459984fcc0c3381a21">
+    <display-name>SINEVIZYON 5 .s</display-name>
+  </channel>
+  <channel id="3644982305b65576486ef2">
+    <display-name>SINEVIZYON 8 .s</display-name>
+  </channel>
   <channel id="237327525e72f36a04e37">
     <display-name>SINEVIZYON TURK 1 .s</display-name>
   </channel>
@@ -3554,6 +3484,9 @@
   </channel>
   <channel id="315447928559cf5bc5d2cd">
     <display-name>SINEVIZYON TURK 6 .s</display-name>
+  </channel>
+  <channel id="21709212216ea5f185ca61">
+    <display-name>SINEVIZYON TURK 7 .s</display-name>
   </channel>
   <channel id="53819092d8af1f450658">
     <display-name>SINEVIZYON TURK 8 .s</display-name>
@@ -3585,13 +3518,12 @@
     <display-name>SIXX HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png"/>
   </channel>
-  <channel id="3689801660bba8431ec699">
-    <display-name>SIXX HEVC .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png"/>
-  </channel>
   <channel id="248247349633e006a08452">
     <display-name>SIXX RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png"/>
+  </channel>
+  <channel id="1844863271513a413a321">
+    <display-name>TABII SPOR .c</display-name>
   </channel>
   <channel id="10977951419d3dfac60f92">
     <display-name>TABII SPOR 1 .c</display-name>
@@ -3600,12 +3532,28 @@
     <display-name>TABII SPOR 1 4K .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3830691316.png"/>
   </channel>
+  <channel id="36659147631b81d08d6c82">
+    <display-name>TABII SPOR 1 720P .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=3665914763.png"/>
+  </channel>
   <channel id="310770852202539a162e99">
     <display-name>TABII SPOR 1 UHD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3107708522.png"/>
   </channel>
   <channel id="11426114102c71664711c">
     <display-name>TABII SPOR 2 .c</display-name>
+  </channel>
+  <channel id="24901653728e4a187da4c4">
+    <display-name>TABII SPOR 2 HD .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=2490165372.png"/>
+  </channel>
+  <channel id="21594692318c346548c2be">
+    <display-name>TABII SPOR 2 UHD .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=2159469231.png"/>
+  </channel>
+  <channel id="1489430754b4fd6e6dc327">
+    <display-name>TABII SPOR 3 HD .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=1489430754.png"/>
   </channel>
   <channel id="2307885365b7f1828e97ba">
     <display-name>TABII SPOR 4 .c</display-name>
@@ -3625,17 +3573,9 @@
     <display-name>TABII SPOR 6 HD .b</display-name>
     <icon src="https://cms-tabii-public-image.tabii.com/int/w300/43020.jpeg"/>
   </channel>
-  <channel id="225948008747f499d08214">
-    <display-name>TABII SPOR HD .b</display-name>
-    <icon src="https://logo.huhu.to/logo?c=2259480087.png"/>
-  </channel>
   <channel id="40221481750ee503c548f9">
     <display-name>TABII SPOR SD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=4022148175.png"/>
-  </channel>
-  <channel id="1866901443ff40acda4f3">
-    <display-name>TAGESSCHAU24 HD .b</display-name>
-    <icon src="https://i.imgur.com/LH0Gctv.png"/>
   </channel>
   <channel id="4269879115d3f6edbed63c">
     <display-name>TAGESSCHAU24 HD+ .b</display-name>
@@ -3802,6 +3742,10 @@
     <display-name>TRT COCUK .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png"/>
   </channel>
+  <channel id="3979837190d92f4a65c83b">
+    <display-name>TRT COCUK RAW .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png"/>
+  </channel>
   <channel id="458659205476896290c35">
     <display-name>TRT DIYANET .s</display-name>
   </channel>
@@ -3811,6 +3755,10 @@
   </channel>
   <channel id="17020398633aafc0a6bc">
     <display-name>TRT EBA ORTAOKUL .s</display-name>
+  </channel>
+  <channel id="228765803362ec29207df8">
+    <display-name>TRT EBA ILKOKUL .s</display-name>
+    <icon src="https://i.imgur.com/CRBfZi4.png"/>
   </channel>
   <channel id="TRTKurdi.tr@SD">
     <display-name>TRT Kurdi</display-name>
@@ -3907,10 +3855,6 @@
   <channel id="163038510f87c95f99d11">
     <display-name>TIVIBU SPOR 5 HD .b</display-name>
   </channel>
-  <channel id="1406262118fb4f653061f6">
-    <display-name>TIVIBU SPOR RAW .b</display-name>
-    <icon src="https://i.imgur.com/qvrKQY3.png"/>
-  </channel>
   <channel id="289665874444b8f4f2d451">
     <display-name>TIVIBUSPOR 1 FHD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2896658744.png"/>
@@ -3922,6 +3866,10 @@
   <channel id="25026063331fd9c2bab71e">
     <display-name>TIVIBUSPOR 2 FHD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2502606333.png"/>
+  </channel>
+  <channel id="1465680660b8cd069bfa4c">
+    <display-name>TIVIBUSPOR 2 HD .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=1465680660.png"/>
   </channel>
   <channel id="21863899508f19a672f26d">
     <display-name>TIVIBUSPOR 3 FHD .b</display-name>
@@ -4074,12 +4022,20 @@
   <channel id="245742586a1ae349871a9">
     <display-name>YESILCAM 3 .s</display-name>
   </channel>
+  <channel id="36035801315c2c657f7f29">
+    <display-name>YOL TV .b</display-name>
+    <icon src="https://i.imgur.com/rTBX6lS.png"/>
+  </channel>
   <channel id="1377055653aae1eccd061c">
     <display-name>YOL TV .c</display-name>
     <icon src="https://i.imgur.com/rTBX6lS.png"/>
   </channel>
   <channel id="10711660543c82502a97f7">
     <display-name>YOL TV .s</display-name>
+    <icon src="https://i.imgur.com/rTBX6lS.png"/>
+  </channel>
+  <channel id="607077155292bdb1bc79a">
+    <display-name>YOL TV SD .b</display-name>
     <icon src="https://i.imgur.com/rTBX6lS.png"/>
   </channel>
   <channel id="36308257510ea627445703">
@@ -4583,183 +4539,6 @@
   </programme>
   <programme start="20260816174500 +0000" stop="20260816220000 +0000" channel="CNNTurk.tr@SD">
     <title lang="tr">Ne Oluyor?</title><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260814213000 +0000" stop="20260814223000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Gizli Dosyalar</title><desc lang="tr">Andrew yapay zekanın biz farkına varmadan algı ve davranışlarımızı yönlendirebildiği o tehlikeli eşiği aşıp aşmadığını test eder.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260814223000 +0000" stop="20260814232000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Avustralyalı Opal Avcıları</title><desc lang="tr">Yeraltındaki madenlerinde, The Bushmen ekibini azılı bir yaratık karşılar. Opal Lovers ekibi sırt çantalı gezginlerden yardım alır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260814232000 +0000" stop="20260815000500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Bilinmeyene Yolculuk</title><desc lang="tr">Josh Gates dünyanın dört bir yanındaki çözülmemiş gizemleri araştırıyor. Soruşturmadan önce önemli görgü tanıkları ile görüşüyor ve güncel gelişmeleri takip ediyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815000500 +0000" stop="20260815005000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Sürpriz Buluşlar</title><desc lang="tr">İnsanların her gün kullandığı ve nihayetinde dünyayı değiştiren müthiş icatlara öncülük eden hatalara, aksiliklere ve başarısızlıklara ilginç bir bakış!</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815005000 +0000" stop="20260815013500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Lojistiğin Kahramanları</title><desc lang="tr">Dünya düzeni lojistiğin sağladığı kesintisiz kaynak ve mal sevkiyatına bağlı. Bunları mümkün kılan yükleme uzmanları ve taşıyıcılar ekrana geliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815013500 +0000" stop="20260815015500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Havalı Aletler</title><desc lang="tr">Chris Grundy, çeşitli temizlik gereçlerini inceliyor. Fırçalı bir temizlik aracını, el arabalarını, olukları temizleyen bir robotu ve iki farklı elektrikli süpürgeyi inceliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815015500 +0000" stop="20260815021500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Havalı Aletler</title><desc lang="tr">Chris Grundy, milimetrik hesaplamalar yapan ölçüm aletlerini inceliyor. Bir kızılötesi termometreyi, taşınabilir bir döner testereyi ve açıölçerleri inceliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815021500 +0000" stop="20260815023500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılmış?</title><desc lang="tr">Yine günlük nesnelerin mikroskop altına alındığı bu bölümde üç tekerlekli araçlar, beyzbol sopası, yapma bonsai ve trombonun nasıl yapıldığını öğreniyoruz.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815023500 +0000" stop="20260815030000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılmış?</title><desc lang="tr">Yine günlük nesnelerin mikroskop altına alındığı bu bölümde yayların, kaldırım taşlarının ve piyanonun nasıl yapıldığını öğreniyoruz.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815030000 +0000" stop="20260815033000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Acı portakallar, nasıl kraliçenin kahvaltıda en çok sevdiği şeylerden olan marmelad haline getirilir? Ve, defilelerde sunulacak kadar güzel bir elbise nasıl basılabilir?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815033000 +0000" stop="20260815040000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Ağır iş yol silindirleri nasıl yapılır? Bir konserve tenekesinin içinde ekmek nasıl yapılır? Ve bir İsviçre saati özeniyle ve onun dakikliğinde bir cep telefonu nasıl yapılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815040000 +0000" stop="20260815050500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Sürpriz Buluşlar</title><desc lang="tr">İnsanların her gün kullandığı ve nihayetinde dünyayı değiştiren müthiş icatlara öncülük eden hatalara, aksiliklere ve başarısızlıklara ilginç bir bakış!</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815050500 +0000" stop="20260815055500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. İlk olarak Los Angeles&apos;taki büyük havuzlu ve ateş çemberine sahip bir konak ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815055500 +0000" stop="20260815065000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. İlk olarak, çağlayanın altında gizli barı olan 10 kişilik bir jakuzi ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815065000 +0000" stop="20260815071700 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ve Allen, 1920&apos;lerden antika bir otomat, sipariş yapım bir mini motosiklet ve 1880&apos;lerin Vahşi Batı&apos;sından bir Colt tabanca bulurlar. Bakalım kar edecekler mi.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815071700 +0000" stop="20260815074500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ve Allen, 1970&apos;lerden mavi bir Fender elektrik gitar ile 1936&apos;dan az bulunan Schwinn bisiklet bulurlar. Bakalım bu paslı bisiklet onlara kar getirebilecek mi.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815074500 +0000" stop="20260815081200 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ile Allen bir müzayede eski bir rakiplerine rastlarlar. Klasik bir GMC kamyonet kazanırlar; bir de ilk dik duran kola otomatını bulurlar. Ama bu sahici mi?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815081200 +0000" stop="20260815084000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları</title><desc lang="tr">Hollywood&apos;da Ton ve Allen asırlık Mason kılıçları, 2. Dünya Savaşı&apos;ndan bir Japon bıçağı ve Nixon döneminden bir yalan makinesi bulurlar</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815084000 +0000" stop="20260815090700 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Bir müşteri satın aldığı saatin sahte olduğunu iddia ediyor. Gold ailesi tehlikeye giren itibarını korumak için uzmanlığını konuşturuyor. Les hayvan kafatası satın alıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815090700 +0000" stop="20260815093500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Yüksek riskli bahisler oynayan biri kârını arttırmak için dükkâna geliyor. Jinekolojik muayene masası satmak isteyen müşterinin teklifi tuhaf bir boyut kazanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815093500 +0000" stop="20260815100200 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Çalışanlardan biri solaryum yatağını denemek için soyununca ortalık karışıyor. Dükkâna gelen bir müşteri altın bileziğini satmak istiyor ama Les bilezğin sahte olduğunu söylüyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815100200 +0000" stop="20260815103000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Les, inanılmaz derecede hüzünlü bir hikâyesi olan bir müşteriye yüklü miktarda borç veriyor. Müşteri borcunu ödeyecek mi yoksa Les birikiminden mi olacak?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815103000 +0000" stop="20260815112500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Gizli Suları Keşfet</title><desc lang="tr">Maceracılar Kosta Rika&apos;daki bir bulut ormanından, Guam&apos;daki mağaralardan ve Porto Riko&apos;daki koydan, muhteşem sulara atlıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815112500 +0000" stop="20260815122000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Gizli Suları Keşfet</title><desc lang="tr">Maceracılar, Bali&apos;deki şelalenin derin suyuna atlar, Avustralya&apos;da ıssız bir kumsalda okyanusa dalar ve Major League beyzbol sahası içinde bir havuzda yüzer.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815122000 +0000" stop="20260815133000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Gümrük Muhafaza Türkiye</title><desc lang="tr">&quot;Gümrük Muhafaza Türkiye&quot;, en ön saflarda görev yapan cesur ekiplerin nefes kesen operasyonlarını ekranlara getiriyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815133000 +0000" stop="20260815143000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Çeliğin Ustaları</title><desc lang="tr">Çılgın eski araç koleksiyoncuları ve profesyonel tamirciler nadir bulunan değerli araçları toplar ve hurdaları gerçek hazinelere dönüştürür.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815143000 +0000" stop="20260815153000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Klasik Araba Kurtarma: Almanya</title><desc lang="tr">Chris ve Max bakımsız klasikler, Amerikan yarış arabaları, Alman efsaneleri ve diğer nadir parçaları arar. Ucuza alınan araçlar tamir edilip satılır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815153000 +0000" stop="20260815163000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Son Ormancı</title><desc lang="tr">Jared ve ekibi sahil fırtınası gelmeden kampı taşımak için hızla harekete geçerek devasa konvoyu 32 km uzaktaki Devil&apos;s Chute&apos;a taşır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815163000 +0000" stop="20260815183000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">16 Blok</title><desc lang="tr">İçkici ve bezgin bir New York polisinin aleyhlerinde ifade verecek bir tanığı öldürmeyi planlayan kanunsuz polisleri alt etmesi gerekir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815183000 +0000" stop="20260815203000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">16 Blok</title><desc lang="tr">İçkici ve bezgin bir New York polisinin aleyhlerinde ifade verecek bir tanığı öldürmeyi planlayan kanunsuz polisleri alt etmesi gerekir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815203000 +0000" stop="20260815222500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Altın Peşinde: Kurtarma Operasyonu</title><desc lang="tr">Freddy ve Juan ilk sert kaya madenlerini kurtarır. Zorlu tamiratlar nedeniyle riskler büyürken Freddy milyon dolarlık bir keşif yapar.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815222500 +0000" stop="20260815231500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Avustralyalı Opal Avcıları</title><desc lang="tr">Yeraltındaki madenlerinde, The Bushmen ekibini azılı bir yaratık karşılar. Opal Lovers ekibi sırt çantalı gezginlerden yardım alır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260815231500 +0000" stop="20260816000000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Son Ormancı</title><desc lang="tr">Jared terk edilmiş bir tomruk kampına yerleşir. 250.000 dolarını riske ettiği bu ücra ve tehlikeli bölgede, şirketi ya batacak ya da çıkacaktır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816000000 +0000" stop="20260816004500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Son Ormancı</title><desc lang="tr">Borç batağındaki Jared, işini sürdürmek ve çalışanlarının maaşlarını ödeyebilmek için mücadele ederken, yüzen kamp her an batabilir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816004500 +0000" stop="20260816013000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Dinozor Avcıları</title><desc lang="tr">Montanalı çiftçi Clayton ailesinin arazisinde eşine az rastlanan ve değerli bir fosil bulmuş olabilir. Wyoming&apos;de ise Mike ve oğlu bir triceratops boynuzu buluyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816013000 +0000" stop="20260816021500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Dinozor Avcıları</title><desc lang="tr">Clayton, Montana&apos;daki çiftliğinde eşine az rastlanan etobur dinozor fosili kazısına devam ediyor. Wyoming&apos;de ise Mike ve Jake değerli T-Rex fosillerini satmaya hazırlanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816021500 +0000" stop="20260816023500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Binlerce ton greyfurt nasıl toplanır ve nasıl işlenir? Ve her yıl milyonlarca parça bagaj taşıyan döner bantlar nasıl yapılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816023500 +0000" stop="20260816030000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Dünyanın en iyi arp telleri nasıl üretilir? Çatılara açılan pencereler nasıl yapılır? Ve gofrete benzeyen Belçika gözlemeleri nasıl yapılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816030000 +0000" stop="20260816033000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Bir robot çiftliği nasıl yönetilir? Bir defada 30 ton keresteyi kaldırabilen bir makine nasıl yapılır? Ve dünyanın en kıymetli piyanosu nasıl nakledilir?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816033000 +0000" stop="20260816040000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Devasa bambu saplarından yüksek bir inşaat iskelesi nasıl yapılır? Ve havai fişeklerin kırmızı yanmasını sağlayan maden yerden nasıl çıkartılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816040000 +0000" stop="20260816050500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Sürpriz Buluşlar</title><desc lang="tr">İnsanların her gün kullandığı ve nihayetinde dünyayı değiştiren müthiş icatlara öncülük eden hatalara, aksiliklere ve başarısızlıklara ilginç bir bakış!</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816050500 +0000" stop="20260816055500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. Arizona&apos;da, 360 derecelik sonsuzluk çizgisine sahip ve gizli saunası olan bir havuz ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816055500 +0000" stop="20260816065000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. Okanagan gölüne bakan 100 metre sınıra sahip bir Kanada havuzu ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816065000 +0000" stop="20260816071700 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları</title><desc lang="tr">Bir başka müzayedede Ton, 1920&apos;lerden, muhtemelen Al Capone tarafından kaçakçılığı yapılmış yasaklı bir viski bulur. Ton şişeyi satacak mı, yoksa açacak mı?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816071700 +0000" stop="20260816074500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ile Allen Kaliforniya&apos;daki bir müzayede, 1940&apos;lardan bir atari salonu oyunu, 1901&apos;den bir Winchester av tüfeği ve antika bir yay bulurlar.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816074500 +0000" stop="20260816084000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Antika Avcıları: En İyiler</title><desc lang="tr">Ton ve Allen&apos;ın en zorlu görevlerine atılarak seçkin bir üst düzey müzayedede bir saat içinde kâra geçmeye çalışmasıyla birlikte gerginlik artıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816084000 +0000" stop="20260816090700 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Arka arkaya değersiz ürünleri dükkâna getiren bir müşteri çalışanların sabrını sınasa da özel üretim bir spor arabayı rehin etmek istediğinde Rich&apos;in gözleri parlıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816090700 +0000" stop="20260816093500 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Ashley&apos;nin hararetli bir pazarlığı bölmesi Les&apos;i öfkeden deliye çeviriyor. Fahiş fiyatı olan antika bir yarış arabası Les&apos;in aklını çeliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816093500 +0000" stop="20260816100200 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Bir müşteri eşine ender rastlanan bir maymunun kürkünden yapıldığını iddia ettiği paltoyu satmak istiyor. Les&apos;in meydan okuması karşısında Seth&apos;in kendini kanıtlaması gerekiyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816100200 +0000" stop="20260816103000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Kürk paltosu yırtılan yaşlı bir kadın pompalı tüfekle Seth&apos;i tehdit ediyor. Les ise antika bir oyun konsolu için pazarlık yapıyor ve cazip bir altın satışıyla ilgileniyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816103000 +0000" stop="20260816113000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Tozlu Servet</title><desc lang="tr">Matt&apos;in ekibi tulumları giyerek girdiği fare dolu evin her odasında nakit para bulmayı bekler, tabii fareler paraları yememişse.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816113000 +0000" stop="20260816123000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Tozlu Servet</title><desc lang="tr">Matt ve ekibi, tekneler, klasik motosikletler ve berber malzemeleri satmak için işe koyulur. Sürpriz bir Magic Johnson parçası iyi kazandırabilir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816123000 +0000" stop="20260816130000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Unutulmuş Hazineler</title><desc lang="tr">Henry ve Fuzz, Shropshire&apos;da Rob&apos;u ziyaret ederken bir depoda Matchless G3 model bir motosiklet, teneke tabelalar ve bir çim biçme makinesi bulur.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816130000 +0000" stop="20260816140000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Bu Arabayı Ne Yapmalı?</title><desc lang="tr">Daniel Krause gönülden bağlı olduğu özel seri Golf 5 GTI Pirelli&apos;sini severek kullanır. Peki, yola devam mı etmeli, yoksa yeni araç mı almalı?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816140000 +0000" stop="20260816152000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Tek Başına</title><desc lang="tr">Bazı yarışmacılar kalori almak için yeni yollar aramaya devam ederken diğerleri dişini sıkarak mümkün olduğunca uzun süre dayanmaya odaklanır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816152000 +0000" stop="20260816163000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Gümrük Muhafaza Türkiye</title><desc lang="tr">&quot;Gümrük Muhafaza Türkiye&quot;, en ön saflarda görev yapan cesur ekiplerin nefes kesen operasyonlarını ekranlara getiriyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816163000 +0000" stop="20260816184000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Suçlu</title><desc lang="tr">Richard ve Rodrigo adındaki iki dolandırıcı bir para koleksiyonerini kandırmak için ortaklık kuruyor. Hasta babasına yardım etmesi gereken Rodrigo, Richard&apos;a güvenmekte zorlanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816184000 +0000" stop="20260816205000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Suçlu</title><desc lang="tr">Richard ve Rodrigo adındaki iki dolandırıcı bir para koleksiyonerini kandırmak için ortaklık kuruyor. Hasta babasına yardım etmesi gereken Rodrigo, Richard&apos;a güvenmekte zorlanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
-  </programme>
-  <programme start="20260816205000 +0000" stop="20260816220000 +0000" channel="67e5c4c6cfef0b3744c556fa">
-    <title lang="tr">Gümrük Muhafaza Türkiye</title><desc lang="tr">&quot;Gümrük Muhafaza Türkiye&quot;, en ön saflarda görev yapan cesur ekiplerin nefes kesen operasyonlarını ekranlara getiriyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
   </programme>
   <programme start="20260814211500 +0000" stop="20260814213500 +0000" channel="DisneyJr.tr@SD">
     <title lang="tr">Süper Kediler</title><category lang="tr">Cocuk-ve-genc</category><category lang="tr">Genel</category>
@@ -7073,6 +6852,39 @@
   </programme>
   <programme start="20260815194500 +0000" stop="20260815224500 +0000" channel="SporSmart.tr@SD">
     <title lang="tr">Estudiantes-Gimnasia &quot;Canlı&quot;</title>
+  </programme>
+  <programme start="20260815214500 +0000" stop="20260816001500 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Dünya Motosurf Şampiyonası</title>
+  </programme>
+  <programme start="20260816001500 +0000" stop="20260816021500 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Platense - Boca Jr. &quot;Canlı&quot;</title>
+  </programme>
+  <programme start="20260816021500 +0000" stop="20260816050000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">L&apos;etape Türkiye &quot;Tekrar&quot;</title>
+  </programme>
+  <programme start="20260816050000 +0000" stop="20260816061500 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Yabancı At Yarışları 2026</title>
+  </programme>
+  <programme start="20260816061500 +0000" stop="20260816081500 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Barcelona - Valencia &quot;Tekrar&quot;</title>
+  </programme>
+  <programme start="20260816081500 +0000" stop="20260816100000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Yat Yarışları İstanbul &quot;Tekrar&quot;</title>
+  </programme>
+  <programme start="20260816100000 +0000" stop="20260816143000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Open Golf Turnuvası &quot;Canlı&quot;</title>
+  </programme>
+  <programme start="20260816143000 +0000" stop="20260816163000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">San Lorenzo-Huracan &quot;Tekrar&quot;</title>
+  </programme>
+  <programme start="20260816163000 +0000" stop="20260816183000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Argentinos - Racing Club &quot;Tkr&quot;</title>
+  </programme>
+  <programme start="20260816183000 +0000" stop="20260816190000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Monster Jam &apos;&apos;Yarış&apos;&apos;</title>
+  </programme>
+  <programme start="20260816190000 +0000" stop="20260816220000 +0000" channel="SporSmart.tr@SD">
+    <title lang="tr">Santos - Paranaense &quot;Tekrar&quot;</title>
   </programme>
   <programme start="20260814210000 +0000" stop="20260814220000 +0000" channel="TGRTHaber.tr@SD">
     <title lang="tr">Gün Biterken</title>
@@ -11517,6 +11329,183 @@
   <programme start="20260816205500 +0000" stop="20260816211000 +0000" channel="DaVinci.de@SD">
     <title lang="tr">Wes P: Dünyaca Ünlü Fiziksel Komedyen</title><desc lang="tr">Sosyal medya fenomeni Wes P, namı diğer Bay Uekusa, şaşırtıcı ve tuhaf becerileriyle nasıl dünya şampiyonu olduğunu anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
   </programme>
+  <programme start="20260814213000 +0000" stop="20260814223000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Gizli Dosyalar</title><desc lang="tr">Andrew yapay zekanın biz farkına varmadan algı ve davranışlarımızı yönlendirebildiği o tehlikeli eşiği aşıp aşmadığını test eder.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260814223000 +0000" stop="20260814232000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Avustralyalı Opal Avcıları</title><desc lang="tr">Yeraltındaki madenlerinde, The Bushmen ekibini azılı bir yaratık karşılar. Opal Lovers ekibi sırt çantalı gezginlerden yardım alır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260814232000 +0000" stop="20260815000500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Bilinmeyene Yolculuk</title><desc lang="tr">Josh Gates dünyanın dört bir yanındaki çözülmemiş gizemleri araştırıyor. Soruşturmadan önce önemli görgü tanıkları ile görüşüyor ve güncel gelişmeleri takip ediyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815000500 +0000" stop="20260815005000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Sürpriz Buluşlar</title><desc lang="tr">İnsanların her gün kullandığı ve nihayetinde dünyayı değiştiren müthiş icatlara öncülük eden hatalara, aksiliklere ve başarısızlıklara ilginç bir bakış!</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815005000 +0000" stop="20260815013500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Lojistiğin Kahramanları</title><desc lang="tr">Dünya düzeni lojistiğin sağladığı kesintisiz kaynak ve mal sevkiyatına bağlı. Bunları mümkün kılan yükleme uzmanları ve taşıyıcılar ekrana geliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815013500 +0000" stop="20260815015500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Havalı Aletler</title><desc lang="tr">Chris Grundy, çeşitli temizlik gereçlerini inceliyor. Fırçalı bir temizlik aracını, el arabalarını, olukları temizleyen bir robotu ve iki farklı elektrikli süpürgeyi inceliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815015500 +0000" stop="20260815021500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Havalı Aletler</title><desc lang="tr">Chris Grundy, milimetrik hesaplamalar yapan ölçüm aletlerini inceliyor. Bir kızılötesi termometreyi, taşınabilir bir döner testereyi ve açıölçerleri inceliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815021500 +0000" stop="20260815023500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılmış?</title><desc lang="tr">Yine günlük nesnelerin mikroskop altına alındığı bu bölümde üç tekerlekli araçlar, beyzbol sopası, yapma bonsai ve trombonun nasıl yapıldığını öğreniyoruz.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815023500 +0000" stop="20260815030000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılmış?</title><desc lang="tr">Yine günlük nesnelerin mikroskop altına alındığı bu bölümde yayların, kaldırım taşlarının ve piyanonun nasıl yapıldığını öğreniyoruz.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815030000 +0000" stop="20260815033000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Acı portakallar, nasıl kraliçenin kahvaltıda en çok sevdiği şeylerden olan marmelad haline getirilir? Ve, defilelerde sunulacak kadar güzel bir elbise nasıl basılabilir?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815033000 +0000" stop="20260815040000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Ağır iş yol silindirleri nasıl yapılır? Bir konserve tenekesinin içinde ekmek nasıl yapılır? Ve bir İsviçre saati özeniyle ve onun dakikliğinde bir cep telefonu nasıl yapılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815040000 +0000" stop="20260815050500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Sürpriz Buluşlar</title><desc lang="tr">İnsanların her gün kullandığı ve nihayetinde dünyayı değiştiren müthiş icatlara öncülük eden hatalara, aksiliklere ve başarısızlıklara ilginç bir bakış!</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815050500 +0000" stop="20260815055500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. İlk olarak Los Angeles&apos;taki büyük havuzlu ve ateş çemberine sahip bir konak ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815055500 +0000" stop="20260815065000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. İlk olarak, çağlayanın altında gizli barı olan 10 kişilik bir jakuzi ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815065000 +0000" stop="20260815071700 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ve Allen, 1920&apos;lerden antika bir otomat, sipariş yapım bir mini motosiklet ve 1880&apos;lerin Vahşi Batı&apos;sından bir Colt tabanca bulurlar. Bakalım kar edecekler mi.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815071700 +0000" stop="20260815074500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ve Allen, 1970&apos;lerden mavi bir Fender elektrik gitar ile 1936&apos;dan az bulunan Schwinn bisiklet bulurlar. Bakalım bu paslı bisiklet onlara kar getirebilecek mi.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815074500 +0000" stop="20260815081200 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ile Allen bir müzayede eski bir rakiplerine rastlarlar. Klasik bir GMC kamyonet kazanırlar; bir de ilk dik duran kola otomatını bulurlar. Ama bu sahici mi?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815081200 +0000" stop="20260815084000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları</title><desc lang="tr">Hollywood&apos;da Ton ve Allen asırlık Mason kılıçları, 2. Dünya Savaşı&apos;ndan bir Japon bıçağı ve Nixon döneminden bir yalan makinesi bulurlar</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815084000 +0000" stop="20260815090700 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Bir müşteri satın aldığı saatin sahte olduğunu iddia ediyor. Gold ailesi tehlikeye giren itibarını korumak için uzmanlığını konuşturuyor. Les hayvan kafatası satın alıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815090700 +0000" stop="20260815093500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Yüksek riskli bahisler oynayan biri kârını arttırmak için dükkâna geliyor. Jinekolojik muayene masası satmak isteyen müşterinin teklifi tuhaf bir boyut kazanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815093500 +0000" stop="20260815100200 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Çalışanlardan biri solaryum yatağını denemek için soyununca ortalık karışıyor. Dükkâna gelen bir müşteri altın bileziğini satmak istiyor ama Les bilezğin sahte olduğunu söylüyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815100200 +0000" stop="20260815103000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Les, inanılmaz derecede hüzünlü bir hikâyesi olan bir müşteriye yüklü miktarda borç veriyor. Müşteri borcunu ödeyecek mi yoksa Les birikiminden mi olacak?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815103000 +0000" stop="20260815112500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Gizli Suları Keşfet</title><desc lang="tr">Maceracılar Kosta Rika&apos;daki bir bulut ormanından, Guam&apos;daki mağaralardan ve Porto Riko&apos;daki koydan, muhteşem sulara atlıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815112500 +0000" stop="20260815122000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Gizli Suları Keşfet</title><desc lang="tr">Maceracılar, Bali&apos;deki şelalenin derin suyuna atlar, Avustralya&apos;da ıssız bir kumsalda okyanusa dalar ve Major League beyzbol sahası içinde bir havuzda yüzer.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815122000 +0000" stop="20260815133000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Gümrük Muhafaza Türkiye</title><desc lang="tr">&quot;Gümrük Muhafaza Türkiye&quot;, en ön saflarda görev yapan cesur ekiplerin nefes kesen operasyonlarını ekranlara getiriyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815133000 +0000" stop="20260815143000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Çeliğin Ustaları</title><desc lang="tr">Çılgın eski araç koleksiyoncuları ve profesyonel tamirciler nadir bulunan değerli araçları toplar ve hurdaları gerçek hazinelere dönüştürür.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815143000 +0000" stop="20260815153000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Klasik Araba Kurtarma: Almanya</title><desc lang="tr">Chris ve Max bakımsız klasikler, Amerikan yarış arabaları, Alman efsaneleri ve diğer nadir parçaları arar. Ucuza alınan araçlar tamir edilip satılır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815153000 +0000" stop="20260815163000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Son Ormancı</title><desc lang="tr">Jared ve ekibi sahil fırtınası gelmeden kampı taşımak için hızla harekete geçerek devasa konvoyu 32 km uzaktaki Devil&apos;s Chute&apos;a taşır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815163000 +0000" stop="20260815183000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">16 Blok</title><desc lang="tr">İçkici ve bezgin bir New York polisinin aleyhlerinde ifade verecek bir tanığı öldürmeyi planlayan kanunsuz polisleri alt etmesi gerekir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815183000 +0000" stop="20260815203000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">16 Blok</title><desc lang="tr">İçkici ve bezgin bir New York polisinin aleyhlerinde ifade verecek bir tanığı öldürmeyi planlayan kanunsuz polisleri alt etmesi gerekir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815203000 +0000" stop="20260815222500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Altın Peşinde: Kurtarma Operasyonu</title><desc lang="tr">Freddy ve Juan ilk sert kaya madenlerini kurtarır. Zorlu tamiratlar nedeniyle riskler büyürken Freddy milyon dolarlık bir keşif yapar.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815222500 +0000" stop="20260815231500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Avustralyalı Opal Avcıları</title><desc lang="tr">Yeraltındaki madenlerinde, The Bushmen ekibini azılı bir yaratık karşılar. Opal Lovers ekibi sırt çantalı gezginlerden yardım alır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260815231500 +0000" stop="20260816000000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Son Ormancı</title><desc lang="tr">Jared terk edilmiş bir tomruk kampına yerleşir. 250.000 dolarını riske ettiği bu ücra ve tehlikeli bölgede, şirketi ya batacak ya da çıkacaktır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816000000 +0000" stop="20260816004500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Son Ormancı</title><desc lang="tr">Borç batağındaki Jared, işini sürdürmek ve çalışanlarının maaşlarını ödeyebilmek için mücadele ederken, yüzen kamp her an batabilir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816004500 +0000" stop="20260816013000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Dinozor Avcıları</title><desc lang="tr">Montanalı çiftçi Clayton ailesinin arazisinde eşine az rastlanan ve değerli bir fosil bulmuş olabilir. Wyoming&apos;de ise Mike ve oğlu bir triceratops boynuzu buluyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816013000 +0000" stop="20260816021500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Dinozor Avcıları</title><desc lang="tr">Clayton, Montana&apos;daki çiftliğinde eşine az rastlanan etobur dinozor fosili kazısına devam ediyor. Wyoming&apos;de ise Mike ve Jake değerli T-Rex fosillerini satmaya hazırlanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816021500 +0000" stop="20260816023500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Binlerce ton greyfurt nasıl toplanır ve nasıl işlenir? Ve her yıl milyonlarca parça bagaj taşıyan döner bantlar nasıl yapılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816023500 +0000" stop="20260816030000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Dünyanın en iyi arp telleri nasıl üretilir? Çatılara açılan pencereler nasıl yapılır? Ve gofrete benzeyen Belçika gözlemeleri nasıl yapılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816030000 +0000" stop="20260816033000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Bir robot çiftliği nasıl yönetilir? Bir defada 30 ton keresteyi kaldırabilen bir makine nasıl yapılır? Ve dünyanın en kıymetli piyanosu nasıl nakledilir?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816033000 +0000" stop="20260816040000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Nasıl Yapılır?</title><desc lang="tr">Devasa bambu saplarından yüksek bir inşaat iskelesi nasıl yapılır? Ve havai fişeklerin kırmızı yanmasını sağlayan maden yerden nasıl çıkartılır?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816040000 +0000" stop="20260816050500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Sürpriz Buluşlar</title><desc lang="tr">İnsanların her gün kullandığı ve nihayetinde dünyayı değiştiren müthiş icatlara öncülük eden hatalara, aksiliklere ve başarısızlıklara ilginç bir bakış!</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816050500 +0000" stop="20260816055500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. Arizona&apos;da, 360 derecelik sonsuzluk çizgisine sahip ve gizli saunası olan bir havuz ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816055500 +0000" stop="20260816065000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Havalı Havuzlar</title><desc lang="tr">Programda dünyanın en ekstrem ve en nefes kesici havuzları ekranlarınıza geliyor. Okanagan gölüne bakan 100 metre sınıra sahip bir Kanada havuzu ele alınıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816065000 +0000" stop="20260816071700 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları</title><desc lang="tr">Bir başka müzayedede Ton, 1920&apos;lerden, muhtemelen Al Capone tarafından kaçakçılığı yapılmış yasaklı bir viski bulur. Ton şişeyi satacak mı, yoksa açacak mı?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816071700 +0000" stop="20260816074500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları</title><desc lang="tr">Ton ile Allen Kaliforniya&apos;daki bir müzayede, 1940&apos;lardan bir atari salonu oyunu, 1901&apos;den bir Winchester av tüfeği ve antika bir yay bulurlar.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816074500 +0000" stop="20260816084000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Antika Avcıları: En İyiler</title><desc lang="tr">Ton ve Allen&apos;ın en zorlu görevlerine atılarak seçkin bir üst düzey müzayedede bir saat içinde kâra geçmeye çalışmasıyla birlikte gerginlik artıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816084000 +0000" stop="20260816090700 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Arka arkaya değersiz ürünleri dükkâna getiren bir müşteri çalışanların sabrını sınasa da özel üretim bir spor arabayı rehin etmek istediğinde Rich&apos;in gözleri parlıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816090700 +0000" stop="20260816093500 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Ashley&apos;nin hararetli bir pazarlığı bölmesi Les&apos;i öfkeden deliye çeviriyor. Fahiş fiyatı olan antika bir yarış arabası Les&apos;in aklını çeliyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816093500 +0000" stop="20260816100200 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Bir müşteri eşine ender rastlanan bir maymunun kürkünden yapıldığını iddia ettiği paltoyu satmak istiyor. Les&apos;in meydan okuması karşısında Seth&apos;in kendini kanıtlaması gerekiyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816100200 +0000" stop="20260816103000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">İkinci El Kralları</title><desc lang="tr">Kürk paltosu yırtılan yaşlı bir kadın pompalı tüfekle Seth&apos;i tehdit ediyor. Les ise antika bir oyun konsolu için pazarlık yapıyor ve cazip bir altın satışıyla ilgileniyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816103000 +0000" stop="20260816113000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Tozlu Servet</title><desc lang="tr">Matt&apos;in ekibi tulumları giyerek girdiği fare dolu evin her odasında nakit para bulmayı bekler, tabii fareler paraları yememişse.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816113000 +0000" stop="20260816123000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Tozlu Servet</title><desc lang="tr">Matt ve ekibi, tekneler, klasik motosikletler ve berber malzemeleri satmak için işe koyulur. Sürpriz bir Magic Johnson parçası iyi kazandırabilir.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816123000 +0000" stop="20260816130000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Unutulmuş Hazineler</title><desc lang="tr">Henry ve Fuzz, Shropshire&apos;da Rob&apos;u ziyaret ederken bir depoda Matchless G3 model bir motosiklet, teneke tabelalar ve bir çim biçme makinesi bulur.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816130000 +0000" stop="20260816140000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Bu Arabayı Ne Yapmalı?</title><desc lang="tr">Daniel Krause gönülden bağlı olduğu özel seri Golf 5 GTI Pirelli&apos;sini severek kullanır. Peki, yola devam mı etmeli, yoksa yeni araç mı almalı?</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816140000 +0000" stop="20260816152000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Tek Başına</title><desc lang="tr">Bazı yarışmacılar kalori almak için yeni yollar aramaya devam ederken diğerleri dişini sıkarak mümkün olduğunca uzun süre dayanmaya odaklanır.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816152000 +0000" stop="20260816163000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Gümrük Muhafaza Türkiye</title><desc lang="tr">&quot;Gümrük Muhafaza Türkiye&quot;, en ön saflarda görev yapan cesur ekiplerin nefes kesen operasyonlarını ekranlara getiriyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816163000 +0000" stop="20260816184000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Suçlu</title><desc lang="tr">Richard ve Rodrigo adındaki iki dolandırıcı bir para koleksiyonerini kandırmak için ortaklık kuruyor. Hasta babasına yardım etmesi gereken Rodrigo, Richard&apos;a güvenmekte zorlanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816184000 +0000" stop="20260816205000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Suçlu</title><desc lang="tr">Richard ve Rodrigo adındaki iki dolandırıcı bir para koleksiyonerini kandırmak için ortaklık kuruyor. Hasta babasına yardım etmesi gereken Rodrigo, Richard&apos;a güvenmekte zorlanıyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260816205000 +0000" stop="20260816220000 +0000" channel="67e5c4c6cfef0b3744c556fa">
+    <title lang="tr">Gümrük Muhafaza Türkiye</title><desc lang="tr">&quot;Gümrük Muhafaza Türkiye&quot;, en ön saflarda görev yapan cesur ekiplerin nefes kesen operasyonlarını ekranlara getiriyor.</desc><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
   <programme start="20260814210500 +0000" stop="20260814213500 +0000" channel="67a3521bcfef0b3744abd66d">
     <title lang="tr">Yeni Sınır</title><desc lang="tr">İyice bakıyoruz, ama rakamlar bir şey göstermiyor, diğer gezegenlerde hayat bulmak bu kadar zor mu? Gelişmiş bir ırktan gelen sinyaller bile bizden sıyrılıyor. Belki de galaksinin ortasında gerçekten yalnızız!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
   </programme>
@@ -12285,6 +12274,63 @@
   <programme start="20260815200000 +0000" stop="20260815220000 +0000" channel="HTSporTV.tr@SD">
     <title lang="tr">Dakika 90</title>
   </programme>
+  <programme start="20260815220000 +0000" stop="20260815225000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260815225000 +0000" stop="20260815230500 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç Devre Arası</title>
+  </programme>
+  <programme start="20260815230500 +0000" stop="20260816000000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260816000000 +0000" stop="20260816020000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Dakika 90</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260816020000 +0000" stop="20260816030000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">HT Spor Magazin</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260816030000 +0000" stop="20260816040000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Belgesel</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260816040000 +0000" stop="20260816045000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260816045000 +0000" stop="20260816050000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç Devre Arası</title>
+  </programme>
+  <programme start="20260816050000 +0000" stop="20260816060000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç</title><desc lang="tr">Tekrar</desc>
+  </programme>
+  <programme start="20260816060000 +0000" stop="20260816080000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">HT Spor Hafta Sonu</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816080000 +0000" stop="20260816090000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Zone Press</title>
+  </programme>
+  <programme start="20260816090000 +0000" stop="20260816120000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Olympos Regatta Yelken Yarışı</title>
+  </programme>
+  <programme start="20260816120000 +0000" stop="20260816150000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Spor Hattı</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816150000 +0000" stop="20260816170000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Ana Haber Bülteni</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816170000 +0000" stop="20260816183000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Maç Yolu</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816183000 +0000" stop="20260816192000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">HT Skor</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816192000 +0000" stop="20260816193500 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Canlı Maç Devre Arası</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816193500 +0000" stop="20260816203000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">HT Skor</title><desc lang="tr">Canlı</desc>
+  </programme>
+  <programme start="20260816203000 +0000" stop="20260816220000 +0000" channel="HTSporTV.tr@SD">
+    <title lang="tr">Dakika 90</title>
+  </programme>
   <programme start="20260814213000 +0000" stop="20260814224000 +0000" channel="MovieSmartClassic.tr@SD">
     <title lang="tr">Ağa Düşen Kadın</title><desc lang="tr">Ailesi tarafından erkek gibi yetiştirilen bir kadının öyküsü.</desc>
   </programme>
@@ -12413,6 +12459,39 @@
   </programme>
   <programme start="20260815193000 +0000" stop="20260815213000 +0000" channel="SporSmart2.tr@SD">
     <title lang="tr">Fluminense-Palmeiras &quot;Canlı&quot;</title>
+  </programme>
+  <programme start="20260815213000 +0000" stop="20260816000000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Almanya Golf Turnuvası &quot;Tkr&quot;</title>
+  </programme>
+  <programme start="20260816000000 +0000" stop="20260816020000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Sao Paulo - Coritiba &quot;Canlı&quot;</title>
+  </programme>
+  <programme start="20260816020000 +0000" stop="20260816050000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Danimarka Golf Turnuvası &quot;Tkr&quot;</title>
+  </programme>
+  <programme start="20260816050000 +0000" stop="20260816080000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Danimarka Golf Turnuvası &quot;Tkr&quot;</title>
+  </programme>
+  <programme start="20260816080000 +0000" stop="20260816100000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Santos - Paranaense &quot;Tekrar&quot;</title>
+  </programme>
+  <programme start="20260816100000 +0000" stop="20260816120000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Velez - Independiente &quot;Tkr&quot;</title>
+  </programme>
+  <programme start="20260816120000 +0000" stop="20260816140000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Barcelona - Valencia &apos;&apos;Tekrar&apos;&apos;</title>
+  </programme>
+  <programme start="20260816140000 +0000" stop="20260816160000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Chapecoense - Bahia &quot;Canlı&quot;</title>
+  </programme>
+  <programme start="20260816160000 +0000" stop="20260816173000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Yabancı At Yarışları 2026</title>
+  </programme>
+  <programme start="20260816173000 +0000" stop="20260816183000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Monster Jam &apos;&apos;Yarış&apos;&apos;</title>
+  </programme>
+  <programme start="20260816183000 +0000" stop="20260816213000 +0000" channel="SporSmart2.tr@SD">
+    <title lang="tr">Danimarka Golf Turnuvası &quot;Tkr&quot;</title>
   </programme>
   <programme start="20260814210000 +0000" stop="20260814230000 +0000" channel="StarTV.tr@SD">
     <title lang="tr">Borderlands</title><desc lang="tr">Borderlands, kötü şöhretli kaçak Lilith’in Pandora adlı gezegene geri dönmesiyle başlıyor. Lilith’e tehditkâr bir görev verilir: Eski paralı asker Roland, patlayıcı uzmanı Tiny Tina, koruyucu Krieg, çılgın bilim insanı Tannis ve esprili robot Claptrap gibi farklı karakterlerle bir araya gelerek güçlü bir ittifak kurmak. Bu sıra dışı ekip, yalnızca zorlu bir görevi üstlenmekle kalmaz, aynı zamanda derin bir dostluk da geliştirir. Onların misyonu, kudretli bir adam olan Atlas’ın kayıp kızını bulmak ve korumaktır. Ancak işler göründüğü kadar basit değildir; çünkü bu genç kız, evrenin kaderini değiştirebilecek büyük bir güce sahiptir.</desc>
