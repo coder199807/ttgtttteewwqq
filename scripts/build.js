@@ -13,10 +13,10 @@ const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const EPG_FILE = path.join(__dirname, "..", "epg.xml");
 const FETCH_TIMEOUT_MS = 20000;
 
-// Upstream free TR EPG (gzipped XMLTV). Matched to Vavoo channels by fuzzy name.
+// Upstream EPG (ALL enthält DE, AT, CH, TR & Sport)
 const EPG_UPSTREAM_URL =
   process.env.EPG_UPSTREAM_URL ||
-  "https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz";
+  "https://epgshare01.online/epgshare01/epg_ripper_ALL.xml.gz";
 
 // Optional directory of iptv-org/epg grab outputs (XMLTV per site).
 const IPTVORG_GRAB_DIR = process.env.IPTVORG_GRAB_DIR || "";
@@ -36,7 +36,7 @@ const EPG_URL =
   process.env.EPG_URL ||
   "https://raw.githubusercontent.com/kadirmetin/vavoo-iptv/main/epg.xml";
 
-// Vavoo requires browser-like headers
+// Vavoo browser-like headers
 const HEADERS = {
   "content-type": "application/json; charset=utf-8",
   accept: "*/*",
@@ -57,7 +57,7 @@ const HEADERS = {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
 };
 
-// Whitelist für relevante deutsche Hauptsender & Sportkanäle (DE/AT/CH)
+// Whitelist für relevante deutsche Hauptsender & Sportkanäle
 const GERMAN_ALLOWED_KEYWORDS = [
   // Hauptsender
   "RTL", "PROSIEBEN", "PRO7", "SAT.1", "SAT1", "VOX", "ZDF", "ARD", "DAS ERSTE",
@@ -137,19 +137,17 @@ async function fetchAllForGroup(group) {
     const data = await fetchPage(group, cursor);
     if (Array.isArray(data.items)) {
       for (const item of data.items) {
-        // Bei der Gruppe "Germany" wenden wir den Filter an
         if (group === "Germany") {
           if (isAllowedGermanChannel(item.name)) {
             items.push(item);
           }
         } else {
-          // Türkische Kanäle werden alle übernommen
           items.push(item);
         }
       }
     }
     console.log(
-      `Group ${group} - Page ${page}: fetched ${data.items?.length ?? 0} items, added ${items.length} valid items total.`
+      `Group ${group} - Page ${page}: fetched ${data.items?.length ?? 0} items, added ${items.length} total.`
     );
     cursor = data.nextCursor ?? null;
     if (page >= MAX_PAGES) {
@@ -210,42 +208,27 @@ function normalizeForCategory(name) {
   return s;
 }
 
+// Angepasste Kategorien (Ohne Diğer, Yaşam, Österreich/Schweiz, Dizi, Radyo)
 const CATEGORY_RULES = [
-  // Sport (International / DE / AT / CH / TR)
   {
     name: "Sport",
     re: /DAZN|SKY SPORT|SKY BULI|BUNDESLIGA|EUROSPORT|MAGENTA SPORT|MAGENTASPORT|ORF SPORT|SRF ZWEI|SRF 2|BLUE SPORT|SPORT1|SPORTDIGITAL|BEIN SPO[RT]{0,3}S?|\bBEIN 1\b|S[- ]?SPORTS?|\bS SPORT\b|SPOR SMART|\bNBA\b|TJK TV|TIVIBU ?SPOR|TIVIBUSPOR|TRT SPOR|TABII SPOR|EXXEN SPO[RT]?|\bHT SPOR\b|EKOL SPOR|SPORTS TV|IDMAN TV|GALATASARAY TV|\bFB TV\b|\bGS TV\b|SARAN SPORT|SMART SPOR|\bSPOR\b|\bSPORT\b/i,
   },
-  // Deutsche Haupt- & Pay-TV Sender
   {
     name: "Deutschland",
     re: /\b(RTL|PROSIEBEN|PRO7|SAT\.1|SAT1|VOX|ZDF|ARD|DAS ERSTE|SUPER RTL|RTL2|RTL 2|RTL II|NITRO|RTL NITRO|RTL\+|RTL PLUS|TELE 5|SIXX|KABEL EINS|KABEL 1|WELT|N24|N-TV|PHOENIX|TAGESSCHAU24|TOGGO|SKY ATLANTIC|SKY ONE|SKY CRIME|SKY CINEMA|SKY REPLAY|SKY SHOWCASE|13TH STREET|SYFY|AXN|WARNER TV|TNT)\b/i,
   },
-  // Kinder
   {
     name: "Çocuk / Kinder",
     re: /CARTOON|BOOMERANG|DISNEY|NICK(?:ELODEON|TOONS|JR|JUNIOR|\b)|BABY ?TV|BABYTV|M[İI]?N ?KA|MINIKA|KIKA|TOGGO|TRT ?[ÇC]?OCUK|\bCOCUK\b|\b[ÇC]OCUK\b|DISNEY CHANNEL/i,
   },
-  // Doku & Belgesel
   {
     name: "Belgesel / Doku",
     re: /DISCOVERY|NATIONAL GEOGRAPHIC|NAT ?GEO|\bHISTORY\b|ANIMAL PLANET|DA VINCI(?! KIDS)|VIASAT|BBC EARTH|LOVE NATURE|TRT BELGESEL|EPIC DRAMA|TARIH TV|TARIM TV|TGRT BELGESEL|INVESTIGATION|DMAX|DOCUBOX|DOCU SCREEN|SCIENCE|\bIZ TV\b|YABAN|OUTDOOR|CHASSE|ANIMAUX|AGRO TV|CIFTCI TV|REDBULL TV|\bTLC\b/i,
   },
   {
-    name: "Österreich / Schweiz",
-    re: /\b(ORF|SRF|SERVUSTV|SERVUS TV|BLUE SPORT)\b/i,
-  },
-  {
-    name: "Radyo",
-    re: /\b(RADIO|RADYO)\b|\b(FM|MBAT FM|EFKAR FM|FMTV|F ?M)\b(?!\s*TV)|POWERTURK|POWER FM|SHOW RADYO|ALEM (?:FM|RADYO)|BABA RADYO|KRAL POP RADYO|PAL STATION|X NOSTALJI|RADIO ROCK|STANBUL FM/i,
-  },
-  {
     name: "Film",
     re: /SINEMA|S[İI]NEMA|S NEMA|CINEMA|SINEMAX|SINEVIZYON|\bMOVIES?\b|MOVIEMAX|MOVIESMART|BEIN MOVIES|BEIN BOX|BOX OFFICE|\bFX\b|FX HD|YESILCAM|YE ?I ?L ?[ÇC] ?AM|YE ?I ?L ?AM|YEŞ?[İI]LC?AM|GLOBAL BOX|PROTURK|FIX CINEMA|KINGBOX|ARENA BOX|SHOWMAX|SHOW MAX|REAL BOX|SMART BOX/i,
-  },
-  {
-    name: "Dizi",
-    re: /SER[İI]ES|\bDIZI\b|BEIN SERIES|D[İI]Z[İI] ?SMART|DIZISMART/i,
   },
   {
     name: "Müzik",
@@ -260,17 +243,10 @@ const CATEGORY_RULES = [
     re: /D[İI]YANET|\bAK[İIY]?T\b|MEHTAP|H[İI]LAL|KUDUS|SEMERKAND|LALEGUL|MERCAN TV|VUSLAT|KARDELEN|DIYAR TV|\bDOST TV\b|\bYOL TV\b|\bKANAL 7\b|TVNET|TRT DIYANET/i,
   },
   {
-    name: "Yaşam",
-    re: /24 KITCHEN|GURME|BEIN GURME|LIFESTYLE|\bLIFE TV\b|FASHION|AUTOMOTO|LINE TV/i,
-  },
-  {
     name: "Ulusal (TR)",
     re: /^24$|\bTRT\b|\bTRT 1\b|\bTRT ?2\b|TRT2|\bTRT 3\b|TRT AVAZ|TRT T[UÜ]RK|TRT KURD[İI]?|TRT WORLD|TRT 4K|\bKANAL D\b|\bATV\b|STAR TV|\bSTAR\b|SHOW TV|\bFOX\b|NOW ?TV|\bNOW\b|TV ?8|TV8[.,]5|BEYAZ TV|\b360\b|24 TV|\bA2\b|A HABER|TV ?100|TEVE2|CNN T[UÜ]RK|\bNTV\b/i,
   },
   {
-    name: "Yerel (TR)",
-    re: /ADANA|AD[İI]YAMAN|AFYON|AKSARAY|ALANYA|ANAKKALE|\bANKARA\b|ANTALYA|\bBURSA\b|ELAZIG|ERZURUM|ESK[İI]SEHIR|GAZIANTEP|KAYSERI|KOCAELI|KONYA|MALATYA|MERSIN|ORDU|SIVAS|TRABZON|IZMIR/i,
-  },
 ];
 
 function categorize(name) {
@@ -278,7 +254,8 @@ function categorize(name) {
   for (const rule of CATEGORY_RULES) {
     if (rule.re.test(s)) return rule.name;
   }
-  return "Diğer";
+  // Wenn der Sender in keine der erlaubten Kategorien passt -> null (wird verworfen)
+  return null;
 }
 
 // -- M3U -------------------------------------------------------------------
@@ -306,13 +283,17 @@ function toM3U(items, vavooToEpgId, logoResolver) {
   const lines = [header];
   for (const it of items) {
     if (!it || !it.url) continue;
-    const vavooId = it.ids?.id ?? "";
     const name = sanitizeName(it.name);
     if (!name) continue;
-    const logo = resolveLogo(name, it.logo, logoResolver);
+    
+    // Prüfen ob Kanal in eine der aktiven Kategorien fällt
     const group = categorize(name);
+    if (!group) continue; // Verwirft Sender aus entfernten Kategorien (z.B. Radio, Dizi, etc.)
 
+    const vavooId = it.ids?.id ?? "";
+    const logo = resolveLogo(name, it.logo, logoResolver);
     const tvgId = (vavooToEpgId && vavooToEpgId.get(vavooId)) || vavooId;
+
     lines.push(
       `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}",${name}`
     );
@@ -431,7 +412,7 @@ function parseXmltv(xml) {
 function normalizeForMatch(name) {
   let s = String(name || "")
     .toUpperCase()
-    .replace(/^\s*(?:4K TR:|DE:|AT:|CH:)\s*/i, "")
+    .replace(/^\s*(?:4K\s*TR:|4K:|TR:|DE:|AT:|CH:)\s*/i, "")
     .replace(/\s*\.(?:B|C|S)\b/gi, "")
     .replace(/\[[^\]]*\]/g, " ")
     .replace(/\([^\)]*\)/g, " ")
@@ -502,6 +483,9 @@ function toXMLTV(
     if (!vavooId) continue;
     const name = sanitizeName(it.name);
     if (!name) continue;
+
+    // Nur EPG erzeugen für Sender, die in den aktiven Kategorien liegen
+    if (!categorize(name)) continue;
 
     const routedId = vavooToEpgId.get(vavooId) || vavooId;
     if (seenChannel.has(routedId)) continue;
@@ -619,7 +603,7 @@ async function main() {
   }
 
   const items = await fetchAll();
-  console.log(`Total filtered items combined: ${items.length}`);
+  console.log(`Total fetched items combined: ${items.length}`);
 
   items.sort((a, b) => {
     const an = String(a.name ?? "").toLocaleLowerCase("tr-TR");
@@ -634,6 +618,7 @@ async function main() {
   let upstreamChannels = new Map();
   let upstreamProgByChannel = new Map();
   try {
+    console.log(`Loading upstream EPG from: ${EPG_UPSTREAM_URL}`);
     const xml = await fetchUpstreamXmltv(EPG_UPSTREAM_URL);
     const parsed = parseXmltv(xml);
     upstreamChannels = parsed.channels;
@@ -642,6 +627,7 @@ async function main() {
         upstreamProgByChannel.set(p.channel, []);
       upstreamProgByChannel.get(p.channel).push(p);
     }
+    console.log(`Upstream EPG loaded: ${upstreamChannels.size} channels, ${parsed.programmes.length} programmes`);
   } catch (err) {
     console.warn(
       `Upstream EPG unavailable (${err.message}); falling back to Vavoo inline EPG only.`
@@ -663,6 +649,7 @@ async function main() {
   const vavooToEpgId = new Map();
   const idSource = new Map();
 
+  let matchedCount = 0;
   for (const it of items) {
     const vavooId = it?.ids?.id;
     if (!vavooId) continue;
@@ -673,20 +660,24 @@ async function main() {
     if (grabId) {
       vavooToEpgId.set(vavooId, grabId);
       idSource.set(grabId, "grab");
+      matchedCount++;
     } else {
       const upstreamId = matchUpstreamId(name, upstreamIdx);
       if (upstreamId) {
         vavooToEpgId.set(vavooId, upstreamId);
         idSource.set(upstreamId, "epgshare01");
+        matchedCount++;
       } else {
         vavooToEpgId.set(vavooId, vavooId);
       }
     }
   }
 
+  console.log(`EPG Matching: ${matchedCount} / ${items.length} channels matched to EPG data.`);
+
   const m3u = toM3U(items, vavooToEpgId, logoResolver);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
-  console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes, ${items.length} channels)`);
+  console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes)`);
 
   const epg = toXMLTV(
     items,
@@ -706,9 +697,11 @@ async function main() {
     const name = sanitizeName(it?.name);
     if (!name) continue;
     const c = categorize(name);
-    dist.set(c, (dist.get(c) || 0) + 1);
+    if (c) {
+      dist.set(c, (dist.get(c) || 0) + 1);
+    }
   }
-  console.log("\nCategory distribution:");
+  console.log("\nActive category distribution:");
   for (const [c, n] of [...dist.entries()].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${c.padEnd(20)}: ${n}`);
   }
