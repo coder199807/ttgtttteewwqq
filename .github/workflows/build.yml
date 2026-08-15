@@ -2,8 +2,8 @@ name: Build IPTV M3U
 
 on:
   schedule:
-    # Every Monday at 03:00 UTC (06:00 TR)
-    - cron: "0 3 * * 1"
+    # Jeden Tag um 04:00 Uhr UTC (07:00 Uhr TR)
+    - cron: "0 4 * * *"
   workflow_dispatch:
   push:
     branches: [main]
