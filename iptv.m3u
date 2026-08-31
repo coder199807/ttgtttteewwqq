@@ -3,8 +3,6 @@
 https://young-dew-a7a9.pandatiger.workers.dev/play/2470626656489869fa852
 #EXTINF:-1 tvg-id="3160812963e2fed09faa6c" tvg-name="13TH STREET .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png" group-title="Deutschland",13TH STREET .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/3160812963e2fed09faa6c
-#EXTINF:-1 tvg-id="1710475635291edaf2f909" tvg-name="13TH STREET HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png" group-title="Deutschland",13TH STREET HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1710475635291edaf2f909
 #EXTINF:-1 tvg-id="3854738303acabe63483d0" tvg-name="13TH STREET HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png" group-title="Deutschland",13TH STREET HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3854738303acabe63483d0
 #EXTINF:-1 tvg-id="19361793832d56e72aa006" tvg-name="13TH STREET HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png" group-title="Deutschland",13TH STREET HD+ .b
@@ -37,8 +35,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1064954896a21f89fb6b5c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1771137539fa2adff8ebd5
 #EXTINF:-1 tvg-id="A2TV.tr@SD" tvg-name="4K TR: A2 HD .b" tvg-logo="" group-title="Ulusal (TR)",4K TR: A2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/201905527745e40d41f657
-#EXTINF:-1 tvg-id="344558568784e9a5583953" tvg-name="4K TR: AK T TV HD .b" tvg-logo="https://i.imgur.com/oGto929.png" group-title="Dini",4K TR: AK T TV HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/344558568784e9a5583953
 #EXTINF:-1 tvg-id="ATV.am@SD" tvg-name="4K TR: ATV HD .b" tvg-logo="https://i.imgur.com/HyVUwFC.png" group-title="Ulusal (TR)",4K TR: ATV HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2325261286cc81b01cf95d
 #EXTINF:-1 tvg-id="BabyTV.uk@UK" tvg-name="4K TR: BABYTV .b" tvg-logo="" group-title="Çocuk / Kinder",4K TR: BABYTV .b
@@ -55,14 +51,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/327818589842dbaee1327c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2056768647bd7eb3f3cf70
 #EXTINF:-1 tvg-id="41034540643b582da308f" tvg-name="4K TR: DA VINCI .b" tvg-logo="https://i.imgur.com/iBx7K1M.png" group-title="Belgesel / Doku",4K TR: DA VINCI .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/41034540643b582da308f
-#EXTINF:-1 tvg-id="67e5c4c6cfef0b3744c556fa" tvg-name="4K TR: DMAX HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Belgesel / Doku",4K TR: DMAX HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/869937351ec185ded43b6
-#EXTINF:-1 tvg-id="4017734592f45fd8456678" tvg-name="4K TR: DISCOVERY CHANNEL HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png" group-title="Belgesel / Doku",4K TR: DISCOVERY CHANNEL HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/4017734592f45fd8456678
 #EXTINF:-1 tvg-id="DisneyJr.tr@SD" tvg-name="4K TR: DISNEY JUNIOR .b" tvg-logo="" group-title="Çocuk / Kinder",4K TR: DISNEY JUNIOR .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/6492287228e9a72f932b5
-#EXTINF:-1 tvg-id="EpicDrama.uk@Turkiye" tvg-name="4K TR: EPIC DRAMA .b" tvg-logo="" group-title="Belgesel / Doku",4K TR: EPIC DRAMA .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/6782616930c5115ad7507
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="4K TR: EUROSPORT 1 HD .b" tvg-logo="" group-title="Sport",4K TR: EUROSPORT 1 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/207886293750ec015d3e85
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="4K TR: EUROSPORT 2 HD .b" tvg-logo="" group-title="Sport",4K TR: EUROSPORT 2 HD .b
@@ -125,12 +115,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/21232735984a3f0b463d66
 https://young-dew-a7a9.pandatiger.workers.dev/play/9369082742fdb8ca83c62
 #EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="4K TR: SHOW TV HD .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",4K TR: SHOW TV HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/8795889605c7795ac9528
-#EXTINF:-1 tvg-id="960578312ee36cc17c5d2" tvg-name="4K TR: SOZCU TV .b" tvg-logo="https://i.imgur.com/BxpdvsG.png" group-title="Haber",4K TR: SOZCU TV .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/960578312ee36cc17c5d2
 #EXTINF:-1 tvg-id="SporSmart.tr@SD" tvg-name="4K TR: SPOR SMART .b" tvg-logo="https://i.imgur.com/blu6v6P.png" group-title="Sport",4K TR: SPOR SMART .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3159604752e1cba547bb
-#EXTINF:-1 tvg-id="SportsTV.tr@SD" tvg-name="4K TR: SPORTS TV HD .b" tvg-logo="https://i.imgur.com/tGTVcVe.jpg" group-title="Sport",4K TR: SPORTS TV HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2429298798dcd505d1ab4b
 #EXTINF:-1 tvg-id="219297129315c074c03f8e" tvg-name="4K TR: STAR TV HD .b" tvg-logo="https://i.imgur.com/9O3DHRB.png" group-title="Ulusal (TR)",4K TR: STAR TV HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/219297129315c074c03f8e
 #EXTINF:-1 tvg-id="Tele1.tr@SD" tvg-name="4K TR: TELE 1 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/4/43/Tele1_logosu.png" group-title="Haber",4K TR: TELE 1 .b
@@ -139,8 +125,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/298064721bb04fcaf61ab
 https://young-dew-a7a9.pandatiger.workers.dev/play/1917502631a9b6866e12b6
 #EXTINF:-1 tvg-id="TGRTHaber.tr@SD" tvg-name="4K TR: TGRT HABER HD .b" tvg-logo="https://i.imgur.com/PrxwKDw.png" group-title="Haber",4K TR: TGRT HABER HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/190715470454a282dd6577
-#EXTINF:-1 tvg-id="27949369132f08a592203d" tvg-name="4K TR: TJK TV .b" tvg-logo="https://i.imgur.com/3zHdkYG.png" group-title="Sport",4K TR: TJK TV .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/27949369132f08a592203d
 #EXTINF:-1 tvg-id="TRT1.tr@SD" tvg-name="4K TR: TRT 1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png" group-title="Ulusal (TR)",4K TR: TRT 1 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1762199258e25181300f62
 #EXTINF:-1 tvg-id="TRT2.tr@SD" tvg-name="4K TR: TRT 2 HD .b" tvg-logo="https://i.imgur.com/iOCQdyD.png" group-title="Ulusal (TR)",4K TR: TRT 2 HD .b
@@ -149,10 +133,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/38843190334c7e81c1c6fc
 https://young-dew-a7a9.pandatiger.workers.dev/play/418740351278f04c94b243
 #EXTINF:-1 tvg-id="TRTAvaz.tr@SD" tvg-name="4K TR: TRT AVAZ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TRT_Avaz_logo.svg/960px-TRT_Avaz_logo.svg.png" group-title="Ulusal (TR)",4K TR: TRT AVAZ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2990410352438976430a38
-#EXTINF:-1 tvg-id="TRTBelgesel.tr@SD" tvg-name="4K TR: TRT BELGESEL HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/TRT_Belgesel_logo_%282019-%29.svg/960px-TRT_Belgesel_logo_%282019-%29.svg.png" group-title="Belgesel / Doku",4K TR: TRT BELGESEL HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/786973656b665fa8beb18
-#EXTINF:-1 tvg-id="TRTHaber.tr@SD" tvg-name="4K TR: TRT HABER HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png" group-title="Haber",4K TR: TRT HABER HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/6036516388b222edb706e
 #EXTINF:-1 tvg-id="1707" tvg-name="4K TR: TRT KURD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/TRT_Kurd%C3%AE_logo.svg/960px-TRT_Kurd%C3%AE_logo.svg.png" group-title="Ulusal (TR)",4K TR: TRT KURD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1216632307df2afc1919fa
 #EXTINF:-1 tvg-id="TRTMuzik.tr@SD" tvg-name="4K TR: TRT M Z K .b" tvg-logo="https://i.imgur.com/JgUzRH8.png" group-title="Ulusal (TR)",4K TR: TRT M Z K .b
@@ -161,10 +141,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/970382162286220f5fa39
 https://young-dew-a7a9.pandatiger.workers.dev/play/30291805064bacb8a4036d
 #EXTINF:-1 tvg-id="TRTSpor.tr@SD" tvg-name="4K TR: TRT SPOR HD .b" tvg-logo="https://i.imgur.com/6tv0zxh.png" group-title="Sport",4K TR: TRT SPOR HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/22629699381f94fcd9dbe6
-#EXTINF:-1 tvg-id="TRTSporYildiz.tr@SD" tvg-name="4K TR: TRT SPOR YILDIZ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg/960px-TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg.png" group-title="Sport",4K TR: TRT SPOR YILDIZ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2750507083b8337c6b6616
-#EXTINF:-1 tvg-id="TRTTurk.tr@SD" tvg-name="4K TR: TRT T RK .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/TRT_T%C3%BCrk_logo.svg/960px-TRT_T%C3%BCrk_logo.svg.png" group-title="Ulusal (TR)",4K TR: TRT T RK .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/35084774810a78b091aa35
 #EXTINF:-1 tvg-id="TV100.tr@SD" tvg-name="4K TR: TV 100 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/0/0f/TV100_logo.png/960px-TV100_logo.png" group-title="Ulusal (TR)",4K TR: TV 100 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/626790146ece46055051c
 #EXTINF:-1 tvg-id="TV8.tr@SD" tvg-name="4K TR: TV8 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/6/68/Tv8_Yeni_Logo.png/960px-Tv8_Yeni_Logo.png" group-title="Ulusal (TR)",4K TR: TV8 HD .b
@@ -209,8 +185,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/15619589713a6387b378e8
 https://young-dew-a7a9.pandatiger.workers.dev/play/911836506e50aacc3a9e9
 #EXTINF:-1 tvg-id="ASpor.tr@SD" tvg-name="A SPOR HD .b" tvg-logo="https://i.imgur.com/ZhkZzLf.png" group-title="Sport",A SPOR HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2556711030587eed1d7123
-#EXTINF:-1 tvg-id="ASpor.tr@SD" tvg-name="A SPOR HEVC .b" tvg-logo="https://i.imgur.com/ZhkZzLf.png" group-title="Sport",A SPOR HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/28805292086eedfe83d038
 #EXTINF:-1 tvg-id="ASpor.tr@SD" tvg-name="A SPOR RAW .b" tvg-logo="https://i.imgur.com/ZhkZzLf.png" group-title="Sport",A SPOR RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2777121053574bf4d1b799
 #EXTINF:-1 tvg-id="A2TV.tr@SD" tvg-name="A2 .c" tvg-logo="https://logo.huhu.to/logo?c=759245925.png" group-title="Ulusal (TR)",A2 .c
@@ -219,8 +193,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/759245925a154b345865d
 https://young-dew-a7a9.pandatiger.workers.dev/play/173580685187013b4a1318
 #EXTINF:-1 tvg-id="A2TV.tr@SD" tvg-name="A2 HD .b" tvg-logo="https://logo.huhu.to/logo?c=867875861.png" group-title="Ulusal (TR)",A2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/867875861079562f15007
-#EXTINF:-1 tvg-id="A2TV.tr@SD" tvg-name="A2 HEVC .b" tvg-logo="https://logo.huhu.to/logo?c=1289576145.png" group-title="Ulusal (TR)",A2 HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/128957614556bfb7e20bde
 #EXTINF:-1 tvg-id="A2TV.tr@SD" tvg-name="A2 RAW .b" tvg-logo="" group-title="Ulusal (TR)",A2 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/19057497795e890277f212
 #EXTINF:-1 tvg-id="1835847966e01d08f3ea1f" tvg-name="A2 TV SD .b" tvg-logo="https://logo.huhu.to/logo?c=1835847966.png" group-title="Ulusal (TR)",A2 TV SD .b
@@ -235,10 +207,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2702391715e85c3d67a4ee
 https://young-dew-a7a9.pandatiger.workers.dev/play/194868101172e4362de24e
 #EXTINF:-1 tvg-id="1862240206bdae999f9066" tvg-name="AKIT TV .s" tvg-logo="https://i.imgur.com/oGto929.png" group-title="Dini",AKIT TV .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1862240206bdae999f9066
-#EXTINF:-1 tvg-id="211016135533c46812e566" tvg-name="ANIMAL PLANET .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png" group-title="Belgesel / Doku",ANIMAL PLANET .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/211016135533c46812e566
-#EXTINF:-1 tvg-id="3913298991ebe0634b3649" tvg-name="ANIMAL PLANET HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png" group-title="Belgesel / Doku",ANIMAL PLANET HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3913298991ebe0634b3649
 #EXTINF:-1 tvg-id="2103702130b5451883e2a7" tvg-name="ANIMAUX .b" tvg-logo="" group-title="Belgesel / Doku",ANIMAUX .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2103702130b5451883e2a7
 #EXTINF:-1 tvg-id="9314064096e814315889b" tvg-name="APARA HD .b" tvg-logo="https://logo.huhu.to/logo?c=931406409.png" group-title="Haber",APARA HD .b
@@ -285,8 +253,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/33911158650eccddb037b3
 https://young-dew-a7a9.pandatiger.workers.dev/play/380577343444993225d98e
 #EXTINF:-1 tvg-id="BabyTV.uk@France" tvg-name="BABY TV .c" tvg-logo="https://logo.huhu.to/logo?c=3820420855.png" group-title="Çocuk / Kinder",BABY TV .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/382042085583b289bf81e2
-#EXTINF:-1 tvg-id="BabyTV.uk@France" tvg-name="BABY TV .s" tvg-logo="" group-title="Çocuk / Kinder",BABY TV .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/41848652906e4c7a933f55
 #EXTINF:-1 tvg-id="BabyTV.uk@France" tvg-name="BABY TV HD .b" tvg-logo="" group-title="Çocuk / Kinder",BABY TV HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/27516589959a967260542d
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c6062bc" tvg-name="BBC EARTH .c" tvg-logo="https://logo.huhu.to/logo?c=2618455562.png" group-title="Belgesel / Doku",BBC EARTH .c
@@ -303,8 +269,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/34182375310e960a426e1c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2758508882dd33978c7a5
 #EXTINF:-1 tvg-id="BeyazTV.tr@SD" tvg-name="BEYAZ TV FHD .b" tvg-logo="https://i.imgur.com/uykIdML.png" group-title="Ulusal (TR)",BEYAZ TV FHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/16003488113ad5cdfa73f1
-#EXTINF:-1 tvg-id="BeyazTV.tr@SD" tvg-name="BEYAZ TV HD .b" tvg-logo="https://i.imgur.com/uykIdML.png" group-title="Ulusal (TR)",BEYAZ TV HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2755756005a4ea6e7589ca
 #EXTINF:-1 tvg-id="BeyazTV.tr@SD" tvg-name="BEYAZ TV HEVC .b" tvg-logo="https://i.imgur.com/uykIdML.png" group-title="Ulusal (TR)",BEYAZ TV HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/15107839012fa9f66fac00
 #EXTINF:-1 tvg-id="BeyazTV.tr@SD" tvg-name="BEYAZ TV RAW .b" tvg-logo="https://i.imgur.com/uykIdML.png" group-title="Ulusal (TR)",BEYAZ TV RAW .b
@@ -357,8 +321,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/33905759489e0915a21ca8
 https://young-dew-a7a9.pandatiger.workers.dev/play/1835579025e6a7c2daa604
 #EXTINF:-1 tvg-id="38404756531618c87fcc66" tvg-name="BEIN SPORTS 1 (720P) .b" tvg-logo="https://logo.huhu.to/logo?c=3840475653.png" group-title="Sport",BEIN SPORTS 1 (720P) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/38404756531618c87fcc66
-#EXTINF:-1 tvg-id="22330664333ebb4acbb6ab" tvg-name="BEIN SPORTS 1 (720PFEED) .b" tvg-logo="https://logo.huhu.to/logo?c=2233066433.png" group-title="Sport",BEIN SPORTS 1 (720PFEED) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/22330664333ebb4acbb6ab
 #EXTINF:-1 tvg-id="2576216897d1c2b14af4e9" tvg-name="BEIN SPORTS 1 + .b" tvg-logo="https://logo.huhu.to/logo?c=2576216897.png" group-title="Sport",BEIN SPORTS 1 + .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2576216897d1c2b14af4e9
 #EXTINF:-1 tvg-id="300113394ceebba66c8ad" tvg-name="BEIN SPORTS 1 .c" tvg-logo="https://logo.huhu.to/logo?c=300113394.png" group-title="Sport",BEIN SPORTS 1 .c
@@ -409,8 +371,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1536730627bbf8f95ca477
 https://young-dew-a7a9.pandatiger.workers.dev/play/12304481920a92c9204dcd
 #EXTINF:-1 tvg-id="3831757618ff599ed6d68c" tvg-name="BEIN SPORTS 5 .c" tvg-logo="https://logo.huhu.to/logo?c=3831757618.png" group-title="Sport",BEIN SPORTS 5 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/3831757618ff599ed6d68c
-#EXTINF:-1 tvg-id="400031560175e3479a3f11" tvg-name="BEIN SPORTS 5 FHD .b" tvg-logo="" group-title="Sport",BEIN SPORTS 5 FHD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/400031560175e3479a3f11
 #EXTINF:-1 tvg-id="2737963486b4d9c437a945" tvg-name="BEIN SPORTS 5 HD .b" tvg-logo="" group-title="Sport",BEIN SPORTS 5 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2737963486b4d9c437a945
 #EXTINF:-1 tvg-id="33913537343dc42dfa39a1" tvg-name="BEIN SPORTS 5 SD .b" tvg-logo="" group-title="Sport",BEIN SPORTS 5 SD .b
@@ -431,6 +391,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3989995533d0efea1c8696
 https://young-dew-a7a9.pandatiger.workers.dev/play/164663282518e6179f90af
 #EXTINF:-1 tvg-id="1221587067c43d5b265b10" tvg-name="BEIN SPORTS MAX 1 .c" tvg-logo="https://logo.huhu.to/logo?c=1221587067.png" group-title="Sport",BEIN SPORTS MAX 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1221587067c43d5b265b10
+#EXTINF:-1 tvg-id="283243053554cc6eb0a10a" tvg-name="BEIN SPORTS MAX 1 .s" tvg-logo="" group-title="Sport",BEIN SPORTS MAX 1 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/283243053554cc6eb0a10a
 #EXTINF:-1 tvg-id="4071474743dbe8a60b9395" tvg-name="BEIN SPORTS MAX 1 FHD .b" tvg-logo="https://logo.huhu.to/logo?c=4071474743.png" group-title="Sport",BEIN SPORTS MAX 1 FHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4071474743dbe8a60b9395
 #EXTINF:-1 tvg-id="22528142332d275721233" tvg-name="BEIN SPORTS MAX 1 HD .b" tvg-logo="https://logo.huhu.to/logo?c=225281423.png" group-title="Sport",BEIN SPORTS MAX 1 HD .b
@@ -451,8 +413,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/260322414100d6583c3f2b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2238665354014ee25dcf7
 #EXTINF:-1 tvg-id="BloombergHT.tr@SD" tvg-name="BLOOMBERG HT HD .b" tvg-logo="https://i.imgur.com/bmkXfIE.png" group-title="Haber",BLOOMBERG HT HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/236989031b5bce3e87ca9
-#EXTINF:-1 tvg-id="8585683074b88a84fea71" tvg-name="BLOOMBERGHT HD .b" tvg-logo="https://logo.huhu.to/logo?c=858568307.png" group-title="Haber",BLOOMBERGHT HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/8585683074b88a84fea71
+#EXTINF:-1 tvg-id="BloombergHT.tr@SD" tvg-name="BLOOMBERG HT HD+ SD .b" tvg-logo="https://i.imgur.com/bmkXfIE.png" group-title="Haber",BLOOMBERG HT HD+ SD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/2563486225460803675883
 #EXTINF:-1 tvg-id="35781502601487862e9ea4" tvg-name="BLOOMBERGHT RAW .b" tvg-logo="" group-title="Haber",BLOOMBERGHT RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/35781502601487862e9ea4
 #EXTINF:-1 tvg-id="29439742084c66e3a8bcec" tvg-name="BOOMERANG .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Boomerang_2014_logo.svg/960px-Boomerang_2014_logo.svg.png" group-title="Çocuk / Kinder",BOOMERANG .s
@@ -495,8 +457,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1268465409d81cf808f3af
 https://young-dew-a7a9.pandatiger.workers.dev/play/2814908252b478398f430e
 #EXTINF:-1 tvg-id="2781626432d1535952983f" tvg-name="DAS ERSTE .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2781626432d1535952983f
-#EXTINF:-1 tvg-id="259560614200209e77dfb0" tvg-name="DAS ERSTE [SAT] [] .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE [SAT] [] .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/259560614200209e77dfb0
 #EXTINF:-1 tvg-id="5927186007ea11004d769" tvg-name="DAS ERSTE FHD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE FHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/5927186007ea11004d769
 #EXTINF:-1 tvg-id="1065010030680472ac466e" tvg-name="DAS ERSTE HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE HD (BACKUP) .b
@@ -505,8 +465,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1065010030680472ac466e
 https://young-dew-a7a9.pandatiger.workers.dev/play/1340558123bb049b1e5046
 #EXTINF:-1 tvg-id="53342635423e807a3368b" tvg-name="DAS ERSTE HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/53342635423e807a3368b
-#EXTINF:-1 tvg-id="2961846095f79ed41f117c" tvg-name="DAS ERSTE RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2961846095f79ed41f117c
 #EXTINF:-1 tvg-id="357954930153b4bd7a232c" tvg-name="DAZN 1 (MATCH TIME) HD .b" tvg-logo="" group-title="Sport",DAZN 1 (MATCH TIME) HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/357954930153b4bd7a232c
 #EXTINF:-1 tvg-id="7381458303e3123a48188" tvg-name="DAZN 1 -HD (LOCAL) HEVC H.265 .s" tvg-logo="" group-title="Sport",DAZN 1 -HD (LOCAL) HEVC H.265 .s
@@ -515,16 +473,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/7381458303e3123a48188
 https://young-dew-a7a9.pandatiger.workers.dev/play/359348667291192b6c7c1
 #EXTINF:-1 tvg-id="2748335805b3e1e95b64c0" tvg-name="DAZN 1 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",DAZN 1 [LIVE DURING EVENTS ONLY] .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2748335805b3e1e95b64c0
-#EXTINF:-1 tvg-id="53511421482dd4981f3c9" tvg-name="DAZN 1 BAR .c" tvg-logo="https://logo.huhu.to/logo?c=535114214.png" group-title="Sport",DAZN 1 BAR .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/53511421482dd4981f3c9
-#EXTINF:-1 tvg-id="12246902009b743873df7e" tvg-name="DAZN 1 BAR HD .b" tvg-logo="" group-title="Sport",DAZN 1 BAR HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/12246902009b743873df7e
 #EXTINF:-1 tvg-id="268619203755e72d419ed4" tvg-name="DAZN 1 BAR HD+ .b" tvg-logo="" group-title="Sport",DAZN 1 BAR HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/268619203755e72d419ed4
 #EXTINF:-1 tvg-id="2913799408bce7ba7e0545" tvg-name="DAZN 1 BAR HEVC .b" tvg-logo="" group-title="Sport",DAZN 1 BAR HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2913799408bce7ba7e0545
 #EXTINF:-1 tvg-id="2577751922a57769dee12" tvg-name="DAZN 1 BAR RAW .b" tvg-logo="" group-title="Sport",DAZN 1 BAR RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2577751922a57769dee12
+#EXTINF:-1 tvg-id="13464368479556ecce2a7d" tvg-name="DAZN 1 FHD .b" tvg-logo="" group-title="Sport",DAZN 1 FHD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/13464368479556ecce2a7d
 #EXTINF:-1 tvg-id="5875399993445875d3f81" tvg-name="DAZN 1 FHD .c" tvg-logo="https://logo.huhu.to/logo?c=587539999.png" group-title="Sport",DAZN 1 FHD .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/5875399993445875d3f81
 #EXTINF:-1 tvg-id="1772165478c10056b273e1" tvg-name="DAZN 1 HD (BACKUP) .b" tvg-logo="" group-title="Sport",DAZN 1 HD (BACKUP) .b
@@ -535,10 +491,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2267295660ea349d1224ad
 https://young-dew-a7a9.pandatiger.workers.dev/play/819765155d84dfe52625b
 #EXTINF:-1 tvg-id="428364898836a591cccc8d" tvg-name="DAZN 12(MATCH TIME) HD .b" tvg-logo="" group-title="Sport",DAZN 12(MATCH TIME) HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/428364898836a591cccc8d
+#EXTINF:-1 tvg-id="2331252043f0df757b762e" tvg-name="DAZN 18 (MATCH TIME) HD .b" tvg-logo="" group-title="Sport",DAZN 18 (MATCH TIME) HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/2331252043f0df757b762e
 #EXTINF:-1 tvg-id="10019114765c7c95e0cd2c" tvg-name="DAZN 2 (BACKUP) .s" tvg-logo="" group-title="Sport",DAZN 2 (BACKUP) .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/10019114765c7c95e0cd2c
-#EXTINF:-1 tvg-id="292376283806702b7a49e8" tvg-name="DAZN 2 (MATCH TIME) HD .b" tvg-logo="" group-title="Sport",DAZN 2 (MATCH TIME) HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/292376283806702b7a49e8
 #EXTINF:-1 tvg-id="1389052779bbf20119fe07" tvg-name="DAZN 2 .s" tvg-logo="" group-title="Sport",DAZN 2 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1389052779bbf20119fe07
 #EXTINF:-1 tvg-id="64435331593c996f6c0b0" tvg-name="DAZN 2 BAR .c" tvg-logo="https://logo.huhu.to/logo?c=644353315.png" group-title="Sport",DAZN 2 BAR .c
@@ -557,10 +513,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/17750922665f140b1ffc92
 https://young-dew-a7a9.pandatiger.workers.dev/play/445127386f707bde9894a
 #EXTINF:-1 tvg-id="162211919344d3ba16b8d" tvg-name="DAZN 2 HD .b" tvg-logo="" group-title="Sport",DAZN 2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/162211919344d3ba16b8d
-#EXTINF:-1 tvg-id="3349320398ce8ea3c4a5e9" tvg-name="DAZN 5 (MATCH TIME) HD .b" tvg-logo="" group-title="Sport",DAZN 5 (MATCH TIME) HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3349320398ce8ea3c4a5e9
 #EXTINF:-1 tvg-id="1869814941aa982b6bd0a0" tvg-name="DAZN 8 (MATCH TIME) HD .b" tvg-logo="" group-title="Sport",DAZN 8 (MATCH TIME) HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1869814941aa982b6bd0a0
+#EXTINF:-1 tvg-id="14745367131ac295081561" tvg-name="DAZN BAR 1 [] .c" tvg-logo="https://logo.huhu.to/logo?c=1474536713.png" group-title="Sport",DAZN BAR 1 [] .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/14745367131ac295081561
+#EXTINF:-1 tvg-id="30757699713fe2a8880b52" tvg-name="DAZN BAR 1 FHD .s" tvg-logo="" group-title="Sport",DAZN BAR 1 FHD .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/30757699713fe2a8880b52
+#EXTINF:-1 tvg-id="24877931690bfe8def3a83" tvg-name="DAZN BAR 1 HD .s" tvg-logo="" group-title="Sport",DAZN BAR 1 HD .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/24877931690bfe8def3a83
+#EXTINF:-1 tvg-id="3647775466b603a5ae8272" tvg-name="DAZN BAR 2 [] .c" tvg-logo="https://logo.huhu.to/logo?c=3647775466.png" group-title="Sport",DAZN BAR 2 [] .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/3647775466b603a5ae8272
+#EXTINF:-1 tvg-id="239663378269bdd61907bc" tvg-name="DAZN BAR 2 FHD .s" tvg-logo="" group-title="Sport",DAZN BAR 2 FHD .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/239663378269bdd61907bc
 #EXTINF:-1 tvg-id="449294834bcc06273cd76" tvg-name="DAZN BAR 2 HD .s" tvg-logo="" group-title="Sport",DAZN BAR 2 HD .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/449294834bcc06273cd76
 #EXTINF:-1 tvg-id="2746225249b6e4f4888186" tvg-name="DAZN EUROSPORT 2 HD .b" tvg-logo="" group-title="Sport",DAZN EUROSPORT 2 HD .b
@@ -609,12 +573,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3782259264d6cab82e3dd8
 https://young-dew-a7a9.pandatiger.workers.dev/play/4044798259993997801484
 #EXTINF:-1 tvg-id="1476666167a4181c256f0d" tvg-name="DAZN MBL HD .b" tvg-logo="" group-title="Sport",DAZN MBL HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1476666167a4181c256f0d
-#EXTINF:-1 tvg-id="6746639090a3d1d6793e1" tvg-name="DAZN NBA HD .b" tvg-logo="" group-title="Sport",DAZN NBA HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/6746639090a3d1d6793e1
+#EXTINF:-1 tvg-id="201738756c249ff85cdcc" tvg-name="DAZN NFL NETWORK HD .b" tvg-logo="" group-title="Sport",DAZN NFL NETWORK HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/201738756c249ff85cdcc
 #EXTINF:-1 tvg-id="36902120411f1a6426e4d4" tvg-name="DAZN RISE .c" tvg-logo="https://logo.huhu.to/logo?c=3690212041.png" group-title="Sport",DAZN RISE .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/36902120411f1a6426e4d4
-#EXTINF:-1 tvg-id="32335581903240aab79a13" tvg-name="DAZN SPORT 1 HD (BACKUP) .b" tvg-logo="" group-title="Sport",DAZN SPORT 1 HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/32335581903240aab79a13
 #EXTINF:-1 tvg-id="246877111482ccc716074f" tvg-name="DAZN SPORT 2 HD (BACKUP) .b" tvg-logo="" group-title="Sport",DAZN SPORT 2 HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/246877111482ccc716074f
 #EXTINF:-1 tvg-id="29809524343222a6cee254" tvg-name="DAZN SPORT 2 HD .b" tvg-logo="" group-title="Sport",DAZN SPORT 2 HD .b
@@ -659,8 +621,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/896813028168206a0e06b
 https://young-dew-a7a9.pandatiger.workers.dev/play/799884057e7cb32a0489c
 #EXTINF:-1 tvg-id="10475251689d5a1f09d886" tvg-name="DINAMIK YESILCAM .b" tvg-logo="" group-title="Film",DINAMIK YESILCAM .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/10475251689d5a1f09d886
-#EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3051100732f4a7af6ae8fa
 #EXTINF:-1 tvg-id="3079995901347079e2f045" tvg-name="DISCOVERY CHANNEL .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png" group-title="Belgesel / Doku",DISCOVERY CHANNEL .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/3079995901347079e2f045
 #EXTINF:-1 tvg-id="7605752716e77fb86a469" tvg-name="DISCOVERY CHANNEL .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png" group-title="Belgesel / Doku",DISCOVERY CHANNEL .s
@@ -669,14 +629,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/7605752716e77fb86a469
 https://young-dew-a7a9.pandatiger.workers.dev/play/3099080474bc428e85fafc
 #EXTINF:-1 tvg-id="6957057788f10364acdac" tvg-name="DISCOVERY CHANNEL HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png" group-title="Belgesel / Doku",DISCOVERY CHANNEL HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/6957057788f10364acdac
-#EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY HD (BACKUP) .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/46442021441e02fe443c3
 #EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY HD .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4534452785fe7cd39ec5b
-#EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY HD+ (BACKUP) .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY HD+ (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2519756759981fbd4afd64
 #EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY HD+ .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/27612180440913543cbbbd
+#EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY HEVC .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY HEVC .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/3206442366526f8a0fff08
 #EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY RAW .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/198543361f94f4ec8999b
 #EXTINF:-1 tvg-id="10132204470a3c3b52576d" tvg-name="DISCOVERY SCIENCE .c" tvg-logo="https://logo.huhu.to/logo?c=1013220447.png" group-title="Belgesel / Doku",DISCOVERY SCIENCE .c
@@ -701,10 +659,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1161899432db055970dd1d
 https://young-dew-a7a9.pandatiger.workers.dev/play/10440051132b98905e1094
 #EXTINF:-1 tvg-id="3578544716a4cc42d03dcd" tvg-name="DISNEY CHANNEL HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="Çocuk / Kinder",DISNEY CHANNEL HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3578544716a4cc42d03dcd
-#EXTINF:-1 tvg-id="1696935741e8a316dc6f7" tvg-name="DISNEY CHANNEL HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="Çocuk / Kinder",DISNEY CHANNEL HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1696935741e8a316dc6f7
-#EXTINF:-1 tvg-id="3626385852ea37995fb15c" tvg-name="DISNEY CHANNEL RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="Çocuk / Kinder",DISNEY CHANNEL RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3626385852ea37995fb15c
 #EXTINF:-1 tvg-id="396367809728cc9e22209f" tvg-name="DISNEY JR .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/2024_Disney_Jr._Logo.svg" group-title="Çocuk / Kinder",DISNEY JR .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/396367809728cc9e22209f
 #EXTINF:-1 tvg-id="4108765291d43a8a0a8088" tvg-name="DISNEY JR HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/2024_Disney_Jr._Logo.svg" group-title="Çocuk / Kinder",DISNEY JR HD .b
@@ -741,18 +695,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2092513479e79a5733f
 https://young-dew-a7a9.pandatiger.workers.dev/play/1613711614ac3af298d871
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HD (BACKUP) .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1988924073cc27ed47d566
-#EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HD .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/7317968734462dc6304a4
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HD+ .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/662162280d76be75a18a5
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HEVC .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1224726847974efb8f8e99
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 RAW .b" tvg-logo="" group-title="Sport",EUROSPORT 1 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2285278357a49e64a231db
-#EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 .b" tvg-logo="" group-title="Sport",EUROSPORT 2 .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/4173021742eee0d30f718c
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 .c" tvg-logo="https://logo.huhu.to/logo?c=2307325429.png" group-title="Sport",EUROSPORT 2 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2307325429068c8e128ae6
+#EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 .c" tvg-logo="https://logo.huhu.to/logo?c=259749288.png" group-title="Sport",EUROSPORT 2 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/2597492881017e8562bec
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 .s" tvg-logo="" group-title="Sport",EUROSPORT 2 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/223746421983f4d7bb23cf
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 FHD .b" tvg-logo="" group-title="Sport",EUROSPORT 2 FHD .b
@@ -761,8 +713,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/5770885350ee8b0ed69a6
 https://young-dew-a7a9.pandatiger.workers.dev/play/136650226725e969c2837
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 HD (BACKUP 3) .b" tvg-logo="" group-title="Sport",EUROSPORT 2 HD (BACKUP 3) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/327953979929ef68e4478c
-#EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 HD (BACKUP) .b" tvg-logo="" group-title="Sport",EUROSPORT 2 HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/622250285676d0314d4af
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 HD .b" tvg-logo="" group-title="Sport",EUROSPORT 2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/276937585056ddb569c6ab
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c606281" tvg-name="EUROSPORT 2 HD+ .b" tvg-logo="" group-title="Sport",EUROSPORT 2 HD+ .b
@@ -795,6 +745,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2789130686711975bca9f
 https://young-dew-a7a9.pandatiger.workers.dev/play/7717380127de6c0e762bd
 #EXTINF:-1 tvg-id="1784656716a5a802f1810a" tvg-name="EUROSPORT 360 HD 16 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 16 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1784656716a5a802f1810a
+#EXTINF:-1 tvg-id="14148476112478912feaec" tvg-name="EUROSPORT 360 HD 2 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 2 .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/14148476112478912feaec
+#EXTINF:-1 tvg-id="17650784759cc447e2a4bc" tvg-name="EUROSPORT 360 HD 3 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 3 .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/17650784759cc447e2a4bc
 #EXTINF:-1 tvg-id="36755317391a3736695ded" tvg-name="EUROSPORT 360 HD 4 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 4 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/36755317391a3736695ded
 #EXTINF:-1 tvg-id="38663619638634dbe0b8ca" tvg-name="EUROSPORT 360 HD 5 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 5 .b
@@ -803,6 +757,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/38663619638634dbe0b8ca
 https://young-dew-a7a9.pandatiger.workers.dev/play/2715056827a74c954bc614
 #EXTINF:-1 tvg-id="2629063435e21d72406265" tvg-name="EUROSPORT 360 HD 7 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 7 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2629063435e21d72406265
+#EXTINF:-1 tvg-id="518309082e3dac33da059" tvg-name="EUROSPORT 360 HD 8 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 8 .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/518309082e3dac33da059
 #EXTINF:-1 tvg-id="595914090ca0bbf8798b4" tvg-name="EUROSPORT 360 HD 9 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 9 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/595914090ca0bbf8798b4
 #EXTINF:-1 tvg-id="3793200644fd418f955402" tvg-name="EUROSPORT1 HD .b" tvg-logo="https://logo.huhu.to/logo?c=3793200644.png" group-title="Sport",EUROSPORT1 HD .b
@@ -933,8 +889,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/32253354543986c7294970
 https://young-dew-a7a9.pandatiger.workers.dev/play/464378170623140c01606
 #EXTINF:-1 tvg-id="HaberturkTV.tr@SD" tvg-name="HABER TURK HD .b" tvg-logo="https://logo.huhu.to/logo?c=2360854158.png" group-title="Haber",HABER TURK HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2360854158813051c3c887
-#EXTINF:-1 tvg-id="HaberturkTV.tr@SD" tvg-name="HABER TURK HEVC .b" tvg-logo="" group-title="Haber",HABER TURK HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1857563183bcf218ac2da8
 #EXTINF:-1 tvg-id="24027723806f7d250c32c3" tvg-name="HABERTURK .c" tvg-logo="https://logo.huhu.to/logo?c=2402772380.png" group-title="Haber",HABERTURK .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/24027723806f7d250c32c3
 #EXTINF:-1 tvg-id="1470199900779ccbec63ec" tvg-name="HABERTURK HD .b" tvg-logo="https://logo.huhu.to/logo?c=1470199900.png" group-title="Haber",HABERTURK HD .b
@@ -957,8 +911,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/24153315684694fb309dba
 https://young-dew-a7a9.pandatiger.workers.dev/play/420748756258a17d4693fc
 #EXTINF:-1 tvg-id="39392835407eada78e48ee" tvg-name="KABEL 1 CLASSICS .b" tvg-logo="" group-title="Deutschland",KABEL 1 CLASSICS .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/39392835407eada78e48ee
-#EXTINF:-1 tvg-id="423558065a3358f3883a8" tvg-name="KABEL 1 CLASSICS .s" tvg-logo="" group-title="Deutschland",KABEL 1 CLASSICS .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/423558065a3358f3883a8
 #EXTINF:-1 tvg-id="648723164316a8d26876f" tvg-name="KABEL 1 CLASSICS HD .b" tvg-logo="" group-title="Deutschland",KABEL 1 CLASSICS HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/648723164316a8d26876f
 #EXTINF:-1 tvg-id="2372195442a126e78e75a4" tvg-name="KABEL 1 DOKU .s" tvg-logo="" group-title="Deutschland",KABEL 1 DOKU .s
@@ -1017,8 +969,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3897412802d4338ee87b0a
 https://young-dew-a7a9.pandatiger.workers.dev/play/817959285c682bf3e522b
 #EXTINF:-1 tvg-id="KanalD.tr@SD" tvg-name="KANAL D .c" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/38723286086ff52dd7cac
-#EXTINF:-1 tvg-id="KanalD.tr@SD" tvg-name="KANAL D HD .b" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/113044193323e36b85a648
 #EXTINF:-1 tvg-id="KanalD.tr@SD" tvg-name="KANAL D HEVC .b" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/41138222975f1bf462585f
 #EXTINF:-1 tvg-id="KanalD.tr@SD" tvg-name="KANAL D RAW .b" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D RAW .b
@@ -1039,6 +989,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/197897166178b85d3ebca6
 https://young-dew-a7a9.pandatiger.workers.dev/play/3303484794c62142ac7ba2
 #EXTINF:-1 tvg-id="162124518c6ac036885e3" tvg-name="KIKA HD .b" tvg-logo="https://i.imgur.com/vZdNp5S.png" group-title="Çocuk / Kinder",KIKA HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/162124518c6ac036885e3
+#EXTINF:-1 tvg-id="3645283043839c06f50d86" tvg-name="KIKA HEVC .b" tvg-logo="https://i.imgur.com/vZdNp5S.png" group-title="Çocuk / Kinder",KIKA HEVC .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/3645283043839c06f50d86
 #EXTINF:-1 tvg-id="3186688793d82687fd0609" tvg-name="KINGBOX ACTION .b" tvg-logo="" group-title="Film",KINGBOX ACTION .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3186688793d82687fd0609
 #EXTINF:-1 tvg-id="223628794687658c254346" tvg-name="LALEGUL TV .b" tvg-logo="https://i.imgur.com/wwCysFs.png" group-title="Dini",LALEGUL TV .b
@@ -1055,22 +1007,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3309481234d6bfa8dd5880
 https://young-dew-a7a9.pandatiger.workers.dev/play/10782221721cd1db332b6b
 #EXTINF:-1 tvg-id="LiderHaber.tr@SD" tvg-name="LIDER HABER .c" tvg-logo="https://i.imgur.com/5B42KwY.png" group-title="Haber",LIDER HABER .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/70369886837bb68700663
-#EXTINF:-1 tvg-id="2683029961e9f853e1cccf" tvg-name="MAGENTA SPORT 1 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 1 .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2683029961e9f853e1cccf
 #EXTINF:-1 tvg-id="3432695221f8e5de131638" tvg-name="MAGENTA SPORT 1 .c" tvg-logo="https://logo.huhu.to/logo?c=3432695221.png" group-title="Sport",MAGENTA SPORT 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/3432695221f8e5de131638
 #EXTINF:-1 tvg-id="1810523752094405320ffe" tvg-name="MAGENTA SPORT 1 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 1 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1810523752094405320ffe
-#EXTINF:-1 tvg-id="143875012688d67c96d41d" tvg-name="MAGENTA SPORT 10 .c" tvg-logo="https://logo.huhu.to/logo?c=1438750126.png" group-title="Sport",MAGENTA SPORT 10 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/143875012688d67c96d41d
-#EXTINF:-1 tvg-id="21487208329b0862cf0f3d" tvg-name="MAGENTA SPORT 10 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 10 [LIVE DURING EVENTS ONLY] .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/21487208329b0862cf0f3d
 #EXTINF:-1 tvg-id="203199300471dc2e28548c" tvg-name="MAGENTA SPORT 10 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 10 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/203199300471dc2e28548c
-#EXTINF:-1 tvg-id="175542991835fb3432a2f5" tvg-name="MAGENTA SPORT 11 .c" tvg-logo="https://logo.huhu.to/logo?c=1755429918.png" group-title="Sport",MAGENTA SPORT 11 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/175542991835fb3432a2f5
-#EXTINF:-1 tvg-id="2398423057756a9b2cddb0" tvg-name="MAGENTA SPORT 11 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 11 [LIVE DURING EVENTS ONLY] .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/2398423057756a9b2cddb0
 #EXTINF:-1 tvg-id="30487183862caad1d63476" tvg-name="MAGENTA SPORT 11 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 11 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/30487183862caad1d63476
 #EXTINF:-1 tvg-id="7886455823d314caad56e" tvg-name="MAGENTA SPORT 12 .c" tvg-logo="https://logo.huhu.to/logo?c=788645582.png" group-title="Sport",MAGENTA SPORT 12 .c
@@ -1085,16 +1027,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4153591631d99d75ed3293
 https://young-dew-a7a9.pandatiger.workers.dev/play/26886275669823d5bb6095
 #EXTINF:-1 tvg-id="4250390102ba7f9d7be353" tvg-name="MAGENTA SPORT 14 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 14 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4250390102ba7f9d7be353
-#EXTINF:-1 tvg-id="263619247831a32a5a85a5" tvg-name="MAGENTA SPORT 15 .c" tvg-logo="https://logo.huhu.to/logo?c=2636192478.png" group-title="Sport",MAGENTA SPORT 15 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/263619247831a32a5a85a5
 #EXTINF:-1 tvg-id="8387171288aebd8cb6c92" tvg-name="MAGENTA SPORT 15 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 15 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/8387171288aebd8cb6c92
 #EXTINF:-1 tvg-id="366591182267fb49b0ba99" tvg-name="MAGENTA SPORT 16 .c" tvg-logo="https://logo.huhu.to/logo?c=3665911822.png" group-title="Sport",MAGENTA SPORT 16 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/366591182267fb49b0ba99
 #EXTINF:-1 tvg-id="3211970859d3ea1ffadc00" tvg-name="MAGENTA SPORT 16 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 16 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3211970859d3ea1ffadc00
-#EXTINF:-1 tvg-id="3890301374bb35aed1dbc5" tvg-name="MAGENTA SPORT 17 .c" tvg-logo="https://logo.huhu.to/logo?c=3890301374.png" group-title="Sport",MAGENTA SPORT 17 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/3890301374bb35aed1dbc5
 #EXTINF:-1 tvg-id="19435872538fbe17cd8dc0" tvg-name="MAGENTA SPORT 17 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 17 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/19435872538fbe17cd8dc0
 #EXTINF:-1 tvg-id="17061556318f1778ae7b87" tvg-name="MAGENTA SPORT 18 .c" tvg-logo="https://logo.huhu.to/logo?c=1706155631.png" group-title="Sport",MAGENTA SPORT 18 .c
@@ -1111,6 +1049,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/74305452074b371b4fb35
 https://young-dew-a7a9.pandatiger.workers.dev/play/3545622272c7a59aad977f
 #EXTINF:-1 tvg-id="38448401058066b4e83ced" tvg-name="MAGENTA SPORT 3 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 3 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/38448401058066b4e83ced
+#EXTINF:-1 tvg-id="3059390165e8da43c8870c" tvg-name="MAGENTA SPORT 3 .c" tvg-logo="https://logo.huhu.to/logo?c=3059390165.png" group-title="Sport",MAGENTA SPORT 3 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/3059390165e8da43c8870c
 #EXTINF:-1 tvg-id="1460356793a876677947a7" tvg-name="MAGENTA SPORT 4 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 4 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1460356793a876677947a7
 #EXTINF:-1 tvg-id="75123397177af67c06f5" tvg-name="MAGENTA SPORT 4 .c" tvg-logo="https://logo.huhu.to/logo?c=75123397.png" group-title="Sport",MAGENTA SPORT 4 .c
@@ -1127,22 +1067,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2657796264bdb87c7b7d2e
 https://young-dew-a7a9.pandatiger.workers.dev/play/768284121965d97f6be4d
 #EXTINF:-1 tvg-id="21261254776f2e028c1d41" tvg-name="MAGENTA SPORT 6 .c" tvg-logo="https://logo.huhu.to/logo?c=2126125477.png" group-title="Sport",MAGENTA SPORT 6 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/21261254776f2e028c1d41
-#EXTINF:-1 tvg-id="2796575778ee303859a15" tvg-name="MAGENTA SPORT 7 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 7 .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2796575778ee303859a15
+#EXTINF:-1 tvg-id="1138372629ac781aad5910" tvg-name="MAGENTA SPORT 7 .c" tvg-logo="https://logo.huhu.to/logo?c=1138372629.png" group-title="Sport",MAGENTA SPORT 7 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/1138372629ac781aad5910
+#EXTINF:-1 tvg-id="38363842009ce71f63f846" tvg-name="MAGENTA SPORT 7 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 7 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/38363842009ce71f63f846
 #EXTINF:-1 tvg-id="2465967032f0f89c1de456" tvg-name="MAGENTA SPORT 8 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 8 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2465967032f0f89c1de456
-#EXTINF:-1 tvg-id="1727661081b32117de00ca" tvg-name="MAGENTA SPORT 8 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 8 .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/1727661081b32117de00ca
 #EXTINF:-1 tvg-id="2946204168537d9b9c4f18" tvg-name="MAGENTA SPORT 9 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 9 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2946204168537d9b9c4f18
-#EXTINF:-1 tvg-id="4243230324ec2649ba522d" tvg-name="MAGENTA SPORT 9 .c" tvg-logo="https://logo.huhu.to/logo?c=4243230324.png" group-title="Sport",MAGENTA SPORT 9 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/4243230324ec2649ba522d
 #EXTINF:-1 tvg-id="1536830889cccec276305e" tvg-name="MAGENTA SPORT 9 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 9 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1536830889cccec276305e
 #EXTINF:-1 tvg-id="400277488812c656e5864a" tvg-name="MAGENTA SPORT GOLF 1 .c" tvg-logo="" group-title="Sport",MAGENTA SPORT GOLF 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/400277488812c656e5864a
-#EXTINF:-1 tvg-id="283882437670f44f8e4ee6" tvg-name="MAGENTA SPORT GOLF 2 .c" tvg-logo="" group-title="Sport",MAGENTA SPORT GOLF 2 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/283882437670f44f8e4ee6
 #EXTINF:-1 tvg-id="19211708241b5fda0abe88" tvg-name="MAX STAR WARS .c" tvg-logo="" group-title="Ulusal (TR)",MAX STAR WARS .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/19211708241b5fda0abe88
 #EXTINF:-1 tvg-id="22309682628a9ba731b044" tvg-name="MEDYA HABER .c" tvg-logo="https://i.imgur.com/l1E2Pha.png" group-title="Haber",MEDYA HABER .c
@@ -1187,12 +1123,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/35524895249f9dd51459ac
 https://young-dew-a7a9.pandatiger.workers.dev/play/28987622303931cf05d007
 #EXTINF:-1 tvg-id="3447272825ed5057ae00be" tvg-name="N-TV HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/N-tv_logo-september2017.svg/960px-N-tv_logo-september2017.svg.png" group-title="Deutschland",N-TV HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3447272825ed5057ae00be
+#EXTINF:-1 tvg-id="2784325436b5ece0f9ca19" tvg-name="N-TV HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/N-tv_logo-september2017.svg/960px-N-tv_logo-september2017.svg.png" group-title="Deutschland",N-TV HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/2784325436b5ece0f9ca19
 #EXTINF:-1 tvg-id="26331646254c0e969dd54f" tvg-name="N-TV HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/N-tv_logo-september2017.svg/960px-N-tv_logo-september2017.svg.png" group-title="Deutschland",N-TV HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/26331646254c0e969dd54f
 #EXTINF:-1 tvg-id="867416236edb2cadd608c" tvg-name="N-TV RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/N-tv_logo-september2017.svg/960px-N-tv_logo-september2017.svg.png" group-title="Deutschland",N-TV RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/867416236edb2cadd608c
-#EXTINF:-1 tvg-id="15678663720fe98cdcfe03" tvg-name="N24 DOKU .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/N24Doku.svg/960px-N24Doku.svg.png" group-title="Deutschland",N24 DOKU .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/15678663720fe98cdcfe03
+#EXTINF:-1 tvg-id="960731050c8e04cfcdb76" tvg-name="N24 DOCU .b" tvg-logo="" group-title="Deutschland",N24 DOCU .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/960731050c8e04cfcdb76
 #EXTINF:-1 tvg-id="1521199376fd0f2fec5a2c" tvg-name="N24 DOKU .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/N24Doku.svg/960px-N24Doku.svg.png" group-title="Deutschland",N24 DOKU .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1521199376fd0f2fec5a2c
 #EXTINF:-1 tvg-id="3084650651e1ec9a0dbc4f" tvg-name="N24 DOKU HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/N24Doku.svg/960px-N24Doku.svg.png" group-title="Deutschland",N24 DOKU HD .b
@@ -1225,8 +1163,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/31051840561fc5d2fb58a5
 https://young-dew-a7a9.pandatiger.workers.dev/play/919108696a1b98997373b
 #EXTINF:-1 tvg-id="9989683045db00316f92d" tvg-name="NOW TV HD (H265) .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal (TR)",NOW TV HD (H265) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/9989683045db00316f92d
-#EXTINF:-1 tvg-id="161305206673e7c4b7739" tvg-name="NOW TV HD .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal (TR)",NOW TV HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/161305206673e7c4b7739
 #EXTINF:-1 tvg-id="117018314962b4e9489718" tvg-name="NOW TV HEVC .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal (TR)",NOW TV HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/117018314962b4e9489718
 #EXTINF:-1 tvg-id="2769713183b7a2cf8dde9b" tvg-name="NOW TV RAW .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal (TR)",NOW TV RAW .b
@@ -1283,8 +1219,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/429612901b967d5473621
 https://young-dew-a7a9.pandatiger.workers.dev/play/30851987644ad37427b4da
 #EXTINF:-1 tvg-id="2631956300d8a6a6b2de1e" tvg-name="NITRO RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png" group-title="Deutschland",NITRO RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2631956300d8a6a6b2de1e
-#EXTINF:-1 tvg-id="445978762fc020eab799c" tvg-name="ORF SPORT .b" tvg-logo="" group-title="Sport",ORF SPORT .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/445978762fc020eab799c
 #EXTINF:-1 tvg-id="3440003439fb524992de12" tvg-name="ORF SPORT+ .c" tvg-logo="https://logo.huhu.to/logo?c=3440003439.png" group-title="Sport",ORF SPORT+ .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/3440003439fb524992de12
 #EXTINF:-1 tvg-id="3251653121978eb399a699" tvg-name="ORF SPORT+ .s" tvg-logo="" group-title="Sport",ORF SPORT+ .s
@@ -1293,20 +1227,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3251653121978eb399a699
 https://young-dew-a7a9.pandatiger.workers.dev/play/1960168154f6946cfaefc9
 #EXTINF:-1 tvg-id="42015485361f438f2db763" tvg-name="PAL STATION YABANCI M ZIK .b" tvg-logo="" group-title="Belgesel / Doku",PAL STATION YABANCI M ZIK .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/42015485361f438f2db763
-#EXTINF:-1 tvg-id="3025369861f4cc97349c33" tvg-name="PHOENIX (BACKUP 2) .b" tvg-logo="https://i.imgur.com/T1532t9.png" group-title="Deutschland",PHOENIX (BACKUP 2) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3025369861f4cc97349c33
-#EXTINF:-1 tvg-id="44467064780636709b6de" tvg-name="PHOENIX (BACKUP) .b" tvg-logo="https://i.imgur.com/T1532t9.png" group-title="Deutschland",PHOENIX (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/44467064780636709b6de
-#EXTINF:-1 tvg-id="1320702074c09c0eddb66" tvg-name="PHOENIX .b" tvg-logo="https://i.imgur.com/T1532t9.png" group-title="Deutschland",PHOENIX .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1320702074c09c0eddb66
 #EXTINF:-1 tvg-id="317162227544161bb7193c" tvg-name="PHOENIX .c" tvg-logo="https://i.imgur.com/T1532t9.png" group-title="Deutschland",PHOENIX .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/317162227544161bb7193c
 #EXTINF:-1 tvg-id="1724125520186fdb2281ac" tvg-name="PHOENIX .s" tvg-logo="https://i.imgur.com/T1532t9.png" group-title="Deutschland",PHOENIX .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1724125520186fdb2281ac
 #EXTINF:-1 tvg-id="215481388a0059a30c150" tvg-name="PHOENIX HD .b" tvg-logo="https://i.imgur.com/T1532t9.png" group-title="Deutschland",PHOENIX HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/215481388a0059a30c150
-#EXTINF:-1 tvg-id="314057941084097b270b95" tvg-name="PLUTO TV N24 DOKU .c" tvg-logo="" group-title="Deutschland",PLUTO TV N24 DOKU .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/314057941084097b270b95
 #EXTINF:-1 tvg-id="1299417291527618a1ccab" tvg-name="POWER FM YABANCI M ZIK .b" tvg-logo="" group-title="Belgesel / Doku",POWER FM YABANCI M ZIK .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1299417291527618a1ccab
 #EXTINF:-1 tvg-id="3999710514ace24ffdde1d" tvg-name="PRO7 FUN HD .b" tvg-logo="" group-title="Deutschland",PRO7 FUN HD .b
@@ -1339,8 +1265,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/179652799872c7ac652f29
 https://young-dew-a7a9.pandatiger.workers.dev/play/20247083285b9f9dba3754
 #EXTINF:-1 tvg-id="2213723247f4100386712f" tvg-name="PROSIEBEN MAXX HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/ProSieben_MAXX_Logo.svg/960px-ProSieben_MAXX_Logo.svg.png" group-title="Deutschland",PROSIEBEN MAXX HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2213723247f4100386712f
-#EXTINF:-1 tvg-id="313795631139b3f3245bfe" tvg-name="PROTURK ACTION .c" tvg-logo="" group-title="Film",PROTURK ACTION .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/313795631139b3f3245bfe
 #EXTINF:-1 tvg-id="6325334db60702466d4" tvg-name="PROTURK BILIM KURGU .c" tvg-logo="" group-title="Film",PROTURK BILIM KURGU .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/6325334db60702466d4
 #EXTINF:-1 tvg-id="4028396893e0f2a47263a9" tvg-name="PROTURK FANTASTIC .c" tvg-logo="" group-title="Film",PROTURK FANTASTIC .c
@@ -1349,16 +1273,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4028396893e0f2a47263a9
 https://young-dew-a7a9.pandatiger.workers.dev/play/129320848377c2dbe97032
 #EXTINF:-1 tvg-id="12454754741085c372bdf7" tvg-name="PROTURK KEMAL SUNAL .c" tvg-logo="" group-title="Film",PROTURK KEMAL SUNAL .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/12454754741085c372bdf7
-#EXTINF:-1 tvg-id="119424713164337b55eaf8" tvg-name="PROTURK KORKU .c" tvg-logo="" group-title="Film",PROTURK KORKU .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/119424713164337b55eaf8
 #EXTINF:-1 tvg-id="1869786551e81df83971f4" tvg-name="PROTURK LOCA 1 .c" tvg-logo="" group-title="Film",PROTURK LOCA 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1869786551e81df83971f4
 #EXTINF:-1 tvg-id="684906343ecf22d87e7ec" tvg-name="PROTURK LOCA 2 .c" tvg-logo="" group-title="Film",PROTURK LOCA 2 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/684906343ecf22d87e7ec
 #EXTINF:-1 tvg-id="50689293e297d5f4e349" tvg-name="PROTURK MACERA .c" tvg-logo="" group-title="Film",PROTURK MACERA .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/50689293e297d5f4e349
-#EXTINF:-1 tvg-id="16621186347dae95310a53" tvg-name="PROTURK ORJINAL .c" tvg-logo="" group-title="Film",PROTURK ORJINAL .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/16621186347dae95310a53
 #EXTINF:-1 tvg-id="29500707143677065f3b41" tvg-name="PROTURK UZAKDOĞU .c" tvg-logo="" group-title="Film",PROTURK UZAKDOĞU .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/29500707143677065f3b41
 #EXTINF:-1 tvg-id="25670428523b6df4abb345" tvg-name="PROTURK VIZYON .c" tvg-logo="" group-title="Film",PROTURK VIZYON .c
@@ -1381,8 +1301,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2166014818f06e94d16d17
 https://young-dew-a7a9.pandatiger.workers.dev/play/17583675311eae047c89de
 #EXTINF:-1 tvg-id="3348091094bfaca3032ba6" tvg-name="RTL 2 RAW .b" tvg-logo="" group-title="Deutschland",RTL 2 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3348091094bfaca3032ba6
-#EXTINF:-1 tvg-id="3229717765a860ba5dc59e" tvg-name="RTL AUSTRIA .b" tvg-logo="" group-title="Deutschland",RTL AUSTRIA .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3229717765a860ba5dc59e
 #EXTINF:-1 tvg-id="1658792613bb9ee848c7fe" tvg-name="RTL COMEDY .c" tvg-logo="" group-title="Deutschland",RTL COMEDY .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1658792613bb9ee848c7fe
 #EXTINF:-1 tvg-id="332355097640c831fcf779" tvg-name="RTL CRIME .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5c/RTL_Crime_%28Netherlands%29_%282023%2C_stacked%29.svg" group-title="Deutschland",RTL CRIME .b
@@ -1397,8 +1315,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2722508906017f063d63c9
 https://young-dew-a7a9.pandatiger.workers.dev/play/1648424420b600137c4154
 #EXTINF:-1 tvg-id="339544109e7291a93ae41" tvg-name="RTL CRIME HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5c/RTL_Crime_%28Netherlands%29_%282023%2C_stacked%29.svg" group-title="Deutschland",RTL CRIME HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/339544109e7291a93ae41
-#EXTINF:-1 tvg-id="31843579490ff02fcab1db" tvg-name="RTL HD (BACKUP) .b" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Deutschland",RTL HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/31843579490ff02fcab1db
 #EXTINF:-1 tvg-id="272895919526df05345ef7" tvg-name="RTL HD .b" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Deutschland",RTL HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/272895919526df05345ef7
 #EXTINF:-1 tvg-id="1833181878c93436d89ea2" tvg-name="RTL HD .s" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Deutschland",RTL HD .s
@@ -1439,8 +1355,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4290175185c404b0f5ac88
 https://young-dew-a7a9.pandatiger.workers.dev/play/12446855250c05653d3aec
 #EXTINF:-1 tvg-id="11709625666201defdf9b3" tvg-name="RTL PASSION HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/RTL_Passion_Logo_2021.svg/960px-RTL_Passion_Logo_2021.svg.png" group-title="Deutschland",RTL PASSION HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/11709625666201defdf9b3
-#EXTINF:-1 tvg-id="42133787714136bbfb99ed" tvg-name="RTL PLUS AUSTRIA .b" tvg-logo="" group-title="Deutschland",RTL PLUS AUSTRIA .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/42133787714136bbfb99ed
 #EXTINF:-1 tvg-id="2324281646a6c3a182bfa" tvg-name="RTL RAW .b" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Deutschland",RTL RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2324281646a6c3a182bfa
 #EXTINF:-1 tvg-id="14145816676732236872e3" tvg-name="RTL SHOPPING QUEEN .c" tvg-logo="" group-title="Deutschland",RTL SHOPPING QUEEN .c
@@ -1453,8 +1367,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1198260913079cb7e1caac
 https://young-dew-a7a9.pandatiger.workers.dev/play/677761203e3b8be588e5c
 #EXTINF:-1 tvg-id="28775826376d4353b0d91d" tvg-name="RTL ZWEI .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/28775826376d4353b0d91d
+#EXTINF:-1 tvg-id="289174175313063e65f7dc" tvg-name="RTL ZWEI .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/289174175313063e65f7dc
 #EXTINF:-1 tvg-id="160203873fc8ecba6377a" tvg-name="RTL ZWEI HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/160203873fc8ecba6377a
+#EXTINF:-1 tvg-id="2496619116dae91d7b1dc6" tvg-name="RTL+ EVENT 3 .c" tvg-logo="" group-title="Deutschland",RTL+ EVENT 3 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/2496619116dae91d7b1dc6
+#EXTINF:-1 tvg-id="4623953409d29fe46912c" tvg-name="RTL+ EVENT 5 .c" tvg-logo="" group-title="Deutschland",RTL+ EVENT 5 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/4623953409d29fe46912c
 #EXTINF:-1 tvg-id="39761015397532573b6395" tvg-name="RTL+ HUNDKATZEMAUS .c" tvg-logo="" group-title="Deutschland",RTL+ HUNDKATZEMAUS .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/39761015397532573b6395
 #EXTINF:-1 tvg-id="3016326030e286a931e4af" tvg-name="RTL+ LIVE 2 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 2 .b
@@ -1463,6 +1383,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3016326030e286a931e4af
 https://young-dew-a7a9.pandatiger.workers.dev/play/2393461310c152bff96f35
 #EXTINF:-1 tvg-id="10156477906a0e7f7acb8f" tvg-name="RTL+ LIVE 4 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 4 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/10156477906a0e7f7acb8f
+#EXTINF:-1 tvg-id="32090014dc4651921c2a" tvg-name="RTL+ LIVE 5 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 5 .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/32090014dc4651921c2a
 #EXTINF:-1 tvg-id="117924590287136ddbffc9" tvg-name="RTL+ LIVE 6 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 6 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/117924590287136ddbffc9
 #EXTINF:-1 tvg-id="84001033245c6d5ecaf4a" tvg-name="RTL+ SPORT EVENT 1 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 1 (BACKUP) .b
@@ -1471,50 +1393,34 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/84001033245c6d5ecaf4a
 https://young-dew-a7a9.pandatiger.workers.dev/play/1853551406e4d58cd366f9
 #EXTINF:-1 tvg-id="20248491742c30cbaa06a4" tvg-name="RTL+ SPORT EVENT 10 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 10 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/20248491742c30cbaa06a4
+#EXTINF:-1 tvg-id="332619566454d37b4b3c0b" tvg-name="RTL+ SPORT EVENT 10 .c" tvg-logo="https://logo.huhu.to/logo?c=3326195664.png" group-title="Sport",RTL+ SPORT EVENT 10 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/332619566454d37b4b3c0b
 #EXTINF:-1 tvg-id="131600781562990e7747ef" tvg-name="RTL+ SPORT EVENT 2 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 2 (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/131600781562990e7747ef
 #EXTINF:-1 tvg-id="702188030d3d5a2294bd5" tvg-name="RTL+ SPORT EVENT 2 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 2 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/702188030d3d5a2294bd5
 #EXTINF:-1 tvg-id="48717032d63fa4c0d53b" tvg-name="RTL+ SPORT EVENT 2 .c" tvg-logo="https://logo.huhu.to/logo?c=48717032.png" group-title="Sport",RTL+ SPORT EVENT 2 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/48717032d63fa4c0d53b
-#EXTINF:-1 tvg-id="33688809570750f8b011a4" tvg-name="RTL+ SPORT EVENT 2 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 2 [LIVE DURING EVENTS ONLY] .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/33688809570750f8b011a4
 #EXTINF:-1 tvg-id="3548335857138d7fcf15f9" tvg-name="RTL+ SPORT EVENT 3 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 3 (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3548335857138d7fcf15f9
-#EXTINF:-1 tvg-id="34777505440157928131d" tvg-name="RTL+ SPORT EVENT 3 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 3 .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/34777505440157928131d
 #EXTINF:-1 tvg-id="30651771375f472c894398" tvg-name="RTL+ SPORT EVENT 4 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 4 (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/30651771375f472c894398
 #EXTINF:-1 tvg-id="2795142238f9a0bd5eda07" tvg-name="RTL+ SPORT EVENT 4 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 4 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2795142238f9a0bd5eda07
-#EXTINF:-1 tvg-id="237657530447038cc41979" tvg-name="RTL+ SPORT EVENT 4 .c" tvg-logo="https://logo.huhu.to/logo?c=2376575304.png" group-title="Sport",RTL+ SPORT EVENT 4 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/237657530447038cc41979
-#EXTINF:-1 tvg-id="7338079436fdc2174d328" tvg-name="RTL+ SPORT EVENT 5 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 5 (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/7338079436fdc2174d328
-#EXTINF:-1 tvg-id="2616874478a509fa680f79" tvg-name="RTL+ SPORT EVENT 5 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 5 .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2616874478a509fa680f79
-#EXTINF:-1 tvg-id="296586469609a0168e166b" tvg-name="RTL+ SPORT EVENT 5 .c" tvg-logo="https://logo.huhu.to/logo?c=2965864696.png" group-title="Sport",RTL+ SPORT EVENT 5 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/296586469609a0168e166b
-#EXTINF:-1 tvg-id="1474044060b6823790050c" tvg-name="RTL+ SPORT EVENT 6 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 6 (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1474044060b6823790050c
+#EXTINF:-1 tvg-id="37661289064df1bbad44e8" tvg-name="RTL+ SPORT EVENT 5 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 5 [LIVE DURING EVENTS ONLY] .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/37661289064df1bbad44e8
 #EXTINF:-1 tvg-id="3696897854d84c4123c6a6" tvg-name="RTL+ SPORT EVENT 6 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 6 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3696897854d84c4123c6a6
-#EXTINF:-1 tvg-id="415078660068d2ad057fe3" tvg-name="RTL+ SPORT EVENT 6 .c" tvg-logo="https://logo.huhu.to/logo?c=4150786600.png" group-title="Sport",RTL+ SPORT EVENT 6 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/415078660068d2ad057fe3
 #EXTINF:-1 tvg-id="3778676366564d8c972c55" tvg-name="RTL+ SPORT EVENT 7 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 7 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3778676366564d8c972c55
 #EXTINF:-1 tvg-id="33895105523740d7653896" tvg-name="RTL+ SPORT EVENT 7 .c" tvg-logo="https://logo.huhu.to/logo?c=3389510552.png" group-title="Sport",RTL+ SPORT EVENT 7 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/33895105523740d7653896
-#EXTINF:-1 tvg-id="4256514216771b0ec2610a" tvg-name="RTL+ SPORT EVENT 7 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 7 [LIVE DURING EVENTS ONLY] .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/4256514216771b0ec2610a
 #EXTINF:-1 tvg-id="1667928415baf9335e8d2a" tvg-name="RTL+ SPORT EVENT 8 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 8 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1667928415baf9335e8d2a
 #EXTINF:-1 tvg-id="1213678665cc326e411b7b" tvg-name="RTL+ SPORT EVENT 8 .c" tvg-logo="https://logo.huhu.to/logo?c=1213678665.png" group-title="Sport",RTL+ SPORT EVENT 8 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1213678665cc326e411b7b
 #EXTINF:-1 tvg-id="1577761007d7d4999aaf71" tvg-name="RTL+ SPORT EVENT 9 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 9 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1577761007d7d4999aaf71
-#EXTINF:-1 tvg-id="1966566905464ef6d66f17" tvg-name="RTL+ SPORT EVENT 9 .c" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 9 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/1966566905464ef6d66f17
 #EXTINF:-1 tvg-id="1326034592a6d1e4389d07" tvg-name="RTL2 AUSTRIA .b" tvg-logo="" group-title="Deutschland",RTL2 AUSTRIA .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1326034592a6d1e4389d07
 #EXTINF:-1 tvg-id="SSport.tr@SD" tvg-name="S SPORT .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/a9/S_Sport_logo1.png" group-title="Sport",S SPORT .c
@@ -1545,20 +1451,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/919993168ebbbfbeecc50
 https://young-dew-a7a9.pandatiger.workers.dev/play/3526620942f8fbdb0fb7ad
 #EXTINF:-1 tvg-id="327670923957be380e0892" tvg-name="S-SPORT PLUS 2 MACZAMANI .b" tvg-logo="" group-title="Sport",S-SPORT PLUS 2 MACZAMANI .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/327670923957be380e0892
-#EXTINF:-1 tvg-id="20587004472af839207827" tvg-name="S-SPORT PLUS 3 MACZAMANI .b" tvg-logo="" group-title="Sport",S-SPORT PLUS 3 MACZAMANI .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/20587004472af839207827
 #EXTINF:-1 tvg-id="403604621968c940720735" tvg-name="S-SPORT PLUS FHD .b" tvg-logo="" group-title="Sport",S-SPORT PLUS FHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/403604621968c940720735
 #EXTINF:-1 tvg-id="2559756791dcf166140367" tvg-name="S-SPORT+1 MAC SAATI .b" tvg-logo="https://logo.huhu.to/logo?c=2559756791.png" group-title="Sport",S-SPORT+1 MAC SAATI .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2559756791dcf166140367
-#EXTINF:-1 tvg-id="2314183566dbbab2892d05" tvg-name="S-SPORT+2 MAC SAATI .b" tvg-logo="https://logo.huhu.to/logo?c=2314183566.png" group-title="Sport",S-SPORT+2 MAC SAATI .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2314183566dbbab2892d05
 #EXTINF:-1 tvg-id="41600224142533e27b97d9" tvg-name="S-SPORTS 1 HD .s" tvg-logo="" group-title="Sport",S-SPORTS 1 HD .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/41600224142533e27b97d9
-#EXTINF:-1 tvg-id="3202905239f7c8981cff1" tvg-name="S-SPORTS 1 SD .b" tvg-logo="https://logo.huhu.to/logo?c=320290523.png" group-title="Sport",S-SPORTS 1 SD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3202905239f7c8981cff1
-#EXTINF:-1 tvg-id="20381615174598b818f74c" tvg-name="S-SPORTS 2 HD .s" tvg-logo="" group-title="Sport",S-SPORTS 2 HD .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/20381615174598b818f74c
 #EXTINF:-1 tvg-id="26439990320f2e0b009aff" tvg-name="S-SPORTS 2 SD .b" tvg-logo="https://logo.huhu.to/logo?c=2643999032.png" group-title="Sport",S-SPORTS 2 SD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/26439990320f2e0b009aff
 #EXTINF:-1 tvg-id="915717266d3f2ea348618" tvg-name="SALON 3 SINEMAX .s" tvg-logo="" group-title="Film",SALON 3 SINEMAX .s
@@ -1575,8 +1473,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2339103780d05de3790430
 https://young-dew-a7a9.pandatiger.workers.dev/play/12946145027a981f3ecdd5
 #EXTINF:-1 tvg-id="65773191857768dfab65f" tvg-name="SAT.1 GOLD HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sat.1_Gold_Logo_2019.svg/960px-Sat.1_Gold_Logo_2019.svg.png" group-title="Deutschland",SAT.1 GOLD HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/65773191857768dfab65f
-#EXTINF:-1 tvg-id="22583176611b0e5b4e2336" tvg-name="SAT.1 GOLD HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sat.1_Gold_Logo_2019.svg/960px-Sat.1_Gold_Logo_2019.svg.png" group-title="Deutschland",SAT.1 GOLD HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/22583176611b0e5b4e2336
 #EXTINF:-1 tvg-id="23694156501da825424413" tvg-name="SAT.1 GOLD RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sat.1_Gold_Logo_2019.svg/960px-Sat.1_Gold_Logo_2019.svg.png" group-title="Deutschland",SAT.1 GOLD RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/23694156501da825424413
 #EXTINF:-1 tvg-id="20652025938f3b189c73db" tvg-name="SAT.1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png" group-title="Deutschland",SAT.1 HD .b
@@ -1585,10 +1481,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/20652025938f3b189c73db
 https://young-dew-a7a9.pandatiger.workers.dev/play/5384150814a48eb3296d0
 #EXTINF:-1 tvg-id="3184769607d8aa40c41d1d" tvg-name="SAT.1 RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png" group-title="Deutschland",SAT.1 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3184769607d8aa40c41d1d
+#EXTINF:-1 tvg-id="4188119721d54405415c0f" tvg-name="SCIENCE & VICE .s" tvg-logo="" group-title="Belgesel / Doku",SCIENCE & VICE .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/4188119721d54405415c0f
 #EXTINF:-1 tvg-id="2341562915776a2be51890" tvg-name="SEMERKAND .s" tvg-logo="" group-title="Dini",SEMERKAND .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2341562915776a2be51890
-#EXTINF:-1 tvg-id="372623895787d90dff9a7c" tvg-name="SEMERKAND RAW .b" tvg-logo="" group-title="Dini",SEMERKAND RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/372623895787d90dff9a7c
 #EXTINF:-1 tvg-id="786317112675e7c9749f1" tvg-name="SEMERKAND TV .c" tvg-logo="https://i.imgur.com/UVGGrQd.png" group-title="Dini",SEMERKAND TV .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/786317112675e7c9749f1
 #EXTINF:-1 tvg-id="4096268883d8a4639bc323" tvg-name="SEMERKAND TV HD .b" tvg-logo="https://i.imgur.com/UVGGrQd.png" group-title="Dini",SEMERKAND TV HD .b
@@ -1599,16 +1495,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1495761327668bcd5072dc
 https://young-dew-a7a9.pandatiger.workers.dev/play/21962786526c864f9c84d4
 #EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV .c" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2485009235d60801ad626b
-#EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV FHD .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV FHD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/144949986573359afbfeae
 #EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV HD .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/351471337029c80ca4c64
 #EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV HEVC .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/37476469073149a4f729bc
 #EXTINF:-1 tvg-id="1197572527f8384c637ae4" tvg-name="SHOWMAX .b" tvg-logo="https://logo.huhu.to/logo?c=1197572527.png" group-title="Film",SHOWMAX .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1197572527f8384c637ae4
-#EXTINF:-1 tvg-id="12134337452fec7faf938d" tvg-name="SKY ATLANTIC .c" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/12134337452fec7faf938d
 #EXTINF:-1 tvg-id="2340670204ff621ff5a503" tvg-name="SKY ATLANTIC .s" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2340670204ff621ff5a503
 #EXTINF:-1 tvg-id="8924659966b6d28746447" tvg-name="SKY ATLANTIC HD (BACKUP 2) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC HD (BACKUP 2) .b
@@ -1621,8 +1513,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3714049053c3b64d17ddcf
 https://young-dew-a7a9.pandatiger.workers.dev/play/2798401146ec7e7d28c11f
 #EXTINF:-1 tvg-id="350456154001728f296c1e" tvg-name="SKY ATLANTIC HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/350456154001728f296c1e
-#EXTINF:-1 tvg-id="2141323897b3073c6a85c7" tvg-name="SKY ATLANTIC RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2141323897b3073c6a85c7
 #EXTINF:-1 tvg-id="672710480f8b2fd74a144" tvg-name="SKY BUNDESLIGA .c" tvg-logo="https://i.imgur.com/UXtjFtd.png" group-title="Sport",SKY BUNDESLIGA .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/672710480f8b2fd74a144
 #EXTINF:-1 tvg-id="1554081161e4ccedff5fd9" tvg-name="SKY BUNDESLIGA 1 (MATCH TIME) .s" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Sport",SKY BUNDESLIGA 1 (MATCH TIME) .s
@@ -1635,8 +1525,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/16397505054791cb96c53c
 https://young-dew-a7a9.pandatiger.workers.dev/play/335503483919500c5ae02c
 #EXTINF:-1 tvg-id="24341172320b3b5be01233" tvg-name="SKY BUNDESLIGA 1 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Sport",SKY BUNDESLIGA 1 HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/24341172320b3b5be01233
-#EXTINF:-1 tvg-id="50922349169aa87b096d6" tvg-name="SKY BUNDESLIGA 1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Sport",SKY BUNDESLIGA 1 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/50922349169aa87b096d6
 #EXTINF:-1 tvg-id="15594385137602e44ab103" tvg-name="SKY BUNDESLIGA 1 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Sport",SKY BUNDESLIGA 1 HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/15594385137602e44ab103
 #EXTINF:-1 tvg-id="3079354272de661103f411" tvg-name="SKY BUNDESLIGA 1 HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Sport",SKY BUNDESLIGA 1 HEVC .b
@@ -1651,6 +1539,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1139780600928625338389
 https://young-dew-a7a9.pandatiger.workers.dev/play/272897243469476bbf42bf
 #EXTINF:-1 tvg-id="3934518884051d64962fbf" tvg-name="SKY BUNDESLIGA 10 HD (BACKUP 2) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 HD (BACKUP 2) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3934518884051d64962fbf
+#EXTINF:-1 tvg-id="31776053118538604d51e4" tvg-name="SKY BUNDESLIGA 10 HD (BACKUP) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 HD (BACKUP) .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/31776053118538604d51e4
 #EXTINF:-1 tvg-id="4105254911d2934d2656c4" tvg-name="SKY BUNDESLIGA 10 HD .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4105254911d2934d2656c4
 #EXTINF:-1 tvg-id="26643128355c54e350dc52" tvg-name="SKY BUNDESLIGA 10 HD+ .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 HD+ .b
@@ -1659,8 +1549,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/26643128355c54e350dc52
 https://young-dew-a7a9.pandatiger.workers.dev/play/8314839020a88ebb88691
 #EXTINF:-1 tvg-id="30711047167fbfb5cf3d75" tvg-name="SKY BUNDESLIGA 2 (ONLY DURING EVENTS) .s" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/8/86/Sky_Sport_Bundesliga_2_Logo_2020.png/960px-Sky_Sport_Bundesliga_2_Logo_2020.png" group-title="Sport",SKY BUNDESLIGA 2 (ONLY DURING EVENTS) .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/30711047167fbfb5cf3d75
-#EXTINF:-1 tvg-id="6394270017f392471730f" tvg-name="SKY BUNDESLIGA 2 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/8/86/Sky_Sport_Bundesliga_2_Logo_2020.png/960px-Sky_Sport_Bundesliga_2_Logo_2020.png" group-title="Sport",SKY BUNDESLIGA 2 .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/6394270017f392471730f
 #EXTINF:-1 tvg-id="2578153887083ce746bbcb" tvg-name="SKY BUNDESLIGA 2 [LIVE DURING EVENTS ONLY] .s" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/8/86/Sky_Sport_Bundesliga_2_Logo_2020.png/960px-Sky_Sport_Bundesliga_2_Logo_2020.png" group-title="Sport",SKY BUNDESLIGA 2 [LIVE DURING EVENTS ONLY] .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2578153887083ce746bbcb
 #EXTINF:-1 tvg-id="39962173816cb1e3fb6311" tvg-name="SKY BUNDESLIGA 2 [SPIELTAG] .c" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/8/86/Sky_Sport_Bundesliga_2_Logo_2020.png/960px-Sky_Sport_Bundesliga_2_Logo_2020.png" group-title="Sport",SKY BUNDESLIGA 2 [SPIELTAG] .c
@@ -1767,6 +1655,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4151193631c6aa5739b90a
 https://young-dew-a7a9.pandatiger.workers.dev/play/4447790173fb577791beb
 #EXTINF:-1 tvg-id="178643918cd58ea147b45" tvg-name="SKY BUNDESLIGA 8 HD (BACKUP 2) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 8 HD (BACKUP 2) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/178643918cd58ea147b45
+#EXTINF:-1 tvg-id="4037225133c9c481dd1b08" tvg-name="SKY BUNDESLIGA 8 HD (BACKUP) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 8 HD (BACKUP) .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/4037225133c9c481dd1b08
 #EXTINF:-1 tvg-id="18168168ab8973ca6f9e" tvg-name="SKY BUNDESLIGA 8 HD .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 8 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/18168168ab8973ca6f9e
 #EXTINF:-1 tvg-id="4031812330dfae8cf7458e" tvg-name="SKY BUNDESLIGA 8 HD+ .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 8 HD+ .b
@@ -1779,28 +1669,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1274071941a586f3d997eb
 https://young-dew-a7a9.pandatiger.workers.dev/play/3035257752a9da77999442
 #EXTINF:-1 tvg-id="1996874222fccef5f9a6ec" tvg-name="SKY BUNDESLIGA 9 HD (BACKUP) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 9 HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1996874222fccef5f9a6ec
-#EXTINF:-1 tvg-id="345186149427e40f652f99" tvg-name="SKY BUNDESLIGA 9 HD .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 9 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/345186149427e40f652f99
 #EXTINF:-1 tvg-id="338087886882264e52f7fa" tvg-name="SKY BUNDESLIGA 9 HD .s" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 9 HD .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/338087886882264e52f7fa
 #EXTINF:-1 tvg-id="38783894177ab66f7ae917" tvg-name="SKY BUNDESLIGA 9 HD+ .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 9 HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/38783894177ab66f7ae917
 #EXTINF:-1 tvg-id="12149620041d5a5c465166" tvg-name="SKY BUNDESLIGA 9 RAW .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 9 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/12149620041d5a5c465166
-#EXTINF:-1 tvg-id="2960701259e45fe6f288f6" tvg-name="SKY BUNDESLIGA HD .b" tvg-logo="https://i.imgur.com/UXtjFtd.png" group-title="Sport",SKY BUNDESLIGA HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2960701259e45fe6f288f6
 #EXTINF:-1 tvg-id="13845499107aabed611e2c" tvg-name="SKY BUNDESLIGA HD+ .b" tvg-logo="https://i.imgur.com/UXtjFtd.png" group-title="Sport",SKY BUNDESLIGA HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/13845499107aabed611e2c
-#EXTINF:-1 tvg-id="9426257910e8882e66dab" tvg-name="SKY BUNDESLIGA UHD .b" tvg-logo="https://i.imgur.com/UXtjFtd.png" group-title="Sport",SKY BUNDESLIGA UHD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/9426257910e8882e66dab
 #EXTINF:-1 tvg-id="3948160239d040a5149193" tvg-name="SKY BUNDESLIGA1 .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA1 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3948160239d040a5149193
-#EXTINF:-1 tvg-id="4064931426eff4b3b91a74" tvg-name="SKY CRIME .c" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png" group-title="Deutschland",SKY CRIME .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/4064931426eff4b3b91a74
 #EXTINF:-1 tvg-id="1054042790e5af6bc827b3" tvg-name="SKY CRIME HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png" group-title="Deutschland",SKY CRIME HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1054042790e5af6bc827b3
-#EXTINF:-1 tvg-id="18819092387aa529cd9a1b" tvg-name="SKY CRIME HD RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png" group-title="Deutschland",SKY CRIME HD RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/18819092387aa529cd9a1b
 #EXTINF:-1 tvg-id="396819485060808f57bbfc" tvg-name="SKY CRIME HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png" group-title="Deutschland",SKY CRIME HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/396819485060808f57bbfc
 #EXTINF:-1 tvg-id="191409797064b6f3435b97" tvg-name="SKY CINEMA .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA .c
@@ -1815,16 +1695,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3962342087b482a8387575
 https://young-dew-a7a9.pandatiger.workers.dev/play/16176487994ddd2af48e9a
 #EXTINF:-1 tvg-id="3129337035089b5b0d918c" tvg-name="SKY CINEMA ACTION .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/3129337035089b5b0d918c
-#EXTINF:-1 tvg-id="22171411489f84ed3ff7c4" tvg-name="SKY CINEMA ACTION HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/22171411489f84ed3ff7c4
-#EXTINF:-1 tvg-id="41403985348c9b135459db" tvg-name="SKY CINEMA ACTION HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/41403985348c9b135459db
-#EXTINF:-1 tvg-id="3251224651e0552e67f539" tvg-name="SKY CINEMA ACTION HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3251224651e0552e67f539
-#EXTINF:-1 tvg-id="393413178212a6df0757ae" tvg-name="SKY CINEMA ACTION HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/393413178212a6df0757ae
-#EXTINF:-1 tvg-id="18544475423371ce1e1608" tvg-name="SKY CINEMA ACTION RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/18544475423371ce1e1608
+#EXTINF:-1 tvg-id="227712345007279b49b40c" tvg-name="SKY CINEMA BEST .s" tvg-logo="" group-title="Deutschland",SKY CINEMA BEST .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/227712345007279b49b40c
 #EXTINF:-1 tvg-id="1506084946f625257b4975" tvg-name="SKY CINEMA BEST OF .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1506084946f625257b4975
 #EXTINF:-1 tvg-id="7283995247e7623d8c809" tvg-name="SKY CINEMA BEST OF HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF HD (BACKUP) .b
@@ -1833,10 +1705,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/7283995247e7623d8c809
 https://young-dew-a7a9.pandatiger.workers.dev/play/4183661289bea5151c6e22
 #EXTINF:-1 tvg-id="65180453812a20399b7d8" tvg-name="SKY CINEMA BEST OF HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/65180453812a20399b7d8
-#EXTINF:-1 tvg-id="3310761474de83eff07104" tvg-name="SKY CINEMA BEST OF RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3310761474de83eff07104
-#EXTINF:-1 tvg-id="3175728367b5709d53f49e" tvg-name="SKY CINEMA CLASSICS .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA CLASSICS .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3175728367b5709d53f49e
 #EXTINF:-1 tvg-id="6244253771d6ad515707" tvg-name="SKY CINEMA CLASSICS .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA CLASSICS .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/6244253771d6ad515707
 #EXTINF:-1 tvg-id="311131418932a320ad54c1" tvg-name="SKY CINEMA CLASSICS .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA CLASSICS .s
@@ -1861,18 +1729,26 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3276536706f112350626f9
 https://young-dew-a7a9.pandatiger.workers.dev/play/26152459164daf8d303e46
 #EXTINF:-1 tvg-id="10915522642f277fd9ba45" tvg-name="SKY CINEMA FAMILY .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/10915522642f277fd9ba45
-#EXTINF:-1 tvg-id="19880745182e2f6c96907a" tvg-name="SKY CINEMA FAMILY HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/19880745182e2f6c96907a
 #EXTINF:-1 tvg-id="11106963648da214c4120a" tvg-name="SKY CINEMA FAMILY HEVC (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY HEVC (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/11106963648da214c4120a
 #EXTINF:-1 tvg-id="4279471443ec5da7eed5e1" tvg-name="SKY CINEMA FAMILY HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4279471443ec5da7eed5e1
-#EXTINF:-1 tvg-id="36447692595f75562b1f9f" tvg-name="SKY CINEMA FAMILY RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/36447692595f75562b1f9f
 #EXTINF:-1 tvg-id="1698499086b559e95e52b2" tvg-name="SKY CINEMA FUN .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA FUN .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1698499086b559e95e52b2
 #EXTINF:-1 tvg-id="2536879797b1c98070188" tvg-name="SKY CINEMA FUN .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA FUN .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2536879797b1c98070188
+#EXTINF:-1 tvg-id="824805225a91b33aa1e51" tvg-name="SKY CINEMA HIGHLIGHTS .c" tvg-logo="https://logo.huhu.to/logo?c=824805225.png" group-title="Deutschland",SKY CINEMA HIGHLIGHTS .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/824805225a91b33aa1e51
+#EXTINF:-1 tvg-id="233190625557da9d7af3cb" tvg-name="SKY CINEMA HITS .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA HITS .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/233190625557da9d7af3cb
+#EXTINF:-1 tvg-id="36500348677afe90e35ed0" tvg-name="SKY CINEMA HITS .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA HITS .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/36500348677afe90e35ed0
+#EXTINF:-1 tvg-id="21306899026842ff975479" tvg-name="SKY CINEMA HITS .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA HITS .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/21306899026842ff975479
+#EXTINF:-1 tvg-id="631616247786c3788e7af" tvg-name="SKY CINEMA NOSTALGIE .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA NOSTALGIE .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/631616247786c3788e7af
+#EXTINF:-1 tvg-id="2973887952cd4dd5ba5f" tvg-name="SKY CINEMA NOSTALGIE .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA NOSTALGIE .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/2973887952cd4dd5ba5f
 #EXTINF:-1 tvg-id="3965128200ab108788f108" tvg-name="SKY CINEMA PREMIEREN +24 (BACKUP) .b" tvg-logo="" group-title="Deutschland",SKY CINEMA PREMIEREN +24 (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3965128200ab108788f108
 #EXTINF:-1 tvg-id="2077331655b2a2fb2c4bcc" tvg-name="SKY CINEMA PREMIEREN +24 .b" tvg-logo="" group-title="Deutschland",SKY CINEMA PREMIEREN +24 .b
@@ -1889,16 +1765,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1606366206fb96e8c26931
 https://young-dew-a7a9.pandatiger.workers.dev/play/21371346036acfbf33d80d
 #EXTINF:-1 tvg-id="4117277461bb80bd4382ae" tvg-name="SKY CINEMA PREMIEREN .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA PREMIEREN .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/4117277461bb80bd4382ae
+#EXTINF:-1 tvg-id="3507019421158db3217f80" tvg-name="SKY CINEMA PREMIEREN .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA PREMIEREN .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/3507019421158db3217f80
 #EXTINF:-1 tvg-id="1743038820629ac0ff6adc" tvg-name="SKY CINEMA PREMIEREN 24 .s" tvg-logo="" group-title="Deutschland",SKY CINEMA PREMIEREN 24 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1743038820629ac0ff6adc
 #EXTINF:-1 tvg-id="345871600084df3b16963a" tvg-name="SKY CINEMA PREMIEREN HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA PREMIEREN HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/345871600084df3b16963a
-#EXTINF:-1 tvg-id="42658796007222e9d29cb7" tvg-name="SKY CINEMA PREMIEREN HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA PREMIEREN HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/42658796007222e9d29cb7
-#EXTINF:-1 tvg-id="764818202b934dc0b2580" tvg-name="SKY CINEMA PREMIEREN HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA PREMIEREN HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/764818202b934dc0b2580
-#EXTINF:-1 tvg-id="13593128451fe361fe0fd4" tvg-name="SKY CINEMA PREMIEREN RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA PREMIEREN RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/13593128451fe361fe0fd4
 #EXTINF:-1 tvg-id="805972699b2c2fe44c151" tvg-name="SKY CINEMA SPECIAL .c" tvg-logo="https://logo.huhu.to/logo?c=805972699.png" group-title="Deutschland",SKY CINEMA SPECIAL .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/805972699b2c2fe44c151
 #EXTINF:-1 tvg-id="11418365366d726bc7442a" tvg-name="SKY CINEMA SPECIAL .s" tvg-logo="" group-title="Deutschland",SKY CINEMA SPECIAL .s
@@ -1933,22 +1805,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/12894766218294fede5ad1
 https://young-dew-a7a9.pandatiger.workers.dev/play/314778032359ea2d858517
 #EXTINF:-1 tvg-id="3598812563ac238a3c1433" tvg-name="SKY SHOWCASE HD .b" tvg-logo="https://i.imgur.com/7viaZKs.png" group-title="Deutschland",SKY SHOWCASE HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3598812563ac238a3c1433
-#EXTINF:-1 tvg-id="20327912692174b7a2f7a2" tvg-name="SKY SPORT 1 (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/20327912692174b7a2f7a2
 #EXTINF:-1 tvg-id="338305598923178e2e001f" tvg-name="SKY SPORT 1 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/338305598923178e2e001f
 #EXTINF:-1 tvg-id="1046831603886958c35f49" tvg-name="SKY SPORT 1 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1046831603886958c35f49
 #EXTINF:-1 tvg-id="1385766515724a7ed7e603" tvg-name="SKY SPORT 1 [LIVE DURING EVENTS ONLY] .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 [LIVE DURING EVENTS ONLY] .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1385766515724a7ed7e603
-#EXTINF:-1 tvg-id="19963508922248a1c117f0" tvg-name="SKY SPORT 1 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/19963508922248a1c117f0
-#EXTINF:-1 tvg-id="291076412194711c91a9e" tvg-name="SKY SPORT 1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/291076412194711c91a9e
-#EXTINF:-1 tvg-id="2621852487a6fb87b9bb63" tvg-name="SKY SPORT 1 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2621852487a6fb87b9bb63
-#EXTINF:-1 tvg-id="3818247654ba97e6d74ac9" tvg-name="SKY SPORT 1 HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3818247654ba97e6d74ac9
 #EXTINF:-1 tvg-id="8561020744a83764d06fb" tvg-name="SKY SPORT 1 RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Sky_Sport_1_DE_Logo_2020.svg/960px-Sky_Sport_1_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 1 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/8561020744a83764d06fb
 #EXTINF:-1 tvg-id="33982091995636e3fc9a8a" tvg-name="SKY SPORT 10 .c" tvg-logo="https://i.imgur.com/ZnUAdGj.png" group-title="Sport",SKY SPORT 10 .c
@@ -1957,14 +1819,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/33982091995636e3fc9a8a
 https://young-dew-a7a9.pandatiger.workers.dev/play/645462153d407bb3cc4e
 #EXTINF:-1 tvg-id="8726999137f40c138b6d1" tvg-name="SKY SPORT 10 HD .b" tvg-logo="https://i.imgur.com/ZnUAdGj.png" group-title="Sport",SKY SPORT 10 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/8726999137f40c138b6d1
-#EXTINF:-1 tvg-id="22223602223487b208fdf" tvg-name="SKY SPORT 11 [LIVE DURING EVENTS ONLY] .s" tvg-logo="https://i.imgur.com/7LXksX4.png" group-title="Sport",SKY SPORT 11 [LIVE DURING EVENTS ONLY] .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/22223602223487b208fdf
+#EXTINF:-1 tvg-id="41721755119dc46e523d3e" tvg-name="SKY SPORT 11 HD .b" tvg-logo="https://i.imgur.com/7LXksX4.png" group-title="Sport",SKY SPORT 11 HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/41721755119dc46e523d3e
 #EXTINF:-1 tvg-id="1870973910f25bfb936300" tvg-name="SKY SPORT 2 (MATCH TIME) .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 (MATCH TIME) .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1870973910f25bfb936300
 #EXTINF:-1 tvg-id="2382703781584c6286b6e8" tvg-name="SKY SPORT 2 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2382703781584c6286b6e8
 #EXTINF:-1 tvg-id="2042960675a0a00c6fbc62" tvg-name="SKY SPORT 2 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2042960675a0a00c6fbc62
+#EXTINF:-1 tvg-id="627555880a78576fcd1f8" tvg-name="SKY SPORT 2 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 HD (BACKUP) .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/627555880a78576fcd1f8
 #EXTINF:-1 tvg-id="2681634527bbf39411d248" tvg-name="SKY SPORT 2 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2681634527bbf39411d248
 #EXTINF:-1 tvg-id="27815750422e46c3bed720" tvg-name="SKY SPORT 2 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 HD+ .b
@@ -1979,6 +1843,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/21615404072a4a3293c721
 https://young-dew-a7a9.pandatiger.workers.dev/play/115167707545661f258b17
 #EXTINF:-1 tvg-id="27305874996560cac1cdec" tvg-name="SKY SPORT 3 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 3 HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/27305874996560cac1cdec
+#EXTINF:-1 tvg-id="1400667713f36e234020fe" tvg-name="SKY SPORT 3 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 3 HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/1400667713f36e234020fe
 #EXTINF:-1 tvg-id="2997904321b80940bb795e" tvg-name="SKY SPORT 3 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 3 HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2997904321b80940bb795e
 #EXTINF:-1 tvg-id="1643673427736cbdfc30b9" tvg-name="SKY SPORT 4 (MATCH TIME) .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Sky_Sport_4_DE_Logo_2020.svg/960px-Sky_Sport_4_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 4 (MATCH TIME) .s
@@ -1999,6 +1865,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/23935553783dd55ce2c3ee
 https://young-dew-a7a9.pandatiger.workers.dev/play/10091194137e6ce5fa1521
 #EXTINF:-1 tvg-id="34208335877870a51d79a2" tvg-name="SKY SPORT 5 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 5 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/34208335877870a51d79a2
+#EXTINF:-1 tvg-id="9999216326ddda091572" tvg-name="SKY SPORT 5 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 5 HD (BACKUP) .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/9999216326ddda091572
 #EXTINF:-1 tvg-id="250108103024dd3a6e2a8c" tvg-name="SKY SPORT 5 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 5 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/250108103024dd3a6e2a8c
 #EXTINF:-1 tvg-id="32491505390678501f8f59" tvg-name="SKY SPORT 5 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 5 HD+ .b
@@ -2011,8 +1879,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2353380835657a79821d9a
 https://young-dew-a7a9.pandatiger.workers.dev/play/13816956759d45612328d0
 #EXTINF:-1 tvg-id="1450154471bf23820b345b" tvg-name="SKY SPORT 6 HD (BACKUP) .b" tvg-logo="https://i.imgur.com/WfeyX8D.png" group-title="Sport",SKY SPORT 6 HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1450154471bf23820b345b
-#EXTINF:-1 tvg-id="463237157314e6d840607" tvg-name="SKY SPORT 6 HD .b" tvg-logo="https://i.imgur.com/WfeyX8D.png" group-title="Sport",SKY SPORT 6 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/463237157314e6d840607
 #EXTINF:-1 tvg-id="4163315342e3dfa44378db" tvg-name="SKY SPORT 6 HD+ .b" tvg-logo="https://i.imgur.com/WfeyX8D.png" group-title="Sport",SKY SPORT 6 HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4163315342e3dfa44378db
 #EXTINF:-1 tvg-id="2340334129c662ead592c0" tvg-name="SKY SPORT 7 (MATCH TIME) .s" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Sport",SKY SPORT 7 (MATCH TIME) .s
@@ -2033,6 +1899,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/86330662609d054c4c696
 https://young-dew-a7a9.pandatiger.workers.dev/play/3908161130681991cd2e3
 #EXTINF:-1 tvg-id="23634792766d334318406" tvg-name="SKY SPORT 8 HD .b" tvg-logo="https://i.imgur.com/2YCQyZm.png" group-title="Sport",SKY SPORT 8 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/23634792766d334318406
+#EXTINF:-1 tvg-id="2431494706163357c90f68" tvg-name="SKY SPORT 9 HD (BACKUP) .b" tvg-logo="https://i.imgur.com/NQMl2hn.png" group-title="Sport",SKY SPORT 9 HD (BACKUP) .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/2431494706163357c90f68
 #EXTINF:-1 tvg-id="32671258975ee204f512e7" tvg-name="SKY SPORT 9 HD .b" tvg-logo="https://i.imgur.com/NQMl2hn.png" group-title="Sport",SKY SPORT 9 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/32671258975ee204f512e7
 #EXTINF:-1 tvg-id="2946846655092b774baf50" tvg-name="SKY SPORT AUSTRIA 1 .b" tvg-logo="" group-title="Sport",SKY SPORT AUSTRIA 1 .b
@@ -2047,8 +1915,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1585901992130c487c921e
 https://young-dew-a7a9.pandatiger.workers.dev/play/2647737930497fd1fe442d
 #EXTINF:-1 tvg-id="2565784631cdf8e94923a3" tvg-name="SKY SPORT AUSTRIA 2 HD .b" tvg-logo="" group-title="Sport",SKY SPORT AUSTRIA 2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2565784631cdf8e94923a3
-#EXTINF:-1 tvg-id="18645950641f81a4b3448" tvg-name="SKY SPORT AUSTRIA 2 HD+ .b" tvg-logo="" group-title="Sport",SKY SPORT AUSTRIA 2 HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/18645950641f81a4b3448
 #EXTINF:-1 tvg-id="1413792937fe7d8a74b30b" tvg-name="SKY SPORT AUSTRIA 3 HD .b" tvg-logo="" group-title="Sport",SKY SPORT AUSTRIA 3 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1413792937fe7d8a74b30b
 #EXTINF:-1 tvg-id="47645931319b00e7f828a" tvg-name="SKY SPORT AUSTRIA 3 HD+ .b" tvg-logo="" group-title="Sport",SKY SPORT AUSTRIA 3 HD+ .b
@@ -2125,12 +1991,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1690401777c2405c408f0d
 https://young-dew-a7a9.pandatiger.workers.dev/play/3259673333d1927f8d89a8
 #EXTINF:-1 tvg-id="31037888758514437f20bf" tvg-name="SKY SPORT TOP EVENT [LIVE DURING EVENTS ONLY] .s" tvg-logo="https://i.imgur.com/kQ6cVNx.png" group-title="Sport",SKY SPORT TOP EVENT [LIVE DURING EVENTS ONLY] .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/31037888758514437f20bf
-#EXTINF:-1 tvg-id="2871908315127bdf26010e" tvg-name="SKY SPORT TOP EVENT HD (BACKUP) .b" tvg-logo="https://i.imgur.com/kQ6cVNx.png" group-title="Sport",SKY SPORT TOP EVENT HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2871908315127bdf26010e
 #EXTINF:-1 tvg-id="4019294497d4a2d7d28d52" tvg-name="SKY SPORT TOP EVENT HD .b" tvg-logo="https://i.imgur.com/kQ6cVNx.png" group-title="Sport",SKY SPORT TOP EVENT HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/4019294497d4a2d7d28d52
 #EXTINF:-1 tvg-id="250132547143b589ba7181" tvg-name="SKY SPORT TOP EVENT UHD .b" tvg-logo="https://i.imgur.com/kQ6cVNx.png" group-title="Sport",SKY SPORT TOP EVENT UHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/250132547143b589ba7181
+#EXTINF:-1 tvg-id="999102646bc32696167e5" tvg-name="SKY SPORT UHD .b" tvg-logo="" group-title="Sport",SKY SPORT UHD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/999102646bc32696167e5
 #EXTINF:-1 tvg-id="21611914607ee60510dea5" tvg-name="SKY SPORTS F1 .s" tvg-logo="" group-title="Sport",SKY SPORTS F1 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/21611914607ee60510dea5
 #EXTINF:-1 tvg-id="38076938739cced735110f" tvg-name="SKY SPORTS GOLF UHD .b" tvg-logo="" group-title="Sport",SKY SPORTS GOLF UHD .b
@@ -2159,6 +2025,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1771511397d05184d3e443
 https://young-dew-a7a9.pandatiger.workers.dev/play/3278735965dfe5a38d92ee
 #EXTINF:-1 tvg-id="SporSmart2.tr@SD" tvg-name="SPOR SMART 2 .c" tvg-logo="https://i.imgur.com/qyUKCUa.png" group-title="Sport",SPOR SMART 2 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/90716509593fd6426951b
+#EXTINF:-1 tvg-id="SporSmart2.tr@SD" tvg-name="SPOR SMART 2 .s" tvg-logo="https://i.imgur.com/qyUKCUa.png" group-title="Sport",SPOR SMART 2 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/2228088973f56fff74c71f
 #EXTINF:-1 tvg-id="SporSmart2.tr@SD" tvg-name="SPOR SMART 2 HD .b" tvg-logo="https://i.imgur.com/qyUKCUa.png" group-title="Sport",SPOR SMART 2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2726496671ea6fd3c6dc54
 #EXTINF:-1 tvg-id="SporSmart.tr@SD" tvg-name="SPOR SMART FHD .b" tvg-logo="https://i.imgur.com/blu6v6P.png" group-title="Sport",SPOR SMART FHD .b
@@ -2167,8 +2035,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/37639315201c3521e36c44
 https://young-dew-a7a9.pandatiger.workers.dev/play/1313563350f4a25655e128
 #EXTINF:-1 tvg-id="SporSmart.tr@SD" tvg-name="SPOR SMART HEVC .b" tvg-logo="https://i.imgur.com/blu6v6P.png" group-title="Sport",SPOR SMART HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3445708926e6195304f00c
-#EXTINF:-1 tvg-id="SporSmart.tr@SD" tvg-name="SPOR SMART SD .b" tvg-logo="https://i.imgur.com/blu6v6P.png" group-title="Sport",SPOR SMART SD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/660246670c64f4ea57a46
 #EXTINF:-1 tvg-id="2698562903da138a501602" tvg-name="SPORT1 .b" tvg-logo="https://i.imgur.com/Tsjt7v9.png" group-title="Sport",SPORT1 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2698562903da138a501602
 #EXTINF:-1 tvg-id="186570834657c061211058" tvg-name="SPORT1 .s" tvg-logo="https://i.imgur.com/Tsjt7v9.png" group-title="Sport",SPORT1 .s
@@ -2235,8 +2101,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1818235154f3f7dc229b9
 https://young-dew-a7a9.pandatiger.workers.dev/play/111130034484c88043b792
 #EXTINF:-1 tvg-id="1077497828624b07013b07" tvg-name="SUPER RTL .s" tvg-logo="https://i.imgur.com/KbdK8t9.png" group-title="Deutschland",SUPER RTL .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1077497828624b07013b07
-#EXTINF:-1 tvg-id="3688473646ad257d38d95a" tvg-name="SUPER RTL HD .b" tvg-logo="https://i.imgur.com/KbdK8t9.png" group-title="Deutschland",SUPER RTL HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3688473646ad257d38d95a
 #EXTINF:-1 tvg-id="186579221069b6651b2005" tvg-name="SUPER RTL HD+ .b" tvg-logo="https://i.imgur.com/KbdK8t9.png" group-title="Deutschland",SUPER RTL HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/186579221069b6651b2005
 #EXTINF:-1 tvg-id="166119062028a6f5df0307" tvg-name="SUPER RTL HEVC .b" tvg-logo="https://i.imgur.com/KbdK8t9.png" group-title="Deutschland",SUPER RTL HEVC .b
@@ -2247,34 +2111,24 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/32288863195eee11e12650
 https://young-dew-a7a9.pandatiger.workers.dev/play/3764999351388d923b7bbb
 #EXTINF:-1 tvg-id="26686580372b9b4202d380" tvg-name="SYFY .s" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Deutschland",SYFY .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/26686580372b9b4202d380
-#EXTINF:-1 tvg-id="3887935595bccd7b45ed6d" tvg-name="SYFY HD (BACKUP) .b" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Deutschland",SYFY HD (BACKUP) .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3887935595bccd7b45ed6d
-#EXTINF:-1 tvg-id="1680063305516b13d90821" tvg-name="SYFY HD .b" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Deutschland",SYFY HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1680063305516b13d90821
 #EXTINF:-1 tvg-id="3160192054d41c843c461e" tvg-name="SYFY HD+ .b" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Deutschland",SYFY HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3160192054d41c843c461e
-#EXTINF:-1 tvg-id="320728011da29568448a3" tvg-name="SYFY RAW .b" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Deutschland",SYFY RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/320728011da29568448a3
 #EXTINF:-1 tvg-id="SozcuTV.tr@SD" tvg-name="SZC .c" tvg-logo="https://logo.huhu.to/logo?c=2036794972.png" group-title="Haber",SZC .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2036794972b992547192b9
 #EXTINF:-1 tvg-id="31176836283456f45c9e32" tvg-name="SINEMA 1001 .s" tvg-logo="https://i.imgur.com/OOMEELj.png" group-title="Film",SINEMA 1001 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/31176836283456f45c9e32
 #EXTINF:-1 tvg-id="426904204409e59151cc23" tvg-name="SINEMA 1002 .s" tvg-logo="https://i.imgur.com/BEFyizf.png" group-title="Film",SINEMA 1002 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/426904204409e59151cc23
-#EXTINF:-1 tvg-id="129312789771362713c30c" tvg-name="SINEMA AKSIYON 1 .s" tvg-logo="" group-title="Film",SINEMA AKSIYON 1 .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/129312789771362713c30c
 #EXTINF:-1 tvg-id="179563017fcc76df8dfba" tvg-name="SINEMA AKSIYON 2 .s" tvg-logo="https://i.imgur.com/oy8Nq1r.png" group-title="Film",SINEMA AKSIYON 2 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/179563017fcc76df8dfba
-#EXTINF:-1 tvg-id="313191105166e25adfec26" tvg-name="SINEMA AILE 2 .s" tvg-logo="https://i.imgur.com/EMJiBSb.png" group-title="Film",SINEMA AILE 2 .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/313191105166e25adfec26
+#EXTINF:-1 tvg-id="424550844375a964b5b3e5" tvg-name="SINEMA AILE 1 .s" tvg-logo="" group-title="Film",SINEMA AILE 1 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/424550844375a964b5b3e5
 #EXTINF:-1 tvg-id="257449668222de73cc4ad" tvg-name="SINEMA KOMEDI .s" tvg-logo="https://i.imgur.com/U4C7JId.png" group-title="Film",SINEMA KOMEDI .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/257449668222de73cc4ad
 #EXTINF:-1 tvg-id="SinemaTV.tr@SD" tvg-name="SINEMA TV .s" tvg-logo="https://i.imgur.com/qstBXDP.png" group-title="Film",SINEMA TV .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/16177199419730b495b23d
-#EXTINF:-1 tvg-id="2789249461c1ad5d07b17a" tvg-name="SINEMAX DRAMA .s" tvg-logo="" group-title="Film",SINEMAX DRAMA .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/2789249461c1ad5d07b17a
-#EXTINF:-1 tvg-id="14694844750eea4e90973f" tvg-name="SINEMAX FAMILY .s" tvg-logo="" group-title="Film",SINEMAX FAMILY .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/14694844750eea4e90973f
+#EXTINF:-1 tvg-id="24848056995333a11423de" tvg-name="SINEMA YERLI 1 .s" tvg-logo="" group-title="Film",SINEMA YERLI 1 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/24848056995333a11423de
 #EXTINF:-1 tvg-id="56581376296a68bfac79f" tvg-name="SINEMAX KOMEDI .s" tvg-logo="" group-title="Film",SINEMAX KOMEDI .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/56581376296a68bfac79f
 #EXTINF:-1 tvg-id="4201568953301b0088849e" tvg-name="SINEMAX TURK .s" tvg-logo="" group-title="Film",SINEMAX TURK .s
@@ -2289,6 +2143,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/567459984fcc0c3381a21
 https://young-dew-a7a9.pandatiger.workers.dev/play/3644982305b65576486ef2
 #EXTINF:-1 tvg-id="237327525e72f36a04e37" tvg-name="SINEVIZYON TURK 1 .s" tvg-logo="" group-title="Film",SINEVIZYON TURK 1 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/237327525e72f36a04e37
+#EXTINF:-1 tvg-id="13493455810611836e96c5" tvg-name="SINEVIZYON TURK 10 .s" tvg-logo="" group-title="Film",SINEVIZYON TURK 10 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/13493455810611836e96c5
 #EXTINF:-1 tvg-id="1233464949183c7280e3a4" tvg-name="SINEVIZYON TURK 2 .s" tvg-logo="" group-title="Film",SINEVIZYON TURK 2 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1233464949183c7280e3a4
 #EXTINF:-1 tvg-id="4221956709ff9a263200e0" tvg-name="SINEVIZYON TURK 5 .s" tvg-logo="" group-title="Film",SINEVIZYON TURK 5 .s
@@ -2305,18 +2161,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/8404401494599063b2e5e
 https://young-dew-a7a9.pandatiger.workers.dev/play/2198569506329590ff84fc
 #EXTINF:-1 tvg-id="423537353674f7f5a66e96" tvg-name="SIXX .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png" group-title="Deutschland",SIXX .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/423537353674f7f5a66e96
-#EXTINF:-1 tvg-id="3945112540e7ad289a97f9" tvg-name="SIXX HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png" group-title="Deutschland",SIXX HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3945112540e7ad289a97f9
 #EXTINF:-1 tvg-id="210351721191b7cdf6bb7f" tvg-name="SIXX HD+ (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png" group-title="Deutschland",SIXX HD+ (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/210351721191b7cdf6bb7f
-#EXTINF:-1 tvg-id="1018615269527a186c7ec8" tvg-name="SIXX HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png" group-title="Deutschland",SIXX HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1018615269527a186c7ec8
-#EXTINF:-1 tvg-id="3689801660bba8431ec699" tvg-name="SIXX HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png" group-title="Deutschland",SIXX HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3689801660bba8431ec699
 #EXTINF:-1 tvg-id="248247349633e006a08452" tvg-name="SIXX RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png" group-title="Deutschland",SIXX RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/248247349633e006a08452
-#EXTINF:-1 tvg-id="1844863271513a413a321" tvg-name="TABII SPOR .c" tvg-logo="" group-title="Sport",TABII SPOR .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/1844863271513a413a321
 #EXTINF:-1 tvg-id="10977951419d3dfac60f92" tvg-name="TABII SPOR 1 .c" tvg-logo="" group-title="Sport",TABII SPOR 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/10977951419d3dfac60f92
 #EXTINF:-1 tvg-id="38306913165380d4cf64db" tvg-name="TABII SPOR 1 4K .b" tvg-logo="https://logo.huhu.to/logo?c=3830691316.png" group-title="Sport",TABII SPOR 1 4K .b
@@ -2325,12 +2173,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/38306913165380d4cf64db
 https://young-dew-a7a9.pandatiger.workers.dev/play/36659147631b81d08d6c82
 #EXTINF:-1 tvg-id="310770852202539a162e99" tvg-name="TABII SPOR 1 UHD .b" tvg-logo="https://logo.huhu.to/logo?c=3107708522.png" group-title="Sport",TABII SPOR 1 UHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/310770852202539a162e99
-#EXTINF:-1 tvg-id="11426114102c71664711c" tvg-name="TABII SPOR 2 .c" tvg-logo="" group-title="Sport",TABII SPOR 2 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/11426114102c71664711c
 #EXTINF:-1 tvg-id="24901653728e4a187da4c4" tvg-name="TABII SPOR 2 HD .b" tvg-logo="https://logo.huhu.to/logo?c=2490165372.png" group-title="Sport",TABII SPOR 2 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/24901653728e4a187da4c4
-#EXTINF:-1 tvg-id="21594692318c346548c2be" tvg-name="TABII SPOR 2 UHD .b" tvg-logo="https://logo.huhu.to/logo?c=2159469231.png" group-title="Sport",TABII SPOR 2 UHD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/21594692318c346548c2be
 #EXTINF:-1 tvg-id="10013463414fd5f0938a50" tvg-name="TABII SPOR 3 .c" tvg-logo="" group-title="Sport",TABII SPOR 3 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/10013463414fd5f0938a50
 #EXTINF:-1 tvg-id="1489430754b4fd6e6dc327" tvg-name="TABII SPOR 3 HD .b" tvg-logo="https://logo.huhu.to/logo?c=1489430754.png" group-title="Sport",TABII SPOR 3 HD .b
@@ -2339,20 +2183,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1489430754b4fd6e6dc327
 https://young-dew-a7a9.pandatiger.workers.dev/play/2546857708611b47e42ecf
 #EXTINF:-1 tvg-id="2307885365b7f1828e97ba" tvg-name="TABII SPOR 4 .c" tvg-logo="" group-title="Sport",TABII SPOR 4 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/2307885365b7f1828e97ba
+#EXTINF:-1 tvg-id="13759861713a771b4b4726" tvg-name="TABII SPOR 4 HD .b" tvg-logo="https://logo.huhu.to/logo?c=1375986171.png" group-title="Sport",TABII SPOR 4 HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/13759861713a771b4b4726
 #EXTINF:-1 tvg-id="408817539739fafefc9d3b" tvg-name="TABII SPOR 4 UHD .b" tvg-logo="https://logo.huhu.to/logo?c=4088175397.png" group-title="Sport",TABII SPOR 4 UHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/408817539739fafefc9d3b
-#EXTINF:-1 tvg-id="3035603077ef0df0e5da67" tvg-name="TABII SPOR 5 .c" tvg-logo="" group-title="Sport",TABII SPOR 5 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/3035603077ef0df0e5da67
-#EXTINF:-1 tvg-id="383933219867eefb660622" tvg-name="TABII SPOR 5 UHD .b" tvg-logo="https://logo.huhu.to/logo?c=3839332198.png" group-title="Sport",TABII SPOR 5 UHD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/383933219867eefb660622
-#EXTINF:-1 tvg-id="40820967253b1d74e19a7f" tvg-name="TABII SPOR 6 .c" tvg-logo="https://cms-tabii-public-image.tabii.com/int/w300/43020.jpeg" group-title="Sport",TABII SPOR 6 .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/40820967253b1d74e19a7f
-#EXTINF:-1 tvg-id="270984838ca5cfbf75daa" tvg-name="TABII SPOR 6 HD .b" tvg-logo="https://cms-tabii-public-image.tabii.com/int/w300/43020.jpeg" group-title="Sport",TABII SPOR 6 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/270984838ca5cfbf75daa
+#EXTINF:-1 tvg-id="26619334135baa08b0bc1a" tvg-name="TABII SPOR 5 HD .b" tvg-logo="https://logo.huhu.to/logo?c=2661933413.png" group-title="Sport",TABII SPOR 5 HD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/26619334135baa08b0bc1a
 #EXTINF:-1 tvg-id="37137089631c97c5b7ef8f" tvg-name="TABII SPOR 6 UHD .b" tvg-logo="https://cms-tabii-public-image.tabii.com/int/w300/43020.jpeg" group-title="Sport",TABII SPOR 6 UHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/37137089631c97c5b7ef8f
-#EXTINF:-1 tvg-id="225948008747f499d08214" tvg-name="TABII SPOR HD .b" tvg-logo="https://logo.huhu.to/logo?c=2259480087.png" group-title="Sport",TABII SPOR HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/225948008747f499d08214
 #EXTINF:-1 tvg-id="40221481750ee503c548f9" tvg-name="TABII SPOR SD .b" tvg-logo="https://logo.huhu.to/logo?c=4022148175.png" group-title="Sport",TABII SPOR SD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/40221481750ee503c548f9
 #EXTINF:-1 tvg-id="1866901443ff40acda4f3" tvg-name="TAGESSCHAU24 HD .b" tvg-logo="https://i.imgur.com/LH0Gctv.png" group-title="Deutschland",TAGESSCHAU24 HD .b
@@ -2395,6 +2233,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/134603783562c726b4960
 https://young-dew-a7a9.pandatiger.workers.dev/play/895864247c4768e9e9512
 #EXTINF:-1 tvg-id="30737270789289ac9cd906" tvg-name="TELEKOM 3 BUNDESLIGA 8 .b" tvg-logo="" group-title="Sport",TELEKOM 3 BUNDESLIGA 8 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/30737270789289ac9cd906
+#EXTINF:-1 tvg-id="4185437077786df282f64e" tvg-name="TELEKOM BUNDESLIGA 1 .s" tvg-logo="" group-title="Sport",TELEKOM BUNDESLIGA 1 .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/4185437077786df282f64e
 #EXTINF:-1 tvg-id="108022275811c5ce88dbac" tvg-name="TELEKOM BUNDESLIGA 1 HD .b" tvg-logo="" group-title="Sport",TELEKOM BUNDESLIGA 1 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/108022275811c5ce88dbac
 #EXTINF:-1 tvg-id="347169683761407c8eb444" tvg-name="TELEKOM BUNDESLIGA 2 HD .b" tvg-logo="" group-title="Sport",TELEKOM BUNDESLIGA 2 HD .b
@@ -2455,8 +2295,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2172603703f03a5e8b05c5
 https://young-dew-a7a9.pandatiger.workers.dev/play/2041026135d10f9c36ff66
 #EXTINF:-1 tvg-id="TRT1.tr@SD" tvg-name="TRT 1 .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png" group-title="Ulusal (TR)",TRT 1 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1152613335bfe105ce135
-#EXTINF:-1 tvg-id="TRT1.tr@SD" tvg-name="TRT 1 4K .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png" group-title="Ulusal (TR)",TRT 1 4K .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/30598377924b88d34eee32
 #EXTINF:-1 tvg-id="TRT1.tr@SD" tvg-name="TRT 1 FHD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png" group-title="Ulusal (TR)",TRT 1 FHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/406666682989012326c7f
 #EXTINF:-1 tvg-id="TRT1.tr@SD" tvg-name="TRT 1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png" group-title="Ulusal (TR)",TRT 1 HD .b
@@ -2481,8 +2319,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/407667297404ea1174243c
 https://young-dew-a7a9.pandatiger.workers.dev/play/59975740553631f8c458f
 #EXTINF:-1 tvg-id="TRTBelgesel.tr@SD" tvg-name="TRT BELGESEL .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/TRT_Belgesel_logo_%282019-%29.svg/960px-TRT_Belgesel_logo_%282019-%29.svg.png" group-title="Belgesel / Doku",TRT BELGESEL .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/2439012215c6e5b64828da
-#EXTINF:-1 tvg-id="TRTBelgesel.tr@SD" tvg-name="TRT BELGESEL HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/TRT_Belgesel_logo_%282019-%29.svg/960px-TRT_Belgesel_logo_%282019-%29.svg.png" group-title="Belgesel / Doku",TRT BELGESEL HD+ .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2661394868c382749f3f0e
 #EXTINF:-1 tvg-id="TRTBelgesel.tr@SD" tvg-name="TRT BELGESEL HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/TRT_Belgesel_logo_%282019-%29.svg/960px-TRT_Belgesel_logo_%282019-%29.svg.png" group-title="Belgesel / Doku",TRT BELGESEL HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/33409970269ccb83ea274e
 #EXTINF:-1 tvg-id="TRTBelgesel.tr@SD" tvg-name="TRT BELGESEL RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/TRT_Belgesel_logo_%282019-%29.svg/960px-TRT_Belgesel_logo_%282019-%29.svg.png" group-title="Belgesel / Doku",TRT BELGESEL RAW .b
@@ -2491,8 +2327,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/8368266978a2a0a7326d3
 https://young-dew-a7a9.pandatiger.workers.dev/play/6857948301fe52b3221a3
 #EXTINF:-1 tvg-id="792228122ef3135bf6801" tvg-name="TRT COCUK .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png" group-title="Çocuk / Kinder",TRT COCUK .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/792228122ef3135bf6801
-#EXTINF:-1 tvg-id="3979837190d92f4a65c83b" tvg-name="TRT COCUK RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png" group-title="Çocuk / Kinder",TRT COCUK RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/3979837190d92f4a65c83b
 #EXTINF:-1 tvg-id="458659205476896290c35" tvg-name="TRT DIYANET .s" tvg-logo="" group-title="Dini",TRT DIYANET .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/458659205476896290c35
 #EXTINF:-1 tvg-id="1101849390824792e0390b" tvg-name="TRT DIYANET COCUK .c" tvg-logo="https://i.imgur.com/8PmXz9t.png" group-title="Çocuk / Kinder",TRT DIYANET COCUK .c
@@ -2505,16 +2339,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/17020398633aafc0a6bc
 https://young-dew-a7a9.pandatiger.workers.dev/play/2003703357957a75b3c760
 #EXTINF:-1 tvg-id="TRTHaber.tr@SD" tvg-name="TRT HABER .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png" group-title="Haber",TRT HABER .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1890976041805b61d663e0
-#EXTINF:-1 tvg-id="TRTHaber.tr@SD" tvg-name="TRT HABER HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png" group-title="Haber",TRT HABER HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2579401878b96c047d58b3
-#EXTINF:-1 tvg-id="TRTHaber.tr@SD" tvg-name="TRT HABER HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png" group-title="Haber",TRT HABER HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/20579655530debfaed90ec
-#EXTINF:-1 tvg-id="TRTHaber.tr@SD" tvg-name="TRT HABER RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png" group-title="Haber",TRT HABER RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/9310866570238353d89b
 #EXTINF:-1 tvg-id="TRTKurdi.tr@SD" tvg-name="TRT KURDI .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/TRT_Kurd%C3%AE_logo.svg/960px-TRT_Kurd%C3%AE_logo.svg.png" group-title="Ulusal (TR)",TRT KURDI .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/175696837a5a470ee74bf
 #EXTINF:-1 tvg-id="TRTKurdi.tr@SD" tvg-name="TRT KURDI RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/TRT_Kurd%C3%AE_logo.svg/960px-TRT_Kurd%C3%AE_logo.svg.png" group-title="Ulusal (TR)",TRT KURDI RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3640225965ac2c2232abef
+#EXTINF:-1 tvg-id="TRTMuzik.tr@SD" tvg-name="TRT MUZIK .s" tvg-logo="https://i.imgur.com/JgUzRH8.png" group-title="Ulusal (TR)",TRT MUZIK .s
+https://young-dew-a7a9.pandatiger.workers.dev/play/23626784229b8f6ad5dd7a
 #EXTINF:-1 tvg-id="TRTMuzik.tr@SD" tvg-name="TRT MUZIK HD+ .b" tvg-logo="https://i.imgur.com/JgUzRH8.png" group-title="Ulusal (TR)",TRT MUZIK HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3063329534c891d2af3f0f
 #EXTINF:-1 tvg-id="TRTMuzik.tr@SD" tvg-name="TRT MUZIK RAW .b" tvg-logo="https://i.imgur.com/JgUzRH8.png" group-title="Ulusal (TR)",TRT MUZIK RAW .b
@@ -2539,8 +2369,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/930542029ffe0c297ec0
 https://young-dew-a7a9.pandatiger.workers.dev/play/2081577417310aa2d344e3
 #EXTINF:-1 tvg-id="TRTSporYildiz.tr@SD" tvg-name="TRT SPOR YILDIZ HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg/960px-TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg.png" group-title="Sport",TRT SPOR YILDIZ HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/14238458092c57f9e072fb
-#EXTINF:-1 tvg-id="TRTSporYildiz.tr@SD" tvg-name="TRT SPOR YILDIZ HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg/960px-TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg.png" group-title="Sport",TRT SPOR YILDIZ HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/114501523d11f5030113f
 #EXTINF:-1 tvg-id="TRTSporYildiz.tr@SD" tvg-name="TRT SPOR YILDIZ RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg/960px-TRT_Spor_Y%C4%B1ld%C4%B1z_Logo.svg.png" group-title="Sport",TRT SPOR YILDIZ RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/268929752745bb1e55d52a
 #EXTINF:-1 tvg-id="TRTTurk.tr@SD" tvg-name="TRT TURK .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/TRT_T%C3%BCrk_logo.svg/960px-TRT_T%C3%BCrk_logo.svg.png" group-title="Ulusal (TR)",TRT TURK .c
@@ -2549,24 +2377,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/409809325606dced407ba1
 https://young-dew-a7a9.pandatiger.workers.dev/play/79776873160ecd1f8c09f
 #EXTINF:-1 tvg-id="TRTTurk.tr@SD" tvg-name="TRT TURK HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/TRT_T%C3%BCrk_logo.svg/960px-TRT_T%C3%BCrk_logo.svg.png" group-title="Ulusal (TR)",TRT TURK HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1619096863c7e11f78a1b0
-#EXTINF:-1 tvg-id="TRTTurk.tr@SD" tvg-name="TRT TURK RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/TRT_T%C3%BCrk_logo.svg/960px-TRT_T%C3%BCrk_logo.svg.png" group-title="Ulusal (TR)",TRT TURK RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/4095879853e79f376bf5ca
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c6062cc" tvg-name="TRT WORLD .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TRT_World.svg/960px-TRT_World.svg.png" group-title="Haber",TRT WORLD .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/3203147403a3de72a3f660
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c6062cc" tvg-name="TRT WORLD .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TRT_World.svg/960px-TRT_World.svg.png" group-title="Haber",TRT WORLD .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/3107205535643a3fc91038
 #EXTINF:-1 tvg-id="58d29bb0eefad3db9c6062cc" tvg-name="TRT WORLD HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TRT_World.svg/960px-TRT_World.svg.png" group-title="Haber",TRT WORLD HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/39856151173297a4afd524
-#EXTINF:-1 tvg-id="58d29bb0eefad3db9c6062cc" tvg-name="TRT WORLD RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TRT_World.svg/960px-TRT_World.svg.png" group-title="Haber",TRT WORLD RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/4076064178a12cbf89249a
 #EXTINF:-1 tvg-id="21895121eeea9f4b76d9" tvg-name="TRT2 RAW .b" tvg-logo="" group-title="Ulusal (TR)",TRT2 RAW .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/21895121eeea9f4b76d9
 #EXTINF:-1 tvg-id="TV100.tr@SD" tvg-name="TV 100 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/0/0f/TV100_logo.png/960px-TV100_logo.png" group-title="Ulusal (TR)",TV 100 .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/37694889827bcff8d6501a
 #EXTINF:-1 tvg-id="TV100.tr@SD" tvg-name="TV 100 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/0/0f/TV100_logo.png/960px-TV100_logo.png" group-title="Ulusal (TR)",TV 100 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/16852994727259ba10c029
-#EXTINF:-1 tvg-id="TV100.tr@SD" tvg-name="TV 100 .s" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/0/0f/TV100_logo.png/960px-TV100_logo.png" group-title="Ulusal (TR)",TV 100 .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/1635207231a61cd1da15b
 #EXTINF:-1 tvg-id="TV100.tr@SD" tvg-name="TV 100 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/0/0f/TV100_logo.png/960px-TV100_logo.png" group-title="Ulusal (TR)",TV 100 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/504009173395fc5e39b0f
 #EXTINF:-1 tvg-id="TV100.tr@SD" tvg-name="TV 100 HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/0/0f/TV100_logo.png/960px-TV100_logo.png" group-title="Ulusal (TR)",TV 100 HEVC .b
@@ -2579,8 +2401,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2196709234badbc159d5a2
 https://young-dew-a7a9.pandatiger.workers.dev/play/329802627004ee30bd6aa0
 #EXTINF:-1 tvg-id="TV8.cr@SD" tvg-name="TV 8 HEVC .b" tvg-logo="https://logo.huhu.to/logo?c=1662562034.png" group-title="Ulusal (TR)",TV 8 HEVC .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1662562034e8a914e62dce
-#EXTINF:-1 tvg-id="TV8.cr@SD" tvg-name="TV 8 SD .b" tvg-logo="https://logo.huhu.to/logo?c=3695389987.png" group-title="Ulusal (TR)",TV 8 SD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/369538998733b793a5838a
 #EXTINF:-1 tvg-id="1764745585e555f9ba3c0e" tvg-name="TV 8 INT .s" tvg-logo="" group-title="Ulusal (TR)",TV 8 INT .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/1764745585e555f9ba3c0e
 #EXTINF:-1 tvg-id="3546432682c60db460810f" tvg-name="TV 8 INTERNATIONAL .c" tvg-logo="https://logo.huhu.to/logo?c=3546432682.png" group-title="Ulusal (TR)",TV 8 INTERNATIONAL .c
@@ -2599,36 +2419,24 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/241220593740c7258ef669
 https://young-dew-a7a9.pandatiger.workers.dev/play/3849481299fabab702b001
 #EXTINF:-1 tvg-id="TV8.tr@SD" tvg-name="TV8 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/6/68/Tv8_Yeni_Logo.png/960px-Tv8_Yeni_Logo.png" group-title="Ulusal (TR)",TV8 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1702470161fe0c4007a0bb
-#EXTINF:-1 tvg-id="TV8.tr@SD" tvg-name="TV8 RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/6/68/Tv8_Yeni_Logo.png/960px-Tv8_Yeni_Logo.png" group-title="Ulusal (TR)",TV8 RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/199101032472d01db313b0
 #EXTINF:-1 tvg-id="TV8.tr@SD" tvg-name="TV8 SD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/6/68/Tv8_Yeni_Logo.png/960px-Tv8_Yeni_Logo.png" group-title="Ulusal (TR)",TV8 SD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/208162889d5e4a2120cf8
 #EXTINF:-1 tvg-id="122166175526c22658c312" tvg-name="TVNET .s" tvg-logo="https://i.imgur.com/mQo8yWQ.png" group-title="Dini",TVNET .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/122166175526c22658c312
 #EXTINF:-1 tvg-id="11824807968f3783ce706f" tvg-name="TVNET HD .b" tvg-logo="https://i.imgur.com/mQo8yWQ.png" group-title="Dini",TVNET HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/11824807968f3783ce706f
-#EXTINF:-1 tvg-id="1159899920595e9c441350" tvg-name="TIVIBU SPOR .c" tvg-logo="https://i.imgur.com/qvrKQY3.png" group-title="Sport",TIVIBU SPOR .c
-https://young-dew-a7a9.pandatiger.workers.dev/play/1159899920595e9c441350
 #EXTINF:-1 tvg-id="25659723389efdd2098be1" tvg-name="TIVIBU SPOR 1 .c" tvg-logo="https://logo.huhu.to/logo?c=2565972338.png" group-title="Sport",TIVIBU SPOR 1 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/25659723389efdd2098be1
-#EXTINF:-1 tvg-id="1528949791210996169a6f" tvg-name="TIVIBU SPOR 1 .s" tvg-logo="" group-title="Sport",TIVIBU SPOR 1 .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/1528949791210996169a6f
-#EXTINF:-1 tvg-id="2046583925cdbd476d8733" tvg-name="TIVIBU SPOR 1 HD .s" tvg-logo="" group-title="Sport",TIVIBU SPOR 1 HD .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/2046583925cdbd476d8733
 #EXTINF:-1 tvg-id="37466838109fc1c67c228d" tvg-name="TIVIBU SPOR 2 .c" tvg-logo="https://i.imgur.com/fZMSjNE.png" group-title="Sport",TIVIBU SPOR 2 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/37466838109fc1c67c228d
+#EXTINF:-1 tvg-id="37949240505288959ad99c" tvg-name="TIVIBU SPOR 3 .c" tvg-logo="https://i.imgur.com/xLrgt2O.png" group-title="Sport",TIVIBU SPOR 3 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/37949240505288959ad99c
 #EXTINF:-1 tvg-id="568442751987b14d1ad00" tvg-name="TIVIBU SPOR 3 .s" tvg-logo="https://i.imgur.com/xLrgt2O.png" group-title="Sport",TIVIBU SPOR 3 .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/568442751987b14d1ad00
-#EXTINF:-1 tvg-id="100410240872b813d41c94" tvg-name="TIVIBU SPOR 3 HD .s" tvg-logo="https://i.imgur.com/xLrgt2O.png" group-title="Sport",TIVIBU SPOR 3 HD .s
-https://young-dew-a7a9.pandatiger.workers.dev/play/100410240872b813d41c94
 #EXTINF:-1 tvg-id="1343303170fbfea75b9f15" tvg-name="TIVIBU SPOR 4 .c" tvg-logo="https://i.imgur.com/LgGxe7z.png" group-title="Sport",TIVIBU SPOR 4 .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/1343303170fbfea75b9f15
 #EXTINF:-1 tvg-id="3307062704472686916fe7" tvg-name="TIVIBU SPOR 4 HD .b" tvg-logo="https://i.imgur.com/LgGxe7z.png" group-title="Sport",TIVIBU SPOR 4 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/3307062704472686916fe7
-#EXTINF:-1 tvg-id="163038510f87c95f99d11" tvg-name="TIVIBU SPOR 5 HD .b" tvg-logo="" group-title="Sport",TIVIBU SPOR 5 HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/163038510f87c95f99d11
-#EXTINF:-1 tvg-id="1406262118fb4f653061f6" tvg-name="TIVIBU SPOR RAW .b" tvg-logo="https://i.imgur.com/qvrKQY3.png" group-title="Sport",TIVIBU SPOR RAW .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1406262118fb4f653061f6
 #EXTINF:-1 tvg-id="289665874444b8f4f2d451" tvg-name="TIVIBUSPOR 1 FHD .b" tvg-logo="https://logo.huhu.to/logo?c=2896658744.png" group-title="Sport",TIVIBUSPOR 1 FHD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/289665874444b8f4f2d451
 #EXTINF:-1 tvg-id="36545180071dd8a862ae2e" tvg-name="TIVIBUSPOR 1 HD .b" tvg-logo="https://logo.huhu.to/logo?c=3654518007.png" group-title="Sport",TIVIBUSPOR 1 HD .b
@@ -2641,8 +2449,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1465680660b8cd069bfa4c
 https://young-dew-a7a9.pandatiger.workers.dev/play/21863899508f19a672f26d
 #EXTINF:-1 tvg-id="261662401043fc1ad1ed6f" tvg-name="TIVIBUSPOR 3 HD .b" tvg-logo="https://logo.huhu.to/logo?c=2616624010.png" group-title="Sport",TIVIBUSPOR 3 HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/261662401043fc1ad1ed6f
-#EXTINF:-1 tvg-id="36535158588fee46401238" tvg-name="TIVIBUSPOR SPOR HD .b" tvg-logo="https://logo.huhu.to/logo?c=3653515858.png" group-title="Sport",TIVIBUSPOR SPOR HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/36535158588fee46401238
 #EXTINF:-1 tvg-id="85306546139c209c35aab" tvg-name="VF: DE: DISCOVERY HD .b" tvg-logo="" group-title="Belgesel / Doku",VF: DE: DISCOVERY HD .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/85306546139c209c35aab
 #EXTINF:-1 tvg-id="1670046236135c5de6b2c2" tvg-name="VOX .b" tvg-logo="https://i.imgur.com/QPcmfZb.png" group-title="Deutschland",VOX .b
@@ -2681,8 +2487,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1900945213599b64fe115b
 https://young-dew-a7a9.pandatiger.workers.dev/play/1515686371746ee6b20938
 #EXTINF:-1 tvg-id="ViasatHistory.tr@SD" tvg-name="VIASAT HISTORY HD+ .b" tvg-logo="https://i.imgur.com/wRP9XA7.png" group-title="Belgesel / Doku",VIASAT HISTORY HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/348046896213b84ce9a729
-#EXTINF:-1 tvg-id="ViasatHistory.tr@SD" tvg-name="VIASAT HISTORY HEVC .b" tvg-logo="https://i.imgur.com/wRP9XA7.png" group-title="Belgesel / Doku",VIASAT HISTORY HEVC .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/1165670263945583e36e19
 #EXTINF:-1 tvg-id="367385397325c640f7c34d" tvg-name="WARNER TV COMEDY .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/WarnerTV_Comedy_Logo_2021.svg/960px-WarnerTV_Comedy_Logo_2021.svg.png" group-title="Deutschland",WARNER TV COMEDY .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/367385397325c640f7c34d
 #EXTINF:-1 tvg-id="282498318448f8718cc1f8" tvg-name="WARNER TV FILM .c" tvg-logo="https://i.imgur.com/U3PCFFJ.png" group-title="Deutschland",WARNER TV FILM .c
@@ -2721,8 +2525,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/20249850694a4b99d1350e
 https://young-dew-a7a9.pandatiger.workers.dev/play/3338159581a989d003ec5a
 #EXTINF:-1 tvg-id="42046159902bf40614cf6e" tvg-name="YABAN TV .s" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/3/38/Yabantv_logo.png/960px-Yabantv_logo.png" group-title="Belgesel / Doku",YABAN TV .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/42046159902bf40614cf6e
-#EXTINF:-1 tvg-id="178850393550c13d869fbf" tvg-name="YABAN TV HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/thumb/3/38/Yabantv_logo.png/960px-Yabantv_logo.png" group-title="Belgesel / Doku",YABAN TV HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/178850393550c13d869fbf
 #EXTINF:-1 tvg-id="15843353838096cf65cb7d" tvg-name="YESILCAM .c" tvg-logo="" group-title="Film",YESILCAM .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/15843353838096cf65cb7d
 #EXTINF:-1 tvg-id="1952835738c83bfddaf481" tvg-name="YESILCAM 1 .s" tvg-logo="" group-title="Film",YESILCAM 1 .s
@@ -2737,6 +2539,8 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/36035801315c2c657f7f29
 https://young-dew-a7a9.pandatiger.workers.dev/play/1377055653aae1eccd061c
 #EXTINF:-1 tvg-id="10711660543c82502a97f7" tvg-name="YOL TV .s" tvg-logo="https://i.imgur.com/rTBX6lS.png" group-title="Dini",YOL TV .s
 https://young-dew-a7a9.pandatiger.workers.dev/play/10711660543c82502a97f7
+#EXTINF:-1 tvg-id="607077155292bdb1bc79a" tvg-name="YOL TV SD .b" tvg-logo="https://i.imgur.com/rTBX6lS.png" group-title="Dini",YOL TV SD .b
+https://young-dew-a7a9.pandatiger.workers.dev/play/607077155292bdb1bc79a
 #EXTINF:-1 tvg-id="36308257510ea627445703" tvg-name="ZDF .c" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Deutschland",ZDF .c
 https://young-dew-a7a9.pandatiger.workers.dev/play/36308257510ea627445703
 #EXTINF:-1 tvg-id="27736457088450539466b4" tvg-name="ZDF .s" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Deutschland",ZDF .s
@@ -2745,8 +2549,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/27736457088450539466b4
 https://young-dew-a7a9.pandatiger.workers.dev/play/2521267440402231fadbcb
 #EXTINF:-1 tvg-id="2833509625e61a3449d2cc" tvg-name="ZDF HD (BACKUP) .b" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Deutschland",ZDF HD (BACKUP) .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/2833509625e61a3449d2cc
-#EXTINF:-1 tvg-id="2357166742945b42426750" tvg-name="ZDF HD .b" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Deutschland",ZDF HD .b
-https://young-dew-a7a9.pandatiger.workers.dev/play/2357166742945b42426750
 #EXTINF:-1 tvg-id="28662925545be6c8be8ec1" tvg-name="ZDF HD+ .b" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Deutschland",ZDF HD+ .b
 https://young-dew-a7a9.pandatiger.workers.dev/play/28662925545be6c8be8ec1
 #EXTINF:-1 tvg-id="1860571224f867b6cef5ca" tvg-name="ZDF NEO .b" tvg-logo="" group-title="Deutschland",ZDF NEO .b
