@@ -1,16 +1,16 @@
 import re
 import requests
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor
 
-INPUT_FILE = "iptv.m3u"
-OUTPUT_FILE = "iptv.m3u"
-CUSTOM_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+VAVOO_M3U = "iptv.m3u"
+OUTPUT_M3U = "iptv.m3u"
+VOLO_BASE_URL = "https://tv.canlitvvolo.com"
 
-TIMEOUT = 3
-MAX_WORKERS = 20
+CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 
 def get_canonical_key(name):
-    """ Erstellt den Such-Schlüssel für den Sender """
+    """ Erstellt einen einheitlichen Vergleichsschlüssel für Namen """
     if not name: return ""
     text = name.lower()
     text = re.sub(r'(?i)\b(4k|uhd|fhd|hd|sd|hevc|raw|1080p?|720p?|480p?|backup)\b', '', text)
@@ -20,84 +20,111 @@ def get_canonical_key(name):
     text = re.sub(r'[^a-z0-9]', '', text)
     return text
 
-def test_url(url):
-    """ Testet live, ob der Stream antwortet """
-    clean_url = url.split('|')[0]
+def scrape_volo_streams():
+    """ Crawlt die Sender von tv.canlitvvolo.com und extrahiert m3u8 Links """
+    print("Starte Scraping von CanliTVVolo...")
+    volo_map = {}
+    
     try:
-        r = requests.get(clean_url, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=TIMEOUT, stream=True)
-        return r.status_code in [200, 206]
-    except Exception:
-        return False
+        res = requests.get(VOLO_BASE_URL, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=5)
+        if res.status_code != 200:
+            print("Volo nicht erreichbar, fahre nur mit Vavoo fort.")
+            return volo_map
 
-def process_m3u():
+        soup = BeautifulSoup(res.text, 'html.parser')
+        # Senderseiten-Links auf der Hauptseite suchen
+        channel_links = []
+        for a in soup.find_all('a', href=True):
+            href = a['href']
+            if href.startswith('/') and len(href) > 2 and not any(x in href for x in ['#', 'privacy', 'contact', 'css', 'js']):
+                channel_links.append(VOLO_BASE_URL + href)
+
+        channel_links = list(set(channel_links))
+
+        # Einzelne Senderseiten abrufen, um die .m3u8 / Player-URL zu finden
+        def extract_stream(url):
+            try:
+                r = requests.get(url, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=4)
+                # Nach m3u8 Links im Quelltext/JavaScript suchen
+                m3u8_matches = re.findall(r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*', r.text)
+                if m3u8_matches:
+                    channel_name = url.split('/')[-1].replace('-', ' ')
+                    key = get_canonical_key(channel_name)
+                    return key, m3u8_matches[0]
+            except Exception:
+                pass
+            return None, None
+
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            results = executor.map(extract_stream, channel_links)
+            for key, stream_url in results:
+                if key and stream_url:
+                    if key not in volo_map:
+                        volo_map[key] = []
+                    volo_map[key].append(stream_url)
+
+    except Exception as e:
+        print(f"Fehler beim Scraping: {e}")
+
+    print(f"Gefundene Volo-Sender: {len(volo_map)}")
+    return volo_map
+
+def process_hybrid_m3u():
+    # 1. Volo-Streams abgreifen
+    volo_streams = scrape_volo_streams()
+
+    # 2. Vavoo M3U einlesen
     try:
-        with open(INPUT_FILE, 'r', encoding='utf-8', errors='ignore') as f:
+        with open(VAVOO_M3U, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
     except FileNotFoundError:
-        print(f"Fehler: {INPUT_FILE} nicht gefunden.")
+        print(f"Fehler: {VAVOO_M3U} nicht gefunden.")
         return
 
     raw_blocks = content.split('#EXTINF:')
     header = raw_blocks[0] if raw_blocks[0].startswith('#EXTM3U') else '#EXTM3U\n'
     
-    all_entries = []
-    pool_by_key = {}
+    output_entries = []
 
-    # 1. Alle Kanäle einlesen und nach Sendernamen bündeln
     for block in raw_blocks[1:]:
         lines = [line.strip() for line in block.strip().splitlines() if line.strip()]
         if not lines: continue
             
         extinf = "#EXTINF:" + lines[0]
-        url = lines[-1]
-        raw_name = extinf.split(',')[-1] if ',' in extinf else "Unbekannt"
+        vavoo_url = lines[-1]
+        raw_name = extinf.split(',')[-1] if ',' in extinf else ""
         key = get_canonical_key(raw_name)
 
-        entry = {'extinf': extinf, 'url': url, 'name': raw_name, 'key': key}
-        all_entries.append(entry)
+        # Überprüfen, ob Volo einen Stream für diesen Sendernamen hat
+        if key in volo_streams and len(volo_streams[key]) > 0:
+            # Primärer Link ist der von Volo
+            chosen_url = volo_streams[key][0]
+            ua = CUSTOM_USER_AGENT
+        else:
+            # Fallback & Restliche Sender: Vavoo-Link nutzen
+            chosen_url = vavoo_url
+            ua = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
-        if key not in pool_by_key:
-            pool_by_key[key] = []
-        pool_by_key[key].append(url)
+        output_entries.append({
+            'extinf': extinf,
+            'url': chosen_url,
+            'ua': ua
+        })
 
-    # 2. URLs auf Erreichbarkeit testen
-    unique_urls = list({e['url'] for e in all_entries})
-    working_urls = set()
-
-    print(f"Prüfe {len(unique_urls)} verschiedene Stream-URLs...")
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = {executor.submit(test_url, url): url for url in unique_urls}
-        for future in as_completed(futures):
-            url = futures[future]
-            if future.result():
-                working_urls.add(url)
-
-    # 3. Datei schreiben: Toten Links wird ein funktionierender Ersatz-Link desselben Senders zugewiesen
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+    # 3. Neue Hybride M3U schreiben
+    with open(OUTPUT_M3U, 'w', encoding='utf-8') as f:
         f.write(header if header.endswith('\n') else header + '\n')
-        
-        for entry in all_entries:
-            key = entry['key']
-            chosen_url = entry['url']
-
-            # Wenn der eigene Link tot ist, suche nach einer funktionierenden Alternative im Pool
-            if chosen_url not in working_urls:
-                candidates = pool_by_key.get(key, [])
-                for alt_url in candidates:
-                    if alt_url in working_urls:
-                        chosen_url = alt_url
-                        break
-
-            f.write(entry['extinf'] + '\n')
-            f.write(f"#EXTVLCOPT:http-user-agent={CUSTOM_USER_AGENT}\n")
-            f.write(f"#EXTHTTP:{{\"User-Agent\":\"{CUSTOM_USER_AGENT}\"}}\n")
+        for item in output_entries:
+            f.write(item['extinf'] + '\n')
+            f.write(f"#EXTVLCOPT:http-user-agent={item['ua']}\n")
+            f.write(f"#EXTHTTP:{{\"User-Agent\":\"{item['ua']}\"}}\n")
             
-            final_url = chosen_url
-            if '|' not in final_url:
-                final_url += f"|User-Agent={CUSTOM_USER_AGENT}"
+            final_url = item['url']
+            if '|' not in final_url and 'vavoo' in item['ua'].lower():
+                final_url += f"|User-Agent={item['ua']}"
             f.write(final_url + "\n")
 
-    print(f"Fertig! Es wurden {len(all_entries)} Kanäle geschrieben (defekte Links wurden ausgetauscht).")
+    print(f"Fertig! Hybride Liste mit {len(output_entries)} Kanälen generiert.")
 
 if __name__ == "__main__":
-    process_m3u()
+    process_hybrid_m3u()
