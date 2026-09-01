@@ -8,7 +8,7 @@ from html import unescape
 
 
 # ============================================================
-# CONFIG
+# KONFIGURATION
 # ============================================================
 
 INPUT_M3U = "iptv.m3u"
@@ -16,11 +16,10 @@ OUTPUT_M3U = "iptv.m3u"
 
 VOLO_BASE_URL = "https://tv.canlitvvolo.com"
 
-# Der TV-Feed ist die bevorzugte Quelle.
 VOLO_RSS_URLS = [
-    f"{VOLO_BASE_URL}/tv/feed",
     f"{VOLO_BASE_URL}/feed",
     f"{VOLO_BASE_URL}/rss",
+    f"{VOLO_BASE_URL}/tv/feed",
 ]
 
 CUSTOM_USER_AGENT = (
@@ -55,21 +54,21 @@ session.headers.update({
 
 
 # ============================================================
-# KANALNAME NORMALISIEREN
+# NAMEN NORMALISIEREN
 # ============================================================
 
 def get_canonical_key(name):
     """
-    Macht aus unterschiedlichen Schreibweisen einen
-    gemeinsamen Vergleichsschlüssel.
+    Macht unterschiedliche Schreibweisen vergleichbar.
 
-    Beispiel:
+    Beispiele:
 
-    RTL HD
-    RTL
-    RTL FHD
+    4K TR: A SPOR HD .b
+    A Spor HD
+    A-SPOR
+    A Spor
 
-    -> rtl
+    -> aspor
     """
 
     if not name:
@@ -77,46 +76,26 @@ def get_canonical_key(name):
 
     text = unescape(str(name))
     text = unquote(text)
-    text = text.lower().strip()
 
-    # HTML-Reste
+    # HTML entfernen
     text = re.sub(r"<[^>]+>", " ", text)
 
-    # Qualität / technische Angaben
-    text = re.sub(
-        r"\b("
-        r"4k|uhd|fhd|hd|sd|hevc|raw|"
-        r"1080p|720p|576p|480p|360p|"
-        r"backup|backup\d+|"
-        r"yayin\s*\d+|"
-        r"stream\s*\d+|"
-        r"source\s*\d+"
-        r")\b",
-        " ",
-        text,
-        flags=re.IGNORECASE
-    )
-
-    # Häufige Länderpräfixe
-    text = re.sub(
-        r"^(tr|de|en|fr|uk|us)\s*[:\-]\s*",
-        "",
-        text
-    )
-
-    # Klammerzusätze
-    text = re.sub(r"\([^)]*\)", " ", text)
-    text = re.sub(r"\[[^\]]*\]", " ", text)
-
-    # Türkische Sonderzeichen vereinheitlichen
+    # Unicode vereinheitlichen
     replacements = {
         "ğ": "g",
+        "Ğ": "g",
         "ü": "u",
+        "Ü": "u",
         "ş": "s",
+        "Ş": "s",
         "ı": "i",
+        "İ": "i",
         "ö": "o",
+        "Ö": "o",
         "ç": "c",
+        "Ç": "c",
         "ä": "a",
+        "Ä": "a",
         "é": "e",
         "è": "e",
         "à": "a",
@@ -128,29 +107,317 @@ def get_canonical_key(name):
     for old, new in replacements.items():
         text = text.replace(old, new)
 
-    # Nur Buchstaben/Zahlen behalten
-    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    text = text.lower()
 
-    # Wörter, die für den Sendernamen irrelevant sind
+    # --------------------------------------------------------
+    # Technische Angaben entfernen
+    # --------------------------------------------------------
+
+    text = re.sub(
+        r"\b("
+        r"4k|8k|uhd|fhd|hd|sd|"
+        r"hevc|h265|h264|"
+        r"1080p|1080i|720p|576p|480p|360p|"
+        r"backup|yedek|"
+        r"raw|"
+        r"stream|source|"
+        r"live|"
+        r"canli|canlı|"
+        r"izle|"
+        r")\b",
+        " ",
+        text,
+        flags=re.IGNORECASE
+    )
+
+    # --------------------------------------------------------
+    # Präfixe entfernen
+    # --------------------------------------------------------
+
+    text = re.sub(
+        r"^(4k|hd|fhd|uhd|tr|turkey)"
+        r"[\s:_\-]+",
+        "",
+        text,
+        flags=re.IGNORECASE
+    )
+
+    # z.B. "4K TR:"
+    text = re.sub(
+        r"^(4k|tr|turkey)"
+        r"[\s:_\-]+"
+        r"(tr|turkey)?"
+        r"[\s:_\-]*",
+        "",
+        text,
+        flags=re.IGNORECASE
+    )
+
+    # --------------------------------------------------------
+    # Klammern entfernen
+    # --------------------------------------------------------
+
+    text = re.sub(r"\([^)]*\)", " ", text)
+    text = re.sub(r"\[[^\]]*\]", " ", text)
+
+    # --------------------------------------------------------
+    # Vavoo interne Suffixe entfernen
+    #
+    # Beispiele:
+    # .b
+    # .c
+    # .s
+    # -b
+    # -c
+    # -s
+    # --------------------------------------------------------
+
+    text = re.sub(
+        r"[\s._\-]+[bcs]\s*$",
+        "",
+        text,
+        flags=re.IGNORECASE
+    )
+
+    # Auch mehrfach
+    text = re.sub(
+        r"[\s._\-]+[a-z]\s*$",
+        "",
+        text,
+        flags=re.IGNORECASE
+    )
+
+    # --------------------------------------------------------
+    # "YAYIN 1", "YAYIN 2" usw.
+    # --------------------------------------------------------
+
+    text = re.sub(
+        r"\byayin\s*\d+\b",
+        " ",
+        text,
+        flags=re.IGNORECASE
+    )
+
+    # --------------------------------------------------------
+    # Sonderzeichen entfernen
+    # --------------------------------------------------------
+
+    text = re.sub(
+        r"[^a-z0-9\s]",
+        " ",
+        text
+    )
+
+    # Mehrere Leerzeichen
+    text = re.sub(
+        r"\s+",
+        " ",
+        text
+    ).strip()
+
+    # Wörter, die keinen Sender identifizieren
     stop_words = {
         "tv",
         "television",
         "channel",
         "kanal",
-        "canli",
-        "canlı",
-        "izle",
         "live",
         "watch",
+        "online",
         "official",
+        "turkiye",
+        "turkey",
     }
 
     words = [
-        x for x in text.split()
-        if x not in stop_words
+        word
+        for word in text.split()
+        if word not in stop_words
     ]
 
     return "".join(words)
+
+
+# ============================================================
+# ZUSÄTZLICHE NAMENSVARIANTEN
+# ============================================================
+
+def get_name_variants(name):
+    """
+    Erzeugt mehrere Schlüssel für ein robustes Matching.
+    """
+
+    variants = set()
+
+    if not name:
+        return variants
+
+    original = unescape(str(name)).strip()
+
+    key = get_canonical_key(original)
+
+    if key:
+        variants.add(key)
+
+    # Wörter einzeln bereinigen
+    cleaned = re.sub(
+        r"[^a-zA-Z0-9ğüşıöçĞÜŞİÖÇ]+",
+        " ",
+        original
+    )
+
+    words = cleaned.split()
+
+    # Varianten ohne einzelne Buchstaben am Ende
+    while words and len(words[-1]) == 1:
+        words.pop()
+
+    if words:
+        variant = get_canonical_key(
+            " ".join(words)
+        )
+
+        if variant:
+            variants.add(variant)
+
+    # Häufige Schreibweise: A Spor -> ASpor
+    compact = re.sub(
+        r"[^a-zA-Z0-9]",
+        "",
+        original
+    ).lower()
+
+    compact = get_canonical_key(compact)
+
+    if compact:
+        variants.add(compact)
+
+    return variants
+
+
+# ============================================================
+# BEKANNTE ALIASE
+# ============================================================
+
+ALIASES = {
+    "aspor": {
+        "aspor",
+        "asporhd",
+        "asporfhd",
+    },
+
+    "ahaber": {
+        "ahaber",
+        "ahaberhd",
+    },
+
+    "atv": {
+        "atv",
+        "atvhd",
+    },
+
+    "kanald": {
+        "kanald",
+        "kanaldhd",
+    },
+
+    "showtv": {
+        "showtv",
+        "showtvhd",
+    },
+
+    "startv": {
+        "startv",
+        "startvhd",
+    },
+
+    "tv8": {
+        "tv8",
+        "tv8hd",
+    },
+
+    "tv8buçuk": {
+        "tv8bucuk",
+        "tv8buçuk",
+        "tv8buçukhd",
+    },
+
+    "trt1": {
+        "trt1",
+        "trt1hd",
+    },
+
+    "trt2": {
+        "trt2",
+        "trt2hd",
+    },
+
+    "trtspor": {
+        "trtspor",
+        "trtsporhd",
+    },
+
+    "trtspor2": {
+        "trtspor2",
+        "trtspor2hd",
+    },
+
+    "trtbelgesel": {
+        "trtbelgesel",
+        "trtbelgeselhd",
+    },
+
+    "trtavaz": {
+        "trtavaz",
+        "trtavazhd",
+    },
+
+    "trthaber": {
+        "trthaber",
+        "trthaberhd",
+    },
+
+    "trtmuzik": {
+        "trtmuzik",
+        "trtmuzikhd",
+    },
+
+    "trtcocuk": {
+        "trtcocuk",
+        "trtcocukhd",
+    },
+
+    "360": {
+        "360",
+        "360tv",
+        "360hd",
+    },
+
+    "24": {
+        "24",
+        "24tv",
+        "24hd",
+    },
+}
+
+
+def alias_key(key):
+    """
+    Gibt den Haupt-Alias eines Senders zurück.
+    """
+
+    if not key:
+        return None
+
+    for canonical, aliases in ALIASES.items():
+
+        if key == canonical:
+            return canonical
+
+        if key in aliases:
+            return canonical
+
+    return None
 
 
 # ============================================================
@@ -158,12 +425,6 @@ def get_canonical_key(name):
 # ============================================================
 
 def read_m3u():
-    """
-    Liest die von build.js erzeugte IPTV-Liste.
-
-    Wichtig:
-    Die ursprünglichen EXTINF-Zeilen und URLs bleiben erhalten.
-    """
 
     try:
         with open(
@@ -175,7 +436,11 @@ def read_m3u():
             lines = f.readlines()
 
     except FileNotFoundError:
-        print(f"[ERROR] {INPUT_M3U} nicht gefunden.")
+
+        print(
+            f"[ERROR] {INPUT_M3U} nicht gefunden."
+        )
+
         return []
 
     entries = []
@@ -183,11 +448,14 @@ def read_m3u():
     current_extinf = None
     current_extra = []
 
-    for raw_line in lines:
+    for raw in lines:
 
-        line = raw_line.strip()
+        line = raw.strip()
 
         if not line:
+            continue
+
+        if line.startswith("#EXTM3U"):
             continue
 
         if line.startswith("#EXTINF:"):
@@ -206,12 +474,18 @@ def read_m3u():
 
             continue
 
-        # Normale URL
         url = line
 
         if "," in current_extinf:
-            name = current_extinf.rsplit(",", 1)[1].strip()
+
+            name = (
+                current_extinf
+                .rsplit(",", 1)[1]
+                .strip()
+            )
+
         else:
+
             name = ""
 
         entries.append({
@@ -229,20 +503,25 @@ def read_m3u():
 
 
 # ============================================================
-# STREAM URL ERKENNEN
+# M3U8 EXTRAHIEREN
 # ============================================================
 
 def extract_m3u8_urls(text):
-    """
-    Sucht echte HLS/m3u8 URLs im HTML bzw. JavaScript.
-    """
 
     if not text:
         return []
 
     text = unescape(text)
-    text = text.replace("\\/", "/")
-    text = text.replace("\\u0026", "&")
+
+    text = text.replace(
+        "\\/",
+        "/"
+    )
+
+    text = text.replace(
+        "\\u0026",
+        "&"
+    )
 
     patterns = [
         r'https?://[^"\'<>\s\\]+\.m3u8(?:\?[^"\'<>\s\\]*)?',
@@ -261,34 +540,25 @@ def extract_m3u8_urls(text):
 
         for url in matches:
 
-            url = url.strip("\"' ")
+            url = url.strip(
+                "\"' "
+            )
 
             if url not in result:
+
                 result.append(url)
 
     return result
 
 
 # ============================================================
-# SENDERSEITE UNTERSUCHEN
+# VOLO SENDERSEITE
 # ============================================================
 
-def extract_stream_from_page(page_url, rss_name=None):
-    """
-    Untersucht:
-
-    Senderseite
-       ↓
-    HTML
-       ↓
-    JavaScript
-       ↓
-    iframe
-       ↓
-    iframe JavaScript
-       ↓
-    m3u8
-    """
+def extract_stream_from_page(
+    page_url,
+    rss_name=None
+):
 
     try:
 
@@ -308,48 +578,94 @@ def extract_stream_from_page(page_url, rss_name=None):
             "html.parser"
         )
 
-        # ----------------------------------------------------
-        # Kanalname
-        # ----------------------------------------------------
-
+        # RSS-Namen bevorzugen
         channel_name = rss_name
 
-        title = soup.find(
-            "meta",
-            property="og:title"
-        )
+        # Nur wenn RSS keinen Namen liefert
+        if not channel_name:
 
-        if title and title.get("content"):
-            channel_name = title["content"].strip()
-
-        elif soup.title:
-            channel_name = soup.title.get_text(
-                strip=True
+            meta = soup.find(
+                "meta",
+                property="og:title"
             )
 
+            if meta and meta.get("content"):
+
+                channel_name = (
+                    meta["content"]
+                    .strip()
+                )
+
+            elif soup.title:
+
+                channel_name = (
+                    soup.title
+                    .get_text(
+                        strip=True
+                    )
+                )
+
+        streams = []
+
         # ----------------------------------------------------
-        # Direkte m3u8 URLs
+        # Direktes HTML
         # ----------------------------------------------------
 
-        streams = extract_m3u8_urls(html)
+        for stream in extract_m3u8_urls(html):
+
+            if stream not in streams:
+                streams.append(stream)
 
         # ----------------------------------------------------
         # Scripts
         # ----------------------------------------------------
 
-        for script in soup.find_all("script"):
+        for script in soup.find_all(
+            "script"
+        ):
 
-            script_text = script.string
-
-            if not script_text:
-                script_text = script.get_text()
+            script_text = (
+                script.string
+                or script.get_text()
+            )
 
             for stream in extract_m3u8_urls(
                 script_text
             ):
 
                 if stream not in streams:
+
                     streams.append(stream)
+
+        # ----------------------------------------------------
+        # Video / Source Tags
+        # ----------------------------------------------------
+
+        for tag in soup.find_all(
+            ["video", "source"]
+        ):
+
+            for attr in [
+                "src",
+                "data-src",
+                "data-url",
+                "data-file",
+            ]:
+
+                value = tag.get(attr)
+
+                if not value:
+                    continue
+
+                if ".m3u8" in value.lower():
+
+                    value = urljoin(
+                        page_url,
+                        value
+                    )
+
+                    if value not in streams:
+                        streams.append(value)
 
         # ----------------------------------------------------
         # IFrames
@@ -368,6 +684,7 @@ def extract_stream_from_page(page_url, rss_name=None):
             )
 
             if iframe_url not in iframe_urls:
+
                 iframe_urls.append(
                     iframe_url
                 )
@@ -382,21 +699,25 @@ def extract_stream_from_page(page_url, rss_name=None):
 
                 iframe_response = session.get(
                     iframe_url,
-                    timeout=REQUEST_TIMEOUT,
-                    allow_redirects=True
+                    timeout=REQUEST_TIMEOUT
                 )
 
                 if iframe_response.status_code != 200:
                     continue
 
-                iframe_html = iframe_response.text
+                iframe_html = (
+                    iframe_response.text
+                )
 
                 for stream in extract_m3u8_urls(
                     iframe_html
                 ):
 
                     if stream not in streams:
-                        streams.append(stream)
+
+                        streams.append(
+                            stream
+                        )
 
                 iframe_soup = BeautifulSoup(
                     iframe_html,
@@ -417,7 +738,10 @@ def extract_stream_from_page(page_url, rss_name=None):
                     ):
 
                         if stream not in streams:
-                            streams.append(stream)
+
+                            streams.append(
+                                stream
+                            )
 
             except Exception:
                 continue
@@ -426,14 +750,18 @@ def extract_stream_from_page(page_url, rss_name=None):
             return None
 
         return {
-            "name": channel_name,
+            "name": channel_name or rss_name,
             "key": get_canonical_key(
-                channel_name
+                channel_name or rss_name
+            ),
+            "variants": get_name_variants(
+                channel_name or rss_name
             ),
             "streams": streams,
         }
 
     except Exception:
+
         return None
 
 
@@ -442,9 +770,6 @@ def extract_stream_from_page(page_url, rss_name=None):
 # ============================================================
 
 def get_volo_rss():
-    """
-    Probiert die bekannten Feed-Endpunkte.
-    """
 
     for url in VOLO_RSS_URLS:
 
@@ -458,31 +783,24 @@ def get_volo_rss():
             if response.status_code != 200:
                 continue
 
-            content = response.content
-
             text = response.text.lstrip().lower()
 
-            # XML/RSS erkennen
             if (
-                "xml" in response.headers.get(
-                    "Content-Type",
-                    ""
-                ).lower()
-                or text.startswith("<?xml")
-                or "<rss" in text[:1000]
-                or "<feed" in text[:1000]
+                text.startswith("<?xml")
+                or "<rss" in text[:2000]
+                or "<feed" in text[:2000]
             ):
 
                 print(
-                    f"[VOLO] RSS gefunden: {url}"
+                    f"[VOLO] Feed gefunden: {url}"
                 )
 
-                return content
+                return response.content
 
         except Exception as e:
 
             print(
-                f"[VOLO] RSS Fehler bei {url}: {e}"
+                f"[VOLO] Feed-Fehler {url}: {e}"
             )
 
     return None
@@ -493,18 +811,17 @@ def get_volo_rss():
 # ============================================================
 
 def parse_rss(content):
-    """
-    Unterstützt RSS 2.0 und Atom.
-    """
 
     try:
 
-        root = ET.fromstring(content)
+        root = ET.fromstring(
+            content
+        )
 
     except ET.ParseError as e:
 
         print(
-            f"[VOLO] RSS Parse-Fehler: {e}"
+            f"[VOLO] XML-Fehler: {e}"
         )
 
         return []
@@ -515,10 +832,17 @@ def parse_rss(content):
     # RSS 2.0
     # --------------------------------------------------------
 
-    for item in root.findall(".//item"):
+    for item in root.findall(
+        ".//item"
+    ):
 
-        title = item.find("title")
-        link = item.find("link")
+        title = item.find(
+            "title"
+        )
+
+        link = item.find(
+            "link"
+        )
 
         name = (
             title.text.strip()
@@ -547,20 +871,20 @@ def parse_rss(content):
 
     if not channels:
 
-        atom = (
+        namespace = (
             "{http://www.w3.org/2005/Atom}"
         )
 
         for entry in root.findall(
-            f".//{atom}entry"
+            f".//{namespace}entry"
         ):
 
             title = entry.find(
-                f"{atom}title"
+                f"{namespace}title"
             )
 
             link = entry.find(
-                f"{atom}link"
+                f"{namespace}link"
             )
 
             name = (
@@ -587,46 +911,32 @@ def parse_rss(content):
 
 
 # ============================================================
-# VOLO LADEN
+# VOLO STREAMS LADEN
 # ============================================================
 
 def scrape_volo_streams():
-    """
-    RSS -> Senderseiten -> m3u8
-
-    Gibt zurück:
-
-        {
-            "rtl": {
-                "name": "RTL",
-                "streams": [...]
-            }
-        }
-    """
 
     print()
-    print("=" * 60)
+    print("=" * 70)
     print("VOLO RSS / STREAM SCAN")
-    print("=" * 60)
+    print("=" * 70)
 
     content = get_volo_rss()
 
     if not content:
 
         print(
-            "[VOLO] Kein RSS erreichbar."
-        )
-
-        print(
-            "[VOLO] Vavoo bleibt vollständig aktiv."
+            "[VOLO] Kein Feed erreichbar."
         )
 
         return {}
 
-    channels = parse_rss(content)
+    channels = parse_rss(
+        content
+    )
 
     print(
-        f"[VOLO] {len(channels)} RSS-Einträge gefunden."
+        f"[VOLO] RSS-Einträge: {len(channels)}"
     )
 
     if not channels:
@@ -634,15 +944,11 @@ def scrape_volo_streams():
 
     volo_map = {}
 
-    # --------------------------------------------------------
-    # Parallel abrufen
-    # --------------------------------------------------------
-
     with ThreadPoolExecutor(
         max_workers=MAX_WORKERS
     ) as executor:
 
-        future_map = {}
+        futures = {}
 
         for channel in channels:
 
@@ -652,20 +958,18 @@ def scrape_volo_streams():
                 channel["name"]
             )
 
-            future_map[future] = channel
-
-        finished = 0
+            futures[future] = channel
 
         for future in as_completed(
-            future_map
+            futures
         ):
 
-            finished += 1
-
             try:
+
                 result = future.result()
 
             except Exception:
+
                 continue
 
             if not result:
@@ -673,18 +977,32 @@ def scrape_volo_streams():
 
             key = result["key"]
 
+            if not key:
+                continue
+
             streams = result["streams"]
 
-            if not key or not streams:
+            if not streams:
                 continue
+
+            # ------------------------------------------------
+            # Hauptschlüssel
+            # ------------------------------------------------
 
             if key not in volo_map:
 
                 volo_map[key] = {
                     "name": result["name"],
+                    "variants": set(),
                     "streams": [],
                 }
 
+            # Varianten
+            volo_map[key]["variants"].update(
+                result["variants"]
+            )
+
+            # Streams
             for stream in streams:
 
                 if stream not in volo_map[key]["streams"]:
@@ -693,73 +1011,149 @@ def scrape_volo_streams():
                         stream
                     )
 
-            print(
-                f"[VOLO] {finished}/{len(channels)} "
-                f"{result['name']} "
-                f"({len(streams)} Stream)"
-            )
+            # ------------------------------------------------
+            # Alias zusätzlich registrieren
+            # ------------------------------------------------
 
-    print()
+            alias = alias_key(key)
+
+            if alias:
+
+                if alias not in volo_map:
+
+                    volo_map[alias] = {
+                        "name": result["name"],
+                        "variants": set(),
+                        "streams": [],
+                    }
+
+                volo_map[alias]["variants"].update(
+                    result["variants"]
+                )
+
+                for stream in streams:
+
+                    if stream not in volo_map[alias]["streams"]:
+
+                        volo_map[alias]["streams"].append(
+                            stream
+                        )
+
     print(
-        f"[VOLO] Fertig: "
-        f"{len(volo_map)} Sender mit Stream"
+        f"[VOLO] Sender mit Stream: "
+        f"{len(volo_map)}"
     )
 
     return volo_map
 
 
 # ============================================================
-# VOLO MATCH
+# MATCHING
 # ============================================================
 
 def find_volo_match(
-    channel_name,
+    vavoo_name,
     volo_map
 ):
-    """
-    Erst exaktes Matching.
 
-    Danach vorsichtiges Teil-Matching.
-    """
+    if not vavoo_name:
+        return None, "none"
 
-    key = get_canonical_key(
-        channel_name
+    vavoo_variants = get_name_variants(
+        vavoo_name
     )
 
-    if not key:
-        return None
+    if not vavoo_variants:
+        return None, "none"
 
-    # Exakt
-    if key in volo_map:
-        return volo_map[key]
+    # --------------------------------------------------------
+    # 1. Exakter Match
+    # --------------------------------------------------------
 
-    # Teilmatch nur bei ausreichend langen Namen
-    if len(key) < 4:
-        return None
+    for variant in vavoo_variants:
 
-    candidates = []
+        if variant in volo_map:
+
+            return (
+                volo_map[variant],
+                "exact"
+            )
+
+    # --------------------------------------------------------
+    # 2. Alias-Match
+    # --------------------------------------------------------
+
+    for variant in vavoo_variants:
+
+        alias = alias_key(
+            variant
+        )
+
+        if alias and alias in volo_map:
+
+            return (
+                volo_map[alias],
+                "alias"
+            )
+
+    # --------------------------------------------------------
+    # 3. Volo-Varianten
+    # --------------------------------------------------------
+
+    for volo_key, data in volo_map.items():
+
+        variants = data.get(
+            "variants",
+            set()
+        )
+
+        for variant in vavoo_variants:
+
+            if variant in variants:
+
+                return (
+                    data,
+                    "variant"
+                )
+
+    # --------------------------------------------------------
+    # 4. Sicheres Teil-Matching
+    # --------------------------------------------------------
 
     for volo_key, data in volo_map.items():
 
         if len(volo_key) < 4:
             continue
 
-        if (
-            key in volo_key
-            or volo_key in key
-        ):
+        for variant in vavoo_variants:
 
-            candidates.append(data)
+            if len(variant) < 4:
+                continue
 
-    # Nur eindeutiges Teilmatch akzeptieren
-    if len(candidates) == 1:
-        return candidates[0]
+            if (
+                variant in volo_key
+                or volo_key in variant
+            ):
 
-    return None
+                # Nur akzeptieren wenn
+                # der Unterschied nicht zu groß ist
+                difference = abs(
+                    len(variant)
+                    - len(volo_key)
+                )
+
+                if difference <= 5:
+
+                    return (
+                        data,
+                        "partial"
+                    )
+
+    return None, "none"
 
 
 # ============================================================
-# BESTEN VOLO STREAM WÄHLEN
+# BESTEN STREAM WÄHLEN
 # ============================================================
 
 def choose_volo_stream(streams):
@@ -767,22 +1161,25 @@ def choose_volo_stream(streams):
     if not streams:
         return None
 
-    # Master zuerst
+    # Master bevorzugen
     for stream in streams:
 
         if "master.m3u8" in stream.lower():
+
             return stream
 
-    # Playlist
+    # Playlist bevorzugen
     for stream in streams:
 
         if "playlist.m3u8" in stream.lower():
+
             return stream
 
-    # irgendeine m3u8
+    # m3u8
     for stream in streams:
 
         if ".m3u8" in stream.lower():
+
             return stream
 
     return streams[0]
@@ -793,12 +1190,6 @@ def choose_volo_stream(streams):
 # ============================================================
 
 def clean_old_headers(lines):
-    """
-    Verhindert doppelte User-Agent Header.
-
-    Das eigentliche Format bleibt identisch zu deiner
-    funktionierenden Playlist.
-    """
 
     result = []
 
@@ -833,17 +1224,17 @@ def write_playlist(entries):
         encoding="utf-8"
     ) as f:
 
-        f.write("#EXTM3U\n")
+        f.write(
+            "#EXTM3U\n"
+        )
 
         for entry in entries:
 
-            # EXTINF exakt behalten
             f.write(
                 entry["extinf"]
                 + "\n"
             )
 
-            # Andere Metadaten behalten
             for line in entry.get(
                 "extra",
                 []
@@ -854,8 +1245,6 @@ def write_playlist(entries):
                     + "\n"
                 )
 
-            # Genau das Format deiner
-            # vorher funktionierenden Playlist
             f.write(
                 "#EXTVLCOPT:http-user-agent="
                 + entry["ua"]
@@ -881,18 +1270,18 @@ def write_playlist(entries):
 def process_hybrid_m3u():
 
     print()
-    print("=" * 60)
+    print("=" * 70)
     print("IPTV HYBRID BUILD")
-    print("=" * 60)
+    print("=" * 70)
 
     # --------------------------------------------------------
-    # Volo holen
+    # Volo
     # --------------------------------------------------------
 
     volo_streams = scrape_volo_streams()
 
     # --------------------------------------------------------
-    # Vavoo/build.js M3U lesen
+    # Vavoo / build.js
     # --------------------------------------------------------
 
     entries = read_m3u()
@@ -900,14 +1289,14 @@ def process_hybrid_m3u():
     if not entries:
 
         print(
-            "[ERROR] Keine Kanäle in iptv.m3u."
+            "[ERROR] Keine IPTV-Einträge gefunden."
         )
 
         return
 
     print()
     print(
-        f"[M3U] {len(entries)} Kanäle geladen."
+        f"[M3U] Kanäle: {len(entries)}"
     )
 
     output = []
@@ -915,32 +1304,43 @@ def process_hybrid_m3u():
     volo_count = 0
     vavoo_count = 0
 
+    exact_count = 0
+    alias_count = 0
+    variant_count = 0
+    partial_count = 0
+
+    unmatched = []
+
     # --------------------------------------------------------
-    # Jeden vorhandenen Kanal bearbeiten
+    # Jeden Kanal bearbeiten
     # --------------------------------------------------------
 
     for entry in entries:
 
         name = entry["name"]
 
-        match = find_volo_match(
+        match, match_type = find_volo_match(
             name,
             volo_streams
         )
 
         # ----------------------------------------------------
-        # VOLO PRIORITÄT
+        # VOLO
         # ----------------------------------------------------
 
         if match:
 
             stream = choose_volo_stream(
-                match["streams"]
+                match.get(
+                    "streams",
+                    []
+                )
             )
 
             if stream:
 
                 entry["url"] = stream
+
                 entry["ua"] = (
                     CUSTOM_USER_AGENT
                 )
@@ -956,11 +1356,26 @@ def process_hybrid_m3u():
 
                 volo_count += 1
 
+                if match_type == "exact":
+                    exact_count += 1
+
+                elif match_type == "alias":
+                    alias_count += 1
+
+                elif match_type == "variant":
+                    variant_count += 1
+
+                elif match_type == "partial":
+                    partial_count += 1
+
                 print(
-                    f"[VOLO] {name}"
+                    f"[VOLO:{match_type.upper():7}] "
+                    f"{name}"
                 )
 
-                output.append(entry)
+                output.append(
+                    entry
+                )
 
                 continue
 
@@ -983,44 +1398,96 @@ def process_hybrid_m3u():
 
         vavoo_count += 1
 
-        print(
-            f"[VAVOO] {name}"
+        unmatched.append(
+            name
         )
 
-        output.append(entry)
+        print(
+            f"[VAVOO       ] {name}"
+        )
+
+        output.append(
+            entry
+        )
 
     # --------------------------------------------------------
-    # Playlist schreiben
+    # Schreiben
     # --------------------------------------------------------
 
-    write_playlist(output)
+    write_playlist(
+        output
+    )
 
     # --------------------------------------------------------
     # Statistik
     # --------------------------------------------------------
 
     print()
-    print("=" * 60)
-    print("BUILD FERTIG")
-    print("=" * 60)
+    print("=" * 70)
+    print("BUILD STATISTIK")
+    print("=" * 70)
 
     print(
-        f"Kanäle gesamt : {len(output)}"
+        f"Kanäle gesamt       : {len(output)}"
     )
 
     print(
-        f"Volo          : {volo_count}"
+        f"Volo                : {volo_count}"
     )
 
     print(
-        f"Vavoo         : {vavoo_count}"
+        f"  Exact             : {exact_count}"
     )
 
     print(
-        f"Output        : {OUTPUT_M3U}"
+        f"  Alias             : {alias_count}"
     )
 
-    print("=" * 60)
+    print(
+        f"  Variant            : {variant_count}"
+    )
+
+    print(
+        f"  Partial            : {partial_count}"
+    )
+
+    print(
+        f"Vavoo Fallback      : {vavoo_count}"
+    )
+
+    print(
+        f"Volo Sender erkannt : {len(volo_streams)}"
+    )
+
+    # --------------------------------------------------------
+    # Nicht gematchte Sender
+    # --------------------------------------------------------
+
+    print()
+    print("=" * 70)
+    print("NICHT VON VOLO GEMATCHTE SENDER")
+    print("=" * 70)
+
+    if unmatched:
+
+        for name in unmatched:
+
+            print(
+                f"  - {name}"
+            )
+
+    else:
+
+        print(
+            "  Keine!"
+        )
+
+    print()
+    print(
+        f"[OK] {OUTPUT_M3U} geschrieben."
+    )
+
+    print("=" * 70)
 
 
 # ============================================================
