@@ -9,25 +9,27 @@ from urllib.parse import urlparse, unquote, urljoin, parse_qs, urlencode, quote
 from bs4 import BeautifulSoup
 from functools import lru_cache
 import os
+import sys
 
 # ============================================================
 # KONFIGURATION
 # ============================================================
 INPUT_M3U = "iptv.m3u"
 OUTPUT_M3U = "iptv.m3u"
+DEBUG = True  # Debug-Modus aktivieren
 
 # --- User Agents ---
 CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 VAVOO_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
-# --- Vavoo (Hauptquelle) ---
+# --- Vavoo ---
 VAVOO_HEADERS = {
     "User-Agent": VAVOO_USER_AGENT,
     "Accept": "*/*",
     "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
 }
 
-# --- Volo TV (Fallback 1) ---
+# --- Volo TV ---
 VOLO_API_URL = "https://api.canlitvvolo.com/api/tv/stream"
 VOLO_HEADERS = {
     "User-Agent": CUSTOM_USER_AGENT,
@@ -44,7 +46,7 @@ VOLO_STREAM_HEADERS = {
     "Referer": "https://tv.canlitvvolo.com/",
 }
 
-# --- TVizle Proxy (Fallback 2) ---
+# --- TVizle Proxy ---
 TVIZLE_PROXY_URL = "https://tvizle.tr/api/proxy"
 TVIZLE_HEADERS = {
     "User-Agent": CUSTOM_USER_AGENT,
@@ -54,7 +56,7 @@ TVIZLE_HEADERS = {
     "Origin": "https://tvizle.tr",
 }
 
-# --- Famelack Direkt (Fallback 3) ---
+# --- Famelack ---
 FAMELACK_HEADERS = {
     "User-Agent": CUSTOM_USER_AGENT,
     "Accept": "*/*",
@@ -62,7 +64,7 @@ FAMELACK_HEADERS = {
     "Referer": "https://tvizle.tr/",
 }
 
-# --- TVizle (Fallback 4) ---
+# --- TVizle ---
 TVIZLE_STREAM_HEADERS = {
     "User-Agent": CUSTOM_USER_AGENT,
     "Accept": "*/*",
@@ -71,17 +73,43 @@ TVIZLE_STREAM_HEADERS = {
 }
 
 # --- Allgemein ---
-MAX_WORKERS = 50  # Mehr Parallelität für schnelle HEAD-Requests
-REQUEST_TIMEOUT = 2  # Kurzer Timeout für HEAD-Requests
-API_TIMEOUT = 5  # Längerer Timeout für API-Requests
-CHECK_TIMEOUT = 1.5  # Sehr kurzer Timeout für Vavoo-Check
+MAX_WORKERS = 10
+REQUEST_TIMEOUT = 5
+CHECK_TIMEOUT = 3
+
+# ============================================================
+# DEBUG-FUNKTIONEN
+# ============================================================
+
+def debug_print(*args, **kwargs):
+    """Nur im Debug-Modus ausgeben."""
+    if DEBUG:
+        print(*args, **kwargs)
+
+def debug_check_url(url, headers, timeout=CHECK_TIMEOUT):
+    """URL-Check mit Debug-Ausgabe."""
+    try:
+        debug_print(f"    [CHECK] {url[:80]}...")
+        response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
+        status = response.status_code
+        debug_print(f"    [RESULT] HTTP {status}")
+        return 200 <= status < 300
+    except requests.exceptions.Timeout:
+        debug_print(f"    [RESULT] TIMEOUT")
+        return False
+    except requests.exceptions.ConnectionError:
+        debug_print(f"    [RESULT] CONNECTION ERROR")
+        return False
+    except Exception as e:
+        debug_print(f"    [RESULT] ERROR: {e}")
+        return False
 
 # ============================================================
 # HILFSFUNKTIONEN
 # ============================================================
 
 def normalize_text(text):
-    """Normalisiert Text (entfernt türkische Sonderzeichen, etc.)."""
+    """Normalisiert Text."""
     if not text:
         return ""
     text = html.unescape(str(text))
@@ -94,7 +122,7 @@ def normalize_text(text):
     return text.lower()
 
 def sanitize_channel_name(name):
-    """Bereinigt den Sendernamen für URLs."""
+    """Bereinigt den Sendernamen."""
     if not name:
         return ""
     name = normalize_text(name)
@@ -125,12 +153,12 @@ def parse_m3u(content):
     return entries
 
 def get_extinf_name(extinf):
-    """Extrahiert den Sendernamen aus #EXTINF."""
+    """Extrahiert den Sendernamen."""
     if not extinf or "," not in extinf: return ""
     return extinf.rsplit(",", 1)[1].strip()
 
 def clean_stream_url(url):
-    """Bereinigt die Stream-URL von Pipe-Parametern."""
+    """Bereinigt die URL."""
     return url.split("|", 1)[0].strip() if url else ""
 
 def write_m3u(entries):
@@ -145,63 +173,62 @@ def write_m3u(entries):
             f.write(f'#EXTHTTP:{{"User-Agent":"{ua}"}}\n')
             f.write(url + "\n")
 
-def check_url_fast(url, headers, timeout=CHECK_TIMEOUT):
-    """Sehr schneller URL-Check (nur für Vavoo)."""
-    try:
-        response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
-        # 200-299 = OK, 403/404 = defekt
-        return 200 <= response.status_code < 300
-    except:
-        return False
-
-def check_url(url, headers, timeout=REQUEST_TIMEOUT):
-    """Normaler URL-Check für Fallbacks."""
-    try:
-        response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
-        return 200 <= response.status_code < 300
-    except:
-        return False
-
 # ============================================================
-# 1. VAVOO - SCHNELLER CHECK
+# 1. VAVOO CHECK
 # ============================================================
 
 def check_vavoo(original_url):
-    """Prüft ob Vavoo-URL funktioniert (sehr schnell)."""
+    """Prüft ob Vavoo-URL funktioniert."""
     if not original_url:
         return False
-    # Nur checken, wenn die URL nicht offensichtlich defekt ist
-    if 'workers.dev' in original_url or 'play/' in original_url:
-        return check_url_fast(original_url, VAVOO_HEADERS)
-    return False
+    return debug_check_url(original_url, VAVOO_HEADERS)
 
 # ============================================================
-# 2. VOLO TV - CACHED
+# 2. VOLO TV
 # ============================================================
 
-@lru_cache(maxsize=500)
+@lru_cache(maxsize=200)
 def get_volo_permalink_cached(channel_name):
     """Gecachte Volo-API-Abfrage."""
     if not channel_name:
         return None
     
-    permalink = re.sub(r'[^a-z0-9\s-]', '', channel_name.lower())
-    permalink = re.sub(r'\s+', '-', permalink)
-    permalink = re.sub(r'-canli-izle$|-canli-hd-yayin-kesintisiz-izle$|-canli$', '', permalink)
-    permalink = re.sub(r'-hd$|-fhd$|-tv$', '', permalink)
-
-    if not permalink or len(permalink) < 3:
-        return None
-
-    try:
-        payload = {"permalink": permalink, "yayin": 1}
-        response = requests.post(VOLO_API_URL, headers=VOLO_HEADERS, json=payload, timeout=API_TIMEOUT)
-        if response.status_code != 200:
-            return None
-        data = response.json()
-        return data.get('permalink')
-    except:
-        return None
+    # Versuche verschiedene Permalink-Varianten
+    variants = []
+    
+    # Variante 1: Normalisiert
+    v1 = re.sub(r'[^a-z0-9\s-]', '', channel_name.lower())
+    v1 = re.sub(r'\s+', '-', v1)
+    v1 = re.sub(r'-canli-izle$|-canli-hd-yayin-kesintisiz-izle$|-canli$', '', v1)
+    v1 = re.sub(r'-hd$|-fhd$|-tv$', '', v1)
+    if v1 and len(v1) >= 3:
+        variants.append(v1)
+    
+    # Variante 2: Ohne Leerzeichen
+    v2 = re.sub(r'[^a-z0-9]', '', channel_name.lower())
+    if v2 and len(v2) >= 3 and v2 != v1:
+        variants.append(v2)
+    
+    # Variante 3: Kurzname (erste 3 Buchstaben)
+    v3 = re.sub(r'[^a-z]', '', channel_name.lower())[:3]
+    if v3 and len(v3) >= 3 and v3 not in variants:
+        variants.append(v3)
+    
+    debug_print(f"    [VOLO] Versuche Permalinks: {variants[:3]}")
+    
+    for permalink in variants[:3]:  # Max 3 Versuche
+        try:
+            payload = {"permalink": permalink, "yayin": 1}
+            response = requests.post(VOLO_API_URL, headers=VOLO_HEADERS, json=payload, timeout=5)
+            if response.status_code == 200:
+                data = response.json()
+                if data.get('permalink'):
+                    debug_print(f"    [VOLO] Permalink gefunden: {data['permalink']}")
+                    return data['permalink']
+        except:
+            continue
+    
+    return None
 
 def construct_volo_stream_url(permalink):
     """Konstruiert die Volo-Stream-URL."""
@@ -220,148 +247,133 @@ def construct_volo_stream_url(permalink):
     return f"https://dogusdyg-{base}.lg.mncdn.com/dogusdyg_{stream_name}/live_1080p3000000kbps/index.m3u8"
 
 def search_volo(channel_name):
-    """Sucht Volo-Stream (nur wenn Kanalname sinnvoll ist)."""
-    # Nur für türkische Kanäle
-    if not any(word in channel_name.lower() for word in ['tv', 'haber', 'spor', 'trt', 'kanal']):
-        return None
-    
+    """Sucht Volo-Stream."""
+    debug_print(f"    [VOLO] Suche für: {channel_name}")
     permalink = get_volo_permalink_cached(channel_name)
     if not permalink:
         return None
     base_url = construct_volo_stream_url(permalink)
     if not base_url:
         return None
-    if check_url(base_url, VOLO_STREAM_HEADERS, timeout=REQUEST_TIMEOUT):
+    if debug_check_url(base_url, VOLO_STREAM_HEADERS):
         return base_url
     return None
 
 # ============================================================
-# 3. FAMELACK - OPTIMIERT
+# 3. FAMELACK
 # ============================================================
 
 def search_famelack_via_tvizle_proxy(channel_name):
     """Famelack über TVizle-Proxy."""
-    if not channel_name:
-        return None
+    debug_print(f"    [FAMELACK-PROXY] Suche für: {channel_name}")
     sanitized = sanitize_channel_name(channel_name)
     if not sanitized or len(sanitized) < 3:
         return None
     
-    # Nur die beste Qualität testen (1080p reicht)
-    famelack_url = f"https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/{sanitized}/{sanitized}_1080p.m3u8"
-    encoded_url = quote(famelack_url, safe='')
-    proxy_url = f"{TVIZLE_PROXY_URL}?url={encoded_url}"
+    # Alle Qualitäten testen
+    qualities = ["1080p", "720p", "576p", "480p", "360p"]
+    for quality in qualities:
+        famelack_url = f"https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/{sanitized}/{sanitized}_{quality}.m3u8"
+        encoded_url = quote(famelack_url, safe='')
+        proxy_url = f"{TVIZLE_PROXY_URL}?url={encoded_url}"
+        
+        if debug_check_url(proxy_url, TVIZLE_HEADERS):
+            debug_print(f"    [FAMELACK-PROXY] Gefunden: {quality}")
+            return proxy_url
     
-    if check_url(proxy_url, TVIZLE_HEADERS, timeout=REQUEST_TIMEOUT):
-        return proxy_url
     return None
 
 def search_famelack_direct(channel_name):
     """Famelack direkt."""
-    if not channel_name:
-        return None
+    debug_print(f"    [FAMELACK-DIRECT] Suche für: {channel_name}")
     sanitized = sanitize_channel_name(channel_name)
     if not sanitized or len(sanitized) < 3:
         return None
     
-    url = f"https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/{sanitized}/{sanitized}_1080p.m3u8"
-    if check_url(url, FAMELACK_HEADERS, timeout=REQUEST_TIMEOUT):
-        return url
+    qualities = ["1080p", "720p", "576p", "480p", "360p"]
+    for quality in qualities:
+        url = f"https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/{sanitized}/{sanitized}_{quality}.m3u8"
+        if debug_check_url(url, FAMELACK_HEADERS):
+            debug_print(f"    [FAMELACK-DIRECT] Gefunden: {quality}")
+            return url
+    
     return None
 
 # ============================================================
-# 4. TVIZLE - OPTIMIERT
+# 4. TVIZLE
 # ============================================================
 
 def search_tvizle(channel_name):
     """TVizle-Stream."""
-    if not channel_name:
-        return None
+    debug_print(f"    [TVIZLE] Suche für: {channel_name}")
     sanitized = sanitize_channel_name(channel_name)
     if not sanitized or len(sanitized) < 3:
         return None
     
-    # Nur 1080p testen
-    url = f"https://flask-api-hls-{sanitized}trkvz-live.onrender.com/hls_stream/{sanitized}_1080p.m3u8"
-    if check_url(url, TVIZLE_STREAM_HEADERS, timeout=REQUEST_TIMEOUT):
-        return url
+    # Verschiedene Domain-Varianten
+    domains = [
+        f"flask-api-hls-{sanitized}trkvz-live.onrender.com",
+        f"flask-api-hls-{sanitized}hdtrkvz-live.onrender.com",
+        f"flask-api-hls-{sanitized}-live.onrender.com",
+    ]
+    
+    qualities = ["1080p", "720p", "576p", "480p", "360p"]
+    
+    for domain in domains:
+        for quality in qualities:
+            url = f"https://{domain}/hls_stream/{sanitized}_{quality}.m3u8"
+            if debug_check_url(url, TVIZLE_STREAM_HEADERS):
+                debug_print(f"    [TVIZLE] Gefunden: {quality}")
+                return url
+    
     return None
 
 # ============================================================
-# 5. SMART REPAIR - NUR BEI BEDARF
+# 5. REPAIR
 # ============================================================
 
-def smart_repair_channel(channel_name, original_url):
-    """
-    Intelligente Reparatur: Nur wenn Vavoo defekt ist.
-    """
-    # 1. Vavoo-Check (sehr schnell)
-    if check_vavoo(original_url):
-        return {"url": original_url, "source": "vavoo_ok", "ua": VAVOO_USER_AGENT}
-    
-    # 2. Wenn Vavoo defekt ist, Fallbacks probieren
-    print(f"  [Repair] Vavoo defekt für: {channel_name}")
-    
-    # Volo
-    stream_url = search_volo(channel_name)
-    if stream_url:
-        return {"url": stream_url, "source": "volo", "ua": CUSTOM_USER_AGENT}
-    
-    # Famelack (Proxy)
-    stream_url = search_famelack_via_tvizle_proxy(channel_name)
-    if stream_url:
-        return {"url": stream_url, "source": "famelack_proxy", "ua": CUSTOM_USER_AGENT}
-    
-    # Famelack (Direkt)
-    stream_url = search_famelack_direct(channel_name)
-    if stream_url:
-        return {"url": stream_url, "source": "famelack_direct", "ua": CUSTOM_USER_AGENT}
-    
-    # TVizle
-    stream_url = search_tvizle(channel_name)
-    if stream_url:
-        return {"url": stream_url, "source": "tvizle", "ua": CUSTOM_USER_AGENT}
-    
-    # Nichts gefunden
-    return None
-
-# ============================================================
-# 6. PARALLELE VERARBEITUNG
-# ============================================================
-
-def process_channel(entry):
-    """Verarbeitet einen einzelnen Kanal."""
+def repair_channel(entry, index, total):
+    """Repariert einen Kanal mit Debug-Ausgabe."""
     extinf = entry["extinf"]
     original_url = entry["url"]
     channel_name = get_extinf_name(extinf)
     
-    # 1. Schnell prüfen ob Vavoo funktioniert
+    debug_print(f"\n[{index}/{total}] {channel_name}")
+    debug_print(f"  Original URL: {original_url[:80]}...")
+    
+    # 1. Vavoo-Check
     if check_vavoo(original_url):
-        return {
-            "extinf": extinf,
-            "url": original_url,
-            "ua": VAVOO_USER_AGENT,
-            "source": "vavoo_ok"
-        }
+        debug_print(f"  ✅ Vavoo funktioniert")
+        return {"extinf": extinf, "url": original_url, "ua": VAVOO_USER_AGENT, "source": "vavoo_ok"}
     
-    # 2. Nur wenn Vavoo defekt ist, aufwändig reparieren
-    repaired = smart_repair_channel(channel_name, original_url)
+    debug_print(f"  ❌ Vavoo defekt, suche Fallback...")
     
-    if repaired:
-        return {
-            "extinf": extinf,
-            "url": repaired["url"],
-            "ua": repaired.get("ua", CUSTOM_USER_AGENT),
-            "source": repaired["source"]
-        }
-    else:
-        # Fallback: Original behalten
-        return {
-            "extinf": extinf,
-            "url": clean_stream_url(original_url),
-            "ua": VAVOO_USER_AGENT,
-            "source": "failed"
-        }
+    # 2. Volo
+    stream_url = search_volo(channel_name)
+    if stream_url:
+        debug_print(f"  ✅ Volo gefunden")
+        return {"extinf": extinf, "url": stream_url, "ua": CUSTOM_USER_AGENT, "source": "volo"}
+    
+    # 3. Famelack (Proxy)
+    stream_url = search_famelack_via_tvizle_proxy(channel_name)
+    if stream_url:
+        debug_print(f"  ✅ Famelack (Proxy) gefunden")
+        return {"extinf": extinf, "url": stream_url, "ua": CUSTOM_USER_AGENT, "source": "famelack_proxy"}
+    
+    # 4. Famelack (Direkt)
+    stream_url = search_famelack_direct(channel_name)
+    if stream_url:
+        debug_print(f"  ✅ Famelack (Direkt) gefunden")
+        return {"extinf": extinf, "url": stream_url, "ua": CUSTOM_USER_AGENT, "source": "famelack_direct"}
+    
+    # 5. TVizle
+    stream_url = search_tvizle(channel_name)
+    if stream_url:
+        debug_print(f"  ✅ TVizle gefunden")
+        return {"extinf": extinf, "url": stream_url, "ua": CUSTOM_USER_AGENT, "source": "tvizle"}
+    
+    debug_print(f"  ❌ Keine Quelle gefunden")
+    return {"extinf": extinf, "url": clean_stream_url(original_url), "ua": VAVOO_USER_AGENT, "source": "failed"}
 
 # ============================================================
 # HAUPTPROZESS
@@ -369,9 +381,14 @@ def process_channel(entry):
 
 def process_hybrid_m3u():
     print("\n" + "="*60)
-    print("HYBRID IPTV REPAIR TOOL (SMART)")
-    print("Vavoo prüfen → Nur defekte Kanäle reparieren")
+    print("HYBRID IPTV REPAIR TOOL (DEBUG)")
+    print("Vavoo → Volo → Famelack (Proxy) → Famelack (Direkt) → TVizle")
     print("="*60)
+    
+    if DEBUG:
+        print("⚠️  DEBUG-Modus AKTIV - Viele Ausgaben!")
+        print("   Deaktiviere DEBUG für schnellere Ausführung.")
+        print()
 
     # 1. M3U einlesen
     try:
@@ -382,11 +399,11 @@ def process_hybrid_m3u():
         return
     
     entries = parse_m3u(content)
-    print(f"[M3U] {len(entries)} Kanäle gelesen.")
+    print(f"[M3U] {len(entries)} Kanäle gelesen.\n")
 
-    # 2. Alle Kanäle parallel prüfen/reparieren
-    print(f"\n[START] Prüfe {len(entries)} Kanäle mit {MAX_WORKERS} parallelen Threads...")
-    start_time = time.time()
+    # 2. Teste erstmal nur die ersten 20 Kanäle im Debug-Modus
+    test_limit = 20 if DEBUG else len(entries)
+    print(f"[DEBUG] Teste nur die ersten {test_limit} Kanäle...\n")
     
     output_entries = []
     repair_stats = {
@@ -398,32 +415,19 @@ def process_hybrid_m3u():
         "failed": 0
     }
     
-    # Batch-Processing: In Gruppen von 100 für bessere Übersicht
-    batch_size = 100
-    total_batches = (len(entries) + batch_size - 1) // batch_size
+    start_time = time.time()
     
-    for batch_idx in range(0, len(entries), batch_size):
-        batch = entries[batch_idx:batch_idx + batch_size]
-        print(f"\n  Batch {batch_idx//batch_size + 1}/{total_batches} ({len(batch)} Kanäle)")
-        
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            futures = {executor.submit(process_channel, entry): entry for entry in batch}
-            
-            for future in as_completed(futures):
-                result = future.result()
-                output_entries.append(result)
-                repair_stats[result["source"]] += 1
-        
-        # Zwischenstand
-        done = len(output_entries)
-        print(f"  Fortschritt: {done}/{len(entries)} ({done/len(entries)*100:.1f}%)")
-
+    for i, entry in enumerate(entries[:test_limit], 1):
+        result = repair_channel(entry, i, test_limit)
+        output_entries.append(result)
+        repair_stats[result["source"]] += 1
+    
     # 3. Statistik
     elapsed = time.time() - start_time
     print("\n" + "="*60)
     print("STATISTIK")
     print("="*60)
-    print(f"Gesamt:                 {len(output_entries)}")
+    print(f"Getestet:               {test_limit}")
     print(f"Vavoo (funktioniert):   {repair_stats['vavoo_ok']}")
     print(f"Repariert via Volo:     {repair_stats['volo']}")
     print(f"Repariert via Famelack (Proxy): {repair_stats['famelack_proxy']}")
@@ -431,12 +435,15 @@ def process_hybrid_m3u():
     print(f"Repariert via TVizle:   {repair_stats['tvizle']}")
     print(f"Nicht repariert:        {repair_stats['failed']}")
     print(f"Benötigte Zeit:         {elapsed:.1f} Sekunden")
-    print(f"Durchsatz:             {len(entries)/elapsed:.1f} Kanäle/Sekunde")
     print("="*60)
 
-    # 4. Neue M3U schreiben
-    write_m3u(output_entries)
-    print(f"[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
+    # 4. Speichern (nur wenn alle Kanäle verarbeitet wurden)
+    if test_limit == len(entries):
+        write_m3u(output_entries)
+        print(f"[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
+    else:
+        print("[DEBUG] Nur Testlauf - keine M3U geschrieben.")
+        print("  Entferne DEBUG = False für vollständigen Lauf.")
 
 if __name__ == "__main__":
     process_hybrid_m3u()
