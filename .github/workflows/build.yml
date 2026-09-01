@@ -84,6 +84,9 @@ jobs:
             --delay=500 \
             --output=guides/{site}.xml || true
           ls -la guides/ || true
+      - name: Python-Skript zur Bereinigung ausführen
+        run: |
+          python cleanlist.py
 
       - name: Generate iptv.m3u and epg.xml
         env:
