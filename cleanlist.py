@@ -3,6 +3,7 @@ import html
 import unicodedata
 import requests
 import xml.etree.ElementTree as ET
+import json
 
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -51,6 +52,25 @@ RSS_HEADERS = {
         "application/rss+xml, application/xml, "
         "text/xml, */*"
     ),
+}
+
+# Headers für die API (basierend auf deinem Request)
+API_HEADERS = {
+    "User-Agent": CUSTOM_USER_AGENT,
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "de-DE,de;q=0.7",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Origin": "https://tv.canlitvvolo.com",
+    "Referer": "https://tv.canlitvvolo.com/",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-site",
+}
+
+# Der Request-Body für die API (basierend auf deinem Request)
+API_PAYLOAD = {
+    # Passe diesen Payload an, falls die API weitere Parameter erwartet
+    # Beispiel: "action": "get_streams" oder ähnlich
 }
 
 MAX_WORKERS = 12
@@ -347,41 +367,91 @@ def extract_m3u8_urls(text):
 
 
 # ============================================================
-# API-STREAMS LADEN (NEU)
+# API-STREAMS LADEN (ANGEPASST FÜR POST)
 # ============================================================
 
 def get_volo_streams_via_api():
     """
-    Ruft die Volo-API ab und baut eine Map aus normalisierten Namen zu Stream-URLs auf.
+    Ruft die Volo-API per POST ab und baut eine Map aus normalisierten Namen zu Stream-URLs auf.
     """
     print()
     print("=" * 60)
-    print("VOLO API / STREAMS")
+    print("VOLO API / STREAMS (POST)")
     print("=" * 60)
 
     try:
-        print(f"[VOLO API] Rufe ab: {VOLO_API_URL}")
-        response = requests.get(VOLO_API_URL, headers=VOLO_HEADERS, timeout=REQUEST_TIMEOUT)
+        print(f"[VOLO API] POST an: {VOLO_API_URL}")
+        print(f"[VOLO API] Payload: {json.dumps(API_PAYLOAD, indent=2)}")
+        
+        response = requests.post(
+            VOLO_API_URL,
+            headers=API_HEADERS,
+            json=API_PAYLOAD,  # Wichtig: JSON-Body senden
+            timeout=REQUEST_TIMEOUT
+        )
         print(f"[VOLO API] HTTP {response.status_code}")
 
         if response.status_code != 200:
-            print("[VOLO API] Fehler beim Abruf der API.")
+            print(f"[VOLO API] Fehler beim Abruf der API: {response.status_code}")
+            return {}
+
+        # Prüfe Content-Type
+        content_type = response.headers.get('content-type', '')
+        if 'application/json' not in content_type:
+            print(f"[VOLO API] Ungültiger Content-Type: {content_type}")
             return {}
 
         data = response.json()
-        print(f"[VOLO API] {len(data)} Einträge von der API erhalten.")
+        print(f"[VOLO API] {len(data) if isinstance(data, list) else '???'} Einträge von der API erhalten.")
 
         if not data:
+            print("[VOLO API] Keine Daten von der API.")
             return {}
+
+        # Logge die ersten 2 Einträge zur Debugging
+        if isinstance(data, list) and len(data) > 0:
+            print("[VOLO API] Beispiel-Einträge:")
+            for i, item in enumerate(data[:2]):
+                print(f"  [{i}] {json.dumps(item, indent=2)[:200]}...")
 
         volo_map = {}
 
-        # Passe diesen Teil an das tatsächliche JSON-Format an!
-        # Annahme: data ist ein Array von Objekten mit "name" und "stream" (oder "url")
-        for item in data:
+        # Verarbeite die Daten (abhängig vom tatsächlichen Format)
+        # Mögliche Formate:
+        # 1. Liste von Objekten: [{"name": "...", "stream": "..."}, ...]
+        # 2. Dictionary mit "channels"-Key: {"channels": [{"name": "...", "url": "..."}]}
+        # 3. Dictionary mit "data"-Key: {"data": {"streams": [...]}}
+        
+        channels = []
+        if isinstance(data, list):
+            channels = data
+        elif isinstance(data, dict):
+            # Versuche verschiedene Keys
+            for key in ["channels", "data", "streams", "results", "items"]:
+                if key in data and isinstance(data[key], list):
+                    channels = data[key]
+                    break
+            # Falls nichts gefunden, nimm das ganze Dict als Liste
+            if not channels:
+                channels = [data]
+
+        for item in channels:
             # Versuche verschiedene mögliche Schlüssel für Name und URL
-            name = item.get("name") or item.get("title") or item.get("channel") or item.get("display_name")
-            url = item.get("stream") or item.get("url") or item.get("link") or item.get("m3u8")
+            name = (
+                item.get("name") or 
+                item.get("title") or 
+                item.get("channel") or 
+                item.get("display_name") or
+                item.get("channel_name")
+            )
+            
+            url = (
+                item.get("stream") or 
+                item.get("url") or 
+                item.get("link") or 
+                item.get("m3u8") or
+                item.get("stream_url")
+            )
 
             if not name or not url:
                 continue
@@ -413,7 +483,10 @@ def get_volo_streams_via_api():
         if volo_map:
             sample_keys = list(volo_map.keys())[:5]
             for key in sample_keys:
-                print(f"  - {key} -> {volo_map[key][0]['url'][:80]}...")
+                url_preview = volo_map[key][0]['url'][:80]
+                print(f"  - {key} -> {url_preview}...")
+        else:
+            print("[VOLO API] WARNUNG: Keine Namensschlüssel aufgebaut!")
         
         return volo_map
 
@@ -425,6 +498,8 @@ def get_volo_streams_via_api():
         return {}
     except Exception as exc:
         print(f"[VOLO API] Allgemeiner Fehler: {exc}")
+        import traceback
+        traceback.print_exc()
         return {}
 
 
@@ -502,7 +577,7 @@ def extract_stream_from_page(channel_url, rss_names=None):
             return {
                 "url": m3u8_urls[0],
                 "names": possible_names,
-                "source": "volo",
+                "source": "rss",
             }
 
         # ----------------------------------------------------
@@ -550,7 +625,7 @@ def extract_stream_from_page(channel_url, rss_names=None):
                     return {
                         "url": iframe_m3u8[0],
                         "names": possible_names,
-                        "source": "volo",
+                        "source": "rss",
                     }
 
             except Exception:
@@ -637,7 +712,7 @@ def parse_rss_feed(xml_content):
 
 
 # ============================================================
-# VOLO RSS LADEN (UNVERÄNDERT, ABER ZUSÄTZLICHE LOGGING)
+# VOLO RSS LADEN (UNVERÄNDERT)
 # ============================================================
 
 def get_volo_streams_via_rss():
@@ -1038,7 +1113,7 @@ def clean_stream_url(url):
 
 
 # ============================================================
-# M3U SCHREIBEN
+# M3U SCHREIBEN (UNVERÄNDERT)
 # ============================================================
 
 def write_m3u(entries):
