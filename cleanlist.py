@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 # ============================================================
 INPUT_M3U = "iptv.m3u"
 OUTPUT_M3U = "iptv.m3u"
+CUSTOM_LINKS_FILE = "custom_links.json"
 
 # --- Backup-M3U ---
 BACKUP_M3U_URL = "https://m3u.work/pqfhFNTY.m3u"
@@ -26,22 +27,20 @@ REQUEST_TIMEOUT = 15
 CHECK_TIMEOUT = 3
 MAX_WORKERS = 20
 CACHE_FILE = "stream_cache.json"
-CACHE_TTL = 3600  # 1 Stunde
+CACHE_TTL = 3600
 
 # ============================================================
-# FILTER FÜR LIVE-STREAMS
+# LIVE-FILTER
 # ============================================================
 
-# Keywords, die auf NICHT-Live-Inhalte hinweisen
 NON_LIVE_KEYWORDS = [
-    # Serien & Filme
-    r'\bS\d{1,2}E\d{1,2}\b',  # S01E01, S1E1
+    r'\bS\d{1,2}E\d{1,2}\b',
     r'\bStaffel\s*\d+\b',
     r'\bSeason\s*\d+\b',
     r'\bEpisode\s*\d+\b',
     r'\bFolge\s*\d+\b',
-    r'\([12]\d{3}\)',  # (2024), (1999)
-    r'\[[12]\d{3}\]',  # [2024]
+    r'\([12]\d{3}\)',
+    r'\[[12]\d{3}\]',
     r'\bFilm\b',
     r'\bMovie\b',
     r'\bDoku\b',
@@ -61,7 +60,6 @@ NON_LIVE_KEYWORDS = [
     r'\bSerie\b',
 ]
 
-# Keywords, die auf Live-Streams hinweisen (zusätzlich)
 LIVE_KEYWORDS = [
     r'\bLIVE\b',
     r'\bCANLI\b',
@@ -72,26 +70,18 @@ LIVE_KEYWORDS = [
 ]
 
 def is_live_stream(extinf, url):
-    """
-    Prüft, ob es sich um einen Live-Stream handelt.
-    Gibt True zurück, wenn es ein Live-Stream ist.
-    """
-    text = f"{extinf} {url}"
-    text = text.lower()
+    text = f"{extinf} {url}".lower()
     
-    # 1. Prüfe auf NICHT-Live-Keywords
     for pattern in NON_LIVE_KEYWORDS:
         if re.search(pattern, text, re.IGNORECASE):
             return False
     
-    # 2. Prüfe auf Live-Keywords
     has_live_indicator = False
     for pattern in LIVE_KEYWORDS:
         if re.search(pattern, text, re.IGNORECASE):
             has_live_indicator = True
             break
     
-    # 3. Prüfe die Dauer in #EXTINF
     duration_match = re.search(r'#EXTINF:([\d-]+)', extinf)
     if duration_match:
         duration = duration_match.group(1)
@@ -102,11 +92,9 @@ def is_live_stream(extinf, url):
                 return True
             return False
     
-    # 4. Prüfe die URL auf typische Live-Muster
     if '.m3u8' in url and ('live' in url.lower() or 'stream' in url.lower()):
         return True
     
-    # 5. Fallback: Wenn der Titel kurz ist und TV enthält
     name = get_extinf_name(extinf)
     if name and len(name) < 50 and 'tv' in name.lower():
         return True
@@ -114,7 +102,6 @@ def is_live_stream(extinf, url):
     return True
 
 def filter_live_backup_entries(backup_entries):
-    """Filtert die Backup-M3U und gibt nur Live-Streams zurück."""
     print("\n[FILTER] Prüfe Backup-Kanäle auf Live-Streams...")
     
     live_entries = []
@@ -130,7 +117,7 @@ def filter_live_backup_entries(backup_entries):
             non_live_count += 1
     
     print(f"[FILTER] {len(live_entries)} Live-Streams gefunden (von {len(backup_entries)} Gesamt)")
-    print(f"[FILTER] {non_live_count} Einträge gefiltert (Serien, Filme, Aufzeichnungen)")
+    print(f"[FILTER] {non_live_count} Einträge gefiltert")
     
     return live_entries
 
@@ -234,6 +221,124 @@ def check_url(url, headers, timeout=CHECK_TIMEOUT):
         return False
 
 # ============================================================
+# CUSTOM LINKS (MANUELLE FESTLEGUNG MIT MEHREREN LINKS)
+# ============================================================
+
+def load_custom_links():
+    """
+    Lädt die manuell definierten Links aus custom_links.json.
+    Unterstützt sowohl einzelne Links als auch Listen.
+    """
+    if os.path.exists(CUSTOM_LINKS_FILE):
+        try:
+            with open(CUSTOM_LINKS_FILE, 'r', encoding='utf-8') as f:
+                custom_links = json.load(f)
+                total = sum(len(v) if isinstance(v, list) else 1 for v in custom_links.values())
+                print(f"[CUSTOM] {len(custom_links)} Kanäle mit {total} manuellen Links geladen.")
+                return custom_links
+        except Exception as e:
+            print(f"[CUSTOM] Fehler beim Laden: {e}")
+            return {}
+    else:
+        print(f"[CUSTOM] Keine custom_links.json gefunden. Erstelle Beispiel...")
+        example = {
+            "atv": [
+                "https://dogusdyg-atv.lg.mncdn.com/dogusdyg_atv/live_1080p3000000kbps/index.m3u8",
+                "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/atv/atv_1080p.m3u8"
+            ],
+            "kanal d": "https://dogusdyg-kanald.lg.mncdn.com/dogusdyg_kanald/live_1080p3000000kbps/index.m3u8"
+        }
+        try:
+            with open(CUSTOM_LINKS_FILE, 'w', encoding='utf-8') as f:
+                json.dump(example, f, indent=2, ensure_ascii=False)
+            print(f"[CUSTOM] Beispiel-Datei erstellt: {CUSTOM_LINKS_FILE}")
+        except:
+            pass
+        return {}
+
+def get_custom_links_for_channel(channel_name, custom_links):
+    """
+    Gibt alle manuellen Links für einen Kanal zurück (als Liste).
+    Unterstützt sowohl einzelne Links als auch Listen.
+    """
+    if not channel_name or not custom_links:
+        return []
+    
+    cleaned = clean_channel_name(channel_name).lower()
+    
+    # Prüfe exakte Übereinstimmung
+    if cleaned in custom_links:
+        links = custom_links[cleaned]
+        if isinstance(links, str):
+            return [links]
+        elif isinstance(links, list):
+            return links
+    
+    # Prüfe Teil-Übereinstimmung
+    for key, links in custom_links.items():
+        if key in cleaned or cleaned in key:
+            if isinstance(links, str):
+                return [links]
+            elif isinstance(links, list):
+                return links
+    
+    return []
+
+def get_working_custom_link(channel_name, custom_links, headers):
+    """
+    Testet alle manuellen Links für einen Kanal und gibt den ersten funktionierenden zurück.
+    """
+    links = get_custom_links_for_channel(channel_name, custom_links)
+    if not links:
+        return None
+    
+    print(f"  [CUSTOM] Teste {len(links)} manuelle Links für {channel_name}...")
+    
+    for i, url in enumerate(links, 1):
+        if check_url(url, headers, timeout=2):
+            print(f"  [CUSTOM] ✅ Link {i} funktioniert: {url[:60]}...")
+            return url
+        else:
+            print(f"  [CUSTOM] ❌ Link {i} defekt")
+    
+    print(f"  [CUSTOM] ⚠️ Keiner der manuellen Links funktioniert")
+    return None
+
+def update_custom_links(channel_name, new_url, custom_links):
+    """
+    Aktualisiert die manuellen Links für einen Kanal.
+    - Wenn es eine Liste gab, wird der defekte Link ersetzt oder ein neuer hinzugefügt.
+    - Wenn es ein einzelner Link war, wird er ersetzt.
+    """
+    if not channel_name or not new_url or custom_links is None:
+        return
+    
+    cleaned = clean_channel_name(channel_name).lower()
+    
+    # Prüfe exakte Übereinstimmung
+    if cleaned in custom_links:
+        existing = custom_links[cleaned]
+        if isinstance(existing, list):
+            # Füge neuen Link hinzu, wenn er nicht bereits existiert
+            if new_url not in existing:
+                existing.append(new_url)
+                print(f"  [CUSTOM] Neuer Link zu {cleaned} hinzugefügt")
+        else:
+            # Ersetze einzelnen Link durch Liste mit beiden
+            custom_links[cleaned] = [existing, new_url]
+            print(f"  [CUSTOM] Link für {cleaned} aktualisiert")
+    else:
+        # Neuer Kanal
+        custom_links[cleaned] = new_url
+        print(f"  [CUSTOM] Neuer Kanal {cleaned} hinzugefügt")
+    
+    try:
+        with open(CUSTOM_LINKS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(custom_links, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"  [CUSTOM] Fehler beim Speichern: {e}")
+
+# ============================================================
 # CACHE
 # ============================================================
 
@@ -267,7 +372,7 @@ def set_cache(key, value, cache):
     }
 
 # ============================================================
-# BACKUP-M3U (GEFILTERT)
+# BACKUP-M3U
 # ============================================================
 
 def load_backup_m3u():
@@ -357,33 +462,48 @@ def find_stream_with_scraper(channel_name):
 # REPAIR
 # ============================================================
 
-def repair_channel(entry, backup_index, cache):
+def repair_channel(entry, backup_index, cache, custom_links):
     extinf = entry["extinf"]
     original_url = entry["url"]
     channel_name = get_extinf_name(extinf)
     display_name = get_display_name(channel_name)
     cache_key = get_canonical_key(channel_name)
     
-    # 1. Cache
+    # 1. PRÜFE: Manuelle Links (höchste Priorität)
+    custom_url = get_working_custom_link(
+        channel_name, 
+        custom_links, 
+        {"User-Agent": CUSTOM_USER_AGENT}
+    )
+    if custom_url:
+        set_cache(f"stream_{cache_key}", custom_url, cache)
+        return {"extinf": extinf, "url": custom_url, "ua": CUSTOM_USER_AGENT, "source": "custom"}
+    
+    # 2. PRÜFE: Cache
     cached_result = get_cached(f"stream_{cache_key}", cache)
     if cached_result and check_url(cached_result, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
         return {"extinf": extinf, "url": cached_result, "ua": CUSTOM_USER_AGENT, "source": "cache"}
     
-    # 2. Backup-M3U (nur Live-Streams)
+    # 3. PRÜFE: Backup-M3U
     backup_match = find_backup_for_channel(channel_name, backup_index)
     if backup_match:
         backup_url = backup_match["url"]
         if check_url(backup_url, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
             set_cache(f"stream_{cache_key}", backup_url, cache)
+            # Aktualisiere custom_links, falls der Kanal dort ist
+            if cache_key in custom_links:
+                update_custom_links(channel_name, backup_url, custom_links)
             return {"extinf": extinf, "url": backup_url, "ua": CUSTOM_USER_AGENT, "source": "backup"}
     
-    # 3. Scraper (nur wenn Backup nichts gefunden hat)
+    # 4. PRÜFE: Scraper
     scraper_url = find_stream_with_scraper(channel_name)
     if scraper_url:
         set_cache(f"stream_{cache_key}", scraper_url, cache)
+        if cache_key in custom_links:
+            update_custom_links(channel_name, scraper_url, custom_links)
         return {"extinf": extinf, "url": scraper_url, "ua": CUSTOM_USER_AGENT, "source": "scraper"}
     
-    # 4. Vavoo
+    # 5. PRÜFE: Vavoo
     if check_url(original_url, {"User-Agent": VAVOO_USER_AGENT}, timeout=2):
         return {"extinf": extinf, "url": original_url, "ua": VAVOO_USER_AGENT, "source": "vavoo"}
     
@@ -395,20 +515,26 @@ def repair_channel(entry, backup_index, cache):
 
 def process_hybrid_m3u():
     print("\n" + "="*60)
-    print("IPTV REPAIR TOOL (LIVE-FILTER)")
-    print("Backup-M3U → Scraper → Vavoo")
+    print("IPTV REPAIR TOOL (MULTI-CUSTOM LINKS)")
+    print("Custom (mehrere) → Cache → Backup-M3U → Scraper → Vavoo")
     print("="*60)
 
+    # 1. Manuelle Links laden
+    custom_links = load_custom_links()
+
+    # 2. Cache laden
     cache = load_cache()
     print(f"[CACHE] Geladen: {len(cache)} Einträge")
 
+    # 3. Backup-M3U laden
     backup_entries = load_backup_m3u()
     if not backup_entries:
         print("[FEHLER] Backup-M3U konnte nicht geladen werden.")
-        return
+        backup_index = {}
+    else:
+        backup_index = build_backup_index(backup_entries)
 
-    backup_index = build_backup_index(backup_entries)
-
+    # 4. Haupt-M3U lesen
     try:
         with open(INPUT_M3U, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
@@ -419,14 +545,15 @@ def process_hybrid_m3u():
     entries = parse_m3u(content)
     print(f"\n[M3U] {len(entries)} Kanäle gelesen.")
 
+    # 5. Kanäle verarbeiten
     print(f"\n[START] Verarbeite {len(entries)} Kanäle...")
     start_time = time.time()
     
     output_entries = []
-    stats = {"cache": 0, "backup": 0, "scraper": 0, "vavoo": 0, "failed": 0}
+    stats = {"custom": 0, "cache": 0, "backup": 0, "scraper": 0, "vavoo": 0, "failed": 0}
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = {executor.submit(repair_channel, entry, backup_index, cache): entry for entry in entries}
+        futures = {executor.submit(repair_channel, entry, backup_index, cache, custom_links): entry for entry in entries}
         
         for future in as_completed(futures):
             result = future.result()
@@ -438,14 +565,17 @@ def process_hybrid_m3u():
             if done % 100 == 0 or done == total:
                 print(f"  Fortschritt: {done}/{total} ({done/total*100:.1f}%)")
 
+    # 6. Cache speichern
     save_cache(cache)
     print(f"[CACHE] Gespeichert: {len(cache)} Einträge")
 
+    # 7. Statistik
     elapsed = time.time() - start_time
     print("\n" + "="*60)
     print("STATISTIK")
     print("="*60)
     print(f"Gesamt:                 {len(output_entries)}")
+    print(f"Manuelle Links:         {stats['custom']}")
     print(f"Aus Cache:              {stats['cache']}")
     print(f"Durch Backup ersetzt:   {stats['backup']}")
     print(f"Durch Scraper gefunden: {stats['scraper']}")
@@ -454,6 +584,7 @@ def process_hybrid_m3u():
     print(f"Benötigte Zeit:         {elapsed:.1f} Sekunden")
     print("="*60)
 
+    # 8. Neue M3U schreiben
     write_m3u(output_entries)
     print(f"\n[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
 
