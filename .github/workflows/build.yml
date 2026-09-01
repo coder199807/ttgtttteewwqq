@@ -11,8 +11,10 @@ on:
     paths:
       - "scripts/build.js"
       - "cleanlist.py"
+      - "scraper.py"
       - ".github/workflows/build.yml"
       - "package.json"
+      - "requirements.txt"
 
 concurrency:
   group: build-m3u
@@ -27,54 +29,60 @@ jobs:
 
     steps:
 
+      # 1. Repository auschecken
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 2. Node.js einrichten
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22"
 
+      # 3. iptv-org/epg klonen
       - name: Clone iptv-org/epg
         run: |
           if [ ! -d external/epg/.git ]; then
             git clone --depth 1 https://github.com/iptv-org/epg.git external/epg
           fi
 
+      # 4. Cache für iptv-org/epg
       - name: Cache iptv-org/epg node_modules
         uses: actions/cache@v4
         with:
           path: external/epg/node_modules
           key: iptvorg-epg-${{ hashFiles('external/epg/package-lock.json') }}
 
+      # 5. iptv-org/epg Abhängigkeiten installieren
       - name: Install iptv-org/epg deps
         working-directory: external/epg
         run: npm ci --no-audit --no-progress
-        
+
+      # 6. iptv.m3u und epg.xml generieren
       - name: Generate iptv.m3u and epg.xml
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
           IPTVORG_GRAB_DIR: external/epg/guides
         run: npm run build
 
-       # --- Python Umgebung ---
+      # 7. Python einrichten
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      # --- Python Abhängigkeiten ---
+      # 8. Python Abhängigkeiten installieren
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install requests beautifulsoup4
+          python -m pip install requests beautifulsoup4 lxml art colorama termcolor
 
-      # --- Volo zuerst, Vavoo als Backup ---
+      # 9. Hybrid IPTV Playlist bauen (mit Scraper)
       - name: Build hybrid IPTV playlist
         run: |
           python cleanlist.py
 
-      # Kontrolle der erzeugten Playlist
+      # 10. Playlist validieren
       - name: Validate IPTV playlist
         run: |
           test -s iptv.m3u
@@ -87,6 +95,10 @@ jobs:
           echo "m3u8:"
           grep -ci "\.m3u8" iptv.m3u || true
 
+          echo "HTTP/HTTPS Links:"
+          grep -c "^http" iptv.m3u || true
+
+      # 11. Änderungen committen und pushen
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
