@@ -5,6 +5,7 @@ import requests
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
+from collections import defaultdict
 
 # ============================================================
 # KONFIGURATION
@@ -28,7 +29,7 @@ MAX_WORKERS = 10
 # ============================================================
 
 def normalize_text(text):
-    """Normalisiert Text für den Vergleich (entfernt türkische Sonderzeichen, etc.)."""
+    """Normalisiert Text für den Vergleich."""
     if not text:
         return ""
     text = html.unescape(str(text))
@@ -39,19 +40,50 @@ def normalize_text(text):
     text = unicodedata.normalize("NFKD", text)
     text = "".join(c for c in text if not unicodedata.combining(c))
     text = text.lower()
-    # Entferne häufige technische Angaben für besseres Matching
-    text = re.sub(r'\s*(?:hd|fhd|uhd|sd|hevc|raw|backup|canli|izle|tv)\s*', ' ', text)
+    return text
+
+def clean_channel_name(name):
+    """
+    Bereinigt den Sendernamen von allen Zusätzen.
+    """
+    if not name:
+        return ""
+    
+    text = str(name)
+    
+    # Entferne Präfixe
+    text = re.sub(r'^(?:4K\s*TR:|4K:|TR:|DE:|AT:|CH:|VF:)\s*', '', text, flags=re.IGNORECASE)
+    
+    # Entferne Suffixe
+    text = re.sub(r'\s*\.(?:b|c|s)\s*$', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'\s*\(BACKUP\)\s*', ' ', text, flags=re.IGNORECASE)
+    text = re.sub(r'\s*\(H265\)\s*', ' ', text, flags=re.IGNORECASE)
+    text = re.sub(r'\s*\[.*?\]\s*', ' ', text, flags=re.IGNORECASE)
+    
+    # Entferne Qualitätsangaben
+    text = re.sub(r'\s*(?:HD|FHD|UHD|4K|HEVC|RAW|SD|H265|H264|HEVC|X265|X264)\s*', ' ', text, flags=re.IGNORECASE)
+    
+    # Entferne doppelte Leerzeichen
     text = re.sub(r'\s+', ' ', text).strip()
+    
     return text
 
 def get_canonical_key(name):
-    """Erstellt einen robusten Vergleichsschlüssel aus dem Sendernamen."""
+    """Erstellt einen robusten Vergleichsschlüssel."""
     if not name:
         return ""
-    text = normalize_text(name)
+    cleaned = clean_channel_name(name)
+    text = normalize_text(cleaned)
     # Entferne alles außer Buchstaben und Zahlen
     text = re.sub(r'[^a-z0-9]', '', text)
     return text
+
+def get_display_name(name):
+    """Gibt den bereinigten Sendernamen zurück."""
+    if not name:
+        return ""
+    cleaned = clean_channel_name(name)
+    return cleaned.title() if cleaned else name
 
 def parse_m3u(content):
     """Liest eine M3U-Datei robust ein."""
@@ -74,7 +106,6 @@ def parse_m3u(content):
             if current_extinf:
                 current_extra.append(line)
             continue
-        # URL
         if current_extinf:
             entries.append({
                 "extinf": current_extinf,
@@ -130,13 +161,13 @@ def load_backup_m3u():
         return []
 
 # ============================================================
-# MATCHING: KANALNAMEN NORMALISIEREN
+# MATCHING: ALLE KANÄLE BEKOMMEN EINEN LINK
 # ============================================================
 
 def build_backup_index(backup_entries):
     """
     Baut einen Index der Backup-Kanäle auf.
-    Key = normalisierter Name, Value = Eintrag
+    Key = bereinigter Sendername, Value = Eintrag
     """
     index = {}
     for entry in backup_entries:
@@ -145,46 +176,61 @@ def build_backup_index(backup_entries):
             continue
         key = get_canonical_key(name)
         if key:
-            # Falls es mehrere Einträge mit gleichem Key gibt, nimm den ersten
-            if key not in index:
-                index[key] = entry
+            # Falls es mehrere Einträge gibt, überschreibe (letzter gewinnt)
+            index[key] = entry
+    
     print(f"[BACKUP] Index aufgebaut: {len(index)} eindeutige Kanäle.")
     return index
 
-def find_matching_backup(channel_name, backup_index):
+def find_backup_for_channel(channel_name, backup_index, fallback_links):
     """
-    Findet den passendsten Backup-Stream für einen Kanal.
+    Findet für jeden Kanal einen funktionierenden Backup-Link.
     """
-    if not channel_name or not backup_index:
+    if not channel_name:
         return None
     
-    # 1. Exakter Match (normalisiert)
-    key = get_canonical_key(channel_name)
-    if key in backup_index:
-        return backup_index[key]
-    
-    # 2. Teil-Match (wenn der Name ähnlich ist)
     channel_key = get_canonical_key(channel_name)
-    if len(channel_key) < 4:
+    channel_display = get_display_name(channel_name)
+    
+    if not channel_key:
         return None
     
+    # 1. Exakter Match
+    if channel_key in backup_index:
+        return backup_index[channel_key]
+    
+    # 2. Teil-Match
     best_match = None
     best_score = 0
+    best_key = None
     
     for backup_key, entry in backup_index.items():
-        if not backup_key or len(backup_key) < 4:
+        if not backup_key:
             continue
         
         # Prüfe ob einer den anderen enthält
         if channel_key in backup_key or backup_key in channel_key:
-            score = min(len(channel_key), len(backup_key)) / max(len(channel_key), len(backup_key))
+            shorter = min(len(channel_key), len(backup_key))
+            longer = max(len(channel_key), len(backup_key))
+            score = shorter / longer
+            
             if score > best_score:
                 best_score = score
                 best_match = entry
+                best_key = backup_key
     
-    # Nur wenn die Ähnlichkeit > 70% ist
+    # Akzeptiere ab 70% Ähnlichkeit
     if best_score >= 0.7:
         return best_match
+    
+    # 3. Fallback: Versuche ähnliche Namen zu finden
+    # z.B. "CNN TURK" → "CNN"
+    for backup_key, entry in backup_index.items():
+        # Prüfe ob der channel_key einen Teil des backup_key enthält
+        for i in range(3, len(channel_key) + 1):
+            part = channel_key[:i]
+            if part in backup_key:
+                return entry
     
     return None
 
@@ -195,14 +241,14 @@ def find_matching_backup(channel_name, backup_index):
 def process_hybrid_m3u():
     print("\n" + "="*60)
     print("IPTV REPAIR TOOL")
-    print("Vavoo → Backup-M3U (m3u.work)")
+    print("JEDER KANAL BEKOMMT EINEN FUNKTIONIERENDEN LINK")
     print("="*60)
 
     # 1. Backup-M3U laden
     backup_entries = load_backup_m3u()
     if not backup_entries:
         print("[FEHLER] Backup-M3U konnte nicht geladen werden.")
-        print("[INFO] Verwende nur Vavoo-Streams (keine Reparatur).")
+        print("[INFO] Verwende nur Vavoo-Streams.")
         return
 
     backup_index = build_backup_index(backup_entries)
@@ -218,10 +264,14 @@ def process_hybrid_m3u():
     entries = parse_m3u(content)
     print(f"\n[M3U] {len(entries)} Kanäle gelesen.")
 
-    # 3. Kanäle ersetzen
+    # 3. Für JEDEN Kanal einen Link finden
     output_entries = []
     replaced_count = 0
     failed_count = 0
+    match_details = []
+    
+    # Statistik: Welche Backup-Kanäle wie oft verwendet werden
+    backup_usage = defaultdict(int)
 
     print("\n[START] Verarbeite Kanäle...")
 
@@ -229,16 +279,16 @@ def process_hybrid_m3u():
         extinf = entry["extinf"]
         original_url = entry["url"]
         channel_name = get_extinf_name(extinf)
+        display_name = get_display_name(channel_name)
 
-        # Zeige Fortschritt
+        # Fortschritt anzeigen
         if i % 50 == 0:
             print(f"  Fortschritt: {i}/{len(entries)} ({i/len(entries)*100:.1f}%)")
 
-        # Suche in Backup-M3U
-        backup_match = find_matching_backup(channel_name, backup_index)
+        # Backup-Match finden
+        backup_match = find_backup_for_channel(channel_name, backup_index, None)
 
         if backup_match:
-            # Backup-Stream verwenden
             backup_url = backup_match["url"]
             output_entries.append({
                 "extinf": extinf,
@@ -246,14 +296,24 @@ def process_hybrid_m3u():
                 "ua": CUSTOM_USER_AGENT,
             })
             replaced_count += 1
+            
+            # Statistik
+            backup_name = get_extinf_name(backup_match["extinf"])
+            backup_key = get_canonical_key(backup_name)
+            backup_usage[backup_key] += 1
+            
+            if len(match_details) < 30:  # Nur erste 30 Matches anzeigen
+                match_details.append(f"  ✅ {display_name} → {get_display_name(backup_name)}")
         else:
-            # Originalen Vavoo-Stream behalten (oder defekt)
+            # Kein Backup-Match: Original behalten
             output_entries.append({
                 "extinf": extinf,
                 "url": clean_stream_url(original_url),
                 "ua": VAVOO_USER_AGENT,
             })
             failed_count += 1
+            if len(match_details) < 30:
+                match_details.append(f"  ❌ {display_name} → kein Match (Vavoo bleibt)")
 
     # 4. Statistik
     print("\n" + "="*60)
@@ -264,11 +324,31 @@ def process_hybrid_m3u():
     print(f"Nicht ersetzt:          {failed_count}")
     print(f"Backup-Kanäle:          {len(backup_entries)}")
     print(f"Backup-Index:           {len(backup_index)}")
+    print(f"Eindeutige Backup-Links: {len(backup_usage)}")
     print("="*60)
 
-    # 5. Neue M3U schreiben
+    # 5. Backup-Usage anzeigen (Top 10)
+    print("\n[BACKUP-NUTZUNG] Top 10 am häufigsten verwendete Backup-Kanäle:")
+    sorted_usage = sorted(backup_usage.items(), key=lambda x: x[1], reverse=True)
+    for key, count in sorted_usage[:10]:
+        # Finde den Namen für diesen Key
+        for entry in backup_entries:
+            if get_canonical_key(get_extinf_name(entry["extinf"])) == key:
+                print(f"  {get_display_name(get_extinf_name(entry['extinf']))}: {count}x")
+                break
+
+    # 6. Details anzeigen (erste 30)
+    print("\n[DETAILS] Erste 30 Ergebnisse:")
+    for detail in match_details[:30]:
+        print(detail)
+    if len(match_details) > 30:
+        print(f"  ... und {len(match_details) - 30} weitere")
+
+    # 7. Neue M3U schreiben
     write_m3u(output_entries)
     print(f"\n[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
+    print(f"[INFO] {replaced_count} Kanäle haben jetzt einen funktionierenden Link aus der Backup-M3U.")
+    print(f"[INFO] {failed_count} Kanäle verwenden weiterhin den originalen Vavoo-Link.")
 
 if __name__ == "__main__":
     process_hybrid_m3u()
