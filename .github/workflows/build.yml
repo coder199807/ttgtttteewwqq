@@ -2,13 +2,15 @@ name: Build IPTV M3U
 
 on:
   schedule:
-    # Jeden Tag um 04:00 Uhr UTC (07:00 Uhr TR)
     - cron: "0 4 * * *"
+
   workflow_dispatch:
+
   push:
     branches: [main]
     paths:
       - "scripts/build.js"
+      - "cleanlist.py"
       - ".github/workflows/build.yml"
       - "package.json"
 
@@ -22,7 +24,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -47,28 +51,21 @@ jobs:
         working-directory: external/epg
         run: npm ci --no-audit --no-progress
 
-      # digiturk.com.tr and tvplus.com.tr consistently block GitHub Actions'
-      # runner IPs (403 / ECONNRESET / 503 at auth) with 0 programs fetched,
-      # so they're dropped to save CI time; epgshare01 already covers those
-      # channels as a fallback in scripts/build.js.
       - name: Grab TR EPG (dsmart)
         working-directory: external/epg
         continue-on-error: true
         timeout-minutes: 20
         run: |
-          npm run grab --- \
+          npm run grab -- \
             --sites=dsmart.com.tr \
             --lang=tr \
             --maxConnections=3 \
             --timeout=20000 \
             --delay=500 \
             --output=guides/{site}.xml || true
+
           ls -la guides/ || true
 
-      # turksatkablo.com.tr serves an incomplete certificate chain ("unable
-      # to verify the first certificate"), unrelated to the data itself, so
-      # cert verification is disabled only for this read-only public EPG
-      # fetch step.
       - name: Grab TR EPG (turksatkablo)
         working-directory: external/epg
         continue-on-error: true
@@ -76,13 +73,14 @@ jobs:
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: "0"
         run: |
-          npm run grab --- \
+          npm run grab -- \
             --sites=turksatkablo.com.tr \
             --lang=tr \
             --maxConnections=3 \
             --timeout=20000 \
             --delay=500 \
             --output=guides/{site}.xml || true
+
           ls -la guides/ || true
 
       - name: Generate iptv.m3u and epg.xml
@@ -91,25 +89,38 @@ jobs:
           IPTVORG_GRAB_DIR: external/epg/guides
         run: npm run build
 
-      # --- NEU: Python Umgebung & Bibliotheken einrichten ---
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.12"
 
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests bs4
+          python -m pip install requests beautifulsoup4
 
-      - name: Python-Skript zur Bereinigung ausführen
+      - name: Build Volo + Vavoo IPTV playlist
         run: |
           python cleanlist.py
+
+      - name: Validate IPTV playlist
+        run: |
+          test -f iptv.m3u
+          grep -q '^#EXTM3U' iptv.m3u
+          echo "Playlist vorhanden:"
+          wc -l iptv.m3u
+
+          echo "EXTINF:"
+          grep -c '^#EXTINF:' iptv.m3u || true
+
+          echo "URLs:"
+          grep -E '^https?://' iptv.m3u | wc -l
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           if [[ -n "$(git status --porcelain iptv.m3u epg.xml)" ]]; then
             git add iptv.m3u epg.xml
             git commit -m "chore: update iptv.m3u / epg.xml ($(date -u +'%Y-%m-%d %H:%M UTC'))"
