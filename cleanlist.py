@@ -4,40 +4,55 @@ import re
 INPUT_FILE = "iptv.m3u"
 OUTPUT_FILE = "iptv.m3u"
 
-# Custom User-Agent & Header Konfiguration (Vavoo & vypn.net)
+# Custom User-Agent Konfiguration
 CUSTOM_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
-def clean_string(text):
-    """ Entfernt Qualitäts-Tags, Suffixe und Sonderzeichen zur Gruppenbildung """
-    if not text:
+def get_canonical_key(name):
+    """
+    Erstellt einen extrem sauberen Vergleichsschlüssel,
+    damit z.B. '4K TR: 24 HD .b', '24 .s' und '24 HABER + .b'
+    exakt denselben Schlüssel '24' ergeben.
+    """
+    if not name:
         return ""
-    # Auflösungen & Tags entfernen
-    cleaned = re.sub(r'(?i)\b(4k|uhd|fhd|hd|sd|hevc|raw|1080p?|720p?|480p?)\b', '', text)
-    # Suffixe wie .a, .b, .c, .s am Satzende oder freistehend entfernen
-    cleaned = re.sub(r'\s*\.[a-z0-9]\b', '', cleaned, flags=re.IGNORECASE)
-    # Backup-Tags & Klammern entfernen
-    cleaned = re.sub(r'\s*\(\s*backup\s*\)', '', cleaned, flags=re.IGNORECASE)
-    # Entfernt doppelte Leerzeichen & führende/nachfolgende Punkte/Striche
-    cleaned = re.sub(r'\s+', ' ', cleaned).strip(" .-_")
-    return cleaned.lower() # Lowercase für exakten Match im Dictionary
+    
+    text = name.lower()
+
+    # 1. Bekannte Qualitäts- & System-Tags entfernen
+    text = re.sub(r'(?i)\b(4k|uhd|fhd|hd|sd|hevc|raw|1080p?|720p?|480p?|backup)\b', '', text)
+    
+    # 2. Präfixe wie "TR:", "DE:", "4K TR:" entfernen
+    text = re.sub(r'^[a-z0-9\s]+:\s*', '', text)
+    
+    # 3. Suffixe wie .a, .b, .c, .s, + am Satzende entfernen
+    text = re.sub(r'\s*[\.\+\-][a-z0-9]\b', '', text)
+    text = re.sub(r'\s*[\+\-]\s*$', '', text)
+
+    # 4. Sonderzeichen & zerschossene Umlaute vereinheitlichen (z.B. "S NEMA" -> "SINEMA")
+    text = re.sub(r'\bs\s+nema\b', 'sinema', text)
+    text = re.sub(r'\bm\s+n\s+ka\b', 'minika', text)
+    text = re.sub(r'\bcnn\s+t\s+rk\b', 'cnn turk', text)
+    
+    # 5. Alle verbleibenden Nicht-Alphanumerischen Zeichen entfernen
+    text = re.sub(r'[^a-z0-9]', '', text)
+    
+    return text
 
 def calculate_score(name, url):
-    """ Bewertet die Stabilität und Qualität des Streams """
+    """ Bewertet Qualität und Stabilität """
     score = 0
     n_lower, u_lower = name.lower(), url.lower()
     
-    # Qualitäts-Punkte
     if '4k' in n_lower or 'uhd' in n_lower: score += 100
     elif 'fhd' in n_lower or '1080' in n_lower: score += 80
     elif 'hd' in n_lower or '720' in n_lower: score += 60
     elif 'sd' in n_lower: score += 20
     else: score += 40
     
-    # Abzug für potenziell instabile Backup-Suffixe (.b, .c)
-    if re.search(r'\.[b-z]\b', n_lower):
-        score -= 25
+    # Abzug für instabile Backup-Endungen
+    if re.search(r'\.[b-z]\b', n_lower) or 'backup' in n_lower:
+        score -= 30
 
-    # Punkte für zuverlässige Stream-Formate
     if '.m3u8' in u_lower: score += 20
     if 'workers.dev' in u_lower: score -= 10
     
@@ -64,33 +79,38 @@ def process_m3u():
         extinf_line = "#EXTINF:" + lines[0]
         url = lines[-1]
         
-        # Tags filtern
+        # Tags filtern (alte User-Agents entfernen)
         extra_tags = [line for line in lines[1:-1] if not ("http-user-agent" in line.lower() or "user-agent=" in line.lower())]
 
-        # Kanalnamen extrahieren (nach dem Komma)
         raw_channel_name = extinf_line.split(',')[-1] if ',' in extinf_line else "Unbekannt"
         
-        # Eindeutigen Vergleichsschlüssel erzeugen (Namen säubern)
-        unique_key = clean_string(raw_channel_name)
+        # Erzeugt den absolut eindeutigen Schlüssel für den Vergleich
+        canonical_key = get_canonical_key(raw_channel_name)
+        
+        if not canonical_key:
+            canonical_key = raw_channel_name.lower()
+
         score = calculate_score(raw_channel_name, url)
 
-        # WICHTIG: Wenn der Schlüssel schon existiert, behalten wir NUR die Variante mit dem höchsten Score!
-        if unique_key not in channels or score > channels[unique_key]['score']:
+        # Nur übernehmen, wenn der Schlüssel neu ist ODER dieser Stream einen höheren Score hat
+        if canonical_key not in channels or score > channels[canonical_key]['score']:
             
-            # Bereinigten Sendernamen in die EXTINF-Zeile zurückschreiben
-            display_name = re.sub(r'(?i)\b(4k|uhd|fhd|hd|sd|\.[a-z0-9])\b', '', raw_channel_name).strip(" .-_")
+            # Anzeigename säubern (z.B. "4K TR: ATV HD .b" -> "TR: ATV")
+            clean_display = re.sub(r'(?i)\b(4k|uhd|fhd|hd|sd|\.[a-z0-9]|backup)\b', '', raw_channel_name)
+            clean_display = re.sub(r'\s*[\+\-]\s*$', '', clean_display).strip(" .-_")
+            
             extinf_parts = extinf_line.split(",")
-            extinf_parts[-1] = display_name
+            extinf_parts[-1] = clean_display
             cleaned_extinf = ",".join(extinf_parts)
 
-            channels[unique_key] = {
+            channels[canonical_key] = {
                 'score': score,
                 'extinf': cleaned_extinf,
                 'tags': extra_tags,
                 'url': url
             }
 
-    # Ausgabedatei schreiben (garantiert nur 1 Eintrag pro Unique Key)
+    # Ausgabedatei schreiben
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(header if header.endswith('\n') else header + '\n')
         for ch in channels.values():
@@ -107,7 +127,7 @@ def process_m3u():
                 
             f.write(final_url + "\n")
 
-    print(f"Erfolg: Es wurden {len(channels)} eindeutige Kanäle gespeichert.")
+    print(f"Erfolg: {len(channels)} eindeutige Kanäle gespeichert.")
 
 if __name__ == "__main__":
     process_m3u()
