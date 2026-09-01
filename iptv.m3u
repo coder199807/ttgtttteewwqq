@@ -259,10 +259,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/960578312ee36cc17c5d2
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3159604752e1cba547bb
-#EXTINF:-1 tvg-id="SportsTV.tr@SD" tvg-name="4K TR: SPORTS TV HD .b" tvg-logo="https://i.imgur.com/tGTVcVe.jpg" group-title="Sport",4K TR: SPORTS TV HD .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2429298798dcd505d1ab4b
 #EXTINF:-1 tvg-id="219297129315c074c03f8e" tvg-name="4K TR: STAR TV HD .b" tvg-logo="https://i.imgur.com/9O3DHRB.png" group-title="Ulusal (TR)",4K TR: STAR TV HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -315,6 +311,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1216632307df2afc1919fa
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/970382162286220f5fa39
+#EXTINF:-1 tvg-id="30291805064bacb8a4036d" tvg-name="4K TR: TRT OCUK HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png" group-title="Çocuk / Kinder",4K TR: TRT OCUK HD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/30291805064bacb8a4036d
 #EXTINF:-1 tvg-id="TRTSpor.tr@SD" tvg-name="4K TR: TRT SPOR HD .b" tvg-logo="https://i.imgur.com/6tv0zxh.png" group-title="Sport",4K TR: TRT SPOR HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -455,10 +455,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3055235391a02f432de784
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/163358782054d9002fa0b0
-#EXTINF:-1 tvg-id="2702391715e85c3d67a4ee" tvg-name="AKIT TV .b" tvg-logo="https://i.imgur.com/oGto929.png" group-title="Dini",AKIT TV .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2702391715e85c3d67a4ee
 #EXTINF:-1 tvg-id="194868101172e4362de24e" tvg-name="AKIT TV .c" tvg-logo="https://i.imgur.com/oGto929.png" group-title="Dini",AKIT TV .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -471,10 +467,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1862240206bdae999f9066
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/211016135533c46812e566
-#EXTINF:-1 tvg-id="3913298991ebe0634b3649" tvg-name="ANIMAL PLANET HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png" group-title="Belgesel / Doku",ANIMAL PLANET HD .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3913298991ebe0634b3649
 #EXTINF:-1 tvg-id="2103702130b5451883e2a7" tvg-name="ANIMAUX .b" tvg-logo="" group-title="Belgesel / Doku",ANIMAUX .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -651,10 +643,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/35641061340ab1a36ee3bd
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/8799816103c5f180837cf
-#EXTINF:-1 tvg-id="18734781311354b28a35dd" tvg-name="BEIN MOVIES ACTION .c" tvg-logo="https://i.imgur.com/AUWa7bk.png" group-title="Film",BEIN MOVIES ACTION .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/18734781311354b28a35dd
 #EXTINF:-1 tvg-id="30412456070b17d981e0ff" tvg-name="BEIN MOVIES ACTION .s" tvg-logo="https://i.imgur.com/AUWa7bk.png" group-title="Film",BEIN MOVIES ACTION .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -683,6 +671,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/21977479648205db1b3061
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/22440690938318303270a5
+#EXTINF:-1 tvg-id="2120218356a82436bd0e59" tvg-name="BEIN MOVIES PREMIERE 2 .s" tvg-logo="https://i.imgur.com/4Uuxk4T.png" group-title="Film",BEIN MOVIES PREMIERE 2 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2120218356a82436bd0e59
 #EXTINF:-1 tvg-id="250091316466da3ef72786" tvg-name="BEIN MOVIES STARS .c" tvg-logo="https://i.imgur.com/eryPkrT.png" group-title="Film",BEIN MOVIES STARS .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -743,6 +735,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/66217962033a2d3e9c47f
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1447241506bdccfad8b85c
+#EXTINF:-1 tvg-id="250946619196f7d48e5d74" tvg-name="BEIN SPORTS 2 .s" tvg-logo="" group-title="Sport",BEIN SPORTS 2 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/250946619196f7d48e5d74
 #EXTINF:-1 tvg-id="28515391437e928cafd5dd" tvg-name="BEIN SPORTS 2 HD .b" tvg-logo="https://logo.huhu.to/logo?c=2851539143.png" group-title="Sport",BEIN SPORTS 2 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -847,10 +843,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3989995533d0efea1c8696
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/164663282518e6179f90af
-#EXTINF:-1 tvg-id="1221587067c43d5b265b10" tvg-name="BEIN SPORTS MAX 1 .c" tvg-logo="https://logo.huhu.to/logo?c=1221587067.png" group-title="Sport",BEIN SPORTS MAX 1 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/1221587067c43d5b265b10
 #EXTINF:-1 tvg-id="283243053554cc6eb0a10a" tvg-name="BEIN SPORTS MAX 1 .s" tvg-logo="" group-title="Sport",BEIN SPORTS MAX 1 .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -867,6 +859,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/22528142332d275721233
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/25896823596a84e43dd09
+#EXTINF:-1 tvg-id="4017295127660d677c32f9" tvg-name="BEIN SPORTS MAX 2 .s" tvg-logo="" group-title="Sport",BEIN SPORTS MAX 2 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/4017295127660d677c32f9
 #EXTINF:-1 tvg-id="3407936242f95c33ae8820" tvg-name="BEIN SPORTS MAX 2 FHD .b" tvg-logo="https://logo.huhu.to/logo?c=3407936242.png" group-title="Sport",BEIN SPORTS MAX 2 FHD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -883,10 +879,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/143239535a2e3c23c1d16
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/31561783590bdea7d4bf69
-#EXTINF:-1 tvg-id="1505" tvg-name="BLOOMBERG .s" tvg-logo="" group-title="Haber",BLOOMBERG .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/260322414100d6583c3f2b
 #EXTINF:-1 tvg-id="BloombergHT.tr@SD" tvg-name="BLOOMBERG HT .c" tvg-logo="https://i.imgur.com/bmkXfIE.png" group-title="Haber",BLOOMBERG HT .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -895,6 +887,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2238665354014ee25dcf7
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/236989031b5bce3e87ca9
+#EXTINF:-1 tvg-id="BloombergHT.tr@SD" tvg-name="BLOOMBERG HT HD+ SD .b" tvg-logo="https://i.imgur.com/bmkXfIE.png" group-title="Haber",BLOOMBERG HT HD+ SD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2563486225460803675883
 #EXTINF:-1 tvg-id="35781502601487862e9ea4" tvg-name="BLOOMBERGHT RAW .b" tvg-logo="" group-title="Haber",BLOOMBERGHT RAW .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -967,14 +963,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1310133020ac356e7be28a
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/220576533165e4633695d4
-#EXTINF:-1 tvg-id="2814908252b478398f430e" tvg-name="DAS ERSTE .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE .c
+#EXTINF:-1 tvg-id="DaVinci.de@SD" tvg-name="DA VINCI LEARNING .s" tvg-logo="" group-title="Belgesel / Doku",DA VINCI LEARNING .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2814908252b478398f430e
+https://young-dew-a7a9.pandatiger.workers.dev/play/1268465409d81cf808f3af
 #EXTINF:-1 tvg-id="2781626432d1535952983f" tvg-name="DAS ERSTE .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2781626432d1535952983f
+#EXTINF:-1 tvg-id="259560614200209e77dfb0" tvg-name="DAS ERSTE [SAT] [] .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE [SAT] [] .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/259560614200209e77dfb0
 #EXTINF:-1 tvg-id="5927186007ea11004d769" tvg-name="DAS ERSTE FHD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE FHD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1119,10 +1119,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1869814941aa982b6bd0a0
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/14745367131ac295081561
-#EXTINF:-1 tvg-id="24877931690bfe8def3a83" tvg-name="DAZN BAR 1 HD .s" tvg-logo="" group-title="Sport",DAZN BAR 1 HD .s
+#EXTINF:-1 tvg-id="30757699713fe2a8880b52" tvg-name="DAZN BAR 1 FHD .s" tvg-logo="" group-title="Sport",DAZN BAR 1 FHD .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/24877931690bfe8def3a83
+https://young-dew-a7a9.pandatiger.workers.dev/play/30757699713fe2a8880b52
 #EXTINF:-1 tvg-id="3647775466b603a5ae8272" tvg-name="DAZN BAR 2 [] .c" tvg-logo="https://logo.huhu.to/logo?c=3647775466.png" group-title="Sport",DAZN BAR 2 [] .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1235,6 +1235,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2833035201254713df8805
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1476666167a4181c256f0d
+#EXTINF:-1 tvg-id="6746639090a3d1d6793e1" tvg-name="DAZN NBA HD .b" tvg-logo="" group-title="Sport",DAZN NBA HD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/6746639090a3d1d6793e1
+#EXTINF:-1 tvg-id="201738756c249ff85cdcc" tvg-name="DAZN NFL NETWORK HD .b" tvg-logo="" group-title="Sport",DAZN NFL NETWORK HD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/201738756c249ff85cdcc
 #EXTINF:-1 tvg-id="36902120411f1a6426e4d4" tvg-name="DAZN RISE .c" tvg-logo="https://logo.huhu.to/logo?c=3690212041.png" group-title="Sport",DAZN RISE .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1263,10 +1271,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/249877866360e578051afe
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/315721043612919a3e4725
-#EXTINF:-1 tvg-id="67e5c4c6cfef0b3744c556fa" tvg-name="DMAX .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Belgesel / Doku",DMAX .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/635686224fedfdfe5b2d7
 #EXTINF:-1 tvg-id="67e5c4c6cfef0b3744c556fa" tvg-name="DMAX .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Belgesel / Doku",DMAX .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1295,6 +1299,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/37003574092beb0903a0af
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/79403627856f32c18a077
+#EXTINF:-1 tvg-id="67e5c4c6cfef0b3744c556fa" tvg-name="DMAX HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Belgesel / Doku",DMAX HEVC .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/329072795169f105f3d135
 #EXTINF:-1 tvg-id="67e5c4c6cfef0b3744c556fa" tvg-name="DMAX HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Belgesel / Doku",DMAX HEVC .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1367,6 +1375,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2519756759981fbd4afd64
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/27612180440913543cbbbd
+#EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY HEVC .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY HEVC .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/3206442366526f8a0fff08
 #EXTINF:-1 tvg-id="DiscoveryChannel.tr@SD" tvg-name="DISCOVERY RAW .b" tvg-logo="https://i.imgur.com/bZpe8af.png" group-title="Belgesel / Doku",DISCOVERY RAW .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1395,6 +1407,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3624002307d3a1f474d7ce
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/20954040600611bde9e160
+#EXTINF:-1 tvg-id="InvestigationDiscoveryEurope.us@SD" tvg-name="DISCOVERY ID .s" tvg-logo="" group-title="Belgesel / Doku",DISCOVERY ID .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/972730032fe506471c990
 #EXTINF:-1 tvg-id="9700986623c97a7651f69" tvg-name="DISCOVERY IDX HD .b" tvg-logo="" group-title="Belgesel / Doku",DISCOVERY IDX HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1467,6 +1483,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1827094680ef16ad2f8b38
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/38145219358d998f180862
+#EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 .c" tvg-logo="https://logo.huhu.to/logo?c=1222315896.png" group-title="Sport",EUROSPORT 1 .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1222315896dcc6e31f3735
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 .c" tvg-logo="https://logo.huhu.to/logo?c=3458631461.png" group-title="Sport",EUROSPORT 1 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1483,6 +1503,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2924660569442cd197c7a9
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2092513479e79a5733f
+#EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HD (BACKUP 2) .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HD (BACKUP 2) .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2876480347b900ec2a253b
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HD (BACKUP 3) .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HD (BACKUP 3) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1499,6 +1523,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/7317968734462dc6304a4
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/662162280d76be75a18a5
+#EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 HEVC .b" tvg-logo="" group-title="Sport",EUROSPORT 1 HEVC .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1224726847974efb8f8e99
 #EXTINF:-1 tvg-id="Eurosport1.fr@France" tvg-name="EUROSPORT 1 RAW .b" tvg-logo="" group-title="Sport",EUROSPORT 1 RAW .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1571,10 +1599,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/161808028305c805272dd2
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/334800555fd42fc78001c
-#EXTINF:-1 tvg-id="3844032236a6f691189c8c" tvg-name="EUROSPORT 360 HD 10 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 10 .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3844032236a6f691189c8c
 #EXTINF:-1 tvg-id="3632230236159eeb063d4c" tvg-name="EUROSPORT 360 HD 11 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 11 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1595,10 +1619,22 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2789130686711975bca9f
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/7717380127de6c0e762bd
+#EXTINF:-1 tvg-id="1784656716a5a802f1810a" tvg-name="EUROSPORT 360 HD 16 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 16 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1784656716a5a802f1810a
 #EXTINF:-1 tvg-id="14148476112478912feaec" tvg-name="EUROSPORT 360 HD 2 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 2 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/14148476112478912feaec
+#EXTINF:-1 tvg-id="17650784759cc447e2a4bc" tvg-name="EUROSPORT 360 HD 3 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 3 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/17650784759cc447e2a4bc
+#EXTINF:-1 tvg-id="36755317391a3736695ded" tvg-name="EUROSPORT 360 HD 4 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 4 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/36755317391a3736695ded
 #EXTINF:-1 tvg-id="38663619638634dbe0b8ca" tvg-name="EUROSPORT 360 HD 5 .b" tvg-logo="" group-title="Sport",EUROSPORT 360 HD 5 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -1983,10 +2019,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1475097052d156648d56d5
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/873497816c80d10217363
-#EXTINF:-1 tvg-id="44533578213cf4baf8c92" tvg-name="KABEL EINS DOKU HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Kabel_eins_Doku_Logo_2016.svg/960px-Kabel_eins_Doku_Logo_2016.svg.png" group-title="Deutschland",KABEL EINS DOKU HEVC .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/44533578213cf4baf8c92
 #EXTINF:-1 tvg-id="24875814787e44255796c2" tvg-name="KABEL EINS DOKU RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Kabel_eins_Doku_Logo_2016.svg/960px-Kabel_eins_Doku_Logo_2016.svg.png" group-title="Deutschland",KABEL EINS DOKU RAW .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2019,10 +2051,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/348853224424490830f4fe
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/284204601910a1d31e579f
-#EXTINF:-1 tvg-id="Kanal7.tr@SD" tvg-name="KANAL 7 .s" tvg-logo="https://i.imgur.com/0gq9xOm.png" group-title="Dini",KANAL 7 .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3015649982c331c4fb85f8
 #EXTINF:-1 tvg-id="916532487174bf814970d" tvg-name="KANAL 7 AVRUPA .c" tvg-logo="https://i.imgur.com/wlfyj5l.png" group-title="Dini",KANAL 7 AVRUPA .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2055,10 +2083,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/817959285c682bf3e522b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/38723286086ff52dd7cac
-#EXTINF:-1 tvg-id="KanalD.tr@SD" tvg-name="KANAL D .s" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/231583905a5fd80471ac8
 #EXTINF:-1 tvg-id="KanalD.tr@SD" tvg-name="KANAL D HD .b" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2103,10 +2127,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3303484794c62142ac7ba2
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/162124518c6ac036885e3
-#EXTINF:-1 tvg-id="3645283043839c06f50d86" tvg-name="KIKA HEVC .b" tvg-logo="https://i.imgur.com/vZdNp5S.png" group-title="Çocuk / Kinder",KIKA HEVC .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3645283043839c06f50d86
 #EXTINF:-1 tvg-id="3186688793d82687fd0609" tvg-name="KINGBOX ACTION .b" tvg-logo="" group-title="Film",KINGBOX ACTION .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2155,10 +2175,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1810523752094405320ffe
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/143875012688d67c96d41d
-#EXTINF:-1 tvg-id="21487208329b0862cf0f3d" tvg-name="MAGENTA SPORT 10 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 10 [LIVE DURING EVENTS ONLY] .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/21487208329b0862cf0f3d
 #EXTINF:-1 tvg-id="203199300471dc2e28548c" tvg-name="MAGENTA SPORT 10 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 10 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2167,6 +2183,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/203199300471dc2e28548c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/175542991835fb3432a2f5
+#EXTINF:-1 tvg-id="2398423057756a9b2cddb0" tvg-name="MAGENTA SPORT 11 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 11 [LIVE DURING EVENTS ONLY] .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2398423057756a9b2cddb0
 #EXTINF:-1 tvg-id="30487183862caad1d63476" tvg-name="MAGENTA SPORT 11 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 11 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2191,6 +2211,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/308408190654037000ca5
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/4153591631d99d75ed3293
+#EXTINF:-1 tvg-id="26886275669823d5bb6095" tvg-name="MAGENTA SPORT 14 .c" tvg-logo="https://logo.huhu.to/logo?c=2688627566.png" group-title="Sport",MAGENTA SPORT 14 .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/26886275669823d5bb6095
 #EXTINF:-1 tvg-id="4250390102ba7f9d7be353" tvg-name="MAGENTA SPORT 14 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 14 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2203,6 +2227,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/263619247831a32a5a85a5
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/8387171288aebd8cb6c92
+#EXTINF:-1 tvg-id="366591182267fb49b0ba99" tvg-name="MAGENTA SPORT 16 .c" tvg-logo="https://logo.huhu.to/logo?c=3665911822.png" group-title="Sport",MAGENTA SPORT 16 .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/366591182267fb49b0ba99
 #EXTINF:-1 tvg-id="3211970859d3ea1ffadc00" tvg-name="MAGENTA SPORT 16 HD .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 16 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2239,10 +2267,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/74305452074b371b4fb35
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3545622272c7a59aad977f
-#EXTINF:-1 tvg-id="38448401058066b4e83ced" tvg-name="MAGENTA SPORT 3 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 3 .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/38448401058066b4e83ced
 #EXTINF:-1 tvg-id="3059390165e8da43c8870c" tvg-name="MAGENTA SPORT 3 .c" tvg-logo="https://logo.huhu.to/logo?c=3059390165.png" group-title="Sport",MAGENTA SPORT 3 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2275,14 +2299,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/958030709ce51a4c1eb0c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2657796264bdb87c7b7d2e
-#EXTINF:-1 tvg-id="768284121965d97f6be4d" tvg-name="MAGENTA SPORT 6 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 6 .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/768284121965d97f6be4d
 #EXTINF:-1 tvg-id="21261254776f2e028c1d41" tvg-name="MAGENTA SPORT 6 .c" tvg-logo="https://logo.huhu.to/logo?c=2126125477.png" group-title="Sport",MAGENTA SPORT 6 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/21261254776f2e028c1d41
+#EXTINF:-1 tvg-id="3653941880fc2dbbc4b55c" tvg-name="MAGENTA SPORT 6 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 6 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/3653941880fc2dbbc4b55c
 #EXTINF:-1 tvg-id="2796575778ee303859a15" tvg-name="MAGENTA SPORT 7 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 7 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2291,14 +2315,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2796575778ee303859a15
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1138372629ac781aad5910
+#EXTINF:-1 tvg-id="38363842009ce71f63f846" tvg-name="MAGENTA SPORT 7 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 7 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/38363842009ce71f63f846
 #EXTINF:-1 tvg-id="2465967032f0f89c1de456" tvg-name="MAGENTA SPORT 8 .b" tvg-logo="" group-title="Sport",MAGENTA SPORT 8 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2465967032f0f89c1de456
-#EXTINF:-1 tvg-id="3247089604fd07d73263bd" tvg-name="MAGENTA SPORT 8 .c" tvg-logo="https://logo.huhu.to/logo?c=3247089604.png" group-title="Sport",MAGENTA SPORT 8 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3247089604fd07d73263bd
 #EXTINF:-1 tvg-id="1727661081b32117de00ca" tvg-name="MAGENTA SPORT 8 .s" tvg-logo="" group-title="Sport",MAGENTA SPORT 8 .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2319,6 +2343,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1536830889cccec276305e
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/400277488812c656e5864a
+#EXTINF:-1 tvg-id="283882437670f44f8e4ee6" tvg-name="MAGENTA SPORT GOLF 2 .c" tvg-logo="" group-title="Sport",MAGENTA SPORT GOLF 2 .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/283882437670f44f8e4ee6
 #EXTINF:-1 tvg-id="19211708241b5fda0abe88" tvg-name="MAX STAR WARS .c" tvg-logo="" group-title="Ulusal (TR)",MAX STAR WARS .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2335,14 +2363,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3132704137f87bc5cba15d
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3177271965513a983a3778
+#EXTINF:-1 tvg-id="123746094865495ec9eb64" tvg-name="MOVIE SMART ACTION .s" tvg-logo="" group-title="Film",MOVIE SMART ACTION .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/123746094865495ec9eb64
 #EXTINF:-1 tvg-id="3597292408836ecd197e13" tvg-name="MOVIE SMART CLASSIC .s" tvg-logo="" group-title="Film",MOVIE SMART CLASSIC .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3597292408836ecd197e13
-#EXTINF:-1 tvg-id="180020415986f47cb1ef85" tvg-name="MOVIE SMART PLATIN 2 .s" tvg-logo="" group-title="Film",MOVIE SMART PLATIN 2 .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/180020415986f47cb1ef85
 #EXTINF:-1 tvg-id="3830353405310275288203" tvg-name="MOVIE SMART PREMIUM .s" tvg-logo="" group-title="Film",MOVIE SMART PREMIUM .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2615,6 +2643,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3440003439fb524992de12
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3251653121978eb399a699
+#EXTINF:-1 tvg-id="1960168154f6946cfaefc9" tvg-name="ORF SPORT+ RAW .b" tvg-logo="" group-title="Sport",ORF SPORT+ RAW .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1960168154f6946cfaefc9
 #EXTINF:-1 tvg-id="17362928703b87a6c8217" tvg-name="OUTDOOR .b" tvg-logo="" group-title="Belgesel / Doku",OUTDOOR .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2647,6 +2679,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1724125520186fdb2281ac
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/215481388a0059a30c150
+#EXTINF:-1 tvg-id="314057941084097b270b95" tvg-name="PLUTO TV N24 DOKU .c" tvg-logo="" group-title="Deutschland",PLUTO TV N24 DOKU .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/314057941084097b270b95
 #EXTINF:-1 tvg-id="1299417291527618a1ccab" tvg-name="POWER FM YABANCI M ZIK .b" tvg-logo="" group-title="Belgesel / Doku",POWER FM YABANCI M ZIK .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2779,10 +2815,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2087444701eef4beb29a64
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3839151666edd74f1c6236
-#EXTINF:-1 tvg-id="2732807498359af08f17a8" tvg-name="RTL .c" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Deutschland",RTL .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2732807498359af08f17a8
 #EXTINF:-1 tvg-id="2166014818f06e94d16d17" tvg-name="RTL 2 HD+ (BACKUP) .b" tvg-logo="" group-title="Deutschland",RTL 2 HD+ (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2915,6 +2947,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/12446855250c05653d3aec
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/11709625666201defdf9b3
+#EXTINF:-1 tvg-id="42133787714136bbfb99ed" tvg-name="RTL PLUS AUSTRIA .b" tvg-logo="" group-title="Deutschland",RTL PLUS AUSTRIA .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/42133787714136bbfb99ed
 #EXTINF:-1 tvg-id="2324281646a6c3a182bfa" tvg-name="RTL RAW .b" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Deutschland",RTL RAW .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2927,6 +2963,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/14145816676732236872e3
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1239232735b52ef627879c
+#EXTINF:-1 tvg-id="15721447168ef387e5dba0" tvg-name="RTL UP .c" tvg-logo="https://logo.huhu.to/logo?c=1572144716.png" group-title="Deutschland",RTL UP .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/15721447168ef387e5dba0
 #EXTINF:-1 tvg-id="1198260913079cb7e1caac" tvg-name="RTL UP .s" tvg-logo="" group-title="Deutschland",RTL UP .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2939,22 +2979,42 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/677761203e3b8be588e5c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/28775826376d4353b0d91d
+#EXTINF:-1 tvg-id="289174175313063e65f7dc" tvg-name="RTL ZWEI .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/289174175313063e65f7dc
 #EXTINF:-1 tvg-id="160203873fc8ecba6377a" tvg-name="RTL ZWEI HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/160203873fc8ecba6377a
-#EXTINF:-1 tvg-id="2496619116dae91d7b1dc6" tvg-name="RTL+ EVENT 3 .c" tvg-logo="" group-title="Deutschland",RTL+ EVENT 3 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2496619116dae91d7b1dc6
-#EXTINF:-1 tvg-id="4623953409d29fe46912c" tvg-name="RTL+ EVENT 5 .c" tvg-logo="" group-title="Deutschland",RTL+ EVENT 5 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/4623953409d29fe46912c
 #EXTINF:-1 tvg-id="39761015397532573b6395" tvg-name="RTL+ HUNDKATZEMAUS .c" tvg-logo="" group-title="Deutschland",RTL+ HUNDKATZEMAUS .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/39761015397532573b6395
+#EXTINF:-1 tvg-id="41005223345d3c43064d7f" tvg-name="RTL+ LIVE 1 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 1 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/41005223345d3c43064d7f
+#EXTINF:-1 tvg-id="3016326030e286a931e4af" tvg-name="RTL+ LIVE 2 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 2 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/3016326030e286a931e4af
+#EXTINF:-1 tvg-id="2393461310c152bff96f35" tvg-name="RTL+ LIVE 3 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 3 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2393461310c152bff96f35
+#EXTINF:-1 tvg-id="10156477906a0e7f7acb8f" tvg-name="RTL+ LIVE 4 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 4 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/10156477906a0e7f7acb8f
+#EXTINF:-1 tvg-id="32090014dc4651921c2a" tvg-name="RTL+ LIVE 5 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 5 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/32090014dc4651921c2a
+#EXTINF:-1 tvg-id="117924590287136ddbffc9" tvg-name="RTL+ LIVE 6 .b" tvg-logo="" group-title="Deutschland",RTL+ LIVE 6 .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/117924590287136ddbffc9
 #EXTINF:-1 tvg-id="84001033245c6d5ecaf4a" tvg-name="RTL+ SPORT EVENT 1 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 1 (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -2967,30 +3027,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1853551406e4d58cd366f9
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/20248491742c30cbaa06a4
-#EXTINF:-1 tvg-id="332619566454d37b4b3c0b" tvg-name="RTL+ SPORT EVENT 10 .c" tvg-logo="https://logo.huhu.to/logo?c=3326195664.png" group-title="Sport",RTL+ SPORT EVENT 10 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/332619566454d37b4b3c0b
 #EXTINF:-1 tvg-id="153051689093b694159ad5" tvg-name="RTL+ SPORT EVENT 10 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 10 [LIVE DURING EVENTS ONLY] .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/153051689093b694159ad5
-#EXTINF:-1 tvg-id="131600781562990e7747ef" tvg-name="RTL+ SPORT EVENT 2 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 2 (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/131600781562990e7747ef
-#EXTINF:-1 tvg-id="702188030d3d5a2294bd5" tvg-name="RTL+ SPORT EVENT 2 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 2 .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/702188030d3d5a2294bd5
 #EXTINF:-1 tvg-id="48717032d63fa4c0d53b" tvg-name="RTL+ SPORT EVENT 2 .c" tvg-logo="https://logo.huhu.to/logo?c=48717032.png" group-title="Sport",RTL+ SPORT EVENT 2 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/48717032d63fa4c0d53b
-#EXTINF:-1 tvg-id="33688809570750f8b011a4" tvg-name="RTL+ SPORT EVENT 2 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 2 [LIVE DURING EVENTS ONLY] .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/33688809570750f8b011a4
 #EXTINF:-1 tvg-id="3548335857138d7fcf15f9" tvg-name="RTL+ SPORT EVENT 3 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 3 (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3003,34 +3047,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/34777505440157928131d
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1065842008098021675bdc
-#EXTINF:-1 tvg-id="3324699628ff3450ced582" tvg-name="RTL+ SPORT EVENT 3 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 3 [LIVE DURING EVENTS ONLY] .s
+#EXTINF:-1 tvg-id="2795142238f9a0bd5eda07" tvg-name="RTL+ SPORT EVENT 4 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 4 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3324699628ff3450ced582
-#EXTINF:-1 tvg-id="30651771375f472c894398" tvg-name="RTL+ SPORT EVENT 4 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 4 (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/30651771375f472c894398
-#EXTINF:-1 tvg-id="237657530447038cc41979" tvg-name="RTL+ SPORT EVENT 4 .c" tvg-logo="https://logo.huhu.to/logo?c=2376575304.png" group-title="Sport",RTL+ SPORT EVENT 4 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/237657530447038cc41979
-#EXTINF:-1 tvg-id="4003297755fc9aae9dbc5a" tvg-name="RTL+ SPORT EVENT 4 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 4 [LIVE DURING EVENTS ONLY] .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/4003297755fc9aae9dbc5a
-#EXTINF:-1 tvg-id="7338079436fdc2174d328" tvg-name="RTL+ SPORT EVENT 5 (BACKUP) .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 5 (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/7338079436fdc2174d328
+https://young-dew-a7a9.pandatiger.workers.dev/play/2795142238f9a0bd5eda07
 #EXTINF:-1 tvg-id="2616874478a509fa680f79" tvg-name="RTL+ SPORT EVENT 5 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 5 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2616874478a509fa680f79
-#EXTINF:-1 tvg-id="296586469609a0168e166b" tvg-name="RTL+ SPORT EVENT 5 .c" tvg-logo="https://logo.huhu.to/logo?c=2965864696.png" group-title="Sport",RTL+ SPORT EVENT 5 .c
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/296586469609a0168e166b
 #EXTINF:-1 tvg-id="37661289064df1bbad44e8" tvg-name="RTL+ SPORT EVENT 5 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 5 [LIVE DURING EVENTS ONLY] .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3043,6 +3067,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1474044060b6823790050c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3696897854d84c4123c6a6
+#EXTINF:-1 tvg-id="415078660068d2ad057fe3" tvg-name="RTL+ SPORT EVENT 6 .c" tvg-logo="https://logo.huhu.to/logo?c=4150786600.png" group-title="Sport",RTL+ SPORT EVENT 6 .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/415078660068d2ad057fe3
 #EXTINF:-1 tvg-id="408228056938c05cdf9147" tvg-name="RTL+ SPORT EVENT 6 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 6 [LIVE DURING EVENTS ONLY] .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3055,14 +3083,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3778676366564d8c972c55
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/33895105523740d7653896
-#EXTINF:-1 tvg-id="4256514216771b0ec2610a" tvg-name="RTL+ SPORT EVENT 7 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 7 [LIVE DURING EVENTS ONLY] .s
+#EXTINF:-1 tvg-id="1667928415baf9335e8d2a" tvg-name="RTL+ SPORT EVENT 8 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 8 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/4256514216771b0ec2610a
-#EXTINF:-1 tvg-id="1213678665cc326e411b7b" tvg-name="RTL+ SPORT EVENT 8 .c" tvg-logo="https://logo.huhu.to/logo?c=1213678665.png" group-title="Sport",RTL+ SPORT EVENT 8 .c
+https://young-dew-a7a9.pandatiger.workers.dev/play/1667928415baf9335e8d2a
+#EXTINF:-1 tvg-id="2721946647518754ab9fc8" tvg-name="RTL+ SPORT EVENT 8 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 8 [LIVE DURING EVENTS ONLY] .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/1213678665cc326e411b7b
+https://young-dew-a7a9.pandatiger.workers.dev/play/2721946647518754ab9fc8
 #EXTINF:-1 tvg-id="1577761007d7d4999aaf71" tvg-name="RTL+ SPORT EVENT 9 .b" tvg-logo="" group-title="Sport",RTL+ SPORT EVENT 9 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3247,6 +3275,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/21962786526c864f9c84d4
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2485009235d60801ad626b
+#EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV .s" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2395422638d4ff0c834c1d
 #EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV FHD .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV FHD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3259,10 +3291,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/351471337029c80ca4c64
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/37476469073149a4f729bc
+#EXTINF:-1 tvg-id="ShowTV.tr@SD" tvg-name="SHOW TV SD .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV SD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/211202577752738f3dc7d9
 #EXTINF:-1 tvg-id="1197572527f8384c637ae4" tvg-name="SHOWMAX .b" tvg-logo="https://logo.huhu.to/logo?c=1197572527.png" group-title="Film",SHOWMAX .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1197572527f8384c637ae4
+#EXTINF:-1 tvg-id="12134337452fec7faf938d" tvg-name="SKY ATLANTIC .c" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC .c
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/12134337452fec7faf938d
 #EXTINF:-1 tvg-id="2340670204ff621ff5a503" tvg-name="SKY ATLANTIC .s" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3327,6 +3367,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/15594385137602e44ab103
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3079354272de661103f411
+#EXTINF:-1 tvg-id="4088560460e764f4320b39" tvg-name="SKY BUNDESLIGA 1 RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Sport",SKY BUNDESLIGA 1 RAW .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/4088560460e764f4320b39
 #EXTINF:-1 tvg-id="454539383638ff85ca423" tvg-name="SKY BUNDESLIGA 10 (MATCH TIME) .s" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 (MATCH TIME) .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3343,10 +3387,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/272897243469476bbf42bf
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3934518884051d64962fbf
-#EXTINF:-1 tvg-id="31776053118538604d51e4" tvg-name="SKY BUNDESLIGA 10 HD (BACKUP) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 HD (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/31776053118538604d51e4
 #EXTINF:-1 tvg-id="4105254911d2934d2656c4" tvg-name="SKY BUNDESLIGA 10 HD .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 10 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3375,10 +3415,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2578153887083ce746bbcb
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/39962173816cb1e3fb6311
-#EXTINF:-1 tvg-id="3264214516f19f4cd1499a" tvg-name="SKY BUNDESLIGA 2 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/8/86/Sky_Sport_Bundesliga_2_Logo_2020.png/960px-Sky_Sport_Bundesliga_2_Logo_2020.png" group-title="Sport",SKY BUNDESLIGA 2 HD (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3264214516f19f4cd1499a
 #EXTINF:-1 tvg-id="242988790415bce086d0f8" tvg-name="SKY BUNDESLIGA 2 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/8/86/Sky_Sport_Bundesliga_2_Logo_2020.png/960px-Sky_Sport_Bundesliga_2_Logo_2020.png" group-title="Sport",SKY BUNDESLIGA 2 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3391,10 +3427,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/17027626128039a49e79aa
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3393144713e907421a361f
-#EXTINF:-1 tvg-id="15008435303eecafaa1800" tvg-name="SKY BUNDESLIGA 3 (MATCH TIME) .s" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 3 (MATCH TIME) .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/15008435303eecafaa1800
 #EXTINF:-1 tvg-id="134328738758fc09944278" tvg-name="SKY BUNDESLIGA 3 (ONLY DURING EVENTS) .s" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 3 (ONLY DURING EVENTS) .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3407,6 +3439,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4611625054032c4cc5a9e
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/10796323081d6b6bfb1176
+#EXTINF:-1 tvg-id="11603309351e7e2d74b632" tvg-name="SKY BUNDESLIGA 3 HD (BACKUP) .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 3 HD (BACKUP) .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/11603309351e7e2d74b632
 #EXTINF:-1 tvg-id="15518364788d0372fe7ee1" tvg-name="SKY BUNDESLIGA 3 HD .b" tvg-logo="" group-title="Sport",SKY BUNDESLIGA 3 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3671,6 +3707,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3962342087b482a8387575
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/16176487994ddd2af48e9a
+#EXTINF:-1 tvg-id="3129337035089b5b0d918c" tvg-name="SKY CINEMA ACTION .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/3129337035089b5b0d918c
 #EXTINF:-1 tvg-id="22171411489f84ed3ff7c4" tvg-name="SKY CINEMA ACTION HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA ACTION HD (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3691,18 +3731,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/393413178212a6df0757ae
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/18544475423371ce1e1608
-#EXTINF:-1 tvg-id="227712345007279b49b40c" tvg-name="SKY CINEMA BEST .s" tvg-logo="" group-title="Deutschland",SKY CINEMA BEST .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/227712345007279b49b40c
 #EXTINF:-1 tvg-id="1506084946f625257b4975" tvg-name="SKY CINEMA BEST OF .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1506084946f625257b4975
-#EXTINF:-1 tvg-id="7675679855208c3fbe478" tvg-name="SKY CINEMA BEST OF .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/7675679855208c3fbe478
 #EXTINF:-1 tvg-id="7283995247e7623d8c809" tvg-name="SKY CINEMA BEST OF HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF HD (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3711,10 +3743,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/7283995247e7623d8c809
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/4183661289bea5151c6e22
+#EXTINF:-1 tvg-id="1779919359802f2c8cd069" tvg-name="SKY CINEMA BEST OF HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF HD+ .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1779919359802f2c8cd069
 #EXTINF:-1 tvg-id="65180453812a20399b7d8" tvg-name="SKY CINEMA BEST OF HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF HEVC .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/65180453812a20399b7d8
+#EXTINF:-1 tvg-id="3310761474de83eff07104" tvg-name="SKY CINEMA BEST OF RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA BEST OF RAW .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/3310761474de83eff07104
 #EXTINF:-1 tvg-id="3175728367b5709d53f49e" tvg-name="SKY CINEMA CLASSICS .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA CLASSICS .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3767,10 +3807,18 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/26152459164daf8d303e46
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/10915522642f277fd9ba45
-#EXTINF:-1 tvg-id="19880745182e2f6c96907a" tvg-name="SKY CINEMA FAMILY HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY HD+ .b
+#EXTINF:-1 tvg-id="11106963648da214c4120a" tvg-name="SKY CINEMA FAMILY HEVC (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY HEVC (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/19880745182e2f6c96907a
+https://young-dew-a7a9.pandatiger.workers.dev/play/11106963648da214c4120a
+#EXTINF:-1 tvg-id="4279471443ec5da7eed5e1" tvg-name="SKY CINEMA FAMILY HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY HEVC .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/4279471443ec5da7eed5e1
+#EXTINF:-1 tvg-id="36447692595f75562b1f9f" tvg-name="SKY CINEMA FAMILY RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Deutschland",SKY CINEMA FAMILY RAW .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/36447692595f75562b1f9f
 #EXTINF:-1 tvg-id="1698499086b559e95e52b2" tvg-name="SKY CINEMA FUN .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png" group-title="Deutschland",SKY CINEMA FUN .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3907,6 +3955,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2869771674c3bea91a978b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1674044754ec11fb170b90
+#EXTINF:-1 tvg-id="4101674354c9f1f56f608e" tvg-name="SKY REPLAY HD (FOX) .b" tvg-logo="https://i.imgur.com/YBHWMJ5.png" group-title="Deutschland",SKY REPLAY HD (FOX) .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/4101674354c9f1f56f608e
 #EXTINF:-1 tvg-id="12894766218294fede5ad1" tvg-name="SKY REPLAY RAW (FOX) .b" tvg-logo="https://i.imgur.com/YBHWMJ5.png" group-title="Deutschland",SKY REPLAY RAW (FOX) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -3963,18 +4015,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/33982091995636e3fc9a8a
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/645462153d407bb3cc4e
-#EXTINF:-1 tvg-id="8726999137f40c138b6d1" tvg-name="SKY SPORT 10 HD .b" tvg-logo="https://i.imgur.com/ZnUAdGj.png" group-title="Sport",SKY SPORT 10 HD .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/8726999137f40c138b6d1
 #EXTINF:-1 tvg-id="22223602223487b208fdf" tvg-name="SKY SPORT 11 [LIVE DURING EVENTS ONLY] .s" tvg-logo="https://i.imgur.com/7LXksX4.png" group-title="Sport",SKY SPORT 11 [LIVE DURING EVENTS ONLY] .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/22223602223487b208fdf
-#EXTINF:-1 tvg-id="41721755119dc46e523d3e" tvg-name="SKY SPORT 11 HD .b" tvg-logo="https://i.imgur.com/7LXksX4.png" group-title="Sport",SKY SPORT 11 HD .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/41721755119dc46e523d3e
 #EXTINF:-1 tvg-id="1870973910f25bfb936300" tvg-name="SKY SPORT 2 (MATCH TIME) .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 2 (MATCH TIME) .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4015,6 +4059,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/21615404072a4a3293c721
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/115167707545661f258b17
+#EXTINF:-1 tvg-id="27305874996560cac1cdec" tvg-name="SKY SPORT 3 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 3 HD (BACKUP) .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/27305874996560cac1cdec
 #EXTINF:-1 tvg-id="1400667713f36e234020fe" tvg-name="SKY SPORT 3 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 3 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4047,10 +4095,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1505326936220eeeeb9ddd
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3604024840cf92be168b37
-#EXTINF:-1 tvg-id="23935553783dd55ce2c3ee" tvg-name="SKY SPORT 5 (MATCH TIME) .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 5 (MATCH TIME) .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/23935553783dd55ce2c3ee
 #EXTINF:-1 tvg-id="10091194137e6ce5fa1521" tvg-name="SKY SPORT 5 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png" group-title="Sport",SKY SPORT 5 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4127,10 +4171,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/86330662609d054c4c696
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3908161130681991cd2e3
-#EXTINF:-1 tvg-id="23634792766d334318406" tvg-name="SKY SPORT 8 HD .b" tvg-logo="https://i.imgur.com/2YCQyZm.png" group-title="Sport",SKY SPORT 8 HD .b
+#EXTINF:-1 tvg-id="2431494706163357c90f68" tvg-name="SKY SPORT 9 HD (BACKUP) .b" tvg-logo="https://i.imgur.com/NQMl2hn.png" group-title="Sport",SKY SPORT 9 HD (BACKUP) .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/23634792766d334318406
+https://young-dew-a7a9.pandatiger.workers.dev/play/2431494706163357c90f68
 #EXTINF:-1 tvg-id="32671258975ee204f512e7" tvg-name="SKY SPORT 9 HD .b" tvg-logo="https://i.imgur.com/NQMl2hn.png" group-title="Sport",SKY SPORT 9 HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4171,10 +4215,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1413792937fe7d8a74b30b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/47645931319b00e7f828a
-#EXTINF:-1 tvg-id="4168541238708f47dd134d" tvg-name="SKY SPORT EXTREME SPORTS .b" tvg-logo="" group-title="Sport",SKY SPORT EXTREME SPORTS .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/4168541238708f47dd134d
 #EXTINF:-1 tvg-id="3788216934ee14580f4aa2" tvg-name="SKY SPORT F1 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png" group-title="Sport",SKY SPORT F1 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4191,6 +4231,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3305340365a41ca7e5bc02
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/215180530040e6074acbfa
+#EXTINF:-1 tvg-id="1819080331481d1db415bd" tvg-name="SKY SPORT F1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png" group-title="Sport",SKY SPORT F1 HD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1819080331481d1db415bd
 #EXTINF:-1 tvg-id="337630640722b02d8184c4" tvg-name="SKY SPORT F1 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png" group-title="Sport",SKY SPORT F1 HD+ .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4255,10 +4299,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/41568543313e885fb5b976
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2332872870080d9ab39548
-#EXTINF:-1 tvg-id="16562742272f88ca3563a5" tvg-name="SKY SPORT NEWS HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/c/cc/Sky_Sport_News_2020.svg/960px-Sky_Sport_News_2020.svg.png" group-title="Sport",SKY SPORT NEWS HD (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/16562742272f88ca3563a5
 #EXTINF:-1 tvg-id="2534839650df1f2665f900" tvg-name="SKY SPORT NEWS HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/thumb/c/cc/Sky_Sport_News_2020.svg/960px-Sky_Sport_News_2020.svg.png" group-title="Sport",SKY SPORT NEWS HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4323,6 +4363,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4019294497d4a2d7d28d52
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/250132547143b589ba7181
+#EXTINF:-1 tvg-id="999102646bc32696167e5" tvg-name="SKY SPORT UHD .b" tvg-logo="" group-title="Sport",SKY SPORT UHD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/999102646bc32696167e5
 #EXTINF:-1 tvg-id="21611914607ee60510dea5" tvg-name="SKY SPORTS F1 .s" tvg-logo="" group-title="Sport",SKY SPORTS F1 .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4335,6 +4379,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/38076938739cced735110f
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3310537792544cdc86ebe5
+#EXTINF:-1 tvg-id="4277750275dc95e89a7a22" tvg-name="SMART COCUK .s" tvg-logo="" group-title="Çocuk / Kinder",SMART COCUK .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/4277750275dc95e89a7a22
 #EXTINF:-1 tvg-id="81357489557fd83fc1e55" tvg-name="SMART COCUK HD .b" tvg-logo="" group-title="Çocuk / Kinder",SMART COCUK HD .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4367,6 +4415,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1098172953a40c7864dfeb
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1771511397d05184d3e443
+#EXTINF:-1 tvg-id="3278735965dfe5a38d92ee" tvg-name="SPOR SMART 1 .s" tvg-logo="" group-title="Sport",SPOR SMART 1 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/3278735965dfe5a38d92ee
 #EXTINF:-1 tvg-id="SporSmart2.tr@SD" tvg-name="SPOR SMART 2 .c" tvg-logo="https://i.imgur.com/qyUKCUa.png" group-title="Sport",SPOR SMART 2 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4579,6 +4631,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/31176836283456f45c9e32
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/426904204409e59151cc23
+#EXTINF:-1 tvg-id="129312789771362713c30c" tvg-name="SINEMA AKSIYON 1 .s" tvg-logo="" group-title="Film",SINEMA AKSIYON 1 .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/129312789771362713c30c
 #EXTINF:-1 tvg-id="179563017fcc76df8dfba" tvg-name="SINEMA AKSIYON 2 .s" tvg-logo="https://i.imgur.com/oy8Nq1r.png" group-title="Film",SINEMA AKSIYON 2 .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4799,6 +4855,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4269879115d3f6edbed63c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3856957052050da882aa10
+#EXTINF:-1 tvg-id="19930472434be833e11c22" tvg-name="TARIM TV .s" tvg-logo="https://i.imgur.com/q30sFms.png" group-title="Belgesel / Doku",TARIM TV .s
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/19930472434be833e11c22
 #EXTINF:-1 tvg-id="Tele1.tr@SD" tvg-name="TELE 1 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/4/43/Tele1_logosu.png" group-title="Haber",TELE 1 .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -4983,6 +5043,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1657612547b6da3cf3e3a6
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2172603703f03a5e8b05c5
+#EXTINF:-1 tvg-id="1840643644b180a4d619d6" tvg-name="TRABZON HABER 61 TV HD .b" tvg-logo="" group-title="Haber",TRABZON HABER 61 TV HD .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1840643644b180a4d619d6
 #EXTINF:-1 tvg-id="TRT1.tr@SD" tvg-name="TRT 1 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png" group-title="Ulusal (TR)",TRT 1 .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -5311,10 +5375,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1159899920595e9c441350
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/25659723389efdd2098be1
-#EXTINF:-1 tvg-id="1528949791210996169a6f" tvg-name="TIVIBU SPOR 1 .s" tvg-logo="" group-title="Sport",TIVIBU SPOR 1 .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/1528949791210996169a6f
 #EXTINF:-1 tvg-id="2046583925cdbd476d8733" tvg-name="TIVIBU SPOR 1 HD .s" tvg-logo="" group-title="Sport",TIVIBU SPOR 1 HD .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -5427,10 +5487,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2472642660940bc05d6d1e
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/94903312294e3da09f3b7
-#EXTINF:-1 tvg-id="106175275801eef0c50dd7" tvg-name="VUSLAT TV .s" tvg-logo="https://i.imgur.com/5AiUlIJ.png" group-title="Dini",VUSLAT TV .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/106175275801eef0c50dd7
 #EXTINF:-1 tvg-id="ViasatExplore.tr@SD" tvg-name="VIASAT EXPLORE .b" tvg-logo="https://i.imgur.com/DyT5pKB.png" group-title="Belgesel / Doku",VIASAT EXPLORE .b
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -5547,10 +5603,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/15843353838096cf65cb7d
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1952835738c83bfddaf481
-#EXTINF:-1 tvg-id="8685860582340e8bd0469" tvg-name="YESILCAM 2 .s" tvg-logo="" group-title="Film",YESILCAM 2 .s
-#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/8685860582340e8bd0469
 #EXTINF:-1 tvg-id="245742586a1ae349871a9" tvg-name="YESILCAM 3 .s" tvg-logo="" group-title="Film",YESILCAM 3 .s
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -5651,6 +5703,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1993949957f54a257064ea
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2368422760ba45ce579307
+#EXTINF:-1 tvg-id="40159240758445efc955c" tvg-name="ILAHI COCUK TV .b" tvg-logo="" group-title="Çocuk / Kinder",ILAHI COCUK TV .b
+#EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/40159240758445efc955c
 #EXTINF:-1 tvg-id="1372455233dfff5072538c" tvg-name="INVESTIGATION DISCOVERY .c" tvg-logo="https://logo.huhu.to/logo?c=1372455233.png" group-title="Belgesel / Doku",INVESTIGATION DISCOVERY .c
 #EXTVLCOPT:http-user-agent=Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTHTTP:{"User-Agent":"Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
