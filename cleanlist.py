@@ -6,23 +6,28 @@ INPUT_FILE = "iptv.m3u"
 OUTPUT_FILE = "iptv.m3u"
 CUSTOM_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
-# Einstellungen für die Prüfung
-MAX_WORKERS = 20
 TIMEOUT = 3
+MAX_WORKERS = 20
 
-def test_stream_url(url):
-    """Prüft schnell, ob eine Stream-URL live antwortet (HTTP 200/206/302)"""
-    headers = {'User-Agent': CUSTOM_USER_AGENT}
+def get_canonical_key(name):
+    """ Erstellt den Such-Schlüssel für den Sender """
+    if not name: return ""
+    text = name.lower()
+    text = re.sub(r'(?i)\b(4k|uhd|fhd|hd|sd|hevc|raw|1080p?|720p?|480p?|backup)\b', '', text)
+    text = re.sub(r'^[a-z0-9\s]+:\s*', '', text)
+    text = re.sub(r'\s*[\.\+\-][a-z0-9]\b', '', text)
+    text = re.sub(r'\s*[\+\-]\s*$', '', text)
+    text = re.sub(r'[^a-z0-9]', '', text)
+    return text
+
+def test_url(url):
+    """ Testet live, ob der Stream antwortet """
     clean_url = url.split('|')[0]
-    
     try:
-        response = requests.get(clean_url, headers=headers, timeout=TIMEOUT, stream=True)
-        # 200 OK oder 206 Partial Content bedeuten, dass der Stream läuft
-        if response.status_code in [200, 206]:
-            return True
+        r = requests.get(clean_url, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=TIMEOUT, stream=True)
+        return r.status_code in [200, 206]
     except Exception:
-        pass
-    return False
+        return False
 
 def process_m3u():
     try:
@@ -35,61 +40,64 @@ def process_m3u():
     raw_blocks = content.split('#EXTINF:')
     header = raw_blocks[0] if raw_blocks[0].startswith('#EXTM3U') else '#EXTM3U\n'
     
-    entries = []
+    all_entries = []
+    pool_by_key = {}
 
-    # 1. Alle Kanäle 1:1 einlesen (nichts löschen oder zusammenfassen)
+    # 1. Alle Kanäle einlesen und nach Sendernamen bündeln
     for block in raw_blocks[1:]:
         lines = [line.strip() for line in block.strip().splitlines() if line.strip()]
-        if not lines: 
-            continue
+        if not lines: continue
             
-        extinf_line = "#EXTINF:" + lines[0]
+        extinf = "#EXTINF:" + lines[0]
         url = lines[-1]
-        extra_tags = [l for l in lines[1:-1] if not ("http-user-agent" in l.lower() or "user-agent=" in l.lower())]
+        raw_name = extinf.split(',')[-1] if ',' in extinf else "Unbekannt"
+        key = get_canonical_key(raw_name)
 
-        entries.append({
-            'extinf': extinf_line,
-            'tags': extra_tags,
-            'url': url,
-            'working_url': None
-        })
+        entry = {'extinf': extinf, 'url': url, 'name': raw_name, 'key': key}
+        all_entries.append(entry)
 
-    print(f"{len(entries)} Kanäle geladen. Starte automatischen Stream-Check...")
+        if key not in pool_by_key:
+            pool_by_key[key] = []
+        pool_by_key[key].append(url)
 
-    # 2. Parallel alle URLs auf Funktion prüfen
-    def check_entry(entry):
-        if test_stream_url(entry['url']):
-            entry['working_url'] = entry['url']
-        return entry
+    # 2. URLs auf Erreichbarkeit testen
+    unique_urls = list({e['url'] for e in all_entries})
+    working_urls = set()
 
-    working_count = 0
+    print(f"Prüfe {len(unique_urls)} verschiedene Stream-URLs...")
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = [executor.submit(check_entry, entry) for entry in entries]
+        futures = {executor.submit(test_url, url): url for url in unique_urls}
         for future in as_completed(futures):
-            res = future.result()
-            if res['working_url']:
-                working_count += 1
+            url = futures[future]
+            if future.result():
+                working_urls.add(url)
 
-    # 3. Datei neu schreiben (1:1 Struktur, aber mit garantierten User-Agents)
+    # 3. Datei schreiben: Toten Links wird ein funktionierender Ersatz-Link desselben Senders zugewiesen
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(header if header.endswith('\n') else header + '\n')
         
-        for item in entries:
-            f.write(item['extinf'] + '\n')
+        for entry in all_entries:
+            key = entry['key']
+            chosen_url = entry['url']
+
+            # Wenn der eigene Link tot ist, suche nach einer funktionierenden Alternative im Pool
+            if chosen_url not in working_urls:
+                candidates = pool_by_key.get(key, [])
+                for alt_url in candidates:
+                    if alt_url in working_urls:
+                        chosen_url = alt_url
+                        break
+
+            f.write(entry['extinf'] + '\n')
             f.write(f"#EXTVLCOPT:http-user-agent={CUSTOM_USER_AGENT}\n")
             f.write(f"#EXTHTTP:{{\"User-Agent\":\"{CUSTOM_USER_AGENT}\"}}\n")
             
-            for tag in item['tags']:
-                f.write(tag + '\n')
-            
-            # Verwendet die bestehende URL inkl. korrekter Syntax
-            final_url = item['url']
+            final_url = chosen_url
             if '|' not in final_url:
                 final_url += f"|User-Agent={CUSTOM_USER_AGENT}"
-                
             f.write(final_url + "\n")
 
-    print(f"Fertig! Alle {len(entries)} Kanäle wurden beibehalten. ({working_count} derzeit online)")
+    print(f"Fertig! Es wurden {len(all_entries)} Kanäle geschrieben (defekte Links wurden ausgetauscht).")
 
 if __name__ == "__main__":
     process_m3u()
