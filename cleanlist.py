@@ -8,6 +8,7 @@ OUTPUT_M3U = "iptv.m3u"
 VOLO_BASE_URL = "https://tv.canlitvvolo.com"
 
 CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+VAVOO_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
 def get_canonical_key(name):
     """ Erstellt einen einheitlichen Vergleichsschlüssel für Namen """
@@ -32,7 +33,6 @@ def scrape_volo_streams():
             return volo_map
 
         soup = BeautifulSoup(res.text, 'html.parser')
-        # Senderseiten-Links auf der Hauptseite suchen
         channel_links = []
         for a in soup.find_all('a', href=True):
             href = a['href']
@@ -41,11 +41,9 @@ def scrape_volo_streams():
 
         channel_links = list(set(channel_links))
 
-        # Einzelne Senderseiten abrufen, um die .m3u8 / Player-URL zu finden
         def extract_stream(url):
             try:
                 r = requests.get(url, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=4)
-                # Nach m3u8 Links im Quelltext/JavaScript suchen
                 m3u8_matches = re.findall(r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*', r.text)
                 if m3u8_matches:
                     channel_name = url.split('/')[-1].replace('-', ' ')
@@ -70,10 +68,8 @@ def scrape_volo_streams():
     return volo_map
 
 def process_hybrid_m3u():
-    # 1. Volo-Streams abgreifen
     volo_streams = scrape_volo_streams()
 
-    # 2. Vavoo M3U einlesen
     try:
         with open(VAVOO_M3U, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
@@ -95,36 +91,33 @@ def process_hybrid_m3u():
         raw_name = extinf.split(',')[-1] if ',' in extinf else ""
         key = get_canonical_key(raw_name)
 
-        # Überprüfen, ob Volo einen Stream für diesen Sendernamen hat
         if key in volo_streams and len(volo_streams[key]) > 0:
-            # Primärer Link ist der von Volo
             chosen_url = volo_streams[key][0]
             ua = CUSTOM_USER_AGENT
         else:
-            # Fallback & Restliche Sender: Vavoo-Link nutzen
             chosen_url = vavoo_url
-            ua = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+            ua = VAVOO_USER_AGENT
+
+        # Entferne eventuell bereits vorhandene Pipe-Parameter aus der URL
+        clean_url = chosen_url.split('|')[0]
 
         output_entries.append({
             'extinf': extinf,
-            'url': chosen_url,
+            'url': clean_url,
             'ua': ua
         })
 
-    # 3. Neue Hybride M3U schreiben
+    # M3U Schreiben ohne Pipe-Header an den URLs
     with open(OUTPUT_M3U, 'w', encoding='utf-8') as f:
         f.write(header if header.endswith('\n') else header + '\n')
         for item in output_entries:
             f.write(item['extinf'] + '\n')
+            # User-Agent steht jetzt AUSSCHLIESSLICH im Tag-Header
             f.write(f"#EXTVLCOPT:http-user-agent={item['ua']}\n")
             f.write(f"#EXTHTTP:{{\"User-Agent\":\"{item['ua']}\"}}\n")
-            
-            final_url = item['url']
-            if '|' not in final_url and 'vavoo' in item['ua'].lower():
-                final_url += f"|User-Agent={item['ua']}"
-            f.write(final_url + "\n")
+            f.write(item['url'] + "\n")
 
-    print(f"Fertig! Hybride Liste mit {len(output_entries)} Kanälen generiert.")
+    print(f"Fertig! Hybride Liste mit {len(output_entries)} Kanälen ohne Pipe-UA generiert.")
 
 if __name__ == "__main__":
     process_hybrid_m3u()
