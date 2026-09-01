@@ -1,14 +1,22 @@
 import re
 import requests
+import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 
 VAVOO_M3U = "iptv.m3u"
 OUTPUT_M3U = "iptv.m3u"
-VOLO_BASE_URL = "https://tv.canlitvvolo.com"
 
-CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+# Volo RSS Feed URLs
+VOLO_RSS_URL = "https://tv.canlitvvolo.com/feed" 
+
+CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 VAVOO_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+
+HEADERS = {
+    'User-Agent': CUSTOM_USER_AGENT,
+    'Accept': 'application/rss+xml, application/xml, text/xml, */*'
+}
 
 def get_canonical_key(name):
     """ Erstellt einen einheitlichen Vergleichsschlüssel für Namen """
@@ -21,54 +29,74 @@ def get_canonical_key(name):
     text = re.sub(r'[^a-z0-9]', '', text)
     return text
 
-def scrape_volo_streams():
-    """ Crawlt die Sender von tv.canlitvvolo.com und extrahiert m3u8 Links """
-    print("Starte Scraping von CanliTVVolo...")
+def extract_stream_from_page(url):
+    """ Öffnet die KANALSEITE aus dem RSS-Feed und zieht die m3u8 URL """
+    try:
+        r = requests.get(url, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=5)
+        if r.status_code != 200:
+            return None, None
+            
+        # Direct m3u8 Suche im HTML/JS
+        m3u8_matches = re.findall(r'(https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*)', r.text)
+        if m3u8_matches:
+            slug = url.rstrip('/').split('/')[-1].replace('-canli-izle', '').replace('-canli', '').replace('-', ' ')
+            return get_canonical_key(slug), m3u8_matches[0]
+            
+        # Iframe-Suche falls Embed verwendet wird
+        soup = BeautifulSoup(r.text, 'html.parser')
+        for iframe in soup.find_all('iframe', src=True):
+            iframe_src = iframe['src']
+            if not iframe_src.startswith('http'):
+                iframe_src = "https://tv.canlitvvolo.com" + (iframe_src if iframe_src.startswith('/') else '/' + iframe_src)
+            
+            ir = requests.get(iframe_src, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=4)
+            iframe_matches = re.findall(r'(https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*)', ir.text)
+            if iframe_matches:
+                slug = url.rstrip('/').split('/')[-1].replace('-canli-izle', '').replace('-canli', '').replace('-', ' ')
+                return get_canonical_key(slug), iframe_matches[0]
+    except Exception:
+        pass
+    return None, None
+
+def get_volo_streams_via_rss():
+    print(f"Lade RSS-Feed von {VOLO_RSS_URL}...")
     volo_map = {}
     
     try:
-        res = requests.get(VOLO_BASE_URL, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=5)
+        res = requests.get(VOLO_RSS_URL, headers=HEADERS, timeout=8)
         if res.status_code != 200:
-            print("Volo nicht erreichbar, fahre nur mit Vavoo fort.")
-            return volo_map
+            # Fallback falls Feed anders strukturiert ist
+            res = requests.get("https://tv.canlitvvolo.com/rss", headers=HEADERS, timeout=8)
+            
+        if res.status_code == 200:
+            root = ET.fromstring(res.content)
+            channel_links = []
 
-        soup = BeautifulSoup(res.text, 'html.parser')
-        channel_links = []
-        for a in soup.find_all('a', href=True):
-            href = a['href']
-            if href.startswith('/') and len(href) > 2 and not any(x in href for x in ['#', 'privacy', 'contact', 'css', 'js']):
-                channel_links.append(VOLO_BASE_URL + href)
+            # Auslesen aller <item><link> im RSS
+            for item in root.findall('.//item'):
+                link_elem = item.find('link')
+                if link_elem is not None and link_elem.text:
+                    channel_links.append(link_elem.text)
 
-        channel_links = list(set(channel_links))
+            print(f"{len(channel_links)} Sender aus dem RSS-Feed extrahiert. Hole Stream-URLs...")
 
-        def extract_stream(url):
-            try:
-                r = requests.get(url, headers={'User-Agent': CUSTOM_USER_AGENT}, timeout=4)
-                m3u8_matches = re.findall(r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*', r.text)
-                if m3u8_matches:
-                    channel_name = url.split('/')[-1].replace('-', ' ')
-                    key = get_canonical_key(channel_name)
-                    return key, m3u8_matches[0]
-            except Exception:
-                pass
-            return None, None
-
-        with ThreadPoolExecutor(max_workers=10) as executor:
-            results = executor.map(extract_stream, channel_links)
-            for key, stream_url in results:
-                if key and stream_url:
-                    if key not in volo_map:
-                        volo_map[key] = []
-                    volo_map[key].append(stream_url)
+            # Paralell die Links aus dem RSS-Feed auflösen
+            with ThreadPoolExecutor(max_workers=10) as executor:
+                results = executor.map(extract_stream_from_page, channel_links)
+                for key, stream_url in results:
+                    if key and stream_url:
+                        if key not in volo_map:
+                            volo_map[key] = []
+                        volo_map[key].append(stream_url)
 
     except Exception as e:
-        print(f"Fehler beim Scraping: {e}")
+        print(f"Fehler beim RSS-Parsing: {e}")
 
-    print(f"Gefundene Volo-Sender: {len(volo_map)}")
+    print(f"Gefundene Volo-Sender über RSS: {len(volo_map)}")
     return volo_map
 
 def process_hybrid_m3u():
-    volo_streams = scrape_volo_streams()
+    volo_streams = get_volo_streams_via_rss()
 
     try:
         with open(VAVOO_M3U, 'r', encoding='utf-8', errors='ignore') as f:
@@ -81,6 +109,7 @@ def process_hybrid_m3u():
     header = raw_blocks[0] if raw_blocks[0].startswith('#EXTM3U') else '#EXTM3U\n'
     
     output_entries = []
+    replaced_count = 0
 
     for block in raw_blocks[1:]:
         lines = [line.strip() for line in block.strip().splitlines() if line.strip()]
@@ -94,11 +123,11 @@ def process_hybrid_m3u():
         if key in volo_streams and len(volo_streams[key]) > 0:
             chosen_url = volo_streams[key][0]
             ua = CUSTOM_USER_AGENT
+            replaced_count += 1
         else:
             chosen_url = vavoo_url
             ua = VAVOO_USER_AGENT
 
-        # Entferne eventuell bereits vorhandene Pipe-Parameter aus der URL
         clean_url = chosen_url.split('|')[0]
 
         output_entries.append({
@@ -107,17 +136,15 @@ def process_hybrid_m3u():
             'ua': ua
         })
 
-    # M3U Schreiben ohne Pipe-Header an den URLs
     with open(OUTPUT_M3U, 'w', encoding='utf-8') as f:
         f.write(header if header.endswith('\n') else header + '\n')
         for item in output_entries:
             f.write(item['extinf'] + '\n')
-            # User-Agent steht jetzt AUSSCHLIESSLICH im Tag-Header
             f.write(f"#EXTVLCOPT:http-user-agent={item['ua']}\n")
             f.write(f"#EXTHTTP:{{\"User-Agent\":\"{item['ua']}\"}}\n")
             f.write(item['url'] + "\n")
 
-    print(f"Fertig! Hybride Liste mit {len(output_entries)} Kanälen ohne Pipe-UA generiert.")
+    print(f"Fertig! {replaced_count} Sender erfolgreich durch Volo-RSS-Streams ersetzt.")
 
 if __name__ == "__main__":
     process_hybrid_m3u()
