@@ -1,0 +1,106 @@
+{
+  "meclis tv": [
+    "https://meclistv-live.ercdn.net/meclistv/meclistv_720p.m3u8?e=&st="
+  ],
+  "tabii tv": [
+    "https://ceokzokgtd.erbvr.com/tabiitv/tabiitv_1080p.m3u8"
+  ],
+  "trt 1": [
+    "https://trt.daioncdn.net/trt-1/master_1080p.m3u8?&sid=7ga96042p49d&app=ed3904e8-737b-4a5e-856a-1b0d7a0a94e2&ce=2",
+    "https://tv-trt1.medya.trt.com.tr/master.m3u8"
+  ],
+  "trt türk": [
+    "https://tv-trtturk.medya.trt.com.tr/master.m3u8"
+  ],
+  "trt çocuk": [
+    "https://tv-trtcocuk.medya.trt.com.tr/master_720.m3u8"
+  ],
+  "trt avaz": [
+    "https://tv-trtavaz.medya.trt.com.tr/master_720.m3u8"
+  ],
+  "trt kürdi": [
+    "https://tv-trtkurdi.medya.trt.com.tr/master_720.m3u8"
+  ],
+  "trt arabi": [
+    "https://tv-trtarabi.medya.trt.com.tr/master_720.m3u8"
+  ],
+  "trt world": [
+    "https://tv-trtworld.medya.trt.com.tr/master_720.m3u8"
+  ],
+  "show tv": [
+    "https://ciner.daioncdn.net/showtv/showtv_1080p.m3u8?ex=1664766175&st=RBzhSuGauna0OGld-DJUVA&tv=1&sid=7cxo97l681au&app=4bc856ef-4c68-4a94-bc87-37dfaaa66558&ce=3"
+  ],
+  "star tv": [
+    "https://dogus.daioncdn.net/startv/startv_720p.m3u8?&sid=7cxgin6t4bzu&app=a20ac41e-bdc3-4aa1-934d-26b484480ac9&ce=3",
+    "https://dygvideo.dygdigital.com/live/hls/startv4puhu/live.m3u8"
+  ],
+  "atv": [
+    "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/atv/atv.m3u8?hash=f963e1b0d166112b6cd7b49f00680d08",
+    "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/atv/atv_1080p.m3u8"
+  ],
+  "kanal d": [
+    "https://demiroren.daioncdn.net/kanald/kanald.m3u8?app=kanald_web&ce=3"
+  ],
+  "tv8,5": [
+    "https://rkhubpaomb.turknet.ercdn.net/fwjkgpasof/tv8bucuk/tv8bucuk.m3u8"
+  ],
+  "kanal 7": [
+    "https://kanal7.daioncdn.net/kanal7/kanal7_1080p.m3u8?&sid=7cxdvlf7eq8o&app=f99587ad-1637-494d-8255-da35b09d17a1&ce=3",
+    "https://kanal7.daioncdn.net/kanal7/kanal7.m3u8?app=f99587ad-1637-494d-8255-da35b09d17a1&ce=3&ppid=0cf8ce2edba1432c37f03d368a49172e"
+  ],
+  "beyaz tv": [
+    "https://beyaztv-live.daioncdn.net/beyaztv/beyaztv_1080p.m3u8"
+  ],
+  "kanal 19": [
+    "https://live.euromediacenter.com/kanal19/tracks-v1a1/mono.m3u8"
+  ],
+  "360": [
+    "https://turkmedya-live.ercdn.net/tv360/tv360_1080p.m3u8"
+  ],
+  "benguturk": [
+    "https://tv.ensonhaber.com/benguturk/benguturk.m3u8"
+  ],
+  "anadolu net": [
+    "https://live.artidijitalmedya.com/artidijital_anadolunet/anadolunet/playlist.m3u8"
+  ],
+  "trt haber": [
+    "https://tv-trthaber.medya.trt.com.tr/master_720.m3u8"
+  ],
+  "haber turk": [
+    "https://ciner.daioncdn.net/haberturktv/haberturktv_1080p.m3u8?sid=7zmdaspslawt&app=c98ab0b0-50cc-495b-bb37-778e91f5ff5b&ce=3",
+    "https://rmtftbjlne.turknet.ercdn.net/bpeytmnqyp/haberturktv/haberturktv.m3u8"
+  ],
+  "kanal avrupa": [
+    "https://cdn-kanalavrupa.yayin.com.tr/kanalavrupa/tracks-v2a1/mono.m3u8"
+  ],
+  "dha": [
+    "https://603c568fccdf5.streamlock.net/live/dhaweb1_C5efC/playlist.m3u8"
+  ],
+  "haber global": [
+    "https://tv.ensonhaber.com/haberglobal/haberglobal.m3u8"
+  ],
+  "24": [
+    "https://turkmedya-live.ercdn.net/tv24/tv24_720p.m3u8"
+  ],
+  "turk haber": [
+    "https://edge1.socialsmart.tv/turkhaber/bant1/playlist.m3u8"
+  ],
+  "tgrt haber": [
+    "https://tgrthaber-live.daioncdn.net/tgrthaber/tgrthaber_720p.m3u8"
+  ],
+  "halk tv": [
+    "https://halktv-live.daioncdn.net/halktv/halktv_720p.m3u8"
+  ],
+  "ulke tv": [
+    "https://livetv.radyotvonline.net/kanal7live/ulketv/chunklist.m3u8"
+  ],
+  "a spor": [
+    "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/aspor/aspor_1080p.m3u8"
+  ],
+  "fb tv": [
+    "https://fbtv.fenerbahce.org/fenerbahcetv.stream_720p/playlist.m3u8"
+  ],
+  "pro sieben": [
+    "https://dash4.antik.sk/live/test_pro_sieben_tizen/playlist.m3u8"
+  ]
+}
