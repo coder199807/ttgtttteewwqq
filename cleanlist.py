@@ -4,10 +4,10 @@ import unicodedata
 import requests
 import time
 import json
+import os  # ← Wichtig: os importieren!
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
 from collections import defaultdict
-from scraper import IPTVScraper
 
 # ============================================================
 # KONFIGURATION
@@ -256,7 +256,14 @@ def find_stream_with_scraper(channel_name):
     print(f"  [SCRAPER] Suche für: {channel_name}")
     
     try:
-        scraper = IPTVScraper()
+        # Dynamischer Import, falls scraper.py existiert
+        try:
+            from scraper import IPTVScraper
+        except ImportError:
+            print(f"  [SCRAPER] scraper.py nicht gefunden, überspringe...")
+            return None
+        
+        scraper = IPTVScraper(debug=False)
         
         # Nur die wichtigsten Quellen scrapen (schneller)
         scraper.scrape_tvizle(channel_name)
