@@ -282,6 +282,10 @@
     <display-name>TRT Müzik</display-name>
     <icon src="https://i.imgur.com/JgUzRH8.png"/>
   </channel>
+  <channel id="30291805064bacb8a4036d">
+    <display-name>4K TR: TRT OCUK HD .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TRT_%C3%87ocuk_logo_%282021%29.svg/960px-TRT_%C3%87ocuk_logo_%282021%29.svg.png"/>
+  </channel>
   <channel id="TRTSpor.tr@SD">
     <display-name>TRT Spor</display-name>
     <icon src="https://i.imgur.com/6tv0zxh.png"/>
@@ -554,6 +558,9 @@
     <display-name>BEIN SPORTS 2 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1447241506.png"/>
   </channel>
+  <channel id="250946619196f7d48e5d74">
+    <display-name>BEIN SPORTS 2 .s</display-name>
+  </channel>
   <channel id="28515391437e928cafd5dd">
     <display-name>BEIN SPORTS 2 HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2851539143.png"/>
@@ -702,6 +709,10 @@
     <display-name>DA VINCI .c</display-name>
     <icon src="https://i.imgur.com/iBx7K1M.png"/>
   </channel>
+  <channel id="DaVinci.de@SD">
+    <display-name>Da Vinci Learning</display-name>
+    <icon src="https://i.imgur.com/iBx7K1M.png"/>
+  </channel>
   <channel id="2814908252b478398f430e">
     <display-name>DAS ERSTE .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
@@ -832,6 +843,10 @@
     <display-name>DAZN BAR 1 [] .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1474536713.png"/>
   </channel>
+  <channel id="3647775466b603a5ae8272">
+    <display-name>DAZN BAR 2 [] .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=3647775466.png"/>
+  </channel>
   <channel id="239663378269bdd61907bc">
     <display-name>DAZN BAR 2 FHD .s</display-name>
   </channel>
@@ -914,8 +929,8 @@
   <channel id="1476666167a4181c256f0d">
     <display-name>DAZN MBL HD .b</display-name>
   </channel>
-  <channel id="6746639090a3d1d6793e1">
-    <display-name>DAZN NBA HD .b</display-name>
+  <channel id="201738756c249ff85cdcc">
+    <display-name>DAZN NFL NETWORK HD .b</display-name>
   </channel>
   <channel id="36902120411f1a6426e4d4">
     <display-name>DAZN RISE .c</display-name>
@@ -1058,9 +1073,6 @@
     <display-name>EURO STAR .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=1827094680.png"/>
   </channel>
-  <channel id="38145219358d998f180862">
-    <display-name>EURO STAR .s</display-name>
-  </channel>
   <channel id="2092513479e79a5733f">
     <display-name>EUROSPORT 1 DEUTSCHLAND .b</display-name>
   </channel>
@@ -1079,9 +1091,6 @@
   <channel id="334800555fd42fc78001c">
     <display-name>EUROSPORT 360 HD 1 .b</display-name>
   </channel>
-  <channel id="3844032236a6f691189c8c">
-    <display-name>EUROSPORT 360 HD 10 .b</display-name>
-  </channel>
   <channel id="3632230236159eeb063d4c">
     <display-name>EUROSPORT 360 HD 11 .b</display-name>
   </channel>
@@ -1097,20 +1106,11 @@
   <channel id="7717380127de6c0e762bd">
     <display-name>EUROSPORT 360 HD 15 .b</display-name>
   </channel>
-  <channel id="1784656716a5a802f1810a">
-    <display-name>EUROSPORT 360 HD 16 .b</display-name>
-  </channel>
   <channel id="14148476112478912feaec">
     <display-name>EUROSPORT 360 HD 2 .b</display-name>
   </channel>
   <channel id="17650784759cc447e2a4bc">
     <display-name>EUROSPORT 360 HD 3 .b</display-name>
-  </channel>
-  <channel id="36755317391a3736695ded">
-    <display-name>EUROSPORT 360 HD 4 .b</display-name>
-  </channel>
-  <channel id="38663619638634dbe0b8ca">
-    <display-name>EUROSPORT 360 HD 5 .b</display-name>
   </channel>
   <channel id="2715056827a74c954bc614">
     <display-name>EUROSPORT 360 HD 6 .b</display-name>
@@ -1120,9 +1120,6 @@
   </channel>
   <channel id="518309082e3dac33da059">
     <display-name>EUROSPORT 360 HD 8 .b</display-name>
-  </channel>
-  <channel id="595914090ca0bbf8798b4">
-    <display-name>EUROSPORT 360 HD 9 .b</display-name>
   </channel>
   <channel id="3793200644fd418f955402">
     <display-name>EUROSPORT1 HD .b</display-name>
@@ -1165,14 +1162,8 @@
   <channel id="1208369995ee56db60c6cb">
     <display-name>EXXEN TV SPOR 1 .b</display-name>
   </channel>
-  <channel id="3333902867e8eeb6c13355">
-    <display-name>EXXEN TV SPOR 1 720P .b</display-name>
-  </channel>
   <channel id="10914039127b6d2cb4f9b1">
     <display-name>EXXEN TV SPOR 1 FEED .b</display-name>
-  </channel>
-  <channel id="12042008015aa1fc47965f">
-    <display-name>EXXEN TV SPOR 1 HD .b</display-name>
   </channel>
   <channel id="3814925371b27457afc78f">
     <display-name>EXXEN TV SPOR 1 UHD .b</display-name>
@@ -1369,10 +1360,6 @@
     <display-name>KABEL EINS DOKU HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Kabel_eins_Doku_Logo_2016.svg/960px-Kabel_eins_Doku_Logo_2016.svg.png"/>
   </channel>
-  <channel id="44533578213cf4baf8c92">
-    <display-name>KABEL EINS DOKU HEVC .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Kabel_eins_Doku_Logo_2016.svg/960px-Kabel_eins_Doku_Logo_2016.svg.png"/>
-  </channel>
   <channel id="24875814787e44255796c2">
     <display-name>KABEL EINS DOKU RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Kabel_eins_Doku_Logo_2016.svg/960px-Kabel_eins_Doku_Logo_2016.svg.png"/>
@@ -1439,6 +1426,10 @@
     <display-name>KIKA HD .b</display-name>
     <icon src="https://i.imgur.com/vZdNp5S.png"/>
   </channel>
+  <channel id="3645283043839c06f50d86">
+    <display-name>KIKA HEVC .b</display-name>
+    <icon src="https://i.imgur.com/vZdNp5S.png"/>
+  </channel>
   <channel id="3186688793d82687fd0609">
     <display-name>KINGBOX ACTION .b</display-name>
   </channel>
@@ -1478,15 +1469,15 @@
     <display-name>MAGENTA SPORT 11 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1755429918.png"/>
   </channel>
+  <channel id="2398423057756a9b2cddb0">
+    <display-name>MAGENTA SPORT 11 [LIVE DURING EVENTS ONLY] .s</display-name>
+  </channel>
   <channel id="30487183862caad1d63476">
     <display-name>MAGENTA SPORT 11 HD .b</display-name>
   </channel>
   <channel id="7886455823d314caad56e">
     <display-name>MAGENTA SPORT 12 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=788645582.png"/>
-  </channel>
-  <channel id="3474801522c4e690e747bc">
-    <display-name>MAGENTA SPORT 12 .s</display-name>
   </channel>
   <channel id="993576913bef5db3c0905">
     <display-name>MAGENTA SPORT 12 HD .b</display-name>
@@ -1512,8 +1503,16 @@
   <channel id="8387171288aebd8cb6c92">
     <display-name>MAGENTA SPORT 15 HD .b</display-name>
   </channel>
+  <channel id="366591182267fb49b0ba99">
+    <display-name>MAGENTA SPORT 16 .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=3665911822.png"/>
+  </channel>
   <channel id="3211970859d3ea1ffadc00">
     <display-name>MAGENTA SPORT 16 HD .b</display-name>
+  </channel>
+  <channel id="3890301374bb35aed1dbc5">
+    <display-name>MAGENTA SPORT 17 .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=3890301374.png"/>
   </channel>
   <channel id="19435872538fbe17cd8dc0">
     <display-name>MAGENTA SPORT 17 HD .b</display-name>
@@ -1569,9 +1568,15 @@
   <channel id="2657796264bdb87c7b7d2e">
     <display-name>MAGENTA SPORT 5 .s</display-name>
   </channel>
+  <channel id="768284121965d97f6be4d">
+    <display-name>MAGENTA SPORT 6 .b</display-name>
+  </channel>
   <channel id="21261254776f2e028c1d41">
     <display-name>MAGENTA SPORT 6 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2126125477.png"/>
+  </channel>
+  <channel id="3653941880fc2dbbc4b55c">
+    <display-name>MAGENTA SPORT 6 .s</display-name>
   </channel>
   <channel id="2796575778ee303859a15">
     <display-name>MAGENTA SPORT 7 .b</display-name>
@@ -1579,6 +1584,12 @@
   <channel id="1138372629ac781aad5910">
     <display-name>MAGENTA SPORT 7 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1138372629.png"/>
+  </channel>
+  <channel id="38363842009ce71f63f846">
+    <display-name>MAGENTA SPORT 7 .s</display-name>
+  </channel>
+  <channel id="2465967032f0f89c1de456">
+    <display-name>MAGENTA SPORT 8 .b</display-name>
   </channel>
   <channel id="3247089604fd07d73263bd">
     <display-name>MAGENTA SPORT 8 .c</display-name>
@@ -1597,8 +1608,8 @@
   <channel id="1536830889cccec276305e">
     <display-name>MAGENTA SPORT 9 .s</display-name>
   </channel>
-  <channel id="400277488812c656e5864a">
-    <display-name>MAGENTA SPORT GOLF 1 .c</display-name>
+  <channel id="283882437670f44f8e4ee6">
+    <display-name>MAGENTA SPORT GOLF 2 .c</display-name>
   </channel>
   <channel id="19211708241b5fda0abe88">
     <display-name>MAX STAR WARS .c</display-name>
@@ -1832,12 +1843,6 @@
   <channel id="3251653121978eb399a699">
     <display-name>ORF SPORT+ .s</display-name>
   </channel>
-  <channel id="1960168154f6946cfaefc9">
-    <display-name>ORF SPORT+ RAW .b</display-name>
-  </channel>
-  <channel id="17362928703b87a6c8217">
-    <display-name>OUTDOOR .b</display-name>
-  </channel>
   <channel id="42015485361f438f2db763">
     <display-name>PAL STATION YABANCI M ZIK .b</display-name>
   </channel>
@@ -1864,12 +1869,6 @@
   <channel id="215481388a0059a30c150">
     <display-name>PHOENIX HD .b</display-name>
     <icon src="https://i.imgur.com/T1532t9.png"/>
-  </channel>
-  <channel id="314057941084097b270b95">
-    <display-name>PLUTO TV N24 DOKU .c</display-name>
-  </channel>
-  <channel id="1299417291527618a1ccab">
-    <display-name>POWER FM YABANCI M ZIK .b</display-name>
   </channel>
   <channel id="3999710514ace24ffdde1d">
     <display-name>PRO7 FUN HD .b</display-name>
@@ -1976,6 +1975,10 @@
   <channel id="3839151666edd74f1c6236">
     <display-name>REDBULL TV .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3839151666.png"/>
+  </channel>
+  <channel id="2732807498359af08f17a8">
+    <display-name>RTL .c</display-name>
+    <icon src="https://i.imgur.com/94K94k2.png"/>
   </channel>
   <channel id="2166014818f06e94d16d17">
     <display-name>RTL 2 HD+ (BACKUP) .b</display-name>
@@ -2129,54 +2132,6 @@
     <display-name>RTL ZWEI .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png"/>
   </channel>
-  <channel id="289174175313063e65f7dc">
-    <display-name>RTL ZWEI .s</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png"/>
-  </channel>
-  <channel id="160203873fc8ecba6377a">
-    <display-name>RTL ZWEI HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png"/>
-  </channel>
-  <channel id="39761015397532573b6395">
-    <display-name>RTL+ HUNDKATZEMAUS .c</display-name>
-  </channel>
-  <channel id="41005223345d3c43064d7f">
-    <display-name>RTL+ LIVE 1 .b</display-name>
-  </channel>
-  <channel id="2393461310c152bff96f35">
-    <display-name>RTL+ LIVE 3 .b</display-name>
-  </channel>
-  <channel id="10156477906a0e7f7acb8f">
-    <display-name>RTL+ LIVE 4 .b</display-name>
-  </channel>
-  <channel id="117924590287136ddbffc9">
-    <display-name>RTL+ LIVE 6 .b</display-name>
-  </channel>
-  <channel id="84001033245c6d5ecaf4a">
-    <display-name>RTL+ SPORT EVENT 1 (BACKUP) .b</display-name>
-  </channel>
-  <channel id="1853551406e4d58cd366f9">
-    <display-name>RTL+ SPORT EVENT 1 .b</display-name>
-  </channel>
-  <channel id="20248491742c30cbaa06a4">
-    <display-name>RTL+ SPORT EVENT 10 .b</display-name>
-  </channel>
-  <channel id="131600781562990e7747ef">
-    <display-name>RTL+ SPORT EVENT 2 (BACKUP) .b</display-name>
-  </channel>
-  <channel id="702188030d3d5a2294bd5">
-    <display-name>RTL+ SPORT EVENT 2 .b</display-name>
-  </channel>
-  <channel id="48717032d63fa4c0d53b">
-    <display-name>RTL+ SPORT EVENT 2 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=48717032.png"/>
-  </channel>
-  <channel id="33688809570750f8b011a4">
-    <display-name>RTL+ SPORT EVENT 2 [LIVE DURING EVENTS ONLY] .s</display-name>
-  </channel>
-  <channel id="3548335857138d7fcf15f9">
-    <display-name>RTL+ SPORT EVENT 3 (BACKUP) .b</display-name>
-  </channel>
   <channel id="34777505440157928131d">
     <display-name>RTL+ SPORT EVENT 3 .b</display-name>
   </channel>
@@ -2184,12 +2139,21 @@
     <display-name>RTL+ SPORT EVENT 3 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1065842008.png"/>
   </channel>
+  <channel id="30651771375f472c894398">
+    <display-name>RTL+ SPORT EVENT 4 (BACKUP) .b</display-name>
+  </channel>
   <channel id="2795142238f9a0bd5eda07">
     <display-name>RTL+ SPORT EVENT 4 .b</display-name>
   </channel>
   <channel id="237657530447038cc41979">
     <display-name>RTL+ SPORT EVENT 4 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2376575304.png"/>
+  </channel>
+  <channel id="4003297755fc9aae9dbc5a">
+    <display-name>RTL+ SPORT EVENT 4 [LIVE DURING EVENTS ONLY] .s</display-name>
+  </channel>
+  <channel id="7338079436fdc2174d328">
+    <display-name>RTL+ SPORT EVENT 5 (BACKUP) .b</display-name>
   </channel>
   <channel id="2616874478a509fa680f79">
     <display-name>RTL+ SPORT EVENT 5 .b</display-name>
@@ -2201,15 +2165,12 @@
   <channel id="1474044060b6823790050c">
     <display-name>RTL+ SPORT EVENT 6 (BACKUP) .b</display-name>
   </channel>
+  <channel id="3696897854d84c4123c6a6">
+    <display-name>RTL+ SPORT EVENT 6 .b</display-name>
+  </channel>
   <channel id="415078660068d2ad057fe3">
     <display-name>RTL+ SPORT EVENT 6 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=4150786600.png"/>
-  </channel>
-  <channel id="3778676366564d8c972c55">
-    <display-name>RTL+ SPORT EVENT 7 .b</display-name>
-  </channel>
-  <channel id="4256514216771b0ec2610a">
-    <display-name>RTL+ SPORT EVENT 7 [LIVE DURING EVENTS ONLY] .s</display-name>
   </channel>
   <channel id="1213678665cc326e411b7b">
     <display-name>RTL+ SPORT EVENT 8 .c</display-name>
@@ -2217,9 +2178,6 @@
   </channel>
   <channel id="2721946647518754ab9fc8">
     <display-name>RTL+ SPORT EVENT 8 [LIVE DURING EVENTS ONLY] .s</display-name>
-  </channel>
-  <channel id="1577761007d7d4999aaf71">
-    <display-name>RTL+ SPORT EVENT 9 .b</display-name>
   </channel>
   <channel id="1326034592a6d1e4389d07">
     <display-name>RTL2 AUSTRIA .b</display-name>
@@ -2231,10 +2189,6 @@
   <channel id="1234604880d226de6d47be">
     <display-name>S SPORT 2 .s</display-name>
     <icon src="https://i.imgur.com/2jIItAy.png"/>
-  </channel>
-  <channel id="3269372326de5ff1a4d9d7">
-    <display-name>S SPORT+3 MAC SAATI .b</display-name>
-    <icon src="https://logo.huhu.to/logo?c=3269372326.png"/>
   </channel>
   <channel id="1507829436cb5aa4fb5b34">
     <display-name>S SPORT+4 MAC SAATI .b</display-name>
@@ -2298,6 +2252,9 @@
   </channel>
   <channel id="3962972352ea44b8b75128">
     <display-name>SARAN SPORT 1 .s</display-name>
+  </channel>
+  <channel id="287875534435a082281e3f">
+    <display-name>SARAN SPORT 2 .s</display-name>
   </channel>
   <channel id="301792595767e47e67347c">
     <display-name>SAT.1 EMOTIONS .b</display-name>
@@ -2364,8 +2321,20 @@
     <display-name>SHOWMAX .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=1197572527.png"/>
   </channel>
+  <channel id="12134337452fec7faf938d">
+    <display-name>SKY ATLANTIC .c</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png"/>
+  </channel>
   <channel id="2340670204ff621ff5a503">
     <display-name>SKY ATLANTIC .s</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png"/>
+  </channel>
+  <channel id="8924659966b6d28746447">
+    <display-name>SKY ATLANTIC HD (BACKUP 2) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png"/>
+  </channel>
+  <channel id="1376270745b0627d14387d">
+    <display-name>SKY ATLANTIC HD (BACKUP) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png"/>
   </channel>
   <channel id="3714049053c3b64d17ddcf">
@@ -2437,14 +2406,14 @@
   <channel id="3934518884051d64962fbf">
     <display-name>SKY BUNDESLIGA 10 HD (BACKUP 2) .b</display-name>
   </channel>
+  <channel id="31776053118538604d51e4">
+    <display-name>SKY BUNDESLIGA 10 HD (BACKUP) .b</display-name>
+  </channel>
   <channel id="4105254911d2934d2656c4">
     <display-name>SKY BUNDESLIGA 10 HD .b</display-name>
   </channel>
   <channel id="26643128355c54e350dc52">
     <display-name>SKY BUNDESLIGA 10 HD+ .b</display-name>
-  </channel>
-  <channel id="8314839020a88ebb88691">
-    <display-name>SKY BUNDESLIGA 10 RAW .b</display-name>
   </channel>
   <channel id="30711047167fbfb5cf3d75">
     <display-name>SKY BUNDESLIGA 2 (ONLY DURING EVENTS) .s</display-name>
@@ -2490,6 +2459,9 @@
   <channel id="10796323081d6b6bfb1176">
     <display-name>SKY BUNDESLIGA 3 [SPIELTAG] .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1079632308.png"/>
+  </channel>
+  <channel id="11603309351e7e2d74b632">
+    <display-name>SKY BUNDESLIGA 3 HD (BACKUP) .b</display-name>
   </channel>
   <channel id="15518364788d0372fe7ee1">
     <display-name>SKY BUNDESLIGA 3 HD .b</display-name>
@@ -2631,9 +2603,6 @@
   <channel id="4031812330dfae8cf7458e">
     <display-name>SKY BUNDESLIGA 8 HD+ .b</display-name>
   </channel>
-  <channel id="1595002135a29ebf8cb96b">
-    <display-name>SKY BUNDESLIGA 8 RAW .b</display-name>
-  </channel>
   <channel id="1274071941a586f3d997eb">
     <display-name>SKY BUNDESLIGA 9 (MATCH TIME) .s</display-name>
   </channel>
@@ -2717,6 +2686,38 @@
     <display-name>SKY CINEMA ACTION HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
   </channel>
+  <channel id="393413178212a6df0757ae">
+    <display-name>SKY CINEMA ACTION HEVC .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
+  </channel>
+  <channel id="18544475423371ce1e1608">
+    <display-name>SKY CINEMA ACTION RAW .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sky_Cinema_Action_-_Logo_2021.svg/960px-Sky_Cinema_Action_-_Logo_2021.svg.png"/>
+  </channel>
+  <channel id="1506084946f625257b4975">
+    <display-name>SKY CINEMA BEST OF .c</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="7675679855208c3fbe478">
+    <display-name>SKY CINEMA BEST OF .s</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="7283995247e7623d8c809">
+    <display-name>SKY CINEMA BEST OF HD (BACKUP) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="4183661289bea5151c6e22">
+    <display-name>SKY CINEMA BEST OF HD .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="65180453812a20399b7d8">
+    <display-name>SKY CINEMA BEST OF HEVC .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="3310761474de83eff07104">
+    <display-name>SKY CINEMA BEST OF RAW .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
+  </channel>
   <channel id="3175728367b5709d53f49e">
     <display-name>SKY CINEMA CLASSICS .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
@@ -2731,10 +2732,6 @@
   </channel>
   <channel id="1859918457bef7381e0c2">
     <display-name>SKY CINEMA CLASSICS HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="361705436f8af716c9648">
-    <display-name>SKY CINEMA CLASSICS HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="40564741164a7036747d07">
@@ -2764,6 +2761,10 @@
     <display-name>SKY CINEMA FAMILY .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png"/>
   </channel>
+  <channel id="11106963648da214c4120a">
+    <display-name>SKY CINEMA FAMILY HEVC (BACKUP) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png"/>
+  </channel>
   <channel id="36447692595f75562b1f9f">
     <display-name>SKY CINEMA FAMILY RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png"/>
@@ -2775,10 +2776,6 @@
   <channel id="2536879797b1c98070188">
     <display-name>SKY CINEMA FUN .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="233190625557da9d7af3cb">
-    <display-name>SKY CINEMA HITS .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="36500348677afe90e35ed0">
     <display-name>SKY CINEMA HITS .c</display-name>
@@ -2813,9 +2810,6 @@
   <channel id="491492893ab12d2da98a7">
     <display-name>SKY CINEMA PREMIEREN +24 HD .b</display-name>
   </channel>
-  <channel id="21371346036acfbf33d80d">
-    <display-name>SKY CINEMA PREMIEREN +24 RAW .b</display-name>
-  </channel>
   <channel id="4117277461bb80bd4382ae">
     <display-name>SKY CINEMA PREMIEREN .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
@@ -2829,10 +2823,6 @@
   </channel>
   <channel id="345871600084df3b16963a">
     <display-name>SKY CINEMA PREMIEREN HD .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="42658796007222e9d29cb7">
-    <display-name>SKY CINEMA PREMIEREN HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="764818202b934dc0b2580">
@@ -2874,10 +2864,6 @@
     <display-name>SKY CINEMA THRILLER HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="2315930044d6c692f148fa">
-    <display-name>SKY CINEMA THRILLER HEVC .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="2858004521eb8237cf5536">
     <display-name>SKY CINEMA THRILLER RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png"/>
@@ -2889,6 +2875,14 @@
   <channel id="1674044754ec11fb170b90">
     <display-name>SKY ONE HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sky_One_-_Logo_2020.png/960px-Sky_One_-_Logo_2020.png"/>
+  </channel>
+  <channel id="4101674354c9f1f56f608e">
+    <display-name>SKY REPLAY HD (FOX) .b</display-name>
+    <icon src="https://i.imgur.com/YBHWMJ5.png"/>
+  </channel>
+  <channel id="12894766218294fede5ad1">
+    <display-name>SKY REPLAY RAW (FOX) .b</display-name>
+    <icon src="https://i.imgur.com/YBHWMJ5.png"/>
   </channel>
   <channel id="314778032359ea2d858517">
     <display-name>SKY SHOWCASE .c</display-name>
@@ -2938,10 +2932,6 @@
     <display-name>SKY SPORT 10 [LIVE DURING EVENTS ONLY] .s</display-name>
     <icon src="https://i.imgur.com/ZnUAdGj.png"/>
   </channel>
-  <channel id="8726999137f40c138b6d1">
-    <display-name>SKY SPORT 10 HD .b</display-name>
-    <icon src="https://i.imgur.com/ZnUAdGj.png"/>
-  </channel>
   <channel id="22223602223487b208fdf">
     <display-name>SKY SPORT 11 [LIVE DURING EVENTS ONLY] .s</display-name>
     <icon src="https://i.imgur.com/7LXksX4.png"/>
@@ -2986,10 +2976,6 @@
     <display-name>SKY SPORT 3 .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="27305874996560cac1cdec">
-    <display-name>SKY SPORT 3 HD (BACKUP) .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="1400667713f36e234020fe">
     <display-name>SKY SPORT 3 HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png"/>
@@ -3018,12 +3004,20 @@
     <display-name>SKY SPORT 4 HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Sky_Sport_4_DE_Logo_2020.svg/960px-Sky_Sport_4_DE_Logo_2020.svg.png"/>
   </channel>
+  <channel id="23935553783dd55ce2c3ee">
+    <display-name>SKY SPORT 5 (MATCH TIME) .s</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png"/>
+  </channel>
   <channel id="10091194137e6ce5fa1521">
     <display-name>SKY SPORT 5 .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="34208335877870a51d79a2">
     <display-name>SKY SPORT 5 .c</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="9999216326ddda091572">
+    <display-name>SKY SPORT 5 HD (BACKUP) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sky_Sport_5_DE_Logo_2020.svg/960px-Sky_Sport_5_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="250108103024dd3a6e2a8c">
@@ -3044,10 +3038,6 @@
   </channel>
   <channel id="13816956759d45612328d0">
     <display-name>SKY SPORT 6 HD (BACKUP 2) .b</display-name>
-    <icon src="https://i.imgur.com/WfeyX8D.png"/>
-  </channel>
-  <channel id="1450154471bf23820b345b">
-    <display-name>SKY SPORT 6 HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/WfeyX8D.png"/>
   </channel>
   <channel id="463237157314e6d840607">
@@ -3089,10 +3079,6 @@
   <channel id="3908161130681991cd2e3">
     <display-name>SKY SPORT 8 HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/2YCQyZm.png"/>
-  </channel>
-  <channel id="32671258975ee204f512e7">
-    <display-name>SKY SPORT 9 HD .b</display-name>
-    <icon src="https://i.imgur.com/NQMl2hn.png"/>
   </channel>
   <channel id="2946846655092b774baf50">
     <display-name>SKY SPORT AUSTRIA 1 .b</display-name>
@@ -3146,6 +3132,10 @@
   </channel>
   <channel id="890637853f9cd9b629e5e">
     <display-name>SKY SPORT F1 HEVC .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
+  </channel>
+  <channel id="17196009227ea692c0630c">
+    <display-name>SKY SPORT F1 RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
   </channel>
   <channel id="4101211079586254d273ae">
@@ -3268,9 +3258,6 @@
     <display-name>SKY SPORT TOP EVENT UHD .b</display-name>
     <icon src="https://i.imgur.com/kQ6cVNx.png"/>
   </channel>
-  <channel id="999102646bc32696167e5">
-    <display-name>SKY SPORT UHD .b</display-name>
-  </channel>
   <channel id="21611914607ee60510dea5">
     <display-name>SKY SPORTS F1 .s</display-name>
   </channel>
@@ -3292,10 +3279,6 @@
   <channel id="106995237576219296ae85">
     <display-name>SONY AXN (AXN BLACK) .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1069952375.png"/>
-  </channel>
-  <channel id="38962417460828fbc8be04">
-    <display-name>SONY AXN (AXN WHITE) .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=3896241746.png"/>
   </channel>
   <channel id="3593288083170f89099e79">
     <display-name>SONY AXN .s</display-name>
@@ -3553,6 +3536,9 @@
   <channel id="53819092d8af1f450658">
     <display-name>SINEVIZYON TURK 8 .s</display-name>
   </channel>
+  <channel id="10457659887777aa426858">
+    <display-name>SINEVIZYON TURK 9 .s</display-name>
+  </channel>
   <channel id="8404401494599063b2e5e">
     <display-name>SIXX .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sixx_Logo.svg/960px-Sixx_Logo.svg.png"/>
@@ -3726,11 +3712,17 @@
   <channel id="30737270789289ac9cd906">
     <display-name>TELEKOM 3 BUNDESLIGA 8 .b</display-name>
   </channel>
+  <channel id="4185437077786df282f64e">
+    <display-name>TELEKOM BUNDESLIGA 1 .s</display-name>
+  </channel>
   <channel id="108022275811c5ce88dbac">
     <display-name>TELEKOM BUNDESLIGA 1 HD .b</display-name>
   </channel>
   <channel id="347169683761407c8eb444">
     <display-name>TELEKOM BUNDESLIGA 2 HD .b</display-name>
+  </channel>
+  <channel id="220993150949766d54628a">
+    <display-name>TELEKOM BUNDESLIGA 3 .s</display-name>
   </channel>
   <channel id="38265691780c7d3f9d8e">
     <display-name>TELEKOM BUNDESLIGA 3 HD .b</display-name>
@@ -3804,6 +3796,9 @@
   <channel id="2172603703f03a5e8b05c5">
     <display-name>TOGGO .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2172603703.png"/>
+  </channel>
+  <channel id="1840643644b180a4d619d6">
+    <display-name>TRABZON HABER 61 TV HD .b</display-name>
   </channel>
   <channel id="TRT4K.tr@SD">
     <display-name>TRT 4K</display-name>
@@ -4091,12 +4086,11 @@
   <channel id="1952835738c83bfddaf481">
     <display-name>YESILCAM 1 .s</display-name>
   </channel>
+  <channel id="8685860582340e8bd0469">
+    <display-name>YESILCAM 2 .s</display-name>
+  </channel>
   <channel id="245742586a1ae349871a9">
     <display-name>YESILCAM 3 .s</display-name>
-  </channel>
-  <channel id="36035801315c2c657f7f29">
-    <display-name>YOL TV .b</display-name>
-    <icon src="https://i.imgur.com/rTBX6lS.png"/>
   </channel>
   <channel id="1377055653aae1eccd061c">
     <display-name>YOL TV .c</display-name>
@@ -11458,6 +11452,570 @@
   </programme>
   <programme start="20260902205500 +0000" stop="20260902211000 +0000" channel="Cartoonito.uk@SD">
     <title lang="tr">Kral Şakir</title><category lang="tr">Genel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831020000 +0000" stop="20260831022300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ejderha Çukuru</title><desc lang="tr">Bir ejderha avı gezisinde Ant, muazzam bir gizeme dair ipuçları barındıran eski bir belge bulur.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831022300 +0000" stop="20260831024400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kara Orka</title><desc lang="tr">Kara Orca korsanları, Nektonların denizaltılarında nadir bir hazine olduğunu düşünüp, onlara saldırıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831024400 +0000" stop="20260831025000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Deniz Madenciliği: Derin Belirsizlik</title><desc lang="tr">Madencilik şirketleri okyanus tabanında deniz madenciliği planlıyor. Bunun çevresel sonuçları ve deniz yaşamı üzerindeki etkileri neler?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831025000 +0000" stop="20260831025400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çığır Açan Sensörler</title><desc lang="tr">İklim değişimi, toprak kayması ve obrukların yol açtığı trafik kazalarına artışa sebep olacak. Bilim bunu nasıl önleyebilir?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831025400 +0000" stop="20260831031700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">En İyisi (Roger Federer) ve Yarışçı (Danica Patrick)</title><desc lang="tr">Tenis efsanesi Roger Federer ve Indy 500 yıldızı Danica Patrick, dünyanın en iyisi olma hikayelerini paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831031700 +0000" stop="20260831032200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Gözetleme Uygulamaları Denizi</title><desc lang="tr">Avrupa derinleşen bir mülteci krizi ile yüzleşiyor, denizlerimizi gözetlemek– kıtanın daha evvel karşılaşmadığı bir öncülük geliyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831032200 +0000" stop="20260831032700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Mükemmel Fırtına</title><desc lang="tr">Yeni mevzuat, gemilerin stabilitesini tehlikeye atacak düşük güçlü motorlara geçmelerini söylüyor. Çevre, güvenliği gölgede bırakır mı?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831032700 +0000" stop="20260831034800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yapay Zeka Programı</title><desc lang="tr">Yeni bir yapay zeka programı, Nektonları bir kürekçiyi kurtarmaktan alıkoyar. Ant, onu alt etmeyi başarabilecek ve günü kurtarabilecek mi?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831034800 +0000" stop="20260831040900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Okyanusun En Derini</title><desc lang="tr">Will ve Ant&apos;ın okyanusun en derin noktasından almak için uğraştıkları nesne, bekledikleri gibi değil. Aldatılmışlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831040900 +0000" stop="20260831041400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hayvansız Testler</title><desc lang="tr">Lüksemburg Üniversitesi araştırmacıları, hayvanlar üzerinde test yapmadan Parkinson hastalığı için yeni tedaviler üzerinde çalışıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831041400 +0000" stop="20260831041900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Prematüre Bebekler İçin Yeni Umut</title><desc lang="tr">Prematüre bebeklerdeki beyin hasarını önlemek için, Avrupalı araştırmacılar müdahalesiz bir alet geliştirdiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831041900 +0000" stop="20260831042700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yaban domuzu - Çünkü sen müthişsin</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Maceraları büyük boyutlara ulaşır, ancak dostluk, nezaket ve eğlence her zaman galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831042700 +0000" stop="20260831043500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Fil - İlkinde Başaramazsan</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Maceraları büyük boyutlara ulaşır, ancak dostluk, nezaket ve eğlence her zaman galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831043500 +0000" stop="20260831045600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ejderha Üçgeni</title><desc lang="tr">Yabancılar, bir Japon adasından şeyleri çalıp denizin altına mı sürüklüyor? Nektonlar bu durumu araştırıyor ve tehlikeli bir şey buluyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831045600 +0000" stop="20260831051700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ada Kaplumbağaları</title><desc lang="tr">Dünyadaki en nadir kaplumbağa çalındı ve Nektonlar onu arıyor. Ancak bir tuzak içine düşüyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831051700 +0000" stop="20260831052200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çiçek Saksısı</title><desc lang="tr">Boom, Kırmızılar&apos;ın yere ne çizdiğini tahmin etmelidir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831052200 +0000" stop="20260831052700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kaktüs</title><desc lang="tr">Boom, Kırmızılar&apos;ın yere ne çizdiğini tahmin etmelidir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831052700 +0000" stop="20260831053500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Swingers&apos;ların Kraliçesi</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831053500 +0000" stop="20260831054300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çetrefilli Durum</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831054300 +0000" stop="20260831055700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bitz&apos;in Plaj Partisi</title><desc lang="tr">Bob, üst üste dört basket atmada önceki rekorunu deneyip geçemiyor. Bitz&apos;in ona nasıl yardım edeceğine dair bir fikri var.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831055700 +0000" stop="20260831061000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Karlı Spor Günü</title><desc lang="tr">Karlı Sporlar Günü geldi ve herkes yaklaşan yarışma için heyecanlı. Peki puanları nasıl takip edecekler?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831061000 +0000" stop="20260831061800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Havadan Gelen</title><desc lang="tr">Bir öğrenci, uçuş sınavından önce havaalanına düşer ve kanadını kırar. Sprinter, kanadını tamir edip sınavı geçmesine yardım etmeye çalışır.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831061800 +0000" stop="20260831063500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sihirli Leo</title><desc lang="tr">Şehirdeki herkes Leo&apos;nun sihirli olduğuna inanıyor. Ama Leo hiç de sihirli değil, peki bu zor durumdan nasıl kurtulacak?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831063500 +0000" stop="20260831065100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sümük</title><desc lang="tr">Dr Chris ve Dr Xand sümüğün gücünü nasıl test edildiğini gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831065100 +0000" stop="20260831065900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yardım Eli</title><desc lang="tr">Sprinter ve Riwahl, Rosa&apos;ya yeni dolap için yardım etmek ister. Ama bu çok geçmeden, kimin daha iyi yardımcı olduğu yarışmasına dönüşür.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831065900 +0000" stop="20260831071500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kurallara Bağlılık</title><desc lang="tr">Bumble, Leo&apos;nun Bhilka&apos;da yasal olarak uçması için uçuş ehliyeti almasına yardım ediyor. Ama Bhilka&apos;nın garip kuralları bunu zorlaştırıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831071500 +0000" stop="20260831072900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Cin Bevel&apos;ın Güzel Evi</title><desc lang="tr">Cin Bevel&apos;ın lambası havada uçar ve bir kaktüsün üzerine düşer. Bitz, lambayı Bevel&apos;a nasıl geri götüreceğini bulmalıdır.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831072900 +0000" stop="20260831075200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kalede Pizza Yarışı</title><desc lang="tr">Pizza yapma yarışı gününde Bob özel tarifini hazırlıyor. Pizzalar zaten fırınlarda, ne ters gidebilir ki?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831075200 +0000" stop="20260831082300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çalışan Kaslar ve Bilinmeyen Tedavi</title><desc lang="tr">Doktorlar, kasların yapısını inceliyorlar. Daha sonra acil serviste genç hastalarla ilgileniyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831082300 +0000" stop="20260831083300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Siyah Muz</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831083300 +0000" stop="20260831084300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Arı Parseli</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831084300 +0000" stop="20260831085900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dışkı</title><desc lang="tr">Dr Chris ve Dr Xand size iyi bir sağlıklı dışkının önemini gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831085900 +0000" stop="20260831092300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Esir</title><desc lang="tr">Kaptan Hammerhead, Nektonları denizaltısına tutsak ediyor. Şimdi de Aronnax&apos;ı ele geçirmek istiyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831092300 +0000" stop="20260831094500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sınav</title><desc lang="tr">Gizemli Ephemychron&apos;un bir parçasını bulmak için, Nektonlar kasırgalarla, sıfır görüşle ve dev robot meduzalarla mücadele etmek zorundalar!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831094500 +0000" stop="20260831101500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hapşırmanın Hikayesi</title><desc lang="tr">Doktor Chris ve Doktor Xand hapşırdığımızda vücudumuza neler olduğunu gösteriyor ve insan beynini inceliyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831101500 +0000" stop="20260831102200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çiçek</title><desc lang="tr">Ollie bir çiçeği korumaya çalışır ama bunun yerine ona zarar verir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831102200 +0000" stop="20260831102900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Gürültü</title><desc lang="tr">Gürültü yüzünden uykusuz kalan Ollie, sessiz bir yer arar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831102900 +0000" stop="20260831104200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Karlı Soğuk Keçi Şenliği</title><desc lang="tr">Küçük Bo Purl&apos;ün Karlı Keçi Şenliği&apos;ndeki performansını tüm engellere rağmen bitirmesine yardım etme görevlerinde Bitz ve Bob&apos;a katılın.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831104200 +0000" stop="20260831105900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bakteri</title><desc lang="tr">Dr Chris ve Dr Xand, bakterilerin nasıl gaz çıkarmanıza sebep olduğunu gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831105900 +0000" stop="20260831113000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Vücut Hareketleri</title><desc lang="tr">Doktorlar vücudun nasıl hareket ettiğini gösteriyor ve Dr. Chris koluna kan emen bir sülük yapıştırıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831113000 +0000" stop="20260831115500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yıldız (Julia Roberts) ve Dövüşçü (Wladimir Klitschko)</title><desc lang="tr">Oscar ödüllü aktris Julia Roberts ve eski dünya ağır sıklet boks şampiyonu Wladimir Klitschko zirveye giden yolculuklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831115500 +0000" stop="20260831120900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">DNA harikaları</title><desc lang="tr">DNA&apos;nızın bir kısmını çıkartarak genetik keşfediliyor ve kromozomları ilk bulanın Joe Hin Tjio olduğu ortaya çıkıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831120900 +0000" stop="20260831122400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">İlgi çeken robotlar</title><desc lang="tr">Robotları kendi robotunuzu yaparak keşfetmek ve robot ustası Hiroshi Ishiguro kendini kopyalayan adam olarak biliniyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831122400 +0000" stop="20260831123400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ormana Hoş Geldiniz</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831123400 +0000" stop="20260831124400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Top</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831124400 +0000" stop="20260831125300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kalite Ölçer</title><desc lang="tr">Tamircik çocukları yanlışlıkla iki elmayı karıştırdıktan sonra Profesör Eugenius, Elisa&apos;nın zehirli elmayı yediğine inanıp panikler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831125300 +0000" stop="20260831130200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Arı</title><desc lang="tr">Tom Thomas, rahatsız edici bir arıyı mutfaktan nasıl çıkaracağını bilmiyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831130200 +0000" stop="20260831131900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hücre Zarı</title><desc lang="tr">Dr Chris ve Dr Xand, sıçrayan yumurta deneyiyle hücre zarlarının gücünü gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831131900 +0000" stop="20260831134300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ejderha Çukuru</title><desc lang="tr">Bir ejderha avı gezisinde Ant, muazzam bir gizeme dair ipuçları barındıran eski bir belge bulur.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831134300 +0000" stop="20260831140700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kara Orka</title><desc lang="tr">Kara Orca korsanları, Nektonların denizaltılarında nadir bir hazine olduğunu düşünüp, onlara saldırıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831140700 +0000" stop="20260831142300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Giang Kardeşler: Renowned Circus Performers</title><desc lang="tr">Giang kardeşler, inanılmaz sirk becerilerini kullanarak heyecan verici Guinness Dünya Rekorunu nasıl kırdıklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831142300 +0000" stop="20260831143800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Incredible Mallakhamb: Kadim Hint Cimnastiği</title><desc lang="tr">Müthiş Mallakhamb ekibi, Mallakhamb direğinde kadim becerilerini Guiness Dünya Rekoru&apos;na ulaşmak için nasıl kullandıklarını gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831143800 +0000" stop="20260831150800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ağrı Eşiği</title><desc lang="tr">Doktorlar, ağrıyla ilgili deney yapıyorlar ve ayakkabıların yürüyüşümüzü nasıl etkilediğini gösteriyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831150800 +0000" stop="20260831152200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Labirent Macerası</title><desc lang="tr">Phoebe&apos;nin köpeği Earl, Bitz&apos;in labirentinde kaybolur. Bitz, daha yükseğe çıkıp doğru talimatları vermek için bir sıcak hava balonu kullanır</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831152200 +0000" stop="20260831154700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kaleci (Maddie Hinch) ve Kâşif (Ranulph Fiennes)</title><desc lang="tr">Dünyanın en iyi çim hokeyi kalecisi Maddie Hinch ve dünyaca ünlü kâşif Ranulph Fiennes, rekor kıran yolculuklarını paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831154700 +0000" stop="20260831155400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kale Değişimi</title><desc lang="tr">Ev yapımı bir karşı ağırlık kaldırmayı test ederek mühendislerin nesneleri nasıl kaldırdığını keşfediyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831155400 +0000" stop="20260831160100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Marmelat Kargaşası</title><desc lang="tr">Bükmeli ve yuvarlamalı mühendislik eğlencesi, oyuncaklarımızı bir noktadan diğerine taşıyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831160100 +0000" stop="20260831160800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hazır, Kontrol Et</title><desc lang="tr">Kontrol listelerinin kağıt uçakları nasıl uçurabildiğini ve bir balon arabayı pistte nasıl yarıştırabildiğini mühendislikle gösteriyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831160800 +0000" stop="20260831163200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yapay Zeka Programı</title><desc lang="tr">Yeni bir yapay zeka programı, Nektonları bir kürekçiyi kurtarmaktan alıkoyar. Ant, onu alt etmeyi başarabilecek ve günü kurtarabilecek mi?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831163200 +0000" stop="20260831165400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Okyanusun En Derini</title><desc lang="tr">Will ve Ant&apos;ın okyanusun en derin noktasından almak için uğraştıkları nesne, bekledikleri gibi değil. Aldatılmışlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831165400 +0000" stop="20260831172500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Muhteşem Kulak Kiri!</title><desc lang="tr">Kulak kirimiz neden oluşur ve ne kadar üretiriz? Ayrıca geğirdiğimizde vücudumuzda neler olur?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831172500 +0000" stop="20260831174000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bitkiler nasıl yer?</title><desc lang="tr">Botaniği gökkuşağı renklerinden bir çiçek yaparak keşfeden usta J.C Bose&apos;nin, bitkilerin doğasıyla ilgili yaptığı çalışmaları görüyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831174000 +0000" stop="20260831175500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bükülen ışık</title><desc lang="tr">Işığın doğasını suyla yağı karıştırarak ortaya çıkaran ay ışığı yansımalarının aynaya benzediğini tespit eden Zhang Heng ile tanışacağız.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831175500 +0000" stop="20260831182500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">En İyisi (Roger Federer) ve Yarışçı (Danica Patrick)</title><desc lang="tr">Tenis efsanesi Roger Federer ve Indy 500 yıldızı Danica Patrick, dünyanın en iyisi olma hikayelerini paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831182500 +0000" stop="20260831184100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Tori Boggs: Atlama İpi Şampiyonu</title><desc lang="tr">Efsanevi atlama ipçisi Tori Boggs, rekor kıran atlama becerilerinin dünyanın en iyisi olmasına nasıl yardımcı olduğunu gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831184100 +0000" stop="20260831185600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dashaun Morris: Amerian Futbolu Fenomeni</title><desc lang="tr">American football player Dashaun Morris II demonstrates his world record one-handed ball-catching skills.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831185600 +0000" stop="20260831192000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yıldız (Julia Roberts) ve Dövüşçü (Wladimir Klitschko)</title><desc lang="tr">Oscar ödüllü aktris Julia Roberts ve eski dünya ağır sıklet boks şampiyonu Wladimir Klitschko zirveye giden yolculuklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831192000 +0000" stop="20260831193300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Telsizle iletişim</title><desc lang="tr">basit bir telefonla ses çıkarmayı öğrenmek için fizikçi ve kaşif olan radyonun babası Guglielmo Marconi&apos;yle tanışıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831193300 +0000" stop="20260831193900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Gölge Tiyatrosu</title><desc lang="tr">Bu müthiş gölge tiyatrosunda bir gösteri sahnele! Her aşamayı açıkça anlatacağız, yani hiçbir şey eksik kalmayacak.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831193900 +0000" stop="20260831194800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Deniz Kaplumbağası</title><desc lang="tr">Bu kez bir Deniz Kaplumbağası yapıyoruz! Bu deniz hayvanı için tek gereken şey, oyun hamuru.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831194800 +0000" stop="20260831195500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kazu</title><desc lang="tr">Değişik ama tatlı müziğinizi çalın ve bu bilimsel müzik enstrümanıyla ses dalgalarını hissedin.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831195500 +0000" stop="20260831200000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Arama Kurtarma Robotları</title><desc lang="tr">Bilim adamları, yaşlı yetişkinleri günlük aktiviteleri gerçekleştirmek ve günlük hayatlarını iyileştirmek için konuşan robotlar geliştirdi.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831200000 +0000" stop="20260831200500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ben ve Avatarım</title><desc lang="tr">Avrupalı araştırmacılar şizofreni hastalarının rehabilitasyonu için avatarlar geliştirdiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831200500 +0000" stop="20260831201200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sanat Fırıldağı</title><desc lang="tr">Bu hünerli düzenek ile, döndürerek yaratıcılığınızı konuşturun.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831201200 +0000" stop="20260831201500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bags of Water</title><desc lang="tr">Avrupalı bilim insanları ve girişimciler tarafından geliştirilen müthiş heyecan verici ürünlerden bazılarına göz atın.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831201500 +0000" stop="20260831202000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Samanyolu</title><desc lang="tr">Galaksimizin, geçmiş, günümüz ve gelecekteki yıldız dağılımlarının yeniden inşası için araştırmacılar galaktik düzlemi analiz ettiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831202000 +0000" stop="20260831202500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Toprağın Derinlikleri</title><desc lang="tr">İtalyan araştırmacılar, Avrupa geneline yayılmış 25.000 numune ile Avrupa’daki toprağın sağlığını değerlendiriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831202500 +0000" stop="20260831204800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kaleci (Maddie Hinch) ve Kâşif (Ranulph Fiennes)</title><desc lang="tr">Dünyanın en iyi çim hokeyi kalecisi Maddie Hinch ve dünyaca ünlü kâşif Ranulph Fiennes, rekor kıran yolculuklarını paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831204800 +0000" stop="20260831205300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Enerjiye Bir Pencere</title><desc lang="tr">Araştırmacılar, enerji üretmenin yeni bir yolunu deniyorlar. Aletler mi? Kocaman bir konteynır ve dolaşım suyu dolu pencereler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831205300 +0000" stop="20260831205800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Giyilebilir Elektronikler</title><desc lang="tr">Yürüyerek enerjinizi üretebildiğiniz bir gelecek hayal edin. Müthiş değil mi? Araştırmacılar bunu gerçekleştirebilmek için çok uğraşıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260831205800 +0000" stop="20260831211200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">DNA harikaları</title><desc lang="tr">DNA&apos;nızın bir kısmını çıkartarak genetik keşfediliyor ve kromozomları ilk bulanın Joe Hin Tjio olduğu ortaya çıkıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901211200 +0000" stop="20260901212400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">İlgi çeken robotlar</title><desc lang="tr">Robotları kendi robotunuzu yaparak keşfetmek ve robot ustası Hiroshi Ishiguro kendini kopyalayan adam olarak biliniyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901212400 +0000" stop="20260901212900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Gülme Gazı, Bir Başka İklim Düşmanı</title><desc lang="tr">Olay küresel ısınmaya geldiğinde, N2O, CO2’dan çok daha fazla hasara yol açıyor. Bu gaz hakkında ne biliyoruz ve onu nasıl durdurabiliriz?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901212900 +0000" stop="20260901213400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Akıllı Moda</title><desc lang="tr">Araştırmacılar mevcut görüntüleme sistemlerinin kısıtlamalarını aşabilmek için yeni giyilebilir hissetme teknolojileri tasarlıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901213400 +0000" stop="20260901214800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Vispy Kharadi: Dövüş Sanatlarının Güçlü İsmi</title><desc lang="tr">Müthiş dövüş sanatçısı Vispy Kharadi, çivi yatağında yatmak da dahil, birden fazla dünya rekoru unvanına nasıl ulaştığını açıklıyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901214800 +0000" stop="20260901220200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Pitmanlar: Dövüş Sanatlarının Dinamik İkilisi</title><desc lang="tr">Harika dövüş sanatçısı çifti Lisa ve Chris Pitman, güçlü becerilerini sergiliyor ve bu da onlara Guiness Dünya Rekoru unvanını kazandırıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901220200 +0000" stop="20260901220700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Deniz Madenciliği: Derin Belirsizlik</title><desc lang="tr">Madencilik şirketleri okyanus tabanında deniz madenciliği planlıyor. Bunun çevresel sonuçları ve deniz yaşamı üzerindeki etkileri neler?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901220700 +0000" stop="20260901221200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çığır Açan Sensörler</title><desc lang="tr">İklim değişimi, toprak kayması ve obrukların yol açtığı trafik kazalarına artışa sebep olacak. Bilim bunu nasıl önleyebilir?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901221200 +0000" stop="20260901223500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">En İyisi (Roger Federer) ve Yarışçı (Danica Patrick)</title><desc lang="tr">Tenis efsanesi Roger Federer ve Indy 500 yıldızı Danica Patrick, dünyanın en iyisi olma hikayelerini paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901223500 +0000" stop="20260901224000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Gözetleme Uygulamaları Denizi</title><desc lang="tr">Avrupa derinleşen bir mülteci krizi ile yüzleşiyor, denizlerimizi gözetlemek– kıtanın daha evvel karşılaşmadığı bir öncülük geliyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901224000 +0000" stop="20260901224500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Mükemmel Fırtına</title><desc lang="tr">Yeni mevzuat, gemilerin stabilitesini tehlikeye atacak düşük güçlü motorlara geçmelerini söylüyor. Çevre, güvenliği gölgede bırakır mı?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901224500 +0000" stop="20260901225800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bitkiler nasıl yer?</title><desc lang="tr">Botaniği gökkuşağı renklerinden bir çiçek yaparak keşfeden usta J.C Bose&apos;nin, bitkilerin doğasıyla ilgili yaptığı çalışmaları görüyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901225800 +0000" stop="20260901231100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bükülen ışık</title><desc lang="tr">Işığın doğasını suyla yağı karıştırarak ortaya çıkaran ay ışığı yansımalarının aynaya benzediğini tespit eden Zhang Heng ile tanışacağız.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901231100 +0000" stop="20260901231600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hayvansız Testler</title><desc lang="tr">Lüksemburg Üniversitesi araştırmacıları, hayvanlar üzerinde test yapmadan Parkinson hastalığı için yeni tedaviler üzerinde çalışıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901231600 +0000" stop="20260901232100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Prematüre Bebekler İçin Yeni Umut</title><desc lang="tr">Prematüre bebeklerdeki beyin hasarını önlemek için, Avrupalı araştırmacılar müdahalesiz bir alet geliştirdiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901232100 +0000" stop="20260901233500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Giang Kardeşler: Renowned Circus Performers</title><desc lang="tr">Giang kardeşler, inanılmaz sirk becerilerini kullanarak heyecan verici Guinness Dünya Rekorunu nasıl kırdıklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901233500 +0000" stop="20260901234900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Incredible Mallakhamb: Kadim Hint Cimnastiği</title><desc lang="tr">Müthiş Mallakhamb ekibi, Mallakhamb direğinde kadim becerilerini Guiness Dünya Rekoru&apos;na ulaşmak için nasıl kullandıklarını gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901234900 +0000" stop="20260901235500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Arama Kurtarma Robotları</title><desc lang="tr">Bilim adamları, yaşlı yetişkinleri günlük aktiviteleri gerçekleştirmek ve günlük hayatlarını iyileştirmek için konuşan robotlar geliştirdi.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901235500 +0000" stop="20260901235900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ben ve Avatarım</title><desc lang="tr">Avrupalı araştırmacılar şizofreni hastalarının rehabilitasyonu için avatarlar geliştirdiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260901235900 +0000" stop="20260902002200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yıldız (Julia Roberts) ve Dövüşçü (Wladimir Klitschko)</title><desc lang="tr">Oscar ödüllü aktris Julia Roberts ve eski dünya ağır sıklet boks şampiyonu Wladimir Klitschko zirveye giden yolculuklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902002200 +0000" stop="20260902002700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Samanyolu</title><desc lang="tr">Galaksimizin, geçmiş, günümüz ve gelecekteki yıldız dağılımlarının yeniden inşası için araştırmacılar galaktik düzlemi analiz ettiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902002700 +0000" stop="20260902003200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Toprağın Derinlikleri</title><desc lang="tr">İtalyan araştırmacılar, Avrupa geneline yayılmış 25.000 numune ile Avrupa’daki toprağın sağlığını değerlendiriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902003200 +0000" stop="20260902004600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Telsizle iletişim</title><desc lang="tr">basit bir telefonla ses çıkarmayı öğrenmek için fizikçi ve kaşif olan radyonun babası Guglielmo Marconi&apos;yle tanışıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902004600 +0000" stop="20260902005800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Harita seviyeleme</title><desc lang="tr">Coğrafyayı bir marangoz seviyesinde bilmek için Kore&apos;nin ilk kez detaylı bir haritasını çizen haritacı Kim Jeong-Ho ile tanışıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902005800 +0000" stop="20260902010300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Enerjiye Bir Pencere</title><desc lang="tr">Araştırmacılar, enerji üretmenin yeni bir yolunu deniyorlar. Aletler mi? Kocaman bir konteynır ve dolaşım suyu dolu pencereler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902010300 +0000" stop="20260902011800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Tori Boggs: Atlama İpi Şampiyonu</title><desc lang="tr">Efsanevi atlama ipçisi Tori Boggs, rekor kıran atlama becerilerinin dünyanın en iyisi olmasına nasıl yardımcı olduğunu gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902011800 +0000" stop="20260902013100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dashaun Morris: Amerian Futbolu Fenomeni</title><desc lang="tr">American football player Dashaun Morris II demonstrates his world record one-handed ball-catching skills.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902013100 +0000" stop="20260902013600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Giyilebilir Elektronikler</title><desc lang="tr">Yürüyerek enerjinizi üretebildiğiniz bir gelecek hayal edin. Müthiş değil mi? Araştırmacılar bunu gerçekleştirebilmek için çok uğraşıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902013600 +0000" stop="20260902020000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kaleci (Maddie Hinch) ve Kâşif (Ranulph Fiennes)</title><desc lang="tr">Dünyanın en iyi çim hokeyi kalecisi Maddie Hinch ve dünyaca ünlü kâşif Ranulph Fiennes, rekor kıran yolculuklarını paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902020000 +0000" stop="20260902022100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yapay Zeka Programı</title><desc lang="tr">Yeni bir yapay zeka programı, Nektonları bir kürekçiyi kurtarmaktan alıkoyar. Ant, onu alt etmeyi başarabilecek ve günü kurtarabilecek mi?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902022100 +0000" stop="20260902024200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Okyanusun En Derini</title><desc lang="tr">Will ve Ant&apos;ın okyanusun en derin noktasından almak için uğraştıkları nesne, bekledikleri gibi değil. Aldatılmışlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902024200 +0000" stop="20260902024800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Gözetleme Uygulamaları Denizi</title><desc lang="tr">Avrupa derinleşen bir mülteci krizi ile yüzleşiyor, denizlerimizi gözetlemek– kıtanın daha evvel karşılaşmadığı bir öncülük geliyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902024800 +0000" stop="20260902025200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Mükemmel Fırtına</title><desc lang="tr">Yeni mevzuat, gemilerin stabilitesini tehlikeye atacak düşük güçlü motorlara geçmelerini söylüyor. Çevre, güvenliği gölgede bırakır mı?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902025200 +0000" stop="20260902031500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yıldız (Julia Roberts) ve Dövüşçü (Wladimir Klitschko)</title><desc lang="tr">Oscar ödüllü aktris Julia Roberts ve eski dünya ağır sıklet boks şampiyonu Wladimir Klitschko zirveye giden yolculuklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902031500 +0000" stop="20260902032000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hayvansız Testler</title><desc lang="tr">Lüksemburg Üniversitesi araştırmacıları, hayvanlar üzerinde test yapmadan Parkinson hastalığı için yeni tedaviler üzerinde çalışıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902032000 +0000" stop="20260902032500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Prematüre Bebekler İçin Yeni Umut</title><desc lang="tr">Prematüre bebeklerdeki beyin hasarını önlemek için, Avrupalı araştırmacılar müdahalesiz bir alet geliştirdiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902032500 +0000" stop="20260902034600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ejderha Üçgeni</title><desc lang="tr">Yabancılar, bir Japon adasından şeyleri çalıp denizin altına mı sürüklüyor? Nektonlar bu durumu araştırıyor ve tehlikeli bir şey buluyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902034600 +0000" stop="20260902040700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ada Kaplumbağaları</title><desc lang="tr">Dünyadaki en nadir kaplumbağa çalındı ve Nektonlar onu arıyor. Ancak bir tuzak içine düşüyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902040700 +0000" stop="20260902041300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Arama Kurtarma Robotları</title><desc lang="tr">Bilim adamları, yaşlı yetişkinleri günlük aktiviteleri gerçekleştirmek ve günlük hayatlarını iyileştirmek için konuşan robotlar geliştirdi.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902041300 +0000" stop="20260902041700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ben ve Avatarım</title><desc lang="tr">Avrupalı araştırmacılar şizofreni hastalarının rehabilitasyonu için avatarlar geliştirdiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902041700 +0000" stop="20260902042500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ateşböceği - Benim Bu Küçük Işığım</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Maceraları büyük boyutlara ulaşır, ancak dostluk, nezaket ve eğlence her zaman galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902042500 +0000" stop="20260902043300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Springbok - Bana Çiçek Getirme</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Maceraları büyük boyutlara ulaşır, ancak dostluk, nezaket ve eğlence her zaman galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902043300 +0000" stop="20260902045400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Esir</title><desc lang="tr">Kaptan Hammerhead, Nektonları denizaltısına tutsak ediyor. Şimdi de Aronnax&apos;ı ele geçirmek istiyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902045400 +0000" stop="20260902051500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sınav</title><desc lang="tr">Gizemli Ephemychron&apos;un bir parçasını bulmak için, Nektonlar kasırgalarla, sıfır görüşle ve dev robot meduzalarla mücadele etmek zorundalar!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902051500 +0000" stop="20260902052000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Plaka</title><desc lang="tr">Boom, Kırmızılar&apos;ın yere ne çizdiğini tahmin etmelidir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902052000 +0000" stop="20260902052500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çatal</title><desc lang="tr">Boom, Kırmızılar&apos;ın yere ne çizdiğini tahmin etmelidir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902052500 +0000" stop="20260902053300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Tatlı Kaos</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902053300 +0000" stop="20260902054100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bu Yoldan Yürü</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902054100 +0000" stop="20260902055500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Cin Bevel&apos;ın Güzel Evi</title><desc lang="tr">Cin Bevel&apos;ın lambası havada uçar ve bir kaktüsün üzerine düşer. Bitz, lambayı Bevel&apos;a nasıl geri götüreceğini bulmalıdır.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902055500 +0000" stop="20260902060900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kalede Pizza Yarışı</title><desc lang="tr">Pizza yapma yarışı gününde Bob özel tarifini hazırlıyor. Pizzalar zaten fırınlarda, ne ters gidebilir ki?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902060900 +0000" stop="20260902061700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yardım Eli</title><desc lang="tr">Sprinter ve Riwahl, Rosa&apos;ya yeni dolap için yardım etmek ister. Ama bu çok geçmeden, kimin daha iyi yardımcı olduğu yarışmasına dönüşür.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902061700 +0000" stop="20260902063500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kurallara Bağlılık</title><desc lang="tr">Bumble, Leo&apos;nun Bhilka&apos;da yasal olarak uçması için uçuş ehliyeti almasına yardım ediyor. Ama Bhilka&apos;nın garip kuralları bunu zorlaştırıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902063500 +0000" stop="20260902065000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dışkı</title><desc lang="tr">Dr Chris ve Dr Xand size iyi bir sağlıklı dışkının önemini gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902065000 +0000" stop="20260902065800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Temizlikçi 3000</title><desc lang="tr">Sprinter, Bhilka&apos;daki çöpleri temizlemek için bir temizlik robotu icat eder, ama robot vatandaşları süpürünce bir çözüm bulması gerekir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902065800 +0000" stop="20260902071300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dedektifler Görevde</title><desc lang="tr">Üçüzlerin evinde bir çift iğrenç külot var. Sprinter ve Leo, külotların sahibinin kim olduğunun gizemini çözebilecek mi?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902071300 +0000" stop="20260902072700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Karlı Soğuk Keçi Şenliği</title><desc lang="tr">Küçük Bo Purl&apos;ün Karlı Keçi Şenliği&apos;ndeki performansını tüm engellere rağmen bitirmesine yardım etme görevlerinde Bitz ve Bob&apos;a katılın.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902072700 +0000" stop="20260902080900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Labirent Macerası</title><desc lang="tr">Phoebe&apos;nin köpeği Earl, Bitz&apos;in labirentinde kaybolur. Bitz, daha yükseğe çıkıp doğru talimatları vermek için bir sıcak hava balonu kullanır</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902080900 +0000" stop="20260902083900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hapşırmanın Hikayesi</title><desc lang="tr">Doktor Chris ve Doktor Xand hapşırdığımızda vücudumuza neler olduğunu gösteriyor ve insan beynini inceliyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902083900 +0000" stop="20260902084900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Zincirleme Reaksiyon</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902084900 +0000" stop="20260902085900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Tanımlanamayan Tarama Nesnesi</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902085900 +0000" stop="20260902091500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bakteri</title><desc lang="tr">Dr Chris ve Dr Xand, bakterilerin nasıl gaz çıkarmanıza sebep olduğunu gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902091500 +0000" stop="20260902093800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Fosil</title><desc lang="tr">Nektonlar, bir su altı mağarasını keşfederken, Ant, bir yavru timsahla bağ kurar. Ama Timsahın annesi bu kez Ant&apos;ın peşine düşecektir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902093800 +0000" stop="20260902100100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dev Mürekkep Balığı</title><desc lang="tr">Ant ve Fontaine, okyanusun en nadir yaratığı olan dev mürekkep balığını arıyorlar. Peki, o sizden daha zeki çıkarsa ne olur?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902100100 +0000" stop="20260902103200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Vücut Hareketleri</title><desc lang="tr">Doktorlar vücudun nasıl hareket ettiğini gösteriyor ve Dr. Chris koluna kan emen bir sülük yapıştırıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902103200 +0000" stop="20260902104000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Roket</title><desc lang="tr">Charles’ın roketi başarısız olur, ama arkadaşları onu neşelendirir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902104000 +0000" stop="20260902104600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yaprak Yığını</title><desc lang="tr">Charles süpürmeye odaklanırken, Ollie ve Mabel onun dikkatini dağıtır.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902104600 +0000" stop="20260902110000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kurbağa Kütük Köprüsü</title><desc lang="tr">Korucu Bevel, bazı kurbağaları suya yönlendirir, ancak geniş ve büyük bir dereyi geçemezler. Bitz onlara yardım etmek için bir köprü yapar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902110000 +0000" stop="20260902111600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hücre Zarı</title><desc lang="tr">Dr Chris ve Dr Xand, sıçrayan yumurta deneyiyle hücre zarlarının gücünü gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902111600 +0000" stop="20260902114500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ağrı Eşiği</title><desc lang="tr">Doktorlar, ağrıyla ilgili deney yapıyorlar ve ayakkabıların yürüyüşümüzü nasıl etkilediğini gösteriyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902114500 +0000" stop="20260902121000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kaleci (Maddie Hinch) ve Kâşif (Ranulph Fiennes)</title><desc lang="tr">Dünyanın en iyi çim hokeyi kalecisi Maddie Hinch ve dünyaca ünlü kâşif Ranulph Fiennes, rekor kıran yolculuklarını paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902121000 +0000" stop="20260902122500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bitkiler nasıl yer?</title><desc lang="tr">Botaniği gökkuşağı renklerinden bir çiçek yaparak keşfeden usta J.C Bose&apos;nin, bitkilerin doğasıyla ilgili yaptığı çalışmaları görüyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902122500 +0000" stop="20260902124000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Bükülen ışık</title><desc lang="tr">Işığın doğasını suyla yağı karıştırarak ortaya çıkaran ay ışığı yansımalarının aynaya benzediğini tespit eden Zhang Heng ile tanışacağız.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902124000 +0000" stop="20260902125100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Pusula</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902125100 +0000" stop="20260902130000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sırt çantası</title><desc lang="tr">Munki ve Trunk, ormandaki en iyi arkadaşlardır. Küçük maceraları büyük boyutlara ulaşır, ancak dostluk ve eğlence galip gelir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902130000 +0000" stop="20260902130900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Talimatlar</title><desc lang="tr">Tom Thomas&apos;ın babası, onun kurulmamış bir sandalyeyi birleştiremeyeceğini söylediğinde, Tom Thomas talimatları izlemenin önemini öğrenir.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902130900 +0000" stop="20260902131700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Hava Yastığı</title><desc lang="tr">Profesör Eugenius&apos;un yeni bir hava yastığını test etmesini izleyen Tamircik çocukları, trafik güvenliğinin önemini öğreniyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902131700 +0000" stop="20260902133400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Parmak İzleri</title><desc lang="tr">Dr Chris ve Dr Xand size evde parmak izlerini nasıl bulacağınızı gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902133400 +0000" stop="20260902135700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yapay Zeka Programı</title><desc lang="tr">Yeni bir yapay zeka programı, Nektonları bir kürekçiyi kurtarmaktan alıkoyar. Ant, onu alt etmeyi başarabilecek ve günü kurtarabilecek mi?</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902135700 +0000" stop="20260902142000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Okyanusun En Derini</title><desc lang="tr">Will ve Ant&apos;ın okyanusun en derin noktasından almak için uğraştıkları nesne, bekledikleri gibi değil. Aldatılmışlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902142000 +0000" stop="20260902143600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Tori Boggs: Atlama İpi Şampiyonu</title><desc lang="tr">Efsanevi atlama ipçisi Tori Boggs, rekor kıran atlama becerilerinin dünyanın en iyisi olmasına nasıl yardımcı olduğunu gösteriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902143600 +0000" stop="20260902145200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Dashaun Morris: Amerian Futbolu Fenomeni</title><desc lang="tr">American football player Dashaun Morris II demonstrates his world record one-handed ball-catching skills.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902145200 +0000" stop="20260902152200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ağız, Burun ve Mide</title><desc lang="tr">Doktorlar, ağız, burun ve midenin birbirine nasıl bağlı olduğunu anlatıyor. Dr. Chris, robot bir cerrahla tanışıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902152200 +0000" stop="20260902153600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yünlü Harika Kız</title><desc lang="tr">Süper Kahramanlar, Beceri Şehri&apos;ndeki gürültü çıkaran çılgınlıklarında Zip ve Pop&apos;u durdurmaya çalışırken Polis Şefi Bevel&apos;a yardım ediyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902153600 +0000" stop="20260902160200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Maceracı (Bear Grylls) ve Patron (Ursula Burns)</title><desc lang="tr">Efsanevi maceracı Bear Grylls ve bir Fortune 500 şirketinin ilk Siyahi kadın CEO&apos;su Ursula Burns zafer hikayelerini paylaşıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902160200 +0000" stop="20260902162600 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ejderha Üçgeni</title><desc lang="tr">Yabancılar, bir Japon adasından şeyleri çalıp denizin altına mı sürüklüyor? Nektonlar bu durumu araştırıyor ve tehlikeli bir şey buluyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902162600 +0000" stop="20260902164800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Ada Kaplumbağaları</title><desc lang="tr">Dünyadaki en nadir kaplumbağa çalındı ve Nektonlar onu arıyor. Ancak bir tuzak içine düşüyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902164800 +0000" stop="20260902165500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çöl Yolculuğu</title><desc lang="tr">Bugün engelli parkurumuzda test edeceğimiz plastik şişe arabalar tasarlıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902165500 +0000" stop="20260902170200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Canavar Dağı</title><desc lang="tr">Oyuncakları farklı yüzeylerde yarıştırarak sürtünmeyi keşfediyoruz!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902170200 +0000" stop="20260902170900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Çarpının Olduğu Yer</title><desc lang="tr">Depolanan enerjinin kağıt topları nasıl fırlattığını denemek için karton boru, lastik bant ve kalemlerden kağıt top fırlatıcıları yapıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902170900 +0000" stop="20260902173900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Osuruk Ne Kadar Hızlı?</title><desc lang="tr">İğrenç uyarı! Pazılardan geğirmelere, karıncalanmalardan kusmaya kadar, doktorlar insan vücudunu keşfetmek için çılgın deneylere girişiyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902173900 +0000" stop="20260902175400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Telsizle iletişim</title><desc lang="tr">basit bir telefonla ses çıkarmayı öğrenmek için fizikçi ve kaşif olan radyonun babası Guglielmo Marconi&apos;yle tanışıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902175400 +0000" stop="20260902180900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Harita seviyeleme</title><desc lang="tr">Coğrafyayı bir marangoz seviyesinde bilmek için Kore&apos;nin ilk kez detaylı bir haritasını çizen haritacı Kim Jeong-Ho ile tanışıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902180900 +0000" stop="20260902183900 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Yıldız (Julia Roberts) ve Dövüşçü (Wladimir Klitschko)</title><desc lang="tr">Oscar ödüllü aktris Julia Roberts ve eski dünya ağır sıklet boks şampiyonu Wladimir Klitschko zirveye giden yolculuklarını anlatıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902183900 +0000" stop="20260902185400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Vispy Kharadi: Dövüş Sanatlarının Güçlü İsmi</title><desc lang="tr">Müthiş dövüş sanatçısı Vispy Kharadi, çivi yatağında yatmak da dahil, birden fazla dünya rekoru unvanına nasıl ulaştığını açıklıyor!</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902185400 +0000" stop="20260902190800 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Pitmanlar: Dövüş Sanatlarının Dinamik İkilisi</title><desc lang="tr">Harika dövüş sanatçısı çifti Lisa ve Chris Pitman, güçlü becerilerini sergiliyor ve bu da onlara Guiness Dünya Rekoru unvanını kazandırıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902190800 +0000" stop="20260902193100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Kaleci (Maddie Hinch) ve Kâşif (Ranulph Fiennes)</title><desc lang="tr">Dünyanın en iyi çim hokeyi kalecisi Maddie Hinch ve dünyaca ünlü kâşif Ranulph Fiennes, rekor kıran yolculuklarını paylaşıyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902193100 +0000" stop="20260902194400 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">İl yardım mucizesi</title><desc lang="tr">İlaçları öğrenmek içimn ilk yardım kitini yapan ve ameliyatın babası ve ameliyat malzemelerinin kaşifi olan Al-Zahrawi&apos;yle tanışıyoruz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902194400 +0000" stop="20260902195100 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sünger Tekne</title><desc lang="tr">Dengede dur ve denize açılmaya hazır ol! Sana gerçekten yüzebilen bir sünger tekne yapmayı göstereceğiz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902195100 +0000" stop="20260902200000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Enerjik Yaratık</title><desc lang="tr">Birkaç kapak ve bir parça karton al. Sana kastanyet yapmayı öğreteceğiz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902200000 +0000" stop="20260902200700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Sanat Fırıldağı</title><desc lang="tr">Bu hünerli düzenek ile, döndürerek yaratıcılığınızı konuşturun.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902200700 +0000" stop="20260902201200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Samanyolu</title><desc lang="tr">Galaksimizin, geçmiş, günümüz ve gelecekteki yıldız dağılımlarının yeniden inşası için araştırmacılar galaktik düzlemi analiz ettiler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902201200 +0000" stop="20260902201700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Toprağın Derinlikleri</title><desc lang="tr">İtalyan araştırmacılar, Avrupa geneline yayılmış 25.000 numune ile Avrupa’daki toprağın sağlığını değerlendiriyor.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902201700 +0000" stop="20260902202200 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Mucize Değişim</title><desc lang="tr">İki resmi karıştırıp nasıl bir resim yaparsınız? Başınızı döndürecek bir görsel yanılsamayla size göstereceğiz.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902202200 +0000" stop="20260902202700 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Cool Baking Technology</title><desc lang="tr">Avrupalı bilim insanları ve girişimciler tarafından geliştirilen müthiş heyecan verici ürünlerden bazılarına göz atın.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902202700 +0000" stop="20260902203000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Digitizing the Past</title><desc lang="tr">Avrupalı bilim insanları ve girişimciler tarafından geliştirilen müthiş heyecan verici ürünlerden bazılarına göz atın.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902203000 +0000" stop="20260902203500 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Enerjiye Bir Pencere</title><desc lang="tr">Araştırmacılar, enerji üretmenin yeni bir yolunu deniyorlar. Aletler mi? Kocaman bir konteynır ve dolaşım suyu dolu pencereler.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902203500 +0000" stop="20260902204000 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Giyilebilir Elektronikler</title><desc lang="tr">Yürüyerek enerjinizi üretebildiğiniz bir gelecek hayal edin. Müthiş değil mi? Araştırmacılar bunu gerçekleştirebilmek için çok uğraşıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
+  </programme>
+  <programme start="20260902204000 +0000" stop="20260902210300 +0000" channel="DaVinci.de@SD">
+    <title lang="tr">Maceracı (Bear Grylls) ve Patron (Ursula Burns)</title><desc lang="tr">Efsanevi maceracı Bear Grylls ve bir Fortune 500 şirketinin ilk Siyahi kadın CEO&apos;su Ursula Burns zafer hikayelerini paylaşıyorlar.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
   </programme>
   <programme start="20260831022000 +0000" stop="20260831025000 +0000" channel="67a3521bcfef0b3744abd66d">
     <title lang="tr">Uzayın İçinde</title><desc lang="tr">Dünya gezegenimizin ötesinde yatan gizemleri keşfederken ve çözerken bizimle gelin. Bu dizi, uzayın içinde yolculuk ederken neler görebileceğimizi, uzayda nasıl yaşayabileceğimizi ve bilimin bize geçmiş ve gelecek hakkında neler söylediğini kapsayan uzay hikayeleri ve evrenimiz hakkında bilgilerle doludur.</desc><category lang="tr">Belgesel</category><category lang="tr">Genel</category>
