@@ -17,6 +17,7 @@ INPUT_M3U = "iptv.m3u"
 OUTPUT_M3U = "iptv.m3u"
 
 VOLO_BASE_URL = "https://tv.canlitvvolo.com"
+VOLO_API_URL = "https://api.canlitvvolo.com/api/tv/stream"
 
 VOLO_RSS_URLS = [
     "https://tv.canlitvvolo.com/feed",
@@ -346,7 +347,89 @@ def extract_m3u8_urls(text):
 
 
 # ============================================================
-# EINZELNE VOLO KANALSEITE
+# API-STREAMS LADEN (NEU)
+# ============================================================
+
+def get_volo_streams_via_api():
+    """
+    Ruft die Volo-API ab und baut eine Map aus normalisierten Namen zu Stream-URLs auf.
+    """
+    print()
+    print("=" * 60)
+    print("VOLO API / STREAMS")
+    print("=" * 60)
+
+    try:
+        print(f"[VOLO API] Rufe ab: {VOLO_API_URL}")
+        response = requests.get(VOLO_API_URL, headers=VOLO_HEADERS, timeout=REQUEST_TIMEOUT)
+        print(f"[VOLO API] HTTP {response.status_code}")
+
+        if response.status_code != 200:
+            print("[VOLO API] Fehler beim Abruf der API.")
+            return {}
+
+        data = response.json()
+        print(f"[VOLO API] {len(data)} Einträge von der API erhalten.")
+
+        if not data:
+            return {}
+
+        volo_map = {}
+
+        # Passe diesen Teil an das tatsächliche JSON-Format an!
+        # Annahme: data ist ein Array von Objekten mit "name" und "stream" (oder "url")
+        for item in data:
+            # Versuche verschiedene mögliche Schlüssel für Name und URL
+            name = item.get("name") or item.get("title") or item.get("channel") or item.get("display_name")
+            url = item.get("stream") or item.get("url") or item.get("link") or item.get("m3u8")
+
+            if not name or not url:
+                continue
+
+            # Normalisiere den Namen und erstelle Schlüssel
+            keys = get_name_variants(name)
+            
+            # Wenn der Name sehr kurz ist, füge auch den Originalnamen als Key hinzu
+            if len(name.strip()) < 3:
+                simple_key = normalize_text(name).replace(" ", "")
+                if simple_key and len(simple_key) >= 2:
+                    keys.add(simple_key)
+
+            for key in keys:
+                if len(key) >= 2:  # Etwas großzügiger bei API-Daten
+                    if key not in volo_map:
+                        volo_map[key] = []
+                    # Duplikate vermeiden
+                    if not any(x["url"] == url for x in volo_map[key]):
+                        volo_map[key].append({
+                            "url": url,
+                            "names": [name],
+                            "source": "api"
+                        })
+
+        print(f"[VOLO API] {len(volo_map)} Namensschlüssel aufgebaut.")
+        
+        # Zeige einige Beispiele
+        if volo_map:
+            sample_keys = list(volo_map.keys())[:5]
+            for key in sample_keys:
+                print(f"  - {key} -> {volo_map[key][0]['url'][:80]}...")
+        
+        return volo_map
+
+    except requests.exceptions.RequestException as exc:
+        print(f"[VOLO API] Netzwerkfehler: {exc}")
+        return {}
+    except ValueError as exc:
+        print(f"[VOLO API] JSON-Parser-Fehler: {exc}")
+        return {}
+    except Exception as exc:
+        print(f"[VOLO API] Allgemeiner Fehler: {exc}")
+        return {}
+
+
+# ============================================================
+# EINZELNE VOLO KANALSEITE (UNVERÄNDERT)
 # ============================================================
 
 def extract_stream_from_page(channel_url, rss_names=None):
@@ -480,7 +563,7 @@ def extract_stream_from_page(channel_url, rss_names=None):
 
 
 # ============================================================
-# RSS PARSEN
+# RSS PARSEN (UNVERÄNDERT)
 # ============================================================
 
 def parse_rss_feed(xml_content):
@@ -554,7 +637,7 @@ def parse_rss_feed(xml_content):
 
 
 # ============================================================
-# VOLO RSS LADEN
+# VOLO RSS LADEN (UNVERÄNDERT, ABER ZUSÄTZLICHE LOGGING)
 # ============================================================
 
 def get_volo_streams_via_rss():
@@ -565,7 +648,7 @@ def get_volo_streams_via_rss():
 
     print()
     print("=" * 60)
-    print("VOLO RSS / HLS")
+    print("VOLO RSS / HLS (FALLBACK)")
     print("=" * 60)
 
     rss_channels = []
@@ -723,6 +806,7 @@ def get_volo_streams_via_rss():
             entry = {
                 "url": stream_url,
                 "names": names,
+                "source": "rss",
             }
 
             for key in keys:
@@ -753,7 +837,7 @@ def get_volo_streams_via_rss():
 
 
 # ============================================================
-# MATCHING
+# MATCHING (VERBESSERT)
 # ============================================================
 
 def find_volo_stream(channel_name, volo_map):
@@ -763,10 +847,10 @@ def find_volo_stream(channel_name, volo_map):
     Reihenfolge:
     1. Exaktes Matching
     2. Varianten-Matching
-    3. vorsichtiges Teil-Matching
+    3. Teil-Matching mit mehr Toleranz
     """
 
-    if not channel_name:
+    if not channel_name or not volo_map:
         return None
 
     channel_variants = get_name_variants(
@@ -787,20 +871,23 @@ def find_volo_stream(channel_name, volo_map):
             streams = volo_map[key]
 
             if streams:
+                # Bevorzuge API-Quellen
+                for stream in streams:
+                    if stream.get("source") == "api":
+                        return stream
                 return streams[0]
 
     # --------------------------------------------------------
-    # 2. Teil-Matching
-    #
-    # Nur wenn der Unterschied nicht zu groß ist.
+    # 2. Teil-Matching (etwas großzügiger)
     # --------------------------------------------------------
 
     best_candidate = None
     best_score = 0
+    best_source_priority = 0  # API (2) > RSS (1)
 
     for channel_key in channel_variants:
 
-        if len(channel_key) < 4:
+        if len(channel_key) < 3:
             continue
 
         for volo_key, streams in volo_map.items():
@@ -808,42 +895,55 @@ def find_volo_stream(channel_name, volo_map):
             if not streams:
                 continue
 
-            if len(volo_key) < 4:
+            if len(volo_key) < 3:
                 continue
 
             score = 0
+            source_priority = 0
 
-            if (
-                channel_key in volo_key
-                or volo_key in channel_key
-            ):
-                shorter = min(
-                    len(channel_key),
-                    len(volo_key),
-                )
+            # Verschiedene Matching-Strategien
+            if channel_key == volo_key:
+                score = 1.0
+            elif channel_key in volo_key or volo_key in channel_key:
+                shorter = min(len(channel_key), len(volo_key))
+                longer = max(len(channel_key), len(volo_key))
+                score = shorter / longer
+                
+                # Bonus für längere Keys
+                if longer >= 8 and score >= 0.6:
+                    score += 0.1
 
-                longer = max(
-                    len(channel_key),
-                    len(volo_key),
-                )
+            # Prüfe, ob API-Quelle vorhanden ist
+            for stream in streams:
+                if stream.get("source") == "api":
+                    source_priority = 2
+                    break
+                elif stream.get("source") == "rss":
+                    source_priority = max(source_priority, 1)
 
-                ratio = shorter / longer
-
-                if ratio >= 0.75:
-                    score = ratio
-
-            if score > best_score:
+            # Kombinierter Score
+            if score > best_score or (score == best_score and source_priority > best_source_priority):
                 best_score = score
-                best_candidate = streams[0]
+                best_source_priority = source_priority
+                # Bevorzuge API-Streams innerhalb der Gruppe
+                for stream in streams:
+                    if stream.get("source") == "api":
+                        best_candidate = stream
+                        break
+                if best_candidate is None:
+                    best_candidate = streams[0]
 
-    if best_score >= 0.75:
+    # Akzeptiere auch niedrigere Scores, wenn es eine API-Quelle ist
+    min_score = 0.6 if best_source_priority >= 2 else 0.75
+
+    if best_score >= min_score:
         return best_candidate
 
     return None
 
 
 # ============================================================
-# M3U EINLESEN
+# M3U EINLESEN (UNVERÄNDERT)
 # ============================================================
 
 def parse_m3u(content):
@@ -992,7 +1092,7 @@ def write_m3u(entries):
 
 
 # ============================================================
-# HAUPTPROZESS
+# HAUPTPROZESS (ANGEPASST)
 # ============================================================
 
 def process_hybrid_m3u():
@@ -1000,16 +1100,20 @@ def process_hybrid_m3u():
     print()
     print("=" * 60)
     print("HYBRID IPTV BUILDER")
-    print("VOLO -> VAVOO BACKUP")
+    print("VOLO (API) -> VAVOO BACKUP")
     print("=" * 60)
 
     # --------------------------------------------------------
-    # 1. Volo holen
+    # 1. Volo holen: Zuerst API, dann RSS als Fallback
     # --------------------------------------------------------
 
-    volo_streams = (
-        get_volo_streams_via_rss()
-    )
+    volo_streams = get_volo_streams_via_api()
+    
+    if not volo_streams:
+        print("[INFO] API lieferte keine Daten. Verwende RSS-Feed als Fallback.")
+        volo_streams = get_volo_streams_via_rss()
+    else:
+        print(f"[INFO] Verwende {len(volo_streams)} Streams von der API.")
 
     # --------------------------------------------------------
     # 2. Bestehende M3U lesen
@@ -1051,7 +1155,6 @@ def process_hybrid_m3u():
 
     volo_count = 0
     vavoo_count = 0
-    unmatched_count = 0
 
     matched_names = []
 
@@ -1076,6 +1179,7 @@ def process_hybrid_m3u():
         if match:
 
             chosen_url = match["url"]
+            source = match.get("source", "unknown")
 
             output_entries.append(
                 {
@@ -1091,6 +1195,7 @@ def process_hybrid_m3u():
                 (
                     channel_name,
                     chosen_url,
+                    source,
                 )
             )
 
@@ -1113,9 +1218,6 @@ def process_hybrid_m3u():
             )
 
             vavoo_count += 1
-
-            if chosen_url:
-                unmatched_count += 1
 
     # --------------------------------------------------------
     # 4. Schreiben
@@ -1161,13 +1263,14 @@ def process_hybrid_m3u():
         print()
         print("[VOLO] Verwendete Sender:")
 
-        for name, url in sorted(
+        for name, url, source in sorted(
             matched_names,
             key=lambda x: x[0].lower(),
         ):
 
+            source_label = "API" if source == "api" else "RSS"
             print(
-                f"  ✓ {name} -> {url}"
+                f"  ✓ {name} [{source_label}] -> {url}"
             )
 
     print()
