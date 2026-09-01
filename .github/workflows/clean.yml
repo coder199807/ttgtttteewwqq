@@ -27,7 +27,7 @@ jobs:
 
       - name: Bereinigungs-Skript ausführen
         run: |
-          python clean_playlist.py
+          python cleanlist.py
 
       - name: Änderungen committen und pushen
         run: |
