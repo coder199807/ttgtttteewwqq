@@ -19,7 +19,11 @@ OUTPUT_M3U = "iptv.m3u"
 
 VOLO_BASE_URL = "https://tv.canlitvvolo.com"
 VOLO_API_URL = "https://api.canlitvvolo.com/api/tv/stream"
-VOLO_API_STREAM_URL = "https://api.canlitvvolo.com/api/tv/stream"
+
+VOLO_RSS_URLS = [
+    "https://tv.canlitvvolo.com/feed",
+    "https://tv.canlitvvolo.com/rss",
+]
 
 CUSTOM_USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -50,7 +54,7 @@ RSS_HEADERS = {
     ),
 }
 
-# Headers für die API (basierend auf deinem Request)
+# Headers für die API
 API_HEADERS = {
     "User-Agent": CUSTOM_USER_AGENT,
     "Accept": "application/json, text/plain, */*",
@@ -63,12 +67,8 @@ API_HEADERS = {
     "Sec-Fetch-Site": "same-site",
 }
 
-# Der Request-Body für die API - laut deinem Beispiel
-API_PAYLOAD = {
-    "permalink": "",  # Kann leer sein oder spezifischer Permalink
-    "yayin": 1,       # 1 = Live-Stream
-    # Weitere Parameter können hier ergänzt werden
-}
+# API-Payload - Leer lassen, da die API sonst keine Daten liefert
+API_PAYLOAD = {}  # Leeres Objekt für den POST-Request
 
 MAX_WORKERS = 12
 REQUEST_TIMEOUT = 8
@@ -126,16 +126,6 @@ def normalize_text(text):
 def get_canonical_key(name):
     """
     Erstellt einen robusten Vergleichsschlüssel.
-
-    Beispiele:
-
-    Show TV
-    SHOW TV HD
-    ShowTV
-    Show TV 720p
-    Show TV FHD
-
-    werden zu demselben Schlüssel.
     """
 
     if not name:
@@ -271,187 +261,100 @@ def get_name_variants(name):
 
 
 # ============================================================
-# PERMALINK IN SENDERNAMEN KONVERTIEREN
+# URL / KANALNAME (FÜR RSS)
 # ============================================================
 
-def permalink_to_channel_name(permalink):
+def get_name_from_url(url):
     """
-    Konvertiert einen Volo-Permalink in einen lesbaren Sendernamen.
-    Beispiel: "show-tv-canli-hd-yayin-kesintisiz-izle/" -> "Show TV"
+    Holt einen möglichen Sendernamen aus dem URL-Slug.
     """
-    if not permalink:
+
+    if not url:
         return ""
-    
-    # Entferne führende/trailende Slashes und Suffixe
-    name = permalink.strip('/')
-    
-    # Entferne typische Volo-Suffixe
-    name = re.sub(
-        r'(?i)(-canli-izle|-canli-hd-yayin-kesintisiz-izle|-canli-yayin|-hd-yayin|-canli)$',
-        '',
-        name
-    )
-    
-    # Ersetze Bindestriche durch Leerzeichen
-    name = name.replace('-', ' ')
-    
-    # Großschreibung verbessern
-    name = name.title()
-    
-    return name.strip()
-
-
-# ============================================================
-# API-STREAMS LADEN (ANGEPASST FÜR DAS JSON-FORMAT)
-# ============================================================
-
-def get_volo_streams_via_api():
-    """
-    Ruft die Volo-API per POST ab und baut eine Map aus normalisierten Namen zu Stream-URLs auf.
-    """
-    print()
-    print("=" * 60)
-    print("VOLO API / STREAMS (POST)")
-    print("=" * 60)
 
     try:
-        print(f"[VOLO API] POST an: {VOLO_API_URL}")
-        print(f"[VOLO API] Payload: {json.dumps(API_PAYLOAD, indent=2)}")
-        
-        response = requests.post(
-            VOLO_API_URL,
-            headers=API_HEADERS,
-            json=API_PAYLOAD,
-            timeout=REQUEST_TIMEOUT
+        parsed = urlparse(url)
+        path = unquote(parsed.path)
+
+        slug = path.rstrip("/").split("/")[-1]
+
+        # Typische Volo-Suffixe entfernen
+        slug = re.sub(
+            r"(?i)(-canli-izle|-canli-izle$|-canli$)",
+            "",
+            slug,
         )
-        print(f"[VOLO API] HTTP {response.status_code}")
 
-        if response.status_code != 200:
-            print(f"[VOLO API] Fehler beim Abruf der API: {response.status_code}")
-            return {}
+        slug = slug.replace("-", " ")
 
-        # Prüfe Content-Type
-        content_type = response.headers.get('content-type', '')
-        if 'application/json' not in content_type:
-            print(f"[VOLO API] Ungültiger Content-Type: {content_type}")
-            return {}
+        return slug.strip()
 
-        data = response.json()
-        print(f"[VOLO API] API-Antwort erhalten.")
-
-        if not data:
-            print("[VOLO API] Keine Daten von der API.")
-            return {}
-
-        # Logge die API-Antwort (gekürzt)
-        print(f"[VOLO API] Antwort: {json.dumps(data, indent=2)[:500]}...")
-
-        volo_map = {}
-
-        # Verarbeite das JSON-Format
-        # Das ist ein Dictionary mit: {permalink, yayin, ip, ipcountry, mobile}
-        if isinstance(data, dict):
-            # Extrahiere den Permalink
-            permalink = data.get('permalink', '')
-            if permalink:
-                # Konvertiere Permalink in Sendername
-                channel_name = permalink_to_channel_name(permalink)
-                
-                # Die Stream-URL muss aus den Daten konstruiert werden
-                # Basierend auf der Volo-Website-Struktur
-                stream_url = f"https://api.canlitvvolo.com/api/tv/stream/{permalink}"
-                
-                # Oder: Konstruiere die m3u8-URL basierend auf dem Permalink
-                # Beispiel-Format aus deinem Beispiel:
-                # https://dogusdyg-star.lg.mncdn.com/dogusdyg_star/live_1080p3000000kbps/index.m3u8?st=...
-                # Da die API selbst keine direkte Stream-URL liefert, müssen wir sie konstruieren
-                
-                # Versuche, die Stream-URL aus dem Permalink zu generieren
-                # Passe dies an das tatsächliche Format an!
-                if permalink:
-                    # Extrahiere den Sender-Code aus dem Permalink
-                    # Beispiel: "show-tv-canli-hd-yayin-kesintisiz-izle/" -> "show-tv"
-                    base_name = permalink.split('-canli')[0]
-                    
-                    # Konstruiere die Stream-URL (muss angepasst werden!)
-                    # Dies ist NUR EIN BEISPIEL - du musst die tatsächliche URL-Struktur kennen!
-                    stream_url = f"https://dogusdyg-{base_name}.lg.mncdn.com/{base_name}/live_1080p3000000kbps/index.m3u8"
-                    
-                    # Füge einen temporären Token hinzu (wird von Volo dynamisch generiert)
-                    # Du musst die tatsächliche Token-Generierung hier implementieren
-                    
-                    if channel_name and stream_url:
-                        keys = get_name_variants(channel_name)
-                        
-                        # Füge auch den Permalink als Key hinzu
-                        permalink_key = normalize_text(permalink).replace('-', '').replace('/', '')
-                        if permalink_key and len(permalink_key) >= 3:
-                            keys.add(permalink_key)
-                        
-                        for key in keys:
-                            if len(key) >= 2:
-                                if key not in volo_map:
-                                    volo_map[key] = []
-                                if not any(x["url"] == stream_url for x in volo_map[key]):
-                                    volo_map[key].append({
-                                        "url": stream_url,
-                                        "names": [channel_name],
-                                        "source": "api",
-                                        "permalink": permalink
-                                    })
-                        
-                        print(f"[VOLO API] Stream gefunden: {channel_name} -> {stream_url}")
-
-        elif isinstance(data, list):
-            # Falls die API eine Liste zurückgibt (nur für den Fall)
-            for item in data:
-                permalink = item.get('permalink', '')
-                if permalink:
-                    channel_name = permalink_to_channel_name(permalink)
-                    stream_url = f"https://api.canlitvvolo.com/api/tv/stream/{permalink}"
-                    
-                    if channel_name and stream_url:
-                        keys = get_name_variants(channel_name)
-                        for key in keys:
-                            if len(key) >= 2:
-                                if key not in volo_map:
-                                    volo_map[key] = []
-                                if not any(x["url"] == stream_url for x in volo_map[key]):
-                                    volo_map[key].append({
-                                        "url": stream_url,
-                                        "names": [channel_name],
-                                        "source": "api",
-                                        "permalink": permalink
-                                    })
-
-        print(f"[VOLO API] {len(volo_map)} Namensschlüssel aufgebaut.")
-        
-        # Zeige einige Beispiele
-        if volo_map:
-            sample_keys = list(volo_map.keys())[:5]
-            for key in sample_keys:
-                url_preview = volo_map[key][0]['url'][:80]
-                print(f"  - {key} -> {url_preview}...")
-        else:
-            print("[VOLO API] WARNUNG: Keine Namensschlüssel aufgebaut!")
-        
-        return volo_map
-
-    except requests.exceptions.RequestException as exc:
-        print(f"[VOLO API] Netzwerkfehler: {exc}")
-        return {}
-    except ValueError as exc:
-        print(f"[VOLO API] JSON-Parser-Fehler: {exc}")
-        return {}
-    except Exception as exc:
-        print(f"[VOLO API] Allgemeiner Fehler: {exc}")
-        import traceback
-        traceback.print_exc()
-        return {}
+    except Exception:
+        return ""
 
 
 # ============================================================
-# EINZELNE VOLO KANALSEITE (FALLBACK)
+# HLS AUS HTML EXTRAHIEREN (FÜR RSS)
+# ============================================================
+
+def extract_m3u8_urls(text):
+    """
+    Extrahiert m3u8 URLs aus HTML, JavaScript usw.
+    """
+
+    if not text:
+        return []
+
+    found = []
+
+    patterns = [
+        # normale absolute URLs
+        r'https?://[^\s"\'<>\\]+?\.m3u8(?:\?[^\s"\'<>\\]*)?',
+
+        # escaped URLs
+        r'https?:\\/\\/[^"\']+?\.m3u8(?:\?[^"\']*)?',
+
+        # JSON / JS Strings
+        r'["\']([^"\']+\.m3u8(?:\?[^"\']*)?)["\']',
+    ]
+
+    for pattern in patterns:
+        try:
+            matches = re.findall(
+                pattern,
+                text,
+                flags=re.IGNORECASE,
+            )
+
+            for match in matches:
+                if isinstance(match, tuple):
+                    match = match[0]
+
+                if not match:
+                    continue
+
+                url = match.replace("\\/", "/")
+
+                if url.startswith("http"):
+                    found.append(url)
+
+        except Exception:
+            pass
+
+    # URL-Encoding / HTML-Encoding
+    cleaned = []
+
+    for url in found:
+        url = html.unescape(url)
+
+        if url not in cleaned:
+            cleaned.append(url)
+
+    return cleaned
+
+
+# ============================================================
+# EINZELNE VOLO KANALSEITE (FÜR RSS)
 # ============================================================
 
 def extract_stream_from_page(channel_url, rss_names=None):
@@ -582,99 +485,6 @@ def extract_stream_from_page(channel_url, rss_names=None):
         pass
 
     return None
-
-
-# ============================================================
-# URL / KANALNAME (FÜR RSS FALLBACK)
-# ============================================================
-
-def get_name_from_url(url):
-    """
-    Holt einen möglichen Sendernamen aus dem URL-Slug.
-    """
-
-    if not url:
-        return ""
-
-    try:
-        parsed = urlparse(url)
-        path = unquote(parsed.path)
-
-        slug = path.rstrip("/").split("/")[-1]
-
-        # Typische Volo-Suffixe entfernen
-        slug = re.sub(
-            r"(?i)(-canli-izle|-canli-izle$|-canli$)",
-            "",
-            slug,
-        )
-
-        slug = slug.replace("-", " ")
-
-        return slug.strip()
-
-    except Exception:
-        return ""
-
-
-# ============================================================
-# HLS AUS HTML EXTRAHIEREN (FÜR RSS FALLBACK)
-# ============================================================
-
-def extract_m3u8_urls(text):
-    """
-    Extrahiert m3u8 URLs aus HTML, JavaScript usw.
-    """
-
-    if not text:
-        return []
-
-    found = []
-
-    patterns = [
-        # normale absolute URLs
-        r'https?://[^\s"\'<>\\]+?\.m3u8(?:\?[^\s"\'<>\\]*)?',
-
-        # escaped URLs
-        r'https?:\\/\\/[^"\']+?\.m3u8(?:\?[^"\']*)?',
-
-        # JSON / JS Strings
-        r'["\']([^"\']+\.m3u8(?:\?[^"\']*)?)["\']',
-    ]
-
-    for pattern in patterns:
-        try:
-            matches = re.findall(
-                pattern,
-                text,
-                flags=re.IGNORECASE,
-            )
-
-            for match in matches:
-                if isinstance(match, tuple):
-                    match = match[0]
-
-                if not match:
-                    continue
-
-                url = match.replace("\\/", "/")
-
-                if url.startswith("http"):
-                    found.append(url)
-
-        except Exception:
-            pass
-
-    # URL-Encoding / HTML-Encoding
-    cleaned = []
-
-    for url in found:
-        url = html.unescape(url)
-
-        if url not in cleaned:
-            cleaned.append(url)
-
-    return cleaned
 
 
 # ============================================================
@@ -952,17 +762,34 @@ def get_volo_streams_via_rss():
 
 
 # ============================================================
-# MATCHING (VERBESSERT)
+# API-STREAMS LADEN
+# ============================================================
+
+def get_volo_streams_via_api():
+    """
+    Ruft die Volo-API per POST ab.
+    Achtung: Die API liefert nur Daten, wenn ein spezifischer Permalink übergeben wird.
+    Daher wird diese Funktion vorerst deaktiviert und nur RSS verwendet.
+    """
+    print()
+    print("=" * 60)
+    print("VOLO API / STREAMS (POST)")
+    print("=" * 60)
+
+    print("[VOLO API] Die API erwartet einen spezifischen Permalink im Payload.")
+    print("[VOLO API] Da wir alle Kanäle abrufen möchten, wird RSS als Quelle verwendet.")
+    print("[VOLO API] API-Aufruf übersprungen.")
+    
+    return {}
+
+
+# ============================================================
+# MATCHING
 # ============================================================
 
 def find_volo_stream(channel_name, volo_map):
     """
     Findet den passendsten Volo-Stream.
-
-    Reihenfolge:
-    1. Exaktes Matching
-    2. Varianten-Matching
-    3. Teil-Matching mit mehr Toleranz
     """
 
     if not channel_name or not volo_map:
@@ -993,12 +820,12 @@ def find_volo_stream(channel_name, volo_map):
                 return streams[0]
 
     # --------------------------------------------------------
-    # 2. Teil-Matching (etwas großzügiger)
+    # 2. Teil-Matching
     # --------------------------------------------------------
 
     best_candidate = None
     best_score = 0
-    best_source_priority = 0  # API (2) > RSS (1)
+    best_source_priority = 0
 
     for channel_key in channel_variants:
 
@@ -1016,7 +843,6 @@ def find_volo_stream(channel_name, volo_map):
             score = 0
             source_priority = 0
 
-            # Verschiedene Matching-Strategien
             if channel_key == volo_key:
                 score = 1.0
             elif channel_key in volo_key or volo_key in channel_key:
@@ -1024,11 +850,9 @@ def find_volo_stream(channel_name, volo_map):
                 longer = max(len(channel_key), len(volo_key))
                 score = shorter / longer
                 
-                # Bonus für längere Keys
                 if longer >= 8 and score >= 0.6:
                     score += 0.1
 
-            # Prüfe, ob API-Quelle vorhanden ist
             for stream in streams:
                 if stream.get("source") == "api":
                     source_priority = 2
@@ -1036,11 +860,9 @@ def find_volo_stream(channel_name, volo_map):
                 elif stream.get("source") == "rss":
                     source_priority = max(source_priority, 1)
 
-            # Kombinierter Score
             if score > best_score or (score == best_score and source_priority > best_source_priority):
                 best_score = score
                 best_source_priority = source_priority
-                # Bevorzuge API-Streams innerhalb der Gruppe
                 for stream in streams:
                     if stream.get("source") == "api":
                         best_candidate = stream
@@ -1048,7 +870,6 @@ def find_volo_stream(channel_name, volo_map):
                 if best_candidate is None:
                     best_candidate = streams[0]
 
-    # Akzeptiere auch niedrigere Scores, wenn es eine API-Quelle ist
     min_score = 0.6 if best_source_priority >= 2 else 0.75
 
     if best_score >= min_score:
@@ -1085,7 +906,6 @@ def parse_m3u(content):
 
         if line.startswith("#EXTINF:"):
 
-            # vorherigen Block nicht verlieren
             current_extinf = line
             current_extra = []
 
@@ -1147,8 +967,6 @@ def clean_stream_url(url):
     if not url:
         return ""
 
-    # Vavoo / andere M3U URLs können
-    # |User-Agent=... enthalten.
     return url.split("|", 1)[0].strip()
 
 
@@ -1186,7 +1004,6 @@ def write_m3u(entries):
                 CUSTOM_USER_AGENT,
             )
 
-            # Für Televizo:
             f.write(
                 "#EXTVLCOPT:http-user-agent="
                 + ua
@@ -1215,20 +1032,14 @@ def process_hybrid_m3u():
     print()
     print("=" * 60)
     print("HYBRID IPTV BUILDER")
-    print("VOLO (API) -> VAVOO BACKUP")
+    print("VOLO (RSS) -> VAVOO BACKUP")
     print("=" * 60)
 
     # --------------------------------------------------------
-    # 1. Volo holen: Zuerst API, dann RSS als Fallback
+    # 1. Volo holen (nur RSS, da API keinen Bulk-Stream liefert)
     # --------------------------------------------------------
 
-    volo_streams = get_volo_streams_via_api()
-    
-    if not volo_streams:
-        print("[INFO] API lieferte keine Daten. Verwende RSS-Feed als Fallback.")
-        volo_streams = get_volo_streams_via_rss()
-    else:
-        print(f"[INFO] Verwende {len(volo_streams)} Streams von der API.")
+    volo_streams = get_volo_streams_via_rss()
 
     # --------------------------------------------------------
     # 2. Bestehende M3U lesen
@@ -1368,10 +1179,6 @@ def process_hybrid_m3u():
     )
 
     print("=" * 60)
-
-    # --------------------------------------------------------
-    # Optional: Treffer anzeigen
-    # --------------------------------------------------------
 
     if matched_names:
 
