@@ -26,7 +26,7 @@ REQUEST_TIMEOUT = 15
 CHECK_TIMEOUT = 3
 MAX_WORKERS = 20
 CACHE_FILE = "stream_cache.json"
-CACHE_TTL = 3600
+CACHE_TTL = 3600  # 1 Stunde
 
 # ============================================================
 # FILTER FÜR LIVE-STREAMS
@@ -52,15 +52,11 @@ NON_LIVE_KEYWORDS = [
     r'\bWiederholung\b',
     r'\bBest of\b',
     r'\bHighlights\b',
-    
-    # Keine Live-Streams
     r'\bVOD\b',
     r'\bOn Demand\b',
     r'\bCatch Up\b',
     r'\bArchive\b',
     r'\bYouTube\b',
-    
-    # Vorsicht: Diese können auch Live sein, aber oft nicht
     r'\bSeries\b',
     r'\bSerie\b',
 ]
@@ -80,7 +76,6 @@ def is_live_stream(extinf, url):
     Prüft, ob es sich um einen Live-Stream handelt.
     Gibt True zurück, wenn es ein Live-Stream ist.
     """
-    # Kombiniere extinf und url für die Prüfung
     text = f"{extinf} {url}"
     text = text.lower()
     
@@ -89,8 +84,7 @@ def is_live_stream(extinf, url):
         if re.search(pattern, text, re.IGNORECASE):
             return False
     
-    # 2. Prüfe auf Live-Keywords (optional, aber hilfreich)
-    # Wenn der Titel "TV" enthält oder "HD", ist es eher Live
+    # 2. Prüfe auf Live-Keywords
     has_live_indicator = False
     for pattern in LIVE_KEYWORDS:
         if re.search(pattern, text, re.IGNORECASE):
@@ -98,18 +92,12 @@ def is_live_stream(extinf, url):
             break
     
     # 3. Prüfe die Dauer in #EXTINF
-    # #EXTINF:-1 = unbegrenzt (Live)
-    # #EXTINF:0 = unbegrenzt (Live)
-    # #EXTINF:3600 = 1 Stunde (Aufzeichnung/Serie)
     duration_match = re.search(r'#EXTINF:([\d-]+)', extinf)
     if duration_match:
         duration = duration_match.group(1)
         if duration == '-1' or duration == '0':
-            # Unbegrenzte Dauer → wahrscheinlich Live
             return True
         elif duration.isdigit() and int(duration) > 300:
-            # Länger als 5 Minuten → wahrscheinlich Aufzeichnung
-            # Aber wenn es Live-Indikatoren gibt, akzeptieren wir es trotzdem
             if has_live_indicator:
                 return True
             return False
@@ -123,17 +111,13 @@ def is_live_stream(extinf, url):
     if name and len(name) < 50 and 'tv' in name.lower():
         return True
     
-    # 6. Standard: Wenn keine Ausschlusskriterien erfüllt sind, nehmen wir es
     return True
 
 def filter_live_backup_entries(backup_entries):
-    """
-    Filtert die Backup-M3U und gibt nur Live-Streams zurück.
-    """
+    """Filtert die Backup-M3U und gibt nur Live-Streams zurück."""
     print("\n[FILTER] Prüfe Backup-Kanäle auf Live-Streams...")
     
     live_entries = []
-    filtered_count = 0
     non_live_count = 0
     
     for entry in backup_entries:
@@ -297,7 +281,6 @@ def load_backup_m3u():
         entries = parse_m3u(content)
         print(f"[BACKUP] {len(entries)} Kanäle geladen.")
         
-        # Filtere Live-Streams
         live_entries = filter_live_backup_entries(entries)
         return live_entries
     except Exception as e:
@@ -353,10 +336,10 @@ def find_stream_with_scraper(channel_name):
         from scraper import IPTVScraper
         scraper = IPTVScraper(debug=False)
         
-        # Nur die wichtigsten Quellen scrapen
         scraper.scrape_tvizle(channel_name)
         scraper.scrape_famelack(channel_name)
         scraper.scrape_volo(channel_name)
+        scraper.scrape_globetv(channel_name)
         
         if scraper.scraped_links:
             for url in scraper.scraped_links[:5]:
