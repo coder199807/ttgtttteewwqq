@@ -1,0 +1,6 @@
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+lxml>=4.9.3
+art>=6.0.0
+colorama>=0.4.6
+termcolor>=2.3.0
