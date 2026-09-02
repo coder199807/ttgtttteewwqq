@@ -125,7 +125,11 @@ def write_m3u(entries):
     with open(OUTPUT_M3U, "w", encoding="utf-8", newline="\n") as f:
         f.write("#EXTM3U\n")
         for entry in entries:
-            f.write(entry["extinf"] + "\n")
+            extinf = entry["extinf"]
+            # Stelle sicher, dass group-title gesetzt ist
+            if 'group-title="' not in extinf:
+                extinf = re.sub(r'(#EXTINF:-?\d+)', r'\1 group-title="Ulusal"', extinf)
+            f.write(extinf + "\n")
             url = clean_stream_url(entry["url"])
             ua = entry.get("ua", CUSTOM_USER_AGENT)
             f.write(f"#EXTVLCOPT:http-user-agent={ua}\n")
@@ -459,19 +463,23 @@ def find_best_link_for_group(group_entries, cache, custom_links):
     first_name = get_extinf_name(group_entries[0]["extinf"])
     key = get_canonical_key(first_name)
     
+    # 1. Manuelle Links
     custom_url = get_working_custom_link(first_name, custom_links, {"User-Agent": CUSTOM_USER_AGENT})
     if custom_url:
         return custom_url, "custom"
     
+    # 2. Cache
     cached_result = get_cached(f"stream_{key}", cache)
     if cached_result and check_url(cached_result, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
         return cached_result, "cache"
     
+    # 3. Alle URLs aus der Gruppe testen
     for entry in group_entries:
         url = entry.get("url")
         if url and check_url(url, {"User-Agent": VAVOO_USER_AGENT}, timeout=2):
             return url, "vavoo"
     
+    # 4. Scraper
     scraper_url = find_stream_with_scraper(first_name)
     if scraper_url:
         set_cache(f"stream_{key}", scraper_url, cache)
@@ -557,7 +565,7 @@ def process_hybrid_m3u():
 
     # Ulusal-Kanäle gruppieren und optimieren
     groups, order = group_ulusal_channels(ulusal_entries)
-    print(f"[M3U] {len(groups)} eindeutige Ulusal-Kanäle nach Normalisierung.")
+    print(f"[M3U] {len(groups)} eindeutige Ulusal-Kanäle nach Normalisierung (Duplikate entfernt).")
 
     print(f"\n[START] Verarbeite {len(groups)} Ulusal-Kanäle...")
     start_time = time.time()
@@ -579,7 +587,9 @@ def process_hybrid_m3u():
 
         # Ausgabe im Stil der Vorlage
         new_extinf = base_entry["extinf"]
+        # Entferne alte group-title
         new_extinf = re.sub(r'group-title="[^"]*"', '', new_extinf)
+        # Setze group-title="Ulusal"
         new_extinf = re.sub(r'(#EXTINF:-?\d+)', r'\1 group-title="Ulusal"', new_extinf)
 
         processed_ulusal.append({
@@ -610,7 +620,7 @@ def process_hybrid_m3u():
     print("="*60)
     print(f"Original Kanäle:        {len(all_entries)}")
     print(f"Ulusal Kanäle:          {len(ulusal_entries)}")
-    print(f"  → Gruppiert zu:       {len(groups)}")
+    print(f"  → Gruppiert zu:       {len(groups)} (Duplikate entfernt)")
     print(f"Andere Kategorien:      {len(other_entries)} (unverändert)")
     print(f"Manuelle Links:         {stats['custom']}")
     print(f"Aus Cache:              {stats['cache']}")
