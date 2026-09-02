@@ -859,6 +859,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3989995533d0efea1c8696
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/164663282518e6179f90af
+#EXTINF:-1 tvg-id="1221587067c43d5b265b10" tvg-name="BEIN SPORTS MAX 1 .c" tvg-logo="https://logo.huhu.to/logo?c=1221587067.png" group-title="Sport",BEIN SPORTS MAX 1 .c
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/1221587067c43d5b265b10
 #EXTINF:-1 tvg-id="283243053554cc6eb0a10a" tvg-name="BEIN SPORTS MAX 1 .s" tvg-logo="" group-title="Sport",BEIN SPORTS MAX 1 .s
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -899,6 +903,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2238665354014ee25dcf7
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/236989031b5bce3e87ca9
+#EXTINF:-1 tvg-id="8585683074b88a84fea71" tvg-name="BLOOMBERGHT HD .b" tvg-logo="https://logo.huhu.to/logo?c=858568307.png" group-title="Haber",BLOOMBERGHT HD .b
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/8585683074b88a84fea71
 #EXTINF:-1 tvg-id="35781502601487862e9ea4" tvg-name="BLOOMBERGHT RAW .b" tvg-logo="" group-title="Haber",BLOOMBERGHT RAW .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -979,6 +987,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1268465409d81cf808f3af
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2781626432d1535952983f
+#EXTINF:-1 tvg-id="259560614200209e77dfb0" tvg-name="DAS ERSTE [SAT] [] .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE [SAT] [] .c
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/259560614200209e77dfb0
 #EXTINF:-1 tvg-id="5927186007ea11004d769" tvg-name="DAS ERSTE FHD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Deutschland",DAS ERSTE FHD .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -1123,14 +1135,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1869814941aa982b6bd0a0
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/14745367131ac295081561
-#EXTINF:-1 tvg-id="30757699713fe2a8880b52" tvg-name="DAZN BAR 1 FHD .s" tvg-logo="" group-title="Sport",DAZN BAR 1 FHD .s
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/30757699713fe2a8880b52
-#EXTINF:-1 tvg-id="24877931690bfe8def3a83" tvg-name="DAZN BAR 1 HD .s" tvg-logo="" group-title="Sport",DAZN BAR 1 HD .s
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/24877931690bfe8def3a83
 #EXTINF:-1 tvg-id="3647775466b603a5ae8272" tvg-name="DAZN BAR 2 [] .c" tvg-logo="https://logo.huhu.to/logo?c=3647775466.png" group-title="Sport",DAZN BAR 2 [] .c
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -1235,10 +1239,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3782259264d6cab82e3dd8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/4044798259993997801484
-#EXTINF:-1 tvg-id="2833035201254713df8805" tvg-name="DAZN LFC TV HD .b" tvg-logo="" group-title="Sport",DAZN LFC TV HD .b
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2833035201254713df8805
 #EXTINF:-1 tvg-id="1476666167a4181c256f0d" tvg-name="DAZN MBL HD .b" tvg-logo="" group-title="Sport",DAZN MBL HD .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -1419,6 +1419,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/9700986623c97a7651f69
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1161899432db055970dd1d
+#EXTINF:-1 tvg-id="10440051132b98905e1094" tvg-name="DISNEY CHANNEL HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="Çocuk / Kinder",DISNEY CHANNEL HD .b
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/10440051132b98905e1094
 #EXTINF:-1 tvg-id="3578544716a4cc42d03dcd" tvg-name="DISNEY CHANNEL HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg" group-title="Çocuk / Kinder",DISNEY CHANNEL HD .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -1907,10 +1911,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4144668031412a19aa2d0e
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/32253354543986c7294970
-#EXTINF:-1 tvg-id="464378170623140c01606" tvg-name="HABER TURK .s" tvg-logo="" group-title="Haber",HABER TURK .s
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/464378170623140c01606
 #EXTINF:-1 tvg-id="2360854158813051c3c887" tvg-name="HABER TURK HD .b" tvg-logo="https://logo.huhu.to/logo?c=2360854158.png" group-title="Haber",HABER TURK HD .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -2087,6 +2087,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/817959285c682bf3e522b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/38723286086ff52dd7cac
+#EXTINF:-1 tvg-id="231583905a5fd80471ac8" tvg-name="KANAL D .s" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D .s
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/231583905a5fd80471ac8
 #EXTINF:-1 tvg-id="113044193323e36b85a648" tvg-name="KANAL D HD .b" tvg-logo="https://i.imgur.com/9o1atM6.png" group-title="Ulusal (TR)",KANAL D HD .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -2655,10 +2659,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/30851987644ad37427b4da
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/2631956300d8a6a6b2de1e
-#EXTINF:-1 tvg-id="445978762fc020eab799c" tvg-name="ORF SPORT .b" tvg-logo="" group-title="Sport",ORF SPORT .b
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/445978762fc020eab799c
 #EXTINF:-1 tvg-id="3440003439fb524992de12" tvg-name="ORF SPORT+ .c" tvg-logo="https://logo.huhu.to/logo?c=3440003439.png" group-title="Sport",ORF SPORT+ .c
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -3007,6 +3007,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/677761203e3b8be588e5c
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/28775826376d4353b0d91d
+#EXTINF:-1 tvg-id="289174175313063e65f7dc" tvg-name="RTL ZWEI .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI .s
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/289174175313063e65f7dc
 #EXTINF:-1 tvg-id="160203873fc8ecba6377a" tvg-name="RTL ZWEI HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png" group-title="Deutschland",RTL ZWEI HD .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -3367,14 +3371,14 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/351471337029c80ca4c64
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/37476469073149a4f729bc
+#EXTINF:-1 tvg-id="211202577752738f3dc7d9" tvg-name="SHOW TV SD .b" tvg-logo="https://i.imgur.com/1l7SCCu.png" group-title="Ulusal (TR)",SHOW TV SD .b
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/211202577752738f3dc7d9
 #EXTINF:-1 tvg-id="1197572527f8384c637ae4" tvg-name="SHOWMAX .b" tvg-logo="https://logo.huhu.to/logo?c=1197572527.png" group-title="Film",SHOWMAX .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1197572527f8384c637ae4
-#EXTINF:-1 tvg-id="12134337452fec7faf938d" tvg-name="SKY ATLANTIC .c" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC .c
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/12134337452fec7faf938d
 #EXTINF:-1 tvg-id="2340670204ff621ff5a503" tvg-name="SKY ATLANTIC .s" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Deutschland",SKY ATLANTIC .s
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -3859,10 +3863,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/40564741164a7036747d07
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/7584313479fe18bee2495
-#EXTINF:-1 tvg-id="75068099388ef97789690" tvg-name="SKY CINEMA EMOTION .b" tvg-logo="" group-title="Deutschland",SKY CINEMA EMOTION .b
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/75068099388ef97789690
 #EXTINF:-1 tvg-id="1260704553a0fd2c0d406" tvg-name="SKY CINEMA EMOTION .c" tvg-logo="" group-title="Deutschland",SKY CINEMA EMOTION .c
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -4235,26 +4235,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/463237157314e6d840607
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/4163315342e3dfa44378db
-#EXTINF:-1 tvg-id="2340334129c662ead592c0" tvg-name="SKY SPORT 7 (MATCH TIME) .s" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Sport",SKY SPORT 7 (MATCH TIME) .s
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2340334129c662ead592c0
-#EXTINF:-1 tvg-id="2972030035baf7f7dca0a2" tvg-name="SKY SPORT 7 .c" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Sport",SKY SPORT 7 .c
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/2972030035baf7f7dca0a2
-#EXTINF:-1 tvg-id="35196320365418e35df134" tvg-name="SKY SPORT 7 HD (BACKUP) .b" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Sport",SKY SPORT 7 HD (BACKUP) .b
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/35196320365418e35df134
-#EXTINF:-1 tvg-id="3610669243ccffe705cd01" tvg-name="SKY SPORT 7 HD .b" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Sport",SKY SPORT 7 HD .b
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/3610669243ccffe705cd01
-#EXTINF:-1 tvg-id="4015796941fb084d9767a0" tvg-name="SKY SPORT 7 HD+ .b" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Sport",SKY SPORT 7 HD+ .b
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-https://young-dew-a7a9.pandatiger.workers.dev/play/4015796941fb084d9767a0
 #EXTINF:-1 tvg-id="20972212099a78bee77fe0" tvg-name="SKY SPORT 8 (MATCH TIME) .s" tvg-logo="https://i.imgur.com/2YCQyZm.png" group-title="Sport",SKY SPORT 8 (MATCH TIME) .s
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -4951,6 +4931,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4269879115d3f6edbed63c
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/3856957052050da882aa10
+#EXTINF:-1 tvg-id="19930472434be833e11c22" tvg-name="TARIM TV .s" tvg-logo="https://i.imgur.com/q30sFms.png" group-title="Belgesel / Doku",TARIM TV .s
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/19930472434be833e11c22
 #EXTINF:-1 tvg-id="35602928690d57b8926e55" tvg-name="TELE 1 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/4/43/Tele1_logosu.png" group-title="Haber",TELE 1 .b
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -5575,6 +5559,10 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2781566113c44b0f519334
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 https://young-dew-a7a9.pandatiger.workers.dev/play/1008785305d4c07777f6aa
+#EXTINF:-1 tvg-id="2472642660940bc05d6d1e" tvg-name="VOX RAW .b" tvg-logo="https://i.imgur.com/QPcmfZb.png" group-title="Deutschland",VOX RAW .b
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+https://young-dew-a7a9.pandatiger.workers.dev/play/2472642660940bc05d6d1e
 #EXTINF:-1 tvg-id="94903312294e3da09f3b7" tvg-name="VUSLAT TV .c" tvg-logo="https://i.imgur.com/5AiUlIJ.png" group-title="Dini",VUSLAT TV .c
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
