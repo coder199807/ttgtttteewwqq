@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import urllib.parse
+from collections import defaultdict
 
 # ============================================================
 # KONFIGURATION
@@ -16,11 +17,6 @@ import urllib.parse
 INPUT_M3U = "iptv.m3u"
 OUTPUT_M3U = "iptv.m3u"
 CUSTOM_LINKS_FILE = "custom_links.json"
-BACKUP_M3U_URL = "https://m3u.work/pqfhFNTY.m3u"
-
-# --- Neue Quellen ---
-TVGARDEN_BASE = "https://tvgarden.world"
-CANLITV_DIRECT_BASE = "https://web.canlitv.direct"
 
 CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 VAVOO_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
@@ -48,6 +44,7 @@ def normalize_text(text):
     return text.lower()
 
 def clean_channel_name(name):
+    """Bereinigt den Kanalnamen für die Gruppierung (wie in der Vorlage)."""
     if not name:
         return ""
     text = str(name)
@@ -61,11 +58,15 @@ def clean_channel_name(name):
     return text
 
 def get_canonical_key(name):
+    """Erstellt einen eindeutigen Schlüssel für die Gruppierung."""
     if not name:
         return ""
     cleaned = clean_channel_name(name)
     text = normalize_text(cleaned)
-    return re.sub(r'[^a-z0-9]', '', text)
+    key = re.sub(r'[^a-z0-9]', '', text)
+    if not key or len(key) < 2:
+        return text[:5]
+    return key
 
 def get_display_name(name):
     if not name:
@@ -74,10 +75,13 @@ def get_display_name(name):
     return cleaned.title() if cleaned else name
 
 def parse_m3u(content):
+    """Liest eine M3U-Datei robust ein."""
     lines = content.splitlines()
     entries = []
     current_extinf = None
     current_extra = []
+    current_group = ""
+
     for line in lines:
         line = line.strip()
         if not line:
@@ -87,6 +91,9 @@ def parse_m3u(content):
         if line.startswith("#EXTINF:"):
             current_extinf = line
             current_extra = []
+            group_match = re.search(r'group-title="([^"]*)"', line)
+            if group_match:
+                current_group = group_match.group(1)
             continue
         if line.startswith("#"):
             if current_extinf:
@@ -97,9 +104,12 @@ def parse_m3u(content):
                 "extinf": current_extinf,
                 "extra": current_extra[:],
                 "url": line,
+                "group": current_group,
             })
             current_extinf = None
             current_extra = []
+            current_group = ""
+
     return entries
 
 def get_extinf_name(extinf):
@@ -111,6 +121,7 @@ def clean_stream_url(url):
     return url.split("|", 1)[0].strip() if url else ""
 
 def write_m3u(entries):
+    """Schreibt die M3U-Datei."""
     with open(OUTPUT_M3U, "w", encoding="utf-8", newline="\n") as f:
         f.write("#EXTM3U\n")
         for entry in entries:
@@ -126,11 +137,9 @@ def check_url(url, headers, timeout=CHECK_TIMEOUT):
     if not url:
         return False
     try:
-        # Versuche HEAD zuerst
         response = requests.head(url, headers=headers, timeout=timeout, allow_redirects=True)
         if response.status_code == 200:
             return True
-        # Wenn HEAD fehlschlägt, versuche GET mit Range
         if response.status_code in [403, 405]:
             headers['Range'] = 'bytes=0-8192'
             response = requests.get(url, headers=headers, timeout=timeout, stream=True, allow_redirects=True)
@@ -237,7 +246,6 @@ def scrape_famelack(channel_name):
     if not clean_name or len(clean_name) < 3:
         return []
     
-    # Verschiedene Namensvarianten
     variants = [
         clean_name,
         clean_name.replace('tv', '').strip(),
@@ -286,7 +294,6 @@ def scrape_tvgarden(channel_name):
     clean_name = clean_channel_name(channel_name).lower()
     
     try:
-        # Tvgarden hat eine Such-API oder Kanalübersicht
         search_url = f"{TVGARDEN_BASE}/api/channels/search?q={urllib.parse.quote(clean_name)}"
         response = requests.get(search_url, headers={"User-Agent": CUSTOM_USER_AGENT}, timeout=10)
         
@@ -300,7 +307,6 @@ def scrape_tvgarden(channel_name):
                         found += 1
                         print(f"  [TVGARDEN] ✅ {stream_url[:80]}...")
         
-        # Fallback: Seite scrapen
         if not links:
             page_url = f"{TVGARDEN_BASE}/tv"
             response = requests.get(page_url, headers={"User-Agent": CUSTOM_USER_AGENT}, timeout=10)
@@ -334,7 +340,6 @@ def scrape_canlitv_direct(channel_name):
     search_name = clean_name.replace(' ', '-')
     
     try:
-        # Versuche verschiedene URL-Formate
         urls_to_try = [
             f"{CANLITV_DIRECT_BASE}/{search_name}",
             f"{CANLITV_DIRECT_BASE}/tv/{search_name}",
@@ -368,22 +373,17 @@ def find_stream_with_scraper(channel_name):
     
     all_links = []
     
-    # 1. Famelack
     famelack_links = scrape_famelack(channel_name)
     all_links.extend(famelack_links)
     
-    # 2. TVGarden
     tvgarden_links = scrape_tvgarden(channel_name)
     all_links.extend(tvgarden_links)
     
-    # 3. Canlitv.direct
     canlitv_links = scrape_canlitv_direct(channel_name)
     all_links.extend(canlitv_links)
     
-    # Entferne Duplikate
     all_links = list(dict.fromkeys(all_links))
     
-    # Teste die Links
     for url in all_links[:5]:
         if check_url(url, {"User-Agent": CUSTOM_USER_AGENT}, timeout=3):
             print(f"  [SCRAPER] ✅ Funktionierender Link gefunden!")
@@ -392,54 +392,100 @@ def find_stream_with_scraper(channel_name):
     return None
 
 # ============================================================
-# REPAIR
+# REPAIR FÜR EINZELNEN KANAL
 # ============================================================
 
 def repair_channel(entry, cache, custom_links):
+    """Repariert einen einzelnen Kanal."""
     extinf = entry["extinf"]
     original_url = entry["url"]
     channel_name = get_extinf_name(extinf)
     display_name = get_display_name(channel_name)
     cache_key = get_canonical_key(channel_name)
     
-    # 1. PRIORITÄT: Manuelle Links
+    # 1. Manuelle Links
     custom_url = get_working_custom_link(channel_name, custom_links, {"User-Agent": CUSTOM_USER_AGENT})
     if custom_url:
         set_cache(f"stream_{cache_key}", custom_url, cache)
         return {"extinf": extinf, "url": custom_url, "ua": CUSTOM_USER_AGENT, "source": "custom"}
     
-    # 2. PRIORITÄT: Vavoo (wenn funktioniert)
+    # 2. Vavoo
     if check_vavoo(original_url):
         return {"extinf": extinf, "url": original_url, "ua": VAVOO_USER_AGENT, "source": "vavoo"}
     
-    # 3. Cache (für schnelle Wiederholungsläufe)
+    # 3. Cache
     cached_result = get_cached(f"stream_{cache_key}", cache)
     if cached_result and check_url(cached_result, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
         return {"extinf": extinf, "url": cached_result, "ua": CUSTOM_USER_AGENT, "source": "cache"}
     
-    # 4. PRIORITÄT: Scraper (nur wenn Vavoo defekt ist)
+    # 4. Scraper
     scraper_url = find_stream_with_scraper(channel_name)
     if scraper_url:
         set_cache(f"stream_{cache_key}", scraper_url, cache)
         return {"extinf": extinf, "url": scraper_url, "ua": CUSTOM_USER_AGENT, "source": "scraper"}
     
-    # 5. Letzte Chance: Originalen Vavoo-Link behalten (auch wenn defekt)
+    # 5. Original behalten
     return {"extinf": extinf, "url": clean_stream_url(original_url), "ua": VAVOO_USER_AGENT, "source": "failed"}
 
 # ============================================================
-# M3U CHECKER (VERWENDET free-codecs.com)
+# GRUPPIERUNG NUR FÜR ULUSAL
+# ============================================================
+
+def group_ulusal_channels(entries):
+    """
+    Gruppiert NUR die Ulusal-Kanäle nach normalisiertem Namen.
+    Behält die Reihenfolge des ersten Auftretens bei.
+    """
+    groups = {}
+    order = []
+    
+    for entry in entries:
+        name = get_extinf_name(entry["extinf"])
+        if not name:
+            continue
+        key = get_canonical_key(name)
+        if not key:
+            continue
+        
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(entry)
+    
+    return groups, order
+
+def find_best_link_for_group(group_entries, cache, custom_links):
+    """Findet den besten Link für eine Gruppe von Ulusal-Kanälen."""
+    first_name = get_extinf_name(group_entries[0]["extinf"])
+    key = get_canonical_key(first_name)
+    
+    custom_url = get_working_custom_link(first_name, custom_links, {"User-Agent": CUSTOM_USER_AGENT})
+    if custom_url:
+        return custom_url, "custom"
+    
+    cached_result = get_cached(f"stream_{key}", cache)
+    if cached_result and check_url(cached_result, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
+        return cached_result, "cache"
+    
+    for entry in group_entries:
+        url = entry.get("url")
+        if url and check_url(url, {"User-Agent": VAVOO_USER_AGENT}, timeout=2):
+            return url, "vavoo"
+    
+    scraper_url = find_stream_with_scraper(first_name)
+    if scraper_url:
+        set_cache(f"stream_{key}", scraper_url, cache)
+        return scraper_url, "scraper"
+    
+    return group_entries[0].get("url"), "failed"
+
+# ============================================================
+# M3U CHECKER
 # ============================================================
 
 def validate_m3u_with_checker(m3u_content):
-    """
-    Validiert die M3U-Playlist mit dem M3U Checker von free-codecs.com.
-    Gibt die validierte Playlist zurück.
-    """
+    """Validiert die M3U-Playlist lokal."""
     print("\n[M3U CHECKER] Validiere Playlist...")
-    
-    # Der M3U Checker von free-codecs.com ist ein Web-Tool.
-    # Wir können die Playlist entweder lokal prüfen oder die API nutzen.
-    # Da es keine öffentliche API gibt, führen wir eine lokale Prüfung durch.
     
     entries = parse_m3u(m3u_content)
     working_entries = []
@@ -465,12 +511,6 @@ def validate_m3u_with_checker(m3u_content):
                 failed_entries.append(futures[future])
     
     print(f"[M3U CHECKER] {len(working_entries)} funktionierende Streams, {len(failed_entries)} defekte Streams")
-    
-    if failed_entries:
-        print("[M3U CHECKER] Defekte Streams werden durch Scraper repariert...")
-        # Hier könnten wir die defekten Streams neu scannen
-        # Aber das machen wir bereits in der Hauptschleife
-    
     return m3u_content
 
 # ============================================================
@@ -479,20 +519,17 @@ def validate_m3u_with_checker(m3u_content):
 
 def process_hybrid_m3u():
     print("\n" + "="*60)
-    print("IPTV REPAIR TOOL (OPTIMIERT)")
-    print("Manuelle Links → Vavoo → Scraper (Famelack/TVGarden/Canlitv)")
+    print("IPTV REPAIR TOOL")
+    print("Nur Ulusal-Kanäle werden gruppiert und optimiert")
+    print("Alle anderen Kategorien bleiben unverändert")
     print("="*60)
 
     start_total = time.time()
     
-    # 1. Manuelle Links laden
     custom_links = load_custom_links()
-
-    # 2. Cache laden
     cache = load_cache()
     print(f"[CACHE] Geladen: {len(cache)} Einträge")
 
-    # 3. Haupt-M3U lesen
     try:
         with open(INPUT_M3U, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
@@ -500,62 +537,93 @@ def process_hybrid_m3u():
         print(f"[FEHLER] {INPUT_M3U} nicht gefunden.")
         return
 
-    # 4. M3U mit Checker validieren
     content = validate_m3u_with_checker(content)
+    all_entries = parse_m3u(content)
+    print(f"\n[M3U] {len(all_entries)} Kanäle gelesen.")
 
-    entries = parse_m3u(content)
-    print(f"\n[M3U] {len(entries)} Kanäle gelesen.")
+    # Aufteilen: Ulusal vs. andere Kategorien
+    ulusal_entries = []
+    other_entries = []
+    
+    for entry in all_entries:
+        group = entry.get("group", "")
+        if group and group.strip() in ["Ulusal", "ulusal", "ULUSAL"]:
+            ulusal_entries.append(entry)
+        else:
+            other_entries.append(entry)
+    
+    print(f"[M3U] {len(ulusal_entries)} Kanäle in 'Ulusal'")
+    print(f"[M3U] {len(other_entries)} Kanäle in anderen Kategorien (bleiben unverändert)")
 
-    # 5. Kanäle verarbeiten (parallel)
-    print(f"\n[START] Verarbeite {len(entries)} Kanäle...")
+    # Ulusal-Kanäle gruppieren und optimieren
+    groups, order = group_ulusal_channels(ulusal_entries)
+    print(f"[M3U] {len(groups)} eindeutige Ulusal-Kanäle nach Normalisierung.")
+
+    print(f"\n[START] Verarbeite {len(groups)} Ulusal-Kanäle...")
     start_time = time.time()
     
-    output_entries = []
-    stats = {"custom": 0, "vavoo": 0, "cache": 0, "scraper": 0, "failed": 0}
+    processed_ulusal = []
+    stats = {"custom": 0, "cache": 0, "vavoo": 0, "scraper": 0, "failed": 0}
 
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = {executor.submit(repair_channel, entry, cache, custom_links): entry for entry in entries}
-        
-        for future in as_completed(futures):
-            result = future.result()
-            output_entries.append(result)
-            stats[result["source"]] += 1
-            
-            total = len(entries)
-            done = len(output_entries)
-            if done % 50 == 0 or done == total:
-                print(f"  Fortschritt: {done}/{total} ({done/total*100:.1f}%)")
+    for key in order:
+        group_entries = groups[key]
+        base_entry = group_entries[0]
+        name = get_extinf_name(base_entry["extinf"])
+        display_name = get_display_name(name)
 
-    # 6. Cache speichern
+        best_url, source = find_best_link_for_group(group_entries, cache, custom_links)
+        stats[source] += 1
+
+        if best_url and source not in ["failed"]:
+            set_cache(f"stream_{key}", best_url, cache)
+
+        # Ausgabe im Stil der Vorlage
+        new_extinf = base_entry["extinf"]
+        new_extinf = re.sub(r'group-title="[^"]*"', '', new_extinf)
+        new_extinf = re.sub(r'(#EXTINF:-?\d+)', r'\1 group-title="Ulusal"', new_extinf)
+
+        processed_ulusal.append({
+            "extinf": new_extinf,
+            "extra": base_entry.get("extra", []),
+            "url": best_url if best_url else "",
+            "group": "Ulusal",
+            "ua": CUSTOM_USER_AGENT if source not in ["vavoo", "failed"] else VAVOO_USER_AGENT,
+            "source": source,
+            "display_name": display_name
+        })
+
+        total = len(groups)
+        done = len(processed_ulusal)
+        if done % 10 == 0 or done == total:
+            print(f"  Fortschritt: {done}/{total} ({done/total*100:.1f}%)")
+
     save_cache(cache)
     print(f"[CACHE] Gespeichert: {len(cache)} Einträge")
 
-    # 7. Statistik
+    # Zusammenführen: Verarbeitete Ulusal + unveränderte andere Kategorien
+    output_entries = processed_ulusal + other_entries
+
     elapsed = time.time() - start_time
     total_elapsed = time.time() - start_total
     print("\n" + "="*60)
     print("STATISTIK")
     print("="*60)
-    print(f"Gesamt:                 {len(output_entries)}")
+    print(f"Original Kanäle:        {len(all_entries)}")
+    print(f"Ulusal Kanäle:          {len(ulusal_entries)}")
+    print(f"  → Gruppiert zu:       {len(groups)}")
+    print(f"Andere Kategorien:      {len(other_entries)} (unverändert)")
     print(f"Manuelle Links:         {stats['custom']}")
-    print(f"Vavoo (funktioniert):   {stats['vavoo']}")
     print(f"Aus Cache:              {stats['cache']}")
+    print(f"Vavoo (funktioniert):   {stats['vavoo']}")
     print(f"Durch Scraper gefunden: {stats['scraper']}")
-    print(f"Nicht repariert:        {stats['failed']}")
+    print(f"Kein funktionierender:  {stats['failed']}")
     print(f"Benötigte Zeit:         {elapsed:.1f} Sekunden")
     print(f"Gesamtzeit:             {total_elapsed:.1f} Sekunden")
     print("="*60)
 
-    # 8. Neue M3U schreiben
     write_m3u(output_entries)
-    
-    # 9. Abschließende Validierung
-    print("\n[FINAL] Führe abschließende Validierung durch...")
-    with open(OUTPUT_M3U, "r", encoding="utf-8") as f:
-        final_content = f.read()
-    validate_m3u_with_checker(final_content)
-    
     print(f"\n[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
+    print(f"[INFO] {len(output_entries)} Kanäle in der Playlist.")
 
 if __name__ == "__main__":
     process_hybrid_m3u()
