@@ -16,7 +16,7 @@ class IPTVScraper:
         self.debug = debug
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept": "application/json, text/plain, */*",
             "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
             "Accept-Encoding": "gzip, deflate, br",
             "Connection": "keep-alive",
@@ -64,6 +64,12 @@ class IPTVScraper:
         no_space = cleaned.lower().replace(' ', '')
         if no_space != cleaned.lower():
             variants.append(no_space)
+        
+        # Für türkische Sonderzeichen
+        turkish_map = {"ü": "u", "ğ": "g", "ş": "s", "ı": "i", "ö": "o", "ç": "c"}
+        for old, new in turkish_map.items():
+            if old in cleaned.lower():
+                variants.append(cleaned.lower().replace(old, new))
         
         variants = list(dict.fromkeys(variants))
         return variants
@@ -125,7 +131,7 @@ class IPTVScraper:
         return links
     
     # ============================================================
-    # 2. TVGARDEN.WORLD (KORRIGIERT)
+    # 2. TVGARDEN.WORLD (VIA API)
     # ============================================================
     
     def scrape_tvgarden(self, channel_name):
@@ -135,66 +141,85 @@ class IPTVScraper:
         
         variants = self.get_channel_variants(channel_name)
         
-        # TVGarden hat eine dynamische Seite mit JavaScript
-        # Wir versuchen die API oder die HTML-Struktur zu parsen
-        
         try:
-            # Versuche die Hauptseite zu laden
-            base_url = "https://tvgarden.world"
-            response = requests.get(base_url, headers=self.headers, timeout=10)
+            # TVGarden API: https://tvgarden.world/api/channels
+            api_url = "https://tvgarden.world/api/channels"
+            response = requests.get(api_url, headers=self.headers, timeout=10)
             
             if response.status_code == 200:
-                soup = BeautifulSoup(response.text, "html.parser")
+                data = response.json()
                 
-                # Suche nach allen m3u8-Links im HTML
-                m3u8_pattern = r'(https?://[^\s"\']+\.m3u8[^\s"\']*)'
-                all_matches = re.findall(m3u8_pattern, response.text)
+                if isinstance(data, dict) and "channels" in data:
+                    channels = data["channels"]
+                elif isinstance(data, list):
+                    channels = data
+                else:
+                    channels = []
                 
-                # Suche nach iframes mit Streams
-                iframes = soup.find_all('iframe', src=True)
-                for iframe in iframes:
-                    src = iframe.get('src', '')
-                    if '.m3u8' in src:
-                        all_matches.append(src)
+                self.log(f"  TVGarden API: {len(channels)} Kanäle geladen")
                 
-                # Suche nach video-Elementen
-                videos = soup.find_all(['video', 'source'], src=True)
-                for video in videos:
-                    src = video.get('src', '')
-                    if '.m3u8' in src:
-                        all_matches.append(src)
-                
-                # Filtere die Links nach Kanalnamen
-                for match in all_matches:
-                    for variant in variants[:3]:
-                        if variant in match.lower() or variant.replace('-', '') in match.lower():
-                            links.append(match)
+                for channel in channels:
+                    channel_name_api = channel.get("name", "").lower()
+                    stream_url = channel.get("stream") or channel.get("url") or channel.get("stream_url")
+                    
+                    if not stream_url or '.m3u8' not in stream_url:
+                        continue
+                    
+                    # Prüfe ob Kanalname passt
+                    channel_clean = self.clean_channel_name(channel_name_api).lower()
+                    for variant in variants:
+                        if variant in channel_clean or channel_clean in variant or variant in channel_name_api:
+                            links.append(stream_url)
                             found += 1
-                            self.log(f"  ✅ TVGarden: {match[:80]}...")
+                            self.log(f"  ✅ TVGarden: {stream_url[:80]}...")
                             break
                 
-                # Fallback: Durchsuche die gesamte Seite nach Kanalnamen
+                # Fallback: Durchsuche alle Streams nach Kanalnamen
                 if found == 0:
-                    for variant in variants[:3]:
-                        # Suche nach Links die den Kanalnamen enthalten
-                        pattern = rf'(https?://[^\s"\']+\.m3u8[^\s"\']*{re.escape(variant)}[^\s"\']*)'
-                        matches = re.findall(pattern, response.text, re.IGNORECASE)
-                        for match in matches:
-                            links.append(match)
-                            found += 1
-                            self.log(f"  ✅ TVGarden (Fallback): {match[:80]}...")
+                    for channel in channels:
+                        stream_url = channel.get("stream") or channel.get("url") or channel.get("stream_url")
+                        if not stream_url or '.m3u8' not in stream_url:
+                            continue
                         
-                        # Suche nach iframes die den Kanalnamen enthalten
-                        iframe_pattern = rf'<iframe[^>]*src=["\']([^"\']*{re.escape(variant)}[^"\']*)["\']'
-                        iframe_matches = re.findall(iframe_pattern, response.text, re.IGNORECASE)
-                        for match in iframe_matches:
-                            full_url = urljoin(base_url, match)
-                            links.append(full_url)
-                            found += 1
-                            self.log(f"  ✅ TVGarden (iframe): {full_url[:80]}...")
+                        # Prüfe ob der Kanalname im Stream-URL vorkommt
+                        for variant in variants:
+                            if variant in stream_url.lower():
+                                links.append(stream_url)
+                                found += 1
+                                self.log(f"  ✅ TVGarden (URL-Match): {stream_url[:80]}...")
+                                break
         
         except Exception as e:
-            self.log(f"Fehler bei TVGarden: {e}")
+            self.log(f"Fehler bei TVGarden API: {e}")
+            
+            # Fallback: Versuche die HTML-Seite
+            try:
+                response = requests.get("https://tvgarden.world/tv", headers=self.headers, timeout=10)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.text, "html.parser")
+                    
+                    # Suche nach eingebetteten JSON-Daten
+                    script_tags = soup.find_all('script')
+                    for script in script_tags:
+                        if script.string and 'channels' in script.string:
+                            # Extrahiere JSON aus JavaScript
+                            json_match = re.search(r'channels\s*:\s*(\[.*?\])', script.string, re.DOTALL)
+                            if json_match:
+                                try:
+                                    channels_data = json.loads(json_match.group(1))
+                                    for channel in channels_data:
+                                        stream_url = channel.get("stream") or channel.get("url")
+                                        if stream_url and '.m3u8' in stream_url:
+                                            for variant in variants:
+                                                if variant in str(channel).lower():
+                                                    links.append(stream_url)
+                                                    found += 1
+                                                    self.log(f"  ✅ TVGarden (JS): {stream_url[:80]}...")
+                                                    break
+                                except:
+                                    pass
+            except Exception as e2:
+                self.log(f"TVGarden Fallback-Fehler: {e2}")
         
         self.log(f"{found} TVGarden-Links gefunden.")
         self.results["tvgarden"] = links
@@ -211,56 +236,54 @@ class IPTVScraper:
         
         variants = self.get_channel_variants(channel_name)
         
-        for variant in variants[:3]:
-            try:
-                # Versuche verschiedene URL-Formate
-                urls_to_try = [
-                    f"https://web.canlitv.direct/{variant}",
-                    f"https://web.canlitv.direct/tv/{variant}",
-                    f"https://web.canlitv.direct/kanal/{variant}",
-                    f"https://web.canlitv.direct/canli/{variant}",
-                ]
+        try:
+            # Canlitv.direct hat auch eine API oder JSON-Daten
+            base_url = "https://web.canlitv.direct"
+            response = requests.get(base_url, headers=self.headers, timeout=10)
+            
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, "html.parser")
                 
-                for url in urls_to_try:
-                    response = requests.get(url, headers=self.headers, timeout=10)
-                    if response.status_code != 200:
-                        continue
-                    
-                    self.log(f"Seite gefunden: {url}")
-                    
-                    # Suche nach m3u8-Links
-                    m3u8_pattern = r'(https?://[^\s"\']+\.m3u8[^\s"\']*)'
-                    matches = re.findall(m3u8_pattern, response.text)
-                    
-                    for match in matches:
-                        links.append(match)
-                        found += 1
-                        self.log(f"  ✅ Canlitv: {match[:80]}...")
-                    
-                    # Suche nach iframe-Quellen
-                    soup = BeautifulSoup(response.text, "html.parser")
-                    iframes = soup.find_all('iframe', src=True)
-                    for iframe in iframes:
-                        src = iframe.get('src', '')
-                        if '.m3u8' in src:
-                            links.append(src)
-                            found += 1
-                            self.log(f"  ✅ Canlitv (iframe): {src[:80]}...")
-                    
-                    # Suche nach player-Elementen
-                    players = soup.find_all(['video', 'source'], src=True)
-                    for player in players:
-                        src = player.get('src', '')
-                        if '.m3u8' in src:
-                            links.append(src)
-                            found += 1
-                            self.log(f"  ✅ Canlitv (video): {src[:80]}...")
-                    
-                    break
+                # Suche nach JSON-Daten in script-Tags
+                script_tags = soup.find_all('script')
+                for script in script_tags:
+                    if script.string:
+                        # Suche nach m3u8-Links
+                        m3u8_pattern = r'(https?://[^\s"\']+\.m3u8[^\s"\']*)'
+                        matches = re.findall(m3u8_pattern, script.string)
+                        for match in matches:
+                            for variant in variants[:3]:
+                                if variant in match.lower():
+                                    links.append(match)
+                                    found += 1
+                                    self.log(f"  ✅ Canlitv: {match[:80]}...")
+                                    break
                         
-            except Exception as e:
-                self.log(f"Fehler bei Canlitv für {variant}: {e}")
-                continue
+                        # Suche nach Kanal-Objekten
+                        channel_pattern = rf'"name"\s*:\s*"[^"]*{re.escape(variants[0])}[^"]*"'
+                        if re.search(channel_pattern, script.string, re.IGNORECASE):
+                            # Extrahiere die zugehörige URL
+                            url_pattern = r'"url"\s*:\s*"([^"]+\.m3u8[^"]*)"'
+                            url_matches = re.findall(url_pattern, script.string)
+                            for url_match in url_matches:
+                                links.append(url_match)
+                                found += 1
+                                self.log(f"  ✅ Canlitv (JSON): {url_match[:80]}...")
+                
+                # Suche nach iframes
+                iframes = soup.find_all('iframe', src=True)
+                for iframe in iframes:
+                    src = iframe.get('src', '')
+                    if '.m3u8' in src:
+                        for variant in variants[:3]:
+                            if variant in src.lower():
+                                links.append(src)
+                                found += 1
+                                self.log(f"  ✅ Canlitv (iframe): {src[:80]}...")
+                                break
+                        
+        except Exception as e:
+            self.log(f"Fehler bei Canlitv: {e}")
         
         self.log(f"{found} Canlitv-Links gefunden.")
         self.results["canlitv"] = links
@@ -287,7 +310,7 @@ class IPTVScraper:
         # 1. Famelack
         self.scrape_famelack(channel_name)
         
-        # 2. TVGarden
+        # 2. TVGarden (API)
         self.scrape_tvgarden(channel_name)
         
         # 3. Canlitv.direct
