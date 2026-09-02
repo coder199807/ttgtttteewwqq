@@ -24,6 +24,9 @@
     <display-name>13TH STREET RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/13th_Street_Universal.svg/500px-13th_Street_Universal.svg.png"/>
   </channel>
+  <channel id="17029379329ed4b84db05f">
+    <display-name>24 .s</display-name>
+  </channel>
   <channel id="3828793616b62b9cc5834c">
     <display-name>24 HABER HD+ SD .b</display-name>
   </channel>
@@ -230,10 +233,6 @@
     <display-name>4K TR: SPOR SMART .b</display-name>
     <icon src="https://i.imgur.com/blu6v6P.png"/>
   </channel>
-  <channel id="2429298798dcd505d1ab4b">
-    <display-name>4K TR: SPORTS TV HD .b</display-name>
-    <icon src="https://i.imgur.com/tGTVcVe.jpg"/>
-  </channel>
   <channel id="219297129315c074c03f8e">
     <display-name>4K TR: STAR TV HD .b</display-name>
     <icon src="https://i.imgur.com/9O3DHRB.png"/>
@@ -373,10 +372,6 @@
     <display-name>A SPOR .c</display-name>
     <icon src="https://i.imgur.com/ZhkZzLf.png"/>
   </channel>
-  <channel id="15619589713a6387b378e8">
-    <display-name>A SPOR .s</display-name>
-    <icon src="https://i.imgur.com/ZhkZzLf.png"/>
-  </channel>
   <channel id="911836506e50aacc3a9e9">
     <display-name>A SPOR FHD .b</display-name>
     <icon src="https://i.imgur.com/ZhkZzLf.png"/>
@@ -436,10 +431,6 @@
   </channel>
   <channel id="211016135533c46812e566">
     <display-name>ANIMAL PLANET .s</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png"/>
-  </channel>
-  <channel id="3913298991ebe0634b3649">
-    <display-name>ANIMAL PLANET HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/960px-2018_Animal_Planet_logo.svg.png"/>
   </channel>
   <channel id="2103702130b5451883e2a7">
@@ -567,6 +558,10 @@
     <display-name>BEYAZ TV RAW .b</display-name>
     <icon src="https://i.imgur.com/uykIdML.png"/>
   </channel>
+  <channel id="1363827223a1c98515d612">
+    <display-name>BEIN 1 FEED (720P) .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=1363827223.png"/>
+  </channel>
   <channel id="3692337241ec1b0872b06e">
     <display-name>BEIN 1 SD (360P) .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3692337241.png"/>
@@ -574,10 +569,6 @@
   <channel id="2919229346c4e9a95ddb3f">
     <display-name>BEIN 1 SD (480P) .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2919229346.png"/>
-  </channel>
-  <channel id="1359974585538b9fa33bcf">
-    <display-name>BEIN BOX OFFICE 1 (BACKUP) .s</display-name>
-    <icon src="https://i.imgur.com/MGrJFVN.png"/>
   </channel>
   <channel id="29307461023dd1f85985b0">
     <display-name>BEIN BOX OFFICE 1 .c</display-name>
@@ -589,6 +580,10 @@
   </channel>
   <channel id="391012970274e1f1b46029">
     <display-name>BEIN BOX OFFICE 2 .c</display-name>
+    <icon src="https://i.imgur.com/Kg7oOcO.png"/>
+  </channel>
+  <channel id="152264090d704f6769888">
+    <display-name>BEIN BOX OFFICE 2 .s</display-name>
     <icon src="https://i.imgur.com/Kg7oOcO.png"/>
   </channel>
   <channel id="35641061340ab1a36ee3bd">
@@ -677,6 +672,14 @@
   <channel id="2729088606df69156b1eda">
     <display-name>BEIN SPORTS 1 FEED .c</display-name>
   </channel>
+  <channel id="24034250314fd9aa349685">
+    <display-name>BEIN SPORTS 1 H265 .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=2403425031.png"/>
+  </channel>
+  <channel id="5934938605e361d7e0ff0">
+    <display-name>BEIN SPORTS 1 HD (TURKEY) .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=593493860.png"/>
+  </channel>
   <channel id="66217962033a2d3e9c47f">
     <display-name>BEIN SPORTS 1 HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=662179620.png"/>
@@ -685,6 +688,9 @@
     <display-name>BEIN SPORTS 2 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1447241506.png"/>
   </channel>
+  <channel id="250946619196f7d48e5d74">
+    <display-name>BEIN SPORTS 2 .s</display-name>
+  </channel>
   <channel id="28515391437e928cafd5dd">
     <display-name>BEIN SPORTS 2 HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2851539143.png"/>
@@ -692,6 +698,10 @@
   <channel id="323636291171b2af97d745">
     <display-name>BEIN SPORTS 2 SD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3236362911.png"/>
+  </channel>
+  <channel id="3694662475a36c53181838">
+    <display-name>BEIN SPORTS 2 UHD .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=3694662475.png"/>
   </channel>
   <channel id="179745960216563080394f">
     <display-name>BEIN SPORTS 3 .c</display-name>
@@ -727,11 +737,11 @@
     <display-name>BEIN SPORTS 4 UHD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2938268353.png"/>
   </channel>
+  <channel id="267105889a25a483e5e80">
+    <display-name>BEIN SPORTS 4K FEED(KUTU) .b</display-name>
+  </channel>
   <channel id="1536730627bbf8f95ca477">
     <display-name>BEIN SPORTS 4K FEED(UYDU) .b</display-name>
-  </channel>
-  <channel id="12304481920a92c9204dcd">
-    <display-name>BEIN SPORTS 5 (MATCH TIME) .s</display-name>
   </channel>
   <channel id="3831757618ff599ed6d68c">
     <display-name>BEIN SPORTS 5 .c</display-name>
@@ -771,16 +781,16 @@
     <display-name>BEIN SPORTS HABER RAW .b</display-name>
     <icon src="https://i.imgur.com/QWo0x7S.jpg"/>
   </channel>
-  <channel id="1221587067c43d5b265b10">
-    <display-name>BEIN SPORTS MAX 1 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=1221587067.png"/>
-  </channel>
   <channel id="283243053554cc6eb0a10a">
     <display-name>BEIN SPORTS MAX 1 .s</display-name>
   </channel>
   <channel id="4071474743dbe8a60b9395">
     <display-name>BEIN SPORTS MAX 1 FHD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=4071474743.png"/>
+  </channel>
+  <channel id="22528142332d275721233">
+    <display-name>BEIN SPORTS MAX 1 HD .b</display-name>
+    <icon src="https://logo.huhu.to/logo?c=225281423.png"/>
   </channel>
   <channel id="25896823596a84e43dd09">
     <display-name>BEIN SPORTS MAX 2 .c</display-name>
@@ -796,6 +806,9 @@
   <channel id="2212659820b109b476a4d3">
     <display-name>BEIN SPORTS MAX 2 HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2212659820.png"/>
+  </channel>
+  <channel id="143239535a2e3c23c1d16">
+    <display-name>BEIN SPOTS1 SD .b</display-name>
   </channel>
   <channel id="31561783590bdea7d4bf69">
     <display-name>BEIN IZ TV .s</display-name>
@@ -880,12 +893,12 @@
   <channel id="1268465409d81cf808f3af">
     <display-name>DA VINCI LEARNING .s</display-name>
   </channel>
-  <channel id="2814908252b478398f430e">
-    <display-name>DAS ERSTE .c</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
-  </channel>
   <channel id="2781626432d1535952983f">
     <display-name>DAS ERSTE .s</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
+  </channel>
+  <channel id="259560614200209e77dfb0">
+    <display-name>DAS ERSTE [SAT] [] .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png"/>
   </channel>
   <channel id="5927186007ea11004d769">
@@ -974,9 +987,6 @@
     <display-name>DAZN 2 BAR .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=644353315.png"/>
   </channel>
-  <channel id="7163121413b507d0b7735">
-    <display-name>DAZN 2 BAR .s</display-name>
-  </channel>
   <channel id="5005899319794fd69d637">
     <display-name>DAZN 2 BAR HD+ .b</display-name>
   </channel>
@@ -1002,15 +1012,8 @@
   <channel id="1869814941aa982b6bd0a0">
     <display-name>DAZN 8 (MATCH TIME) HD .b</display-name>
   </channel>
-  <channel id="14745367131ac295081561">
-    <display-name>DAZN BAR 1 [] .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=1474536713.png"/>
-  </channel>
   <channel id="30757699713fe2a8880b52">
     <display-name>DAZN BAR 1 FHD .s</display-name>
-  </channel>
-  <channel id="24877931690bfe8def3a83">
-    <display-name>DAZN BAR 1 HD .s</display-name>
   </channel>
   <channel id="3647775466b603a5ae8272">
     <display-name>DAZN BAR 2 [] .c</display-name>
@@ -1021,6 +1024,12 @@
   </channel>
   <channel id="449294834bcc06273cd76">
     <display-name>DAZN BAR 2 HD .s</display-name>
+  </channel>
+  <channel id="759108994644995834d36">
+    <display-name>DAZN EUROSPORT 1 HD .b</display-name>
+  </channel>
+  <channel id="2746225249b6e4f4888186">
+    <display-name>DAZN EUROSPORT 2 HD .b</display-name>
   </channel>
   <channel id="1332521211188713136fd0">
     <display-name>DAZN EVENT 1 HD .b</display-name>
@@ -1076,6 +1085,9 @@
   <channel id="41268862675edfc6c5043a">
     <display-name>DAZN EVENT INFO .c</display-name>
   </channel>
+  <channel id="279870068823eff6fceeef">
+    <display-name>DAZN EVENTS 1 .s</display-name>
+  </channel>
   <channel id="3782259264d6cab82e3dd8">
     <display-name>DAZN EVENTS 2 .s</display-name>
   </channel>
@@ -1085,9 +1097,6 @@
   </channel>
   <channel id="2833035201254713df8805">
     <display-name>DAZN LFC TV HD .b</display-name>
-  </channel>
-  <channel id="1476666167a4181c256f0d">
-    <display-name>DAZN MBL HD .b</display-name>
   </channel>
   <channel id="6746639090a3d1d6793e1">
     <display-name>DAZN NBA HD .b</display-name>
@@ -1267,10 +1276,6 @@
     <display-name>DISNEY CHANNEL HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg"/>
   </channel>
-  <channel id="3626385852ea37995fb15c">
-    <display-name>DISNEY CHANNEL RAW .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/3/3d/2022_Disney_Channel_logo.svg"/>
-  </channel>
   <channel id="396367809728cc9e22209f">
     <display-name>DISNEY JR .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/e/e3/2024_Disney_Jr._Logo.svg"/>
@@ -1327,9 +1332,6 @@
   <channel id="2924660569442cd197c7a9">
     <display-name>EUROSPORT 1 [LIVE DURING EVENTS ONLY] .s</display-name>
   </channel>
-  <channel id="2092513479e79a5733f">
-    <display-name>EUROSPORT 1 DEUTSCHLAND .b</display-name>
-  </channel>
   <channel id="1613711614ac3af298d871">
     <display-name>EUROSPORT 1 HD (BACKUP 3) .b</display-name>
   </channel>
@@ -1361,9 +1363,6 @@
   <channel id="5770885350ee8b0ed69a6">
     <display-name>EUROSPORT 2 FHD .b</display-name>
   </channel>
-  <channel id="136650226725e969c2837">
-    <display-name>EUROSPORT 2 HD (BACKUP 2) .b</display-name>
-  </channel>
   <channel id="327953979929ef68e4478c">
     <display-name>EUROSPORT 2 HD (BACKUP 3) .b</display-name>
   </channel>
@@ -1375,9 +1374,6 @@
   </channel>
   <channel id="5197638858db091050a1e">
     <display-name>EUROSPORT 2 HD+ .b</display-name>
-  </channel>
-  <channel id="27478185563812f29ae860">
-    <display-name>EUROSPORT 2 HEVC .b</display-name>
   </channel>
   <channel id="2981865552370a7654e2c4">
     <display-name>EUROSPORT 2 RAW .b</display-name>
@@ -1394,6 +1390,12 @@
     <display-name>EUROSPORT 2 XTRA HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Eurosport_2_HD_XTRA_Logo_2017.png/960px-Eurosport_2_HD_XTRA_Logo_2017.png"/>
   </channel>
+  <channel id="334800555fd42fc78001c">
+    <display-name>EUROSPORT 360 HD 1 .b</display-name>
+  </channel>
+  <channel id="3844032236a6f691189c8c">
+    <display-name>EUROSPORT 360 HD 10 .b</display-name>
+  </channel>
   <channel id="3632230236159eeb063d4c">
     <display-name>EUROSPORT 360 HD 11 .b</display-name>
   </channel>
@@ -1403,20 +1405,17 @@
   <channel id="27304417886ccf0cf19185">
     <display-name>EUROSPORT 360 HD 13 .b</display-name>
   </channel>
+  <channel id="2789130686711975bca9f">
+    <display-name>EUROSPORT 360 HD 14 .b</display-name>
+  </channel>
   <channel id="7717380127de6c0e762bd">
     <display-name>EUROSPORT 360 HD 15 .b</display-name>
   </channel>
   <channel id="1784656716a5a802f1810a">
     <display-name>EUROSPORT 360 HD 16 .b</display-name>
   </channel>
-  <channel id="17650784759cc447e2a4bc">
-    <display-name>EUROSPORT 360 HD 3 .b</display-name>
-  </channel>
-  <channel id="36755317391a3736695ded">
-    <display-name>EUROSPORT 360 HD 4 .b</display-name>
-  </channel>
-  <channel id="2629063435e21d72406265">
-    <display-name>EUROSPORT 360 HD 7 .b</display-name>
+  <channel id="38663619638634dbe0b8ca">
+    <display-name>EUROSPORT 360 HD 5 .b</display-name>
   </channel>
   <channel id="518309082e3dac33da059">
     <display-name>EUROSPORT 360 HD 8 .b</display-name>
@@ -1464,9 +1463,6 @@
   </channel>
   <channel id="1208369995ee56db60c6cb">
     <display-name>EXXEN TV SPOR 1 .b</display-name>
-  </channel>
-  <channel id="3333902867e8eeb6c13355">
-    <display-name>EXXEN TV SPOR 1 720P .b</display-name>
   </channel>
   <channel id="10914039127b6d2cb4f9b1">
     <display-name>EXXEN TV SPOR 1 FEED .b</display-name>
@@ -1633,6 +1629,9 @@
   <channel id="32253354543986c7294970">
     <display-name>HABER T RK HD+ SD .b</display-name>
   </channel>
+  <channel id="464378170623140c01606">
+    <display-name>HABER TURK .s</display-name>
+  </channel>
   <channel id="2360854158813051c3c887">
     <display-name>HABER TURK HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=2360854158.png"/>
@@ -1745,10 +1744,6 @@
   </channel>
   <channel id="2200624412666baaff6b3b">
     <display-name>KABEL EINS HD .b</display-name>
-    <icon src="https://i.imgur.com/6pulSHZ.png"/>
-  </channel>
-  <channel id="28129374143edef8c75e02">
-    <display-name>KABEL EINS HEVC .b</display-name>
     <icon src="https://i.imgur.com/6pulSHZ.png"/>
   </channel>
   <channel id="150685654f5e806100eed">
@@ -2004,6 +1999,10 @@
   <channel id="768284121965d97f6be4d">
     <display-name>MAGENTA SPORT 6 .b</display-name>
   </channel>
+  <channel id="21261254776f2e028c1d41">
+    <display-name>MAGENTA SPORT 6 .c</display-name>
+    <icon src="https://logo.huhu.to/logo?c=2126125477.png"/>
+  </channel>
   <channel id="3653941880fc2dbbc4b55c">
     <display-name>MAGENTA SPORT 6 .s</display-name>
   </channel>
@@ -2036,9 +2035,6 @@
   </channel>
   <channel id="1536830889cccec276305e">
     <display-name>MAGENTA SPORT 9 .s</display-name>
-  </channel>
-  <channel id="400277488812c656e5864a">
-    <display-name>MAGENTA SPORT GOLF 1 .c</display-name>
   </channel>
   <channel id="283882437670f44f8e4ee6">
     <display-name>MAGENTA SPORT GOLF 2 .c</display-name>
@@ -2136,6 +2132,10 @@
   </channel>
   <channel id="960731050c8e04cfcdb76">
     <display-name>N24 DOCU .b</display-name>
+  </channel>
+  <channel id="15678663720fe98cdcfe03">
+    <display-name>N24 DOKU .c</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/N24Doku.svg/960px-N24Doku.svg.png"/>
   </channel>
   <channel id="1521199376fd0f2fec5a2c">
     <display-name>N24 DOKU .s</display-name>
@@ -2311,9 +2311,6 @@
     <display-name>NITRO RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Nitro_Logo.svg/960px-Nitro_Logo.svg.png"/>
   </channel>
-  <channel id="445978762fc020eab799c">
-    <display-name>ORF SPORT .b</display-name>
-  </channel>
   <channel id="3440003439fb524992de12">
     <display-name>ORF SPORT+ .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=3440003439.png"/>
@@ -2354,12 +2351,6 @@
     <display-name>PHOENIX HD .b</display-name>
     <icon src="https://i.imgur.com/T1532t9.png"/>
   </channel>
-  <channel id="314057941084097b270b95">
-    <display-name>PLUTO TV N24 DOKU .c</display-name>
-  </channel>
-  <channel id="1299417291527618a1ccab">
-    <display-name>POWER FM YABANCI M ZIK .b</display-name>
-  </channel>
   <channel id="3999710514ace24ffdde1d">
     <display-name>PRO7 FUN HD .b</display-name>
   </channel>
@@ -2371,9 +2362,6 @@
   </channel>
   <channel id="17092202980294001677c9">
     <display-name>PRO7 MAXX HEVC (BACKUP) .b</display-name>
-  </channel>
-  <channel id="1913066493061991c54bfc">
-    <display-name>PRO7 MAXX HEVC .b</display-name>
   </channel>
   <channel id="33164884367f00f8ce268c">
     <display-name>PRO7 MAXX RAW .b</display-name>
@@ -2396,10 +2384,6 @@
   </channel>
   <channel id="3488435572cb9067893c14">
     <display-name>PROSIEBEN HD .b</display-name>
-    <icon src="https://i.imgur.com/zZOk3nh.png"/>
-  </channel>
-  <channel id="42027732266f99eefad2c3">
-    <display-name>PROSIEBEN HEVC .b</display-name>
     <icon src="https://i.imgur.com/zZOk3nh.png"/>
   </channel>
   <channel id="179652799872c7ac652f29">
@@ -2466,10 +2450,6 @@
     <display-name>REDBULL TV .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=3839151666.png"/>
   </channel>
-  <channel id="2732807498359af08f17a8">
-    <display-name>RTL .c</display-name>
-    <icon src="https://i.imgur.com/94K94k2.png"/>
-  </channel>
   <channel id="129448452281d01ead95ba">
     <display-name>RTL 2 HD .b</display-name>
   </channel>
@@ -2481,9 +2461,6 @@
   </channel>
   <channel id="3348091094bfaca3032ba6">
     <display-name>RTL 2 RAW .b</display-name>
-  </channel>
-  <channel id="3229717765a860ba5dc59e">
-    <display-name>RTL AUSTRIA .b</display-name>
   </channel>
   <channel id="1658792613bb9ee848c7fe">
     <display-name>RTL COMEDY .c</display-name>
@@ -2524,6 +2501,10 @@
     <display-name>RTL HD .s</display-name>
     <icon src="https://i.imgur.com/94K94k2.png"/>
   </channel>
+  <channel id="200648825617f98099975c">
+    <display-name>RTL HD+ (BACKUP) .b</display-name>
+    <icon src="https://i.imgur.com/94K94k2.png"/>
+  </channel>
   <channel id="27281196731bd935dafe5f">
     <display-name>RTL HD+ .b</display-name>
     <icon src="https://i.imgur.com/94K94k2.png"/>
@@ -2536,6 +2517,14 @@
   </channel>
   <channel id="41548305517a8567383c85">
     <display-name>RTL LIVING (BACKUP) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RTL_Living_Logo_2021.svg/960px-RTL_Living_Logo_2021.svg.png"/>
+  </channel>
+  <channel id="1961896622c359e8a0304">
+    <display-name>RTL LIVING .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RTL_Living_Logo_2021.svg/960px-RTL_Living_Logo_2021.svg.png"/>
+  </channel>
+  <channel id="20292744146321cd738b0f">
+    <display-name>RTL LIVING .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RTL_Living_Logo_2021.svg/960px-RTL_Living_Logo_2021.svg.png"/>
   </channel>
   <channel id="1949189696eba707f6538b">
@@ -2591,10 +2580,6 @@
   <channel id="1239232735b52ef627879c">
     <display-name>RTL SHINE .c</display-name>
   </channel>
-  <channel id="15721447168ef387e5dba0">
-    <display-name>RTL UP .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=1572144716.png"/>
-  </channel>
   <channel id="1198260913079cb7e1caac">
     <display-name>RTL UP .s</display-name>
   </channel>
@@ -2609,9 +2594,6 @@
     <display-name>RTL ZWEI HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RTLZWEI_Logo_2019.svg/960px-RTLZWEI_Logo_2019.svg.png"/>
   </channel>
-  <channel id="2496619116dae91d7b1dc6">
-    <display-name>RTL+ EVENT 3 .c</display-name>
-  </channel>
   <channel id="4623953409d29fe46912c">
     <display-name>RTL+ EVENT 5 .c</display-name>
   </channel>
@@ -2620,6 +2602,9 @@
   </channel>
   <channel id="41005223345d3c43064d7f">
     <display-name>RTL+ LIVE 1 .b</display-name>
+  </channel>
+  <channel id="2393461310c152bff96f35">
+    <display-name>RTL+ LIVE 3 .b</display-name>
   </channel>
   <channel id="10156477906a0e7f7acb8f">
     <display-name>RTL+ LIVE 4 .b</display-name>
@@ -2641,13 +2626,6 @@
   </channel>
   <channel id="20248491742c30cbaa06a4">
     <display-name>RTL+ SPORT EVENT 10 .b</display-name>
-  </channel>
-  <channel id="332619566454d37b4b3c0b">
-    <display-name>RTL+ SPORT EVENT 10 .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=3326195664.png"/>
-  </channel>
-  <channel id="153051689093b694159ad5">
-    <display-name>RTL+ SPORT EVENT 10 [LIVE DURING EVENTS ONLY] .s</display-name>
   </channel>
   <channel id="131600781562990e7747ef">
     <display-name>RTL+ SPORT EVENT 2 (BACKUP) .b</display-name>
@@ -2707,9 +2685,6 @@
   <channel id="3696897854d84c4123c6a6">
     <display-name>RTL+ SPORT EVENT 6 .b</display-name>
   </channel>
-  <channel id="408228056938c05cdf9147">
-    <display-name>RTL+ SPORT EVENT 6 [LIVE DURING EVENTS ONLY] .s</display-name>
-  </channel>
   <channel id="3778676366564d8c972c55">
     <display-name>RTL+ SPORT EVENT 7 .b</display-name>
   </channel>
@@ -2727,14 +2702,8 @@
     <display-name>RTL+ SPORT EVENT 8 .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=1213678665.png"/>
   </channel>
-  <channel id="2721946647518754ab9fc8">
-    <display-name>RTL+ SPORT EVENT 8 [LIVE DURING EVENTS ONLY] .s</display-name>
-  </channel>
   <channel id="1577761007d7d4999aaf71">
     <display-name>RTL+ SPORT EVENT 9 .b</display-name>
-  </channel>
-  <channel id="1966566905464ef6d66f17">
-    <display-name>RTL+ SPORT EVENT 9 .c</display-name>
   </channel>
   <channel id="28999978943424b4da92c5">
     <display-name>RTL+ SPORT EVENT 9 [LIVE DURING EVENTS ONLY] .s</display-name>
@@ -2812,10 +2781,6 @@
   <channel id="41600224142533e27b97d9">
     <display-name>S-SPORTS 1 HD .s</display-name>
   </channel>
-  <channel id="3202905239f7c8981cff1">
-    <display-name>S-SPORTS 1 SD .b</display-name>
-    <icon src="https://logo.huhu.to/logo?c=320290523.png"/>
-  </channel>
   <channel id="20381615174598b818f74c">
     <display-name>S-SPORTS 2 HD .s</display-name>
   </channel>
@@ -2825,12 +2790,6 @@
   </channel>
   <channel id="915717266d3f2ea348618">
     <display-name>SALON 3 SINEMAX .s</display-name>
-  </channel>
-  <channel id="3962972352ea44b8b75128">
-    <display-name>SARAN SPORT 1 .s</display-name>
-  </channel>
-  <channel id="287875534435a082281e3f">
-    <display-name>SARAN SPORT 2 .s</display-name>
   </channel>
   <channel id="301792595767e47e67347c">
     <display-name>SAT.1 EMOTIONS .b</display-name>
@@ -2852,20 +2811,12 @@
     <display-name>SAT.1 GOLD HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sat.1_Gold_Logo_2019.svg/960px-Sat.1_Gold_Logo_2019.svg.png"/>
   </channel>
-  <channel id="23694156501da825424413">
-    <display-name>SAT.1 GOLD RAW .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sat.1_Gold_Logo_2019.svg/960px-Sat.1_Gold_Logo_2019.svg.png"/>
-  </channel>
   <channel id="20652025938f3b189c73db">
     <display-name>SAT.1 HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png"/>
   </channel>
   <channel id="5384150814a48eb3296d0">
     <display-name>SAT.1 HEVC .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png"/>
-  </channel>
-  <channel id="3184769607d8aa40c41d1d">
-    <display-name>SAT.1 RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png"/>
   </channel>
   <channel id="4188119721d54405415c0f">
@@ -2961,16 +2912,16 @@
     <display-name>SKY BUNDESLIGA 1 [SPIELTAG] .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg"/>
   </channel>
+  <channel id="24341172320b3b5be01233">
+    <display-name>SKY BUNDESLIGA 1 HD (BACKUP) .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg"/>
+  </channel>
   <channel id="50922349169aa87b096d6">
     <display-name>SKY BUNDESLIGA 1 HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg"/>
   </channel>
   <channel id="15594385137602e44ab103">
     <display-name>SKY BUNDESLIGA 1 HD+ .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg"/>
-  </channel>
-  <channel id="3079354272de661103f411">
-    <display-name>SKY BUNDESLIGA 1 HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg"/>
   </channel>
   <channel id="4088560460e764f4320b39">
@@ -2989,9 +2940,6 @@
   </channel>
   <channel id="3934518884051d64962fbf">
     <display-name>SKY BUNDESLIGA 10 HD (BACKUP 2) .b</display-name>
-  </channel>
-  <channel id="31776053118538604d51e4">
-    <display-name>SKY BUNDESLIGA 10 HD (BACKUP) .b</display-name>
   </channel>
   <channel id="4105254911d2934d2656c4">
     <display-name>SKY BUNDESLIGA 10 HD .b</display-name>
@@ -3140,9 +3088,6 @@
   <channel id="2547193477b9eb4a5b5371">
     <display-name>SKY BUNDESLIGA 6 RAW .b</display-name>
   </channel>
-  <channel id="13902707329b1f4331ed50">
-    <display-name>SKY BUNDESLIGA 7 (MATCH TIME) .s</display-name>
-  </channel>
   <channel id="2055497349b85a63c2f355">
     <display-name>SKY BUNDESLIGA 7 (ONLY DURING EVENTS) .s</display-name>
   </channel>
@@ -3155,9 +3100,6 @@
   </channel>
   <channel id="1228567808382a1554e77a">
     <display-name>SKY BUNDESLIGA 7 HD (BACKUP 2) .b</display-name>
-  </channel>
-  <channel id="908138872804c4884246a">
-    <display-name>SKY BUNDESLIGA 7 HD (BACKUP) .b</display-name>
   </channel>
   <channel id="36273632683ee800afe754">
     <display-name>SKY BUNDESLIGA 7 HD .b</display-name>
@@ -3229,10 +3171,6 @@
   </channel>
   <channel id="3948160239d040a5149193">
     <display-name>SKY BUNDESLIGA1 .b</display-name>
-  </channel>
-  <channel id="4064931426eff4b3b91a74">
-    <display-name>SKY CRIME .c</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png"/>
   </channel>
   <channel id="1054042790e5af6bc827b3">
     <display-name>SKY CRIME HD .b</display-name>
@@ -3307,10 +3245,6 @@
     <display-name>SKY CINEMA BEST OF HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="1779919359802f2c8cd069">
-    <display-name>SKY CINEMA BEST OF HD+ .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="65180453812a20399b7d8">
     <display-name>SKY CINEMA BEST OF HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
@@ -3335,18 +3269,11 @@
     <display-name>SKY CINEMA CLASSICS HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="361705436f8af716c9648">
-    <display-name>SKY CINEMA CLASSICS HD+ .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sky_Cinema_Classics_DE_Logo_2020.svg/960px-Sky_Cinema_Classics_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="40564741164a7036747d07">
     <display-name>SKY CINEMA CRIME .s</display-name>
   </channel>
   <channel id="7584313479fe18bee2495">
     <display-name>SKY CINEMA DOCUMENTARIES .s</display-name>
-  </channel>
-  <channel id="75068099388ef97789690">
-    <display-name>SKY CINEMA EMOTION .b</display-name>
   </channel>
   <channel id="1260704553a0fd2c0d406">
     <display-name>SKY CINEMA EMOTION .c</display-name>
@@ -3390,16 +3317,12 @@
     <display-name>SKY CINEMA FUN .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="824805225a91b33aa1e51">
-    <display-name>SKY CINEMA HIGHLIGHTS .c</display-name>
-    <icon src="https://logo.huhu.to/logo?c=824805225.png"/>
+  <channel id="233190625557da9d7af3cb">
+    <display-name>SKY CINEMA HITS .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="36500348677afe90e35ed0">
     <display-name>SKY CINEMA HITS .c</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
-  </channel>
-  <channel id="21306899026842ff975479">
-    <display-name>SKY CINEMA HITS .s</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="631616247786c3788e7af">
@@ -3448,10 +3371,6 @@
     <display-name>SKY CINEMA PREMIEREN HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
   </channel>
-  <channel id="42658796007222e9d29cb7">
-    <display-name>SKY CINEMA PREMIEREN HD+ .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
-  </channel>
   <channel id="764818202b934dc0b2580">
     <display-name>SKY CINEMA PREMIEREN HEVC .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Cinema_Premieren_DE_Logo_2020.svg/960px-Sky_Cinema_Premieren_DE_Logo_2020.svg.png"/>
@@ -3472,9 +3391,6 @@
   </channel>
   <channel id="3150979982d9e0fda2c34c">
     <display-name>SKY CINEMA SPECIAL HD .b</display-name>
-  </channel>
-  <channel id="32018298233ee62d907934">
-    <display-name>SKY CINEMA SPECIAL HEVC .b</display-name>
   </channel>
   <channel id="3818330243704c076926c">
     <display-name>SKY CINEMA SPECIAL RAW .b</display-name>
@@ -3506,10 +3422,6 @@
   <channel id="1674044754ec11fb170b90">
     <display-name>SKY ONE HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sky_One_-_Logo_2020.png/960px-Sky_One_-_Logo_2020.png"/>
-  </channel>
-  <channel id="2339352940be5b636efa08">
-    <display-name>SKY REPLAY .s</display-name>
-    <icon src="https://i.imgur.com/YBHWMJ5.png"/>
   </channel>
   <channel id="4101674354c9f1f56f608e">
     <display-name>SKY REPLAY HD (FOX) .b</display-name>
@@ -3582,10 +3494,6 @@
   <channel id="41721755119dc46e523d3e">
     <display-name>SKY SPORT 11 HD .b</display-name>
     <icon src="https://i.imgur.com/7LXksX4.png"/>
-  </channel>
-  <channel id="1870973910f25bfb936300">
-    <display-name>SKY SPORT 2 (MATCH TIME) .s</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png"/>
   </channel>
   <channel id="2382703781584c6286b6e8">
     <display-name>SKY SPORT 2 .b</display-name>
@@ -3695,10 +3603,6 @@
     <display-name>SKY SPORT 6 HD (BACKUP 2) .b</display-name>
     <icon src="https://i.imgur.com/WfeyX8D.png"/>
   </channel>
-  <channel id="1450154471bf23820b345b">
-    <display-name>SKY SPORT 6 HD (BACKUP) .b</display-name>
-    <icon src="https://i.imgur.com/WfeyX8D.png"/>
-  </channel>
   <channel id="463237157314e6d840607">
     <display-name>SKY SPORT 6 HD .b</display-name>
     <icon src="https://i.imgur.com/WfeyX8D.png"/>
@@ -3713,6 +3617,10 @@
   </channel>
   <channel id="2972030035baf7f7dca0a2">
     <display-name>SKY SPORT 7 .c</display-name>
+    <icon src="https://i.imgur.com/XeflUV9.png"/>
+  </channel>
+  <channel id="35196320365418e35df134">
+    <display-name>SKY SPORT 7 HD (BACKUP) .b</display-name>
     <icon src="https://i.imgur.com/XeflUV9.png"/>
   </channel>
   <channel id="3610669243ccffe705cd01">
@@ -3731,20 +3639,8 @@
     <display-name>SKY SPORT 8 .c</display-name>
     <icon src="https://i.imgur.com/2YCQyZm.png"/>
   </channel>
-  <channel id="3908161130681991cd2e3">
-    <display-name>SKY SPORT 8 HD (BACKUP) .b</display-name>
-    <icon src="https://i.imgur.com/2YCQyZm.png"/>
-  </channel>
-  <channel id="23634792766d334318406">
-    <display-name>SKY SPORT 8 HD .b</display-name>
-    <icon src="https://i.imgur.com/2YCQyZm.png"/>
-  </channel>
   <channel id="2431494706163357c90f68">
     <display-name>SKY SPORT 9 HD (BACKUP) .b</display-name>
-    <icon src="https://i.imgur.com/NQMl2hn.png"/>
-  </channel>
-  <channel id="32671258975ee204f512e7">
-    <display-name>SKY SPORT 9 HD .b</display-name>
     <icon src="https://i.imgur.com/NQMl2hn.png"/>
   </channel>
   <channel id="2946846655092b774baf50">
@@ -3793,6 +3689,10 @@
     <display-name>SKY SPORT F1 HD (LOCAL) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
   </channel>
+  <channel id="1819080331481d1db415bd">
+    <display-name>SKY SPORT F1 HD .b</display-name>
+    <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
+  </channel>
   <channel id="337630640722b02d8184c4">
     <display-name>SKY SPORT F1 HD+ .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sky_Sport_F1_-_Logo_2020.svg/960px-Sky_Sport_F1_-_Logo_2020.svg.png"/>
@@ -3813,12 +3713,28 @@
     <display-name>SKY SPORT GOLF [LIVE DURING EVENTS ONLY] .s</display-name>
     <icon src="https://i.imgur.com/nhhbHvs.png"/>
   </channel>
+  <channel id="3617198388b3b01c80151e">
+    <display-name>SKY SPORT GOLF HD (BACKUP) .b</display-name>
+    <icon src="https://i.imgur.com/nhhbHvs.png"/>
+  </channel>
   <channel id="378692218956c8e84fedcc">
     <display-name>SKY SPORT GOLF HD .b</display-name>
     <icon src="https://i.imgur.com/nhhbHvs.png"/>
   </channel>
+  <channel id="100835397f59226b11c7d">
+    <display-name>SKY SPORT MIX .c</display-name>
+    <icon src="https://i.imgur.com/erx02nr.png"/>
+  </channel>
+  <channel id="7567581718626579f1750">
+    <display-name>SKY SPORT MIX .s</display-name>
+    <icon src="https://i.imgur.com/erx02nr.png"/>
+  </channel>
   <channel id="11835199671f0608b42607">
     <display-name>SKY SPORT MIX HD (BACKUP) .b</display-name>
+    <icon src="https://i.imgur.com/erx02nr.png"/>
+  </channel>
+  <channel id="3521735325dfd082c9b92f">
+    <display-name>SKY SPORT MIX HD .b</display-name>
     <icon src="https://i.imgur.com/erx02nr.png"/>
   </channel>
   <channel id="1476310467ccd3c706d108">
@@ -3839,10 +3755,6 @@
   </channel>
   <channel id="2332872870080d9ab39548">
     <display-name>SKY SPORT NEWS HD (BACKUP 2) .b</display-name>
-    <icon src="https://upload.wikimedia.org/wikipedia/de/thumb/c/cc/Sky_Sport_News_2020.svg/960px-Sky_Sport_News_2020.svg.png"/>
-  </channel>
-  <channel id="16562742272f88ca3563a5">
-    <display-name>SKY SPORT NEWS HD (BACKUP) .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/de/thumb/c/cc/Sky_Sport_News_2020.svg/960px-Sky_Sport_News_2020.svg.png"/>
   </channel>
   <channel id="2534839650df1f2665f900">
@@ -3888,6 +3800,10 @@
   <channel id="1690401777c2405c408f0d">
     <display-name>SKY SPORT TENNIS HD .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sky_Sport_Tennis.svg/960px-Sky_Sport_Tennis.svg.png"/>
+  </channel>
+  <channel id="3259673333d1927f8d89a8">
+    <display-name>SKY SPORT TOP EVENT .c</display-name>
+    <icon src="https://i.imgur.com/kQ6cVNx.png"/>
   </channel>
   <channel id="31037888758514437f20bf">
     <display-name>SKY SPORT TOP EVENT [LIVE DURING EVENTS ONLY] .s</display-name>
@@ -3954,10 +3870,6 @@
     <display-name>SPOR SMART 2 .c</display-name>
     <icon src="https://i.imgur.com/qyUKCUa.png"/>
   </channel>
-  <channel id="2228088973f56fff74c71f">
-    <display-name>SPOR SMART 2 .s</display-name>
-    <icon src="https://i.imgur.com/qyUKCUa.png"/>
-  </channel>
   <channel id="2726496671ea6fd3c6dc54">
     <display-name>SPOR SMART 2 HD .b</display-name>
     <icon src="https://i.imgur.com/qyUKCUa.png"/>
@@ -4008,10 +3920,6 @@
   </channel>
   <channel id="3670271178b86d6ca2acfc">
     <display-name>SPORT1 HEVC .b</display-name>
-    <icon src="https://i.imgur.com/Tsjt7v9.png"/>
-  </channel>
-  <channel id="1720056409ae11e317335f">
-    <display-name>SPORT1 RAW .b</display-name>
     <icon src="https://i.imgur.com/Tsjt7v9.png"/>
   </channel>
   <channel id="6635090684eca4561a362">
@@ -4070,10 +3978,6 @@
   </channel>
   <channel id="69930592375bf26f3bb25">
     <display-name>STAR TV .c</display-name>
-    <icon src="https://i.imgur.com/9O3DHRB.png"/>
-  </channel>
-  <channel id="8634724463963caea266f">
-    <display-name>STAR TV .s</display-name>
     <icon src="https://i.imgur.com/9O3DHRB.png"/>
   </channel>
   <channel id="20200351284d2f7e268665">
@@ -4163,10 +4067,6 @@
   <channel id="129312789771362713c30c">
     <display-name>SINEMA AKSIYON 1 .s</display-name>
   </channel>
-  <channel id="179563017fcc76df8dfba">
-    <display-name>SINEMA AKSIYON 2 .s</display-name>
-    <icon src="https://i.imgur.com/oy8Nq1r.png"/>
-  </channel>
   <channel id="424550844375a964b5b3e5">
     <display-name>SINEMA AILE 1 .s</display-name>
   </channel>
@@ -4208,9 +4108,6 @@
   </channel>
   <channel id="3644982305b65576486ef2">
     <display-name>SINEVIZYON 8 .s</display-name>
-  </channel>
-  <channel id="237327525e72f36a04e37">
-    <display-name>SINEVIZYON TURK 1 .s</display-name>
   </channel>
   <channel id="13493455810611836e96c5">
     <display-name>SINEVIZYON TURK 10 .s</display-name>
@@ -4300,10 +4197,6 @@
   <channel id="1489430754b4fd6e6dc327">
     <display-name>TABII SPOR 3 HD .b</display-name>
     <icon src="https://logo.huhu.to/logo?c=1489430754.png"/>
-  </channel>
-  <channel id="2546857708611b47e42ecf">
-    <display-name>TABII SPOR 3 UHD .b</display-name>
-    <icon src="https://logo.huhu.to/logo?c=2546857708.png"/>
   </channel>
   <channel id="2307885365b7f1828e97ba">
     <display-name>TABII SPOR 4 .c</display-name>
@@ -4527,6 +4420,9 @@
     <display-name>TOGGO .c</display-name>
     <icon src="https://logo.huhu.to/logo?c=2172603703.png"/>
   </channel>
+  <channel id="1840643644b180a4d619d6">
+    <display-name>TRABZON HABER 61 TV HD .b</display-name>
+  </channel>
   <channel id="2041026135d10f9c36ff66">
     <display-name>TRT 1 .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TRT_1_logo_%282021-%29.svg/960px-TRT_1_logo_%282021-%29.svg.png"/>
@@ -4625,10 +4521,6 @@
   <channel id="17020398633aafc0a6bc">
     <display-name>TRT EBA ORTAOKUL .s</display-name>
   </channel>
-  <channel id="228765803362ec29207df8">
-    <display-name>TRT EBA ILKOKUL .s</display-name>
-    <icon src="https://i.imgur.com/CRBfZi4.png"/>
-  </channel>
   <channel id="2003703357957a75b3c760">
     <display-name>TRT HABER .c</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/960px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png"/>
@@ -4656,6 +4548,10 @@
   <channel id="3640225965ac2c2232abef">
     <display-name>TRT KURDI RAW .b</display-name>
     <icon src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/TRT_Kurd%C3%AE_logo.svg/960px-TRT_Kurd%C3%AE_logo.svg.png"/>
+  </channel>
+  <channel id="23327896342ed3e26f9f31">
+    <display-name>TRT MUZIK .c</display-name>
+    <icon src="https://i.imgur.com/JgUzRH8.png"/>
   </channel>
   <channel id="23626784229b8f6ad5dd7a">
     <display-name>TRT MUZIK .s</display-name>
@@ -5028,9 +4924,6 @@
     <display-name>WELT .s</display-name>
     <icon src="https://i.imgur.com/s4TZoxx.png"/>
   </channel>
-  <channel id="29604815619f0584406548">
-    <display-name>WELT DER WUNDER .b</display-name>
-  </channel>
   <channel id="1148515000e3642f526e46">
     <display-name>WELT DER WUNDER .s</display-name>
   </channel>
@@ -5080,9 +4973,6 @@
   <channel id="1952835738c83bfddaf481">
     <display-name>YESILCAM 1 .s</display-name>
   </channel>
-  <channel id="8685860582340e8bd0469">
-    <display-name>YESILCAM 2 .s</display-name>
-  </channel>
   <channel id="245742586a1ae349871a9">
     <display-name>YESILCAM 3 .s</display-name>
   </channel>
@@ -5116,6 +5006,10 @@
   </channel>
   <channel id="2833509625e61a3449d2cc">
     <display-name>ZDF HD (BACKUP) .b</display-name>
+    <icon src="https://i.imgur.com/rtLb6m9.png"/>
+  </channel>
+  <channel id="2357166742945b42426750">
+    <display-name>ZDF HD .b</display-name>
     <icon src="https://i.imgur.com/rtLb6m9.png"/>
   </channel>
   <channel id="28662925545be6c8be8ec1">
