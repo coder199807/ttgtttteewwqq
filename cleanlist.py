@@ -19,10 +19,17 @@ CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 VAVOO_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
 REQUEST_TIMEOUT = 10
-CHECK_TIMEOUT = 5
+CHECK_TIMEOUT = 8  # Erhöht
 MAX_WORKERS = 10
 CACHE_FILE = "stream_cache.json"
-CACHE_TTL = 86400  # 24 Stunden
+CACHE_TTL = 86400
+
+# Bekannte funktionierende Vavoo-Proxies (falls der originale Link nicht geht)
+VAVOO_PROXIES = [
+    "https://vavoo-proxy.kadirmetin.workers.dev",
+    "https://vavoo-proxy.vercel.app",
+    "https://vavoo-proxy.netlify.app",
+]
 
 # ============================================================
 # HILFSFUNKTIONEN
@@ -117,25 +124,26 @@ def write_m3u(entries):
                 f.write(url + "\n")
 
 # ============================================================
-# EINFACHE LINK-PRÜFUNG
+# LINK-PRÜFUNG (robust)
 # ============================================================
 
 def check_url(url, headers, timeout=CHECK_TIMEOUT):
     if not url:
         return False
-    check_url_clean = url.split("|", 1)[0].strip()
-    if not check_url_clean:
+    clean_url = url.split("|", 1)[0].strip()
+    if not clean_url:
         return False
     try:
-        response = requests.get(
-            check_url_clean,
-            headers=headers,
-            timeout=timeout,
-            stream=True,
-            allow_redirects=True
-        )
-        response.close()
-        if 200 <= response.status_code < 400:
+        # Versuche HEAD zuerst (schneller)
+        resp_head = requests.head(clean_url, headers=headers, timeout=timeout, allow_redirects=True)
+        if resp_head.status_code in [200, 302, 301, 307, 308]:
+            return True
+        # Fallback: GET mit Range
+        headers_get = headers.copy()
+        headers_get['Range'] = 'bytes=0-8192'
+        resp_get = requests.get(clean_url, headers=headers_get, timeout=timeout, stream=True, allow_redirects=True)
+        resp_get.close()
+        if resp_get.status_code in [200, 206, 302, 301, 307, 308]:
             return True
     except:
         pass
@@ -215,6 +223,41 @@ def set_cache(key, value, cache):
     }
 
 # ============================================================
+# VAVOO MIT PROXY-FALLBACK
+# ============================================================
+
+def extract_vavoo_id(url):
+    # Extrahiert ID aus URLs wie:
+    # https://young-dew-a7a9.pandatiger.workers.dev/play/2470626656489869fa852
+    # oder https://vavoo.to/vavoo-iptv/play/...
+    # oder https://snowy-moon-e7c4.pandatiger.workers.dev/?url=https://vavoo.to/vavoo-iptv/play/...
+    match = re.search(r'/play/([a-f0-9]+)', url)
+    if match:
+        return match.group(1)
+    # Fallback: Parameter url=... im Query
+    match = re.search(r'[?&]url=https?://[^/]+/play/([a-f0-9]+)', url)
+    if match:
+        return match.group(1)
+    return None
+
+def check_vavoo_with_proxy(original_url):
+    if not original_url:
+        return None
+    # Zuerst originale URL testen
+    if check_url(original_url, {"User-Agent": VAVOO_USER_AGENT}, timeout=3):
+        return original_url
+    # ID extrahieren
+    vavoo_id = extract_vavoo_id(original_url)
+    if not vavoo_id:
+        return None
+    # Proxies durchgehen
+    for proxy in VAVOO_PROXIES:
+        proxy_url = f"{proxy}/play/{vavoo_id}"
+        if check_url(proxy_url, {"User-Agent": VAVOO_USER_AGENT}, timeout=3):
+            return proxy_url
+    return None
+
+# ============================================================
 # KANAL REPARIEREN
 # ============================================================
 
@@ -225,7 +268,7 @@ def repair_channel(entry, cache, custom_links):
     cache_key = get_canonical_key(channel_name) if channel_name else None
     headers = {"User-Agent": CUSTOM_USER_AGENT}
 
-    # 1. Manuelle Links (höchste Priorität)
+    # 1. Manuelle Links
     if cache_key:
         custom_url = get_working_custom_link(channel_name, custom_links, headers)
         if custom_url:
@@ -238,9 +281,13 @@ def repair_channel(entry, cache, custom_links):
         if cached_result and check_url(cached_result, headers, timeout=3):
             return {"extinf": extinf, "url": cached_result, "ua": CUSTOM_USER_AGENT, "source": "cache"}
 
-    # 3. Originale Vavoo-URL prüfen
-    if check_url(original_url, {"User-Agent": VAVOO_USER_AGENT}, timeout=3):
-        return {"extinf": extinf, "url": original_url, "ua": VAVOO_USER_AGENT, "source": "vavoo"}
+    # 3. Vavoo mit Proxy-Fallback
+    vavoo_url = check_vavoo_with_proxy(original_url)
+    if vavoo_url:
+        # Cache speichern
+        if cache_key:
+            set_cache(f"stream_{cache_key}", vavoo_url, cache)
+        return {"extinf": extinf, "url": vavoo_url, "ua": VAVOO_USER_AGENT, "source": "vavoo"}
 
     # 4. Nichts funktioniert – Original behalten
     return {"extinf": extinf, "url": clean_stream_url(original_url), "ua": VAVOO_USER_AGENT, "source": "original"}
@@ -251,18 +298,14 @@ def repair_channel(entry, cache, custom_links):
 
 def process_hybrid_m3u():
     print("\n" + "="*60)
-    print("IPTV REPAIR TOOL (EINFACH)")
-    print("Custom Links → Cache → Vavoo → Original behalten")
+    print("IPTV REPAIR TOOL (VAVOO + PROXY FALLBACK)")
+    print("Custom Links → Cache → Vavoo (mit Proxy) → Original")
     print("="*60)
 
-    # 1. Custom Links laden
     custom_links = load_custom_links()
-
-    # 2. Cache laden
     cache = load_cache()
     print(f"[CACHE] Geladen: {len(cache)} Einträge")
 
-    # 3. M3U lesen
     try:
         with open(INPUT_M3U, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
@@ -279,7 +322,6 @@ def process_hybrid_m3u():
     output_entries = []
     stats = {"custom": 0, "cache": 0, "vavoo": 0, "original": 0}
 
-    # Parallel verarbeiten
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {executor.submit(repair_channel, entry, cache, custom_links): entry for entry in entries}
         for i, future in enumerate(as_completed(futures), 1):
@@ -289,11 +331,9 @@ def process_hybrid_m3u():
             if i % 50 == 0 or i == len(entries):
                 print(f"  Fortschritt: {i}/{len(entries)} ({i/len(entries)*100:.1f}%)")
 
-    # 4. Cache speichern
     save_cache(cache)
     print(f"[CACHE] Gespeichert: {len(cache)} Einträge")
 
-    # 5. Statistik
     elapsed = time.time() - start_time
     print("\n" + "="*60)
     print("STATISTIK")
@@ -306,7 +346,6 @@ def process_hybrid_m3u():
     print(f"Benötigte Zeit:         {elapsed:.1f} Sekunden")
     print("="*60)
 
-    # 6. Neue M3U schreiben
     write_m3u(output_entries)
     print(f"\n[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
 
