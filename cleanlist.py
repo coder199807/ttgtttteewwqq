@@ -7,8 +7,6 @@ import json
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
-import urllib.parse
 from collections import defaultdict
 
 # ============================================================
@@ -22,10 +20,10 @@ CUSTOM_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 VAVOO_USER_AGENT = "Vavoo/2.6 vypn.net App/1.0 Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
 REQUEST_TIMEOUT = 10
-CHECK_TIMEOUT = 5  # Erhöht von 3 auf 5 Sekunden
+CHECK_TIMEOUT = 5
 MAX_WORKERS = 10
 CACHE_FILE = "stream_cache.json"
-CACHE_TTL = 86400
+CACHE_TTL = 86400  # 24 Stunden
 
 # ============================================================
 # HILFSFUNKTIONEN
@@ -115,10 +113,8 @@ def get_extinf_name(extinf):
     return extinf.rsplit(",", 1)[1].strip()
 
 def clean_stream_url(url):
-    """Bereinigt die URL von Pipe-Parametern, aber behält die URL selbst."""
     if not url:
         return ""
-    # Nur Pipe-Parameter entfernen, den Rest behalten
     return url.split("|", 1)[0].strip() if "|" in url else url
 
 def write_m3u(entries):
@@ -126,45 +122,53 @@ def write_m3u(entries):
         f.write("#EXTM3U\n")
         for entry in entries:
             extinf = entry["extinf"]
+            # group-title nur setzen, wenn nicht vorhanden
             if 'group-title="' not in extinf:
-                extinf = re.sub(r'(#EXTINF:-?\d+)', r'\1 group-title="Ulusal"', extinf)
+                group = entry.get("group", "Ulusal")
+                extinf = re.sub(r'(#EXTINF:-?\d+)', rf'\1 group-title="{group}"', extinf)
             f.write(extinf + "\n")
             url = clean_stream_url(entry["url"])
             ua = entry.get("ua", CUSTOM_USER_AGENT)
-            f.write(f"#EXTVLCOPT:http-user-agent={ua}\n")
-            f.write(f'#EXTHTTP:{{"User-Agent":"{ua}"}}\n')
-            f.write(url + "\n")
+            # Nur schreiben, wenn URL existiert
+            if url:
+                f.write(f"#EXTVLCOPT:http-user-agent={ua}\n")
+                f.write(f'#EXTHTTP:{{"User-Agent":"{ua}"}}\n')
+                f.write(url + "\n")
+
+# ============================================================
+# EINFACHE LINK-PRÜFUNG (KEIN SCRAPER)
+# ============================================================
 
 def check_url(url, headers, timeout=CHECK_TIMEOUT):
-    """Prüft ob eine URL erreichbar ist - mit GET als Fallback."""
+    """Einfache Prüfung ob eine URL erreichbar ist."""
     if not url:
         return False
     
-    # Bereinige die URL für den Check
+    # Bereinige die URL
     check_url_clean = url.split("|", 1)[0].strip()
     if not check_url_clean:
         return False
     
     try:
-        # Versuche HEAD zuerst
-        response = requests.head(check_url_clean, headers=headers, timeout=timeout, allow_redirects=True)
-        if response.status_code == 200:
+        # Einfacher GET-Request mit Stream (lädt nur Header)
+        response = requests.get(
+            check_url_clean,
+            headers=headers,
+            timeout=timeout,
+            stream=True,
+            allow_redirects=True
+        )
+        response.close()
+        
+        # Akzeptiere alle 2xx, 3xx Statuscodes
+        if 200 <= response.status_code < 400:
             return True
-        if response.status_code in [301, 302, 307, 308]:
-            return True
-    except:
+            
+    except requests.exceptions.Timeout:
+        pass  # Timeout ist kein hartes Nein
+    except requests.exceptions.ConnectionError:
         pass
-    
-    # Fallback: GET mit Range
-    try:
-        headers_get = headers.copy()
-        headers_get['Range'] = 'bytes=0-8192'
-        response = requests.get(check_url_clean, headers=headers_get, timeout=timeout, stream=True, allow_redirects=True)
-        if response.status_code in [200, 206]:
-            return True
-        if response.status_code in [301, 302, 307, 308]:
-            return True
-    except:
+    except Exception:
         pass
     
     return False
@@ -243,205 +247,13 @@ def set_cache(key, value, cache):
     }
 
 # ============================================================
-# 1. VAVOO (HAUPTQUELLE)
+# VAVOO PRÜFUNG
 # ============================================================
 
 def check_vavoo(original_url):
     if not original_url:
         return False
     return check_url(original_url, {"User-Agent": VAVOO_USER_AGENT}, timeout=2)
-
-# ============================================================
-# 2. FAMELACK (SCRAPER)
-# ============================================================
-
-def scrape_famelack(channel_name):
-    print(f"  [FAMELACK] Suche für: {channel_name}")
-    found = 0
-    links = []
-    
-    clean_name = clean_channel_name(channel_name).lower()
-    clean_name = re.sub(r'[^a-z0-9]', '', clean_name)
-    
-    if not clean_name or len(clean_name) < 3:
-        return []
-    
-    variants = [
-        clean_name,
-        clean_name.replace('tv', '').strip(),
-        clean_name[:5],
-    ]
-    variants = list(dict.fromkeys([v for v in variants if v and len(v) >= 3]))
-    
-    cdn_domains = ["rnttwmjcin.turknet.ercdn.net"]
-    path_prefixes = ["lcpmvefbyo"]
-    qualities = ["1080p", "720p", "576p"]
-    
-    for variant in variants[:3]:
-        for domain in cdn_domains:
-            for prefix in path_prefixes:
-                for quality in qualities:
-                    url = f"https://{domain}/{prefix}/{variant}/{variant}_{quality}.m3u8"
-                    try:
-                        response = requests.head(url, headers={"User-Agent": CUSTOM_USER_AGENT}, timeout=3)
-                        if response.status_code == 200:
-                            links.append(url)
-                            found += 1
-                            print(f"  [FAMELACK] ✅ {quality} gefunden")
-                            break
-                    except:
-                        continue
-                if found > 0:
-                    break
-            if found > 0:
-                break
-        if found > 0:
-            break
-    
-    print(f"  [FAMELACK] {found} Links gefunden.")
-    return links
-
-# ============================================================
-# 3. TVGARDEN.WORLD (SCRAPER)
-# ============================================================
-
-def scrape_tvgarden(channel_name):
-    print(f"  [TVGARDEN] Suche für: {channel_name}")
-    found = 0
-    links = []
-    
-    clean_name = clean_channel_name(channel_name).lower()
-    
-    try:
-        search_url = f"{TVGARDEN_BASE}/api/channels/search?q={urllib.parse.quote(clean_name)}"
-        response = requests.get(search_url, headers={"User-Agent": CUSTOM_USER_AGENT}, timeout=10)
-        
-        if response.status_code == 200:
-            data = response.json()
-            if data and isinstance(data, list):
-                for channel in data:
-                    stream_url = channel.get('stream_url') or channel.get('url')
-                    if stream_url and '.m3u8' in stream_url:
-                        links.append(stream_url)
-                        found += 1
-                        print(f"  [TVGARDEN] ✅ {stream_url[:80]}...")
-        
-        if not links:
-            page_url = f"{TVGARDEN_BASE}/tv"
-            response = requests.get(page_url, headers={"User-Agent": CUSTOM_USER_AGENT}, timeout=10)
-            if response.status_code == 200:
-                soup = BeautifulSoup(response.text, "html.parser")
-                m3u8_pattern = r'(https?://[^\s"\']+\.m3u8[^\s"\']*)'
-                matches = re.findall(m3u8_pattern, response.text)
-                for match in matches:
-                    if clean_name in match.lower() or clean_name in match.lower():
-                        links.append(match)
-                        found += 1
-                        print(f"  [TVGARDEN] ✅ {match[:80]}...")
-                
-    except Exception as e:
-        print(f"  [TVGARDEN] Fehler: {e}")
-    
-    print(f"  [TVGARDEN] {found} Links gefunden.")
-    return links
-
-# ============================================================
-# 4. CANLITV.DIRECT (SCRAPER)
-# ============================================================
-
-def scrape_canlitv_direct(channel_name):
-    print(f"  [CANLITV] Suche für: {channel_name}")
-    found = 0
-    links = []
-    
-    clean_name = clean_channel_name(channel_name).lower()
-    search_name = clean_name.replace(' ', '-')
-    
-    try:
-        urls_to_try = [
-            f"{CANLITV_DIRECT_BASE}/{search_name}",
-            f"{CANLITV_DIRECT_BASE}/tv/{search_name}",
-            f"{CANLITV_DIRECT_BASE}/kanal/{search_name}",
-        ]
-        
-        for url in urls_to_try:
-            response = requests.get(url, headers={"User-Agent": CUSTOM_USER_AGENT}, timeout=10)
-            if response.status_code == 200:
-                m3u8_pattern = r'(https?://[^\s"\']+\.m3u8[^\s"\']*)'
-                matches = re.findall(m3u8_pattern, response.text)
-                for match in matches:
-                    links.append(match)
-                    found += 1
-                    print(f"  [CANLITV] ✅ {match[:80]}...")
-                break
-                        
-    except Exception as e:
-        print(f"  [CANLITV] Fehler: {e}")
-    
-    print(f"  [CANLITV] {found} Links gefunden.")
-    return links
-
-# ============================================================
-# 5. SCRAPER - ALLE QUELLEN
-# ============================================================
-
-def find_stream_with_scraper(channel_name):
-    print(f"  [SCRAPER] Suche für: {channel_name}")
-    
-    all_links = []
-    
-    famelack_links = scrape_famelack(channel_name)
-    all_links.extend(famelack_links)
-    
-    tvgarden_links = scrape_tvgarden(channel_name)
-    all_links.extend(tvgarden_links)
-    
-    canlitv_links = scrape_canlitv_direct(channel_name)
-    all_links.extend(canlitv_links)
-    
-    all_links = list(dict.fromkeys(all_links))
-    
-    for url in all_links[:5]:
-        if check_url(url, {"User-Agent": CUSTOM_USER_AGENT}, timeout=3):
-            print(f"  [SCRAPER] ✅ Funktionierender Link gefunden!")
-            return url
-    
-    return None
-
-# ============================================================
-# REPAIR FÜR EINZELNEN KANAL
-# ============================================================
-
-def repair_channel(entry, cache, custom_links):
-    extinf = entry["extinf"]
-    original_url = entry["url"]
-    channel_name = get_extinf_name(extinf)
-    display_name = get_display_name(channel_name)
-    cache_key = get_canonical_key(channel_name)
-    
-    # 1. Manuelle Links
-    custom_url = get_working_custom_link(channel_name, custom_links, {"User-Agent": CUSTOM_USER_AGENT})
-    if custom_url:
-        set_cache(f"stream_{cache_key}", custom_url, cache)
-        return {"extinf": extinf, "url": custom_url, "ua": CUSTOM_USER_AGENT, "source": "custom"}
-    
-    # 2. Vavoo
-    if check_vavoo(original_url):
-        return {"extinf": extinf, "url": original_url, "ua": VAVOO_USER_AGENT, "source": "vavoo"}
-    
-    # 3. Cache
-    cached_result = get_cached(f"stream_{cache_key}", cache)
-    if cached_result and check_url(cached_result, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
-        return {"extinf": extinf, "url": cached_result, "ua": CUSTOM_USER_AGENT, "source": "cache"}
-    
-    # 4. Scraper
-    scraper_url = find_stream_with_scraper(channel_name)
-    if scraper_url:
-        set_cache(f"stream_{cache_key}", scraper_url, cache)
-        return {"extinf": extinf, "url": scraper_url, "ua": CUSTOM_USER_AGENT, "source": "scraper"}
-    
-    # 5. Original behalten (keine Änderung)
-    return {"extinf": extinf, "url": clean_stream_url(original_url), "ua": VAVOO_USER_AGENT, "source": "original"}
 
 # ============================================================
 # GRUPPIERUNG NUR FÜR ULUSAL
@@ -469,64 +281,28 @@ def group_ulusal_channels(entries):
 def find_best_link_for_group(group_entries, cache, custom_links):
     first_name = get_extinf_name(group_entries[0]["extinf"])
     key = get_canonical_key(first_name)
+    headers = {"User-Agent": CUSTOM_USER_AGENT}
     
-    # 1. Manuelle Links
-    custom_url = get_working_custom_link(first_name, custom_links, {"User-Agent": CUSTOM_USER_AGENT})
+    # 1. Manuelle Links (höchste Priorität)
+    custom_url = get_working_custom_link(first_name, custom_links, headers)
     if custom_url:
+        set_cache(f"stream_{key}", custom_url, cache)
         return custom_url, "custom"
     
     # 2. Cache
     cached_result = get_cached(f"stream_{key}", cache)
-    if cached_result and check_url(cached_result, {"User-Agent": CUSTOM_USER_AGENT}, timeout=2):
+    if cached_result and check_url(cached_result, headers, timeout=3):
         return cached_result, "cache"
     
     # 3. Alle URLs aus der Gruppe testen
     for entry in group_entries:
         url = entry.get("url")
-        if url and check_url(url, {"User-Agent": VAVOO_USER_AGENT}, timeout=2):
+        if url and check_url(url, headers, timeout=3):
+            set_cache(f"stream_{key}", url, cache)
             return url, "vavoo"
     
-    # 4. Scraper
-    scraper_url = find_stream_with_scraper(first_name)
-    if scraper_url:
-        set_cache(f"stream_{key}", scraper_url, cache)
-        return scraper_url, "scraper"
-    
-    # 5. Original behalten
+    # 4. Nichts funktioniert – Original behalten
     return group_entries[0].get("url"), "original"
-
-# ============================================================
-# M3U CHECKER
-# ============================================================
-
-def validate_m3u_with_checker(m3u_content):
-    print("\n[M3U CHECKER] Validiere Playlist...")
-    
-    entries = parse_m3u(m3u_content)
-    working_entries = []
-    failed_entries = []
-    
-    print(f"[M3U CHECKER] Prüfe {len(entries)} Streams...")
-    
-    def check_single(entry):
-        url = entry.get("url")
-        if not url:
-            return None
-        if check_url(url, {"User-Agent": VAVOO_USER_AGENT}, timeout=3):
-            return entry
-        return None
-    
-    with ThreadPoolExecutor(max_workers=20) as executor:
-        futures = {executor.submit(check_single, entry): entry for entry in entries}
-        for future in as_completed(futures):
-            result = future.result()
-            if result:
-                working_entries.append(result)
-            else:
-                failed_entries.append(futures[future])
-    
-    print(f"[M3U CHECKER] {len(working_entries)} funktionierende Streams, {len(failed_entries)} defekte Streams")
-    return m3u_content
 
 # ============================================================
 # HAUPTPROZESS
@@ -534,17 +310,19 @@ def validate_m3u_with_checker(m3u_content):
 
 def process_hybrid_m3u():
     print("\n" + "="*60)
-    print("IPTV REPAIR TOOL")
+    print("IPTV REPAIR TOOL (ULUSAL OPTIMIERUNG)")
     print("Nur Ulusal-Kanäle werden gruppiert und optimiert")
     print("Alle anderen Kategorien bleiben unverändert")
     print("="*60)
 
-    start_total = time.time()
-    
+    # 1. Custom Links laden
     custom_links = load_custom_links()
+
+    # 2. Cache laden
     cache = load_cache()
     print(f"[CACHE] Geladen: {len(cache)} Einträge")
 
+    # 3. M3U lesen
     try:
         with open(INPUT_M3U, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
@@ -552,11 +330,10 @@ def process_hybrid_m3u():
         print(f"[FEHLER] {INPUT_M3U} nicht gefunden.")
         return
 
-    content = validate_m3u_with_checker(content)
     all_entries = parse_m3u(content)
     print(f"\n[M3U] {len(all_entries)} Kanäle gelesen.")
 
-    # Aufteilen: Ulusal vs. andere
+    # 4. Aufteilen: Ulusal vs. andere
     ulusal_entries = []
     other_entries = []
     
@@ -568,9 +345,9 @@ def process_hybrid_m3u():
             other_entries.append(entry)
     
     print(f"[M3U] {len(ulusal_entries)} Kanäle in 'Ulusal'")
-    print(f"[M3U] {len(other_entries)} Kanäle in anderen Kategorien (bleiben unverändert)")
+    print(f"[M3U] {len(other_entries)} Kanäle in anderen Kategorien (unverändert)")
 
-    # Ulusal gruppieren
+    # 5. Ulusal gruppieren und optimieren
     groups, order = group_ulusal_channels(ulusal_entries)
     print(f"[M3U] {len(groups)} eindeutige Ulusal-Kanäle (Duplikate entfernt).")
 
@@ -578,9 +355,9 @@ def process_hybrid_m3u():
     start_time = time.time()
     
     processed_ulusal = []
-    stats = {"custom": 0, "cache": 0, "vavoo": 0, "scraper": 0, "original": 0}
+    stats = {"custom": 0, "cache": 0, "vavoo": 0, "original": 0}
 
-    for key in order:
+    for i, key in enumerate(order, 1):
         group_entries = groups[key]
         base_entry = group_entries[0]
         name = get_extinf_name(base_entry["extinf"])
@@ -589,35 +366,35 @@ def process_hybrid_m3u():
         best_url, source = find_best_link_for_group(group_entries, cache, custom_links)
         stats[source] += 1
 
-        if best_url and source not in ["original"]:
-            set_cache(f"stream_{key}", best_url, cache)
-
+        # Ausgabe im Stil der Vorlage
         new_extinf = base_entry["extinf"]
+        # Entferne alte group-title und setze "Ulusal"
         new_extinf = re.sub(r'group-title="[^"]*"', '', new_extinf)
         new_extinf = re.sub(r'(#EXTINF:-?\d+)', r'\1 group-title="Ulusal"', new_extinf)
+
+        # Benutzer-Agent für die Ausgabe
+        ua = CUSTOM_USER_AGENT if source not in ["vavoo", "original"] else VAVOO_USER_AGENT
 
         processed_ulusal.append({
             "extinf": new_extinf,
             "extra": base_entry.get("extra", []),
             "url": best_url if best_url else "",
             "group": "Ulusal",
-            "ua": CUSTOM_USER_AGENT if source not in ["vavoo", "original"] else VAVOO_USER_AGENT,
+            "ua": ua,
             "source": source,
             "display_name": display_name
         })
 
-        total = len(groups)
-        done = len(processed_ulusal)
-        if done % 10 == 0 or done == total:
-            print(f"  Fortschritt: {done}/{total} ({done/total*100:.1f}%)")
+        if i % 10 == 0 or i == len(groups):
+            print(f"  Fortschritt: {i}/{len(groups)} ({i/len(groups)*100:.1f}%)")
 
     save_cache(cache)
     print(f"[CACHE] Gespeichert: {len(cache)} Einträge")
 
+    # 6. Zusammenführen: Verarbeitete Ulusal + unveränderte andere
     output_entries = processed_ulusal + other_entries
 
     elapsed = time.time() - start_time
-    total_elapsed = time.time() - start_total
     print("\n" + "="*60)
     print("STATISTIK")
     print("="*60)
@@ -628,12 +405,11 @@ def process_hybrid_m3u():
     print(f"Manuelle Links:         {stats['custom']}")
     print(f"Aus Cache:              {stats['cache']}")
     print(f"Vavoo (funktioniert):   {stats['vavoo']}")
-    print(f"Durch Scraper gefunden: {stats['scraper']}")
     print(f"Original behalten:      {stats['original']}")
     print(f"Benötigte Zeit:         {elapsed:.1f} Sekunden")
-    print(f"Gesamtzeit:             {total_elapsed:.1f} Sekunden")
     print("="*60)
 
+    # 7. Neue M3U schreiben
     write_m3u(output_entries)
     print(f"\n[FERTIG] Playlist gespeichert als {OUTPUT_M3U}")
     print(f"[INFO] {len(output_entries)} Kanäle in der Playlist.")
