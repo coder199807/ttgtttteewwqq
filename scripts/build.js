@@ -16,7 +16,8 @@ const FETCH_TIMEOUT_MS = 20000;
 // Upstream EPG (ALL enthält DE, AT, CH, TR & Sport)
 const EPG_UPSTREAM_URL =
   process.env.EPG_UPSTREAM_URL ||
-  "https://epgshare01.online/epgshare01/epg_ripper_ALL.xml.gz";
+  "https://epg.lat/files/tr.xml.gz"
+  "https://epg.lat/files/de.xml.gz";
 
 // Optional directory of iptv-org/epg grab outputs (XMLTV per site).
 const IPTVORG_GRAB_DIR = process.env.IPTVORG_GRAB_DIR || "";
