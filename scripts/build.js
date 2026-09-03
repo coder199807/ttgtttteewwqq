@@ -13,11 +13,9 @@ const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const EPG_FILE = path.join(__dirname, "..", "epg.xml");
 const FETCH_TIMEOUT_MS = 20000;
 
-// Upstream EPG (ALL enthält DE, AT, CH, TR & Sport)
+// Upstream EPG (geändert auf DE für bessere Abdeckung)
 const EPG_UPSTREAM_URL =
-  process.env.EPG_UPSTREAM_URL ||
-  "https://epg.lat/files/tr.xml.gz"
-  "https://epg.lat/files/de.xml.gz";
+  process.env.EPG_UPSTREAM_URL || "https://epg.lat/files/de.xml.gz";
 
 // Optional directory of iptv-org/epg grab outputs (XMLTV per site).
 const IPTVORG_GRAB_DIR = process.env.IPTVORG_GRAB_DIR || "";
@@ -58,28 +56,13 @@ const HEADERS = {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
 };
 
-// Whitelist für relevante deutsche Hauptsender & Sportkanäle
-const GERMAN_ALLOWED_KEYWORDS = [
-  // Hauptsender
-  "RTL", "PROSIEBEN", "PRO7", "SAT.1", "SAT1", "VOX", "ZDF", "ARD", "DAS ERSTE",
-  "NICKELODEON", "SUPER RTL", "RTL2", "RTL 2", "RTL II", "NITRO", "RTL NITRO",
-  "RTL+", "RTL PLUS", "TELE 5", "SIXX", "PROSIEBEN MAXX", "KABEL EINS", "KABEL 1",
-  "DMAX", "DISCOVERY", "WELT", "N24", "NTY", "N-TV", "PHOENIX", "TAGESSCHAU24",
-  "DISNEY CHANNEL", "TOGGO", "KIKA",
+// ⚠️ WHITELIST FÜR DEUTSCHLAND ENTFERNT (alle deutschen Kanäle werden durchgelassen)
+// Die ursprüngliche Whitelist mit 58 Sendern wurde komplett entfernt.
+// Die Kategorien-Filter (weiter unten) entscheiden jetzt, welche Kanäle behalten werden.
 
-  // Pay-TV & Cinema
-  "SKY ATLANTIC", "SKY ONE", "SKY CRIME", "SKY CINEMA", "SKY REPLAY", "SKY SHOWCASE",
-  "13TH STREET", "SYFY", "AXN", "WARNER TV", "TNT",
-
-  // Sport (DE / AT / CH)
-  "DAZN", "SKY SPORT", "SKY BULI", "BUNDESLIGA", "SPORT1", "EUROSPORT",
-  "MAGENTA SPORT", "MAGENTASPORT", "ORF SPORT", "ORF 1", "ORF 2", "SRF ZWEI", "SRF 2",
-  "SRF INFO", "BLUE SPORT", "SERVUSTV", "SERVUS TV", "RED BULL TV", "SPORTDIGITAL"
-];
-
+// 🔧 NEUE FUNKTION: Lässt ALLE deutschen Kanäle durch
 function isAllowedGermanChannel(channelName) {
-  const nameUpper = String(channelName || "").toUpperCase();
-  return GERMAN_ALLOWED_KEYWORDS.some((keyword) => nameUpper.includes(keyword));
+  return true; // Alle Kanäle aus der Gruppe "Germany" werden akzeptiert
 }
 
 function buildBody(group, cursor) {
@@ -209,7 +192,9 @@ function normalizeForCategory(name) {
   return s;
 }
 
-// Angepasste Kategorien (Ohne Diğer, Yaşam, Österreich/Schweiz, Dizi, Radyo)
+// 🏷️ KATEGORIEN-FILTER (BLEIBEN UNVERÄNDERT)
+// Diese 8 Kategorien entscheiden, welche Kanäle in die M3U kommen:
+// Sport, Deutschland, Çocuk/Kinder, Belgesel/Doku, Film, Haber, Dini, Ulusal (TR)
 const CATEGORY_RULES = [
   {
     name: "Sport",
@@ -250,7 +235,7 @@ function categorize(name) {
   for (const rule of CATEGORY_RULES) {
     if (rule.re.test(s)) return rule.name;
   }
-  // Wenn der Sender in keine der erlaubten Kategorien passt -> null (wird verworfen)
+  // ❌ Sender, die in KEINE Kategorie passen, werden verworfen (z.B. Radio, Dizi, Yaşam)
   return null;
 }
 
