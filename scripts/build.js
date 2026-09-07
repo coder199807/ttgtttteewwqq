@@ -13,7 +13,7 @@ const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const EPG_FILE = path.join(__dirname, "..", "epg.xml");
 const FETCH_TIMEOUT_MS = 20000;
 
-// Upstream EPG (geändert auf DE für bessere Abdeckung)
+// Upstream EPG (DE für bessere Abdeckung)
 const EPG_UPSTREAM_URL =
   process.env.EPG_UPSTREAM_URL || "https://epg.lat/files/de.xml.gz";
 
@@ -56,13 +56,233 @@ const HEADERS = {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
 };
 
-// ⚠️ WHITELIST FÜR DEUTSCHLAND ENTFERNT (alle deutschen Kanäle werden durchgelassen)
-// Die ursprüngliche Whitelist mit 58 Sendern wurde komplett entfernt.
-// Die Kategorien-Filter (weiter unten) entscheiden jetzt, welche Kanäle behalten werden.
+// ═══════════════════════════════════════════════════════════════
+// 🔗 LINK CHECKER & AUTO-REPAIR FUNKTIONEN
+// ═══════════════════════════════════════════════════════════════
 
-// 🔧 NEUE FUNKTION: Lässt ALLE deutschen Kanäle durch
+/**
+ * Prüft, ob ein Stream-Link funktioniert
+ * @param {string} url - Die zu prüfende URL
+ * @param {number} timeout - Timeout in ms
+ * @returns {Promise<boolean>} - true wenn Link funktioniert
+ */
+async function checkLink(url, timeout = 5000) {
+  if (!url) return false;
+  
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+    
+    // Versuche HEAD-Request (schneller)
+    const res = await fetch(url, {
+      method: "HEAD",
+      headers: {
+        "User-Agent": "VLC/3.0.20 LibVLC/3.0.20",
+        "Accept": "*/*",
+        "Range": "bytes=0-8192"
+      },
+      signal: controller.signal,
+    });
+    
+    clearTimeout(timeoutId);
+    
+    // Erfolg bei 200, 206 (Partial Content) oder 403 (manche Server)
+    if ([200, 206, 403].includes(res.status)) {
+      return true;
+    }
+    
+    // Fallback: Versuche GET mit kurzem Range
+    if (res.status === 405) {
+      const getRes = await fetch(url, {
+        method: "GET",
+        headers: {
+          "User-Agent": "VLC/3.0.20 LibVLC/3.0.20",
+          "Range": "bytes=0-8192"
+        },
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      return [200, 206, 403].includes(getRes.status);
+    }
+    
+    return false;
+  } catch (err) {
+    // Timeout oder Netzwerkfehler = Link tot
+    return false;
+  }
+}
+
+/**
+ * Sucht nach einer Alternative für einen Kanal
+ * @param {string} channelName - Name des Kanals
+ * @param {Array} allItems - Alle verfügbaren Kanäle
+ * @param {string} currentUrl - Die aktuelle (tote) URL
+ * @returns {Promise<string|null>} - Funktionierende Alternative oder null
+ */
+async function findAlternativeLink(channelName, allItems, currentUrl) {
+  const variants = getChannelVariants(channelName);
+  const MAX_CANDIDATES = 20;
+  let candidates = [];
+  
+  // 1. Suche nach Kanälen mit ähnlichem Namen
+  for (const item of allItems) {
+    if (!item || !item.url || item.url === currentUrl) continue;
+    
+    const itemName = String(item.name || "").toLowerCase();
+    const score = calculateMatchScore(channelName, itemName);
+    
+    if (score > 0.5) {
+      candidates.push({
+        item,
+        score,
+        url: item.url
+      });
+    }
+  }
+  
+  // 2. Nach Score sortieren (höchste zuerst)
+  candidates.sort((a, b) => b.score - a.score);
+  
+  // 3. Top-Kandidaten testen
+  const testCandidates = candidates.slice(0, MAX_CANDIDATES);
+  
+  console.log(`  🔍 Suche Alternative für "${channelName}" (${testCandidates.length} Kandidaten)...`);
+  
+  for (const candidate of testCandidates) {
+    const working = await checkLink(candidate.url, 3000);
+    if (working) {
+      console.log(`  ✅ Alternative gefunden: ${candidate.item.name} (Score: ${candidate.score.toFixed(2)})`);
+      return candidate.url;
+    }
+  }
+  
+  console.log(`  ❌ Keine funktionierende Alternative für "${channelName}" gefunden`);
+  return null;
+}
+
+/**
+ * Berechnet Ähnlichkeit zwischen zwei Kanalnamen
+ */
+function calculateMatchScore(name1, name2) {
+  const n1 = normalizeForMatch(name1);
+  const n2 = normalizeForMatch(name2);
+  
+  // Exakter Match
+  if (n1 === n2) return 1.0;
+  
+  // Enthält der eine den anderen?
+  if (n1.includes(n2) || n2.includes(n1)) {
+    const longer = Math.max(n1.length, n2.length);
+    const shorter = Math.min(n1.length, n2.length);
+    return shorter / longer;
+  }
+  
+  // Wort-Übereinstimmung
+  const words1 = n1.split(/\s+/);
+  const words2 = n2.split(/\s+/);
+  const common = words1.filter(w => words2.includes(w) && w.length > 1);
+  
+  if (common.length === 0) return 0;
+  
+  const maxWords = Math.max(words1.length, words2.length);
+  return common.length / maxWords;
+}
+
+/**
+ * Generiert Namens-Varianten für die Suche
+ */
+function getChannelVariants(name) {
+  const clean = String(name || "").toLowerCase().trim();
+  const variants = new Set();
+  
+  variants.add(clean);
+  variants.add(clean.replace(/\s+tv\s*/g, " ").trim());
+  variants.add(clean.replace(/\s+hd\s*/g, " ").trim());
+  variants.add(clean.replace(/\s+fhd\s*/g, " ").trim());
+  variants.add(clean.replace(/\s+uhd\s*/g, " ").trim());
+  variants.add(clean.replace(/[^a-z0-9]/g, ""));
+  variants.add(clean.replace(/\s+/g, "-"));
+  
+  // Türkische Sonderzeichen normalisieren
+  const turkishMap = {
+    "ü": "u", "ğ": "g", "ş": "s", "ı": "i", 
+    "ö": "o", "ç": "c", "â": "a", "î": "i"
+  };
+  let normalized = clean;
+  for (const [old, newChar] of Object.entries(turkishMap)) {
+    normalized = normalized.replace(new RegExp(old, "g"), newChar);
+  }
+  if (normalized !== clean) {
+    variants.add(normalized);
+    variants.add(normalized.replace(/\s+/g, ""));
+  }
+  
+  return Array.from(variants);
+}
+
+/**
+ * Repariert die gesamte Playlist
+ * @param {Array} items - Die Kanalliste
+ * @param {number} maxRepairs - Maximale Anzahl zu reparierender Links
+ * @param {number} maxParallel - Anzahl paralleler Tests
+ * @returns {Promise<Array>} - Die reparierte Kanalliste
+ */
+async function repairPlaylist(items, maxRepairs = 50, maxParallel = 5) {
+  console.log("\n🔧 STARTE LINK-REPARATUR...");
+  console.log(`📊 ${items.length} Kanäle werden geprüft`);
+  
+  // 1. Prüfe alle Links parallel
+  const toCheck = items.map((item, index) => ({ item, index }));
+  const results = [];
+  
+  // Batch-Verarbeitung
+  for (let i = 0; i < toCheck.length; i += maxParallel) {
+    const batch = toCheck.slice(i, i + maxParallel);
+    const checks = batch.map(async ({ item, index }) => {
+      const working = await checkLink(item.url, 3000);
+      return { index, item, working };
+    });
+    const batchResults = await Promise.all(checks);
+    results.push(...batchResults);
+    
+    const progress = Math.min(i + maxParallel, toCheck.length);
+    console.log(`  Fortschritt: ${progress}/${toCheck.length} (${Math.round(progress/toCheck.length*100)}%)`);
+  }
+  
+  // 2. Sammle defekte Links
+  const deadLinks = results.filter(r => !r.working);
+  console.log(`\n⚠️ ${deadLinks.length} defekte Links gefunden`);
+  
+  if (deadLinks.length === 0) {
+    console.log("✅ Alle Links funktionieren!");
+    return items;
+  }
+  
+  // 3. Repariere defekte Links (maxRepairs)
+  const toRepair = deadLinks.slice(0, maxRepairs);
+  console.log(`🔧 Versuche ${toRepair.length} Links zu reparieren...`);
+  
+  let repaired = 0;
+  for (const { index, item } of toRepair) {
+    const altUrl = await findAlternativeLink(item.name, items, item.url);
+    if (altUrl) {
+      items[index].url = altUrl;
+      items[index]._repaired = true;
+      repaired++;
+    }
+  }
+  
+  console.log(`\n✅ ${repaired} Links erfolgreich repariert`);
+  console.log(`⚠️ ${deadLinks.length - repaired} Links konnten nicht repariert werden\n`);
+  
+  return items;
+}
+
+// -- Rest des Codes (unverändert) -----------------------------------------
+
+// 🔧 ALLE deutschen Kanäle durchlassen (keine Whitelist mehr)
 function isAllowedGermanChannel(channelName) {
-  return true; // Alle Kanäle aus der Gruppe "Germany" werden akzeptiert
+  return true;
 }
 
 function buildBody(group, cursor) {
@@ -192,9 +412,7 @@ function normalizeForCategory(name) {
   return s;
 }
 
-// 🏷️ KATEGORIEN-FILTER (BLEIBEN UNVERÄNDERT)
-// Diese 8 Kategorien entscheiden, welche Kanäle in die M3U kommen:
-// Sport, Deutschland, Çocuk/Kinder, Belgesel/Doku, Film, Haber, Dini, Ulusal (TR)
+// ⚠️ KATEGORIEN-REGELN (für die Sortierung, nicht zum Filtern)
 const CATEGORY_RULES = [
   {
     name: "Sport",
@@ -230,13 +448,13 @@ const CATEGORY_RULES = [
   }
 ];
 
+// 🔥 Alle Kanäle werden behalten (auch ohne Kategorie)
 function categorize(name) {
   const s = normalizeForCategory(name);
   for (const rule of CATEGORY_RULES) {
     if (rule.re.test(s)) return rule.name;
   }
-  // ❌ Sender, die in KEINE Kategorie passen, werden verworfen (z.B. Radio, Dizi, Yaşam)
-  return null;
+  return "Sonstige";
 }
 
 // -- M3U -------------------------------------------------------------------
@@ -267,16 +485,18 @@ function toM3U(items, vavooToEpgId, logoResolver) {
     const name = sanitizeName(it.name);
     if (!name) continue;
     
-    // Prüfen ob Kanal in eine der aktiven Kategorien fällt
     const group = categorize(name);
-    if (!group) continue; // Verwirft Sender aus entfernten Kategorien (z.B. Radio, Dizi, etc.)
+    if (!group) continue;
 
     const vavooId = it.ids?.id ?? "";
     const logo = resolveLogo(name, it.logo, logoResolver);
     const tvgId = (vavooToEpgId && vavooToEpgId.get(vavooId)) || vavooId;
 
+    // Markiere reparierte Links in der M3U (optional)
+    const repairedTag = it._repaired ? ' repair="true"' : '';
+
     lines.push(
-      `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}",${name}`
+      `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairedTag},${name}`
     );
     lines.push(toStreamUrl(it));
   }
@@ -292,7 +512,7 @@ function resolveLogo(name, vavooLogo, logoResolver) {
   return vavooLogo || "";
 }
 
-// -- XMLTV EPG -------------------------------------------------------------
+// -- XMLTV EPG (unverändert) ---------------------------------------------
 
 function xmlEscape(v) {
   return String(v ?? "").replace(/[&<>"']/g, (c) =>
@@ -465,7 +685,6 @@ function toXMLTV(
     const name = sanitizeName(it.name);
     if (!name) continue;
 
-    // Nur EPG erzeugen für Sender, die in den aktiven Kategorien liegen
     if (!categorize(name)) continue;
 
     const routedId = vavooToEpgId.get(vavooId) || vavooId;
@@ -573,6 +792,10 @@ function makeLogoResolver(idx) {
   };
 }
 
+// ═══════════════════════════════════════════════════════════════
+// 🚀 MAIN FUNCTION (mit Link-Reparatur)
+// ═══════════════════════════════════════════════════════════════
+
 async function main() {
   console.log(`Fetching groups=${JSON.stringify(GROUPS)} from ${CATALOG_URL} ...`);
   if (PROXY_BASE) {
@@ -583,9 +806,11 @@ async function main() {
     );
   }
 
+  // 1. Kanäle abrufen
   const items = await fetchAll();
   console.log(`Total fetched items combined: ${items.length}`);
 
+  // 2. Kanäle sortieren
   items.sort((a, b) => {
     const an = String(a.name ?? "").toLocaleLowerCase("tr-TR");
     const bn = String(b.name ?? "").toLocaleLowerCase("tr-TR");
@@ -596,6 +821,7 @@ async function main() {
     return ai < bi ? -1 : ai > bi ? 1 : 0;
   });
 
+  // 3. EPG laden (unverändert)
   let upstreamChannels = new Map();
   let upstreamProgByChannel = new Map();
   try {
@@ -617,6 +843,7 @@ async function main() {
 
   const grab = await loadGrabDir(IPTVORG_GRAB_DIR);
 
+  // 4. Logo-Index laden (unverändert)
   let logoIdx = new Map();
   try {
     logoIdx = await buildLogoIndex();
@@ -625,6 +852,7 @@ async function main() {
   }
   const logoResolver = makeLogoResolver(logoIdx);
 
+  // 5. EPG-Matching (unverändert)
   const grabIdx = buildMatchIndex(grab.channels);
   const upstreamIdx = buildMatchIndex(upstreamChannels);
   const vavooToEpgId = new Map();
@@ -653,15 +881,29 @@ async function main() {
       }
     }
   }
-
   console.log(`EPG Matching: ${matchedCount} / ${items.length} channels matched to EPG data.`);
 
-  const m3u = toM3U(items, vavooToEpgId, logoResolver);
+  // ═══════════════════════════════════════════════════════════════
+  // 🆕 6. LINK-REPARATUR (NEU)
+  // ═══════════════════════════════════════════════════════════════
+  const REPAIR_ENABLED = process.env.REPAIR_ENABLED !== "false"; // Standard: true
+  const MAX_REPAIRS = parseInt(process.env.MAX_REPAIRS || "50", 10);
+  const MAX_PARALLEL = parseInt(process.env.MAX_PARALLEL || "5", 10);
+  
+  let repairedItems = items;
+  if (REPAIR_ENABLED) {
+    repairedItems = await repairPlaylist(items, MAX_REPAIRS, MAX_PARALLEL);
+  } else {
+    console.log("⚠️ Link-Reparatur deaktiviert (REPAIR_ENABLED=false)");
+  }
+
+  // 7. M3U und EPG schreiben
+  const m3u = toM3U(repairedItems, vavooToEpgId, logoResolver);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
   console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes)`);
 
   const epg = toXMLTV(
-    items,
+    repairedItems,
     vavooToEpgId,
     idSource,
     grab.channels,
@@ -673,8 +915,9 @@ async function main() {
   await fs.writeFile(EPG_FILE, epg, "utf8");
   console.log(`Wrote ${EPG_FILE} successfully.`);
 
+  // 8. Statistik
   const dist = new Map();
-  for (const it of items) {
+  for (const it of repairedItems) {
     const name = sanitizeName(it?.name);
     if (!name) continue;
     const c = categorize(name);
@@ -685,6 +928,12 @@ async function main() {
   console.log("\nActive category distribution:");
   for (const [c, n] of [...dist.entries()].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${c.padEnd(20)}: ${n}`);
+  }
+  
+  // 9. Reparatur-Statistik
+  const repairedCount = repairedItems.filter(it => it._repaired).length;
+  if (repairedCount > 0) {
+    console.log(`\n🔧 ${repairedCount} Links wurden automatisch repariert!`);
   }
 }
 
