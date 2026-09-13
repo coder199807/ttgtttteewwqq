@@ -2,7 +2,6 @@
 
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const zlib = require("node:zlib");
 
 const CATALOG_URL = "https://vavoo.to/mediahubmx-catalog.json";
 
@@ -10,7 +9,6 @@ const CATALOG_URL = "https://vavoo.to/mediahubmx-catalog.json";
 const GROUPS = ["Turkey", "Germany"];
 
 const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
-const EPG_FILE = path.join(__dirname, "..", "epg.xml");
 const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
 const FETCH_TIMEOUT_MS = 20000;
 
@@ -35,12 +33,6 @@ const FAMELACK_DOMAINS = ["rnttwmjcin.turknet.ercdn.net"];
 const FAMELACK_PREFIXES = ["lcpmvefbyo"];
 const FAMELACK_QUALITIES = ["1080p", "720p", "576p"];
 
-// Upstream EPG (DE für bessere Abdeckung)
-const EPG_UPSTREAM_URL =
-  process.env.EPG_UPSTREAM_URL || "https://epg.lat/files/de.xml.gz";
-
-const IPTVORG_GRAB_DIR = process.env.IPTVORG_GRAB_DIR || "";
-
 const IPTVORG_CHANNELS_URL =
   process.env.IPTVORG_CHANNELS_URL ||
   "https://iptv-org.github.io/api/channels.json";
@@ -48,10 +40,6 @@ const IPTVORG_LOGOS_URL =
   process.env.IPTVORG_LOGOS_URL || "https://iptv-org.github.io/api/logos.json";
 
 const PROXY_BASE = (process.env.PROXY_BASE || "").replace(/\/+$/, "");
-
-const EPG_URL =
-  process.env.EPG_URL ||
-  "https://raw.githubusercontent.com/kadirmetin/vavoo-iptv/main/epg.xml";
 
 const HEADERS = {
   "content-type": "application/json; charset=utf-8",
@@ -77,9 +65,6 @@ const HEADERS = {
 // 🔗 LINK-CHECKER
 // ═══════════════════════════════════════════════════════════════
 
-/**
- * Prüft ob ein Stream-Link funktioniert
- */
 async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
   if (!url || typeof url !== "string") return false;
 
@@ -87,7 +72,6 @@ async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeout);
 
-    // Viele IPTV-Server erlauben kein HEAD -> gleich GET mit Range
     const res = await fetch(url, {
       method: "GET",
       headers: {
@@ -101,9 +85,7 @@ async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
 
     clearTimeout(timer);
 
-    // Erfolg: 200, 206 (Partial Content) oder Redirects die zu 200 führen
     if ([200, 206].includes(res.status)) {
-      // Prüfen ob wirklich Inhalt kommt (nicht nur leere Antwort)
       try {
         const reader = res.body?.getReader();
         if (reader) {
@@ -112,7 +94,7 @@ async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
           return value && value.length > 0;
         }
       } catch {
-        return true; // wenn Body nicht lesbar, aber Status OK -> trotzdem als OK werten
+        return true;
       }
       return true;
     }
@@ -123,18 +105,12 @@ async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
   }
 }
 
-/**
- * Extrahiert Vavoo-ID aus URL
- */
 function extractVavooId(url) {
   if (!url) return null;
   const m = String(url).match(/\/play\/([a-fA-F0-9]+)/);
   return m ? m[1] : null;
 }
 
-/**
- * Versucht Vavoo-ID über einen Proxy-Server abzurufen
- */
 async function tryVavooProxy(vavooId) {
   if (!vavooId) return null;
 
@@ -153,9 +129,6 @@ async function tryVavooProxy(vavooId) {
   return null;
 }
 
-/**
- * Erzeugt Namensvarianten für Famelack-Suche
- */
 function famelackVariants(name) {
   const clean = String(name || "")
     .toLowerCase()
@@ -172,7 +145,6 @@ function famelackVariants(name) {
   variants.add(clean.replace(/\s+/g, ""));
   variants.add(clean.replace(/\s+/g, "-"));
 
-  // Türkische Sonderzeichen normalisieren
   const trMap = { ü: "u", ğ: "g", ş: "s", ı: "i", ö: "o", ç: "c" };
   let normalized = clean;
   for (const [old, neu] of Object.entries(trMap)) {
@@ -186,9 +158,6 @@ function famelackVariants(name) {
   return Array.from(variants).filter(Boolean);
 }
 
-/**
- * Sucht Ersatz-Link auf Famelack CDN
- */
 async function tryFamelack(channelName) {
   const variants = famelackVariants(channelName).slice(0, 3);
 
@@ -206,9 +175,6 @@ async function tryFamelack(channelName) {
   return null;
 }
 
-/**
- * Repariert einen einzelnen Kanal
- */
 async function repairLink(item) {
   const originalUrl = item.url;
   const name = item.name || "";
@@ -233,13 +199,10 @@ async function repairLink(item) {
     return { url: famelackUrl, status: "famelack" };
   }
 
-  // 4. Nichts funktioniert -> Original behalten (nicht löschen!)
+  // 4. Nichts funktioniert -> Original behalten
   return { url: originalUrl, status: "dead" };
 }
 
-/**
- * Cache laden / speichern
- */
 async function loadLinkCache() {
   try {
     const raw = await fs.readFile(CACHE_FILE, "utf8");
@@ -258,9 +221,6 @@ async function saveLinkCache(cache) {
   }
 }
 
-/**
- * Repariert alle Kanäle parallel
- */
 async function repairAll(items) {
   console.log("\n═══════════════════════════════════════════════════════");
   console.log("🔗 STARTE HINTERGRUND-LINK-CHECKER");
@@ -280,7 +240,6 @@ async function repairAll(items) {
 
   const results = new Array(items.length);
 
-  // Verarbeitung in Batches
   for (let i = 0; i < items.length; i += CHECK_CONCURRENCY) {
     const batch = [];
     for (let j = i; j < Math.min(i + CHECK_CONCURRENCY, items.length); j++) {
@@ -292,7 +251,6 @@ async function repairAll(items) {
         const cacheKey = item.url;
         const cached = cache[cacheKey];
 
-        // Cache-Treffer
         if (
           cached &&
           cached.timestamp &&
@@ -304,7 +262,6 @@ async function repairAll(items) {
 
         const result = await repairLink(item);
 
-        // Cache speichern
         cache[cacheKey] = {
           url: result.url,
           status: result.status,
@@ -343,10 +300,8 @@ async function repairAll(items) {
     }
   }
 
-  // Cache speichern
   await saveLinkCache(cache);
 
-  // Ergebnisse auf Items anwenden
   for (let i = 0; i < items.length; i++) {
     const r = results[i];
     if (!r) continue;
@@ -570,7 +525,6 @@ function sanitizeName(name) {
 }
 
 function toStreamUrl(item) {
-  // Wenn bereits repariert, die reparierte URL verwenden
   if (item._repaired && item.url) return item.url;
 
   const id = item?.ids?.id;
@@ -578,8 +532,9 @@ function toStreamUrl(item) {
   return item.url;
 }
 
-function toM3U(items, vavooToEpgId, logoResolver) {
-  const header = `#EXTM3U url-tvg="${escapeAttr(EPG_URL)}" x-tvg-url="${escapeAttr(EPG_URL)}"`;
+function toM3U(items, logoResolver) {
+  // OHNE EPG-Attribute (url-tvg / x-tvg-url entfernt)
+  const header = `#EXTM3U`;
   const lines = [header];
   for (const it of items) {
     if (!it || !it.url) continue;
@@ -589,14 +544,13 @@ function toM3U(items, vavooToEpgId, logoResolver) {
     const group = categorize(name);
     if (!group) continue;
 
-    const vavooId = it.ids?.id ?? "";
     const logo = resolveLogo(name, it.logo, logoResolver);
-    const tvgId = (vavooToEpgId && vavooToEpgId.get(vavooId)) || vavooId;
 
+    // tvg-id entfernt (kein EPG)
     const repairAttr = it._repaired ? ` repair="${it._repairStatus}"` : "";
 
     lines.push(
-      `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairAttr},${name}`
+      `#EXTINF:-1 tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairAttr},${name}`
     );
     lines.push(toStreamUrl(it));
   }
@@ -613,102 +567,8 @@ function resolveLogo(name, vavooLogo, logoResolver) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// XMLTV / EPG
+// iptv-org LOGOS
 // ═══════════════════════════════════════════════════════════════
-
-function xmlEscape(v) {
-  return String(v ?? "").replace(/[&<>"']/g, (c) =>
-    c === "&"
-      ? "&amp;"
-      : c === "<"
-        ? "&lt;"
-        : c === ">"
-          ? "&gt;"
-          : c === '"'
-            ? "&quot;"
-            : "&apos;"
-  );
-}
-
-function xmltvTime(sec) {
-  const d = new Date(sec * 1000);
-  const pad = (n) => String(n).padStart(2, "0");
-  return (
-    `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}` +
-    `${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())} +0000`
-  );
-}
-
-async function fetchUpstreamXmltv(url) {
-  const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
-  if (!res.ok) throw new Error(`upstream EPG HTTP ${res.status}`);
-  const buf = Buffer.from(await res.arrayBuffer());
-  const isGz =
-    url.toLowerCase().endsWith(".gz") || (buf[0] === 0x1f && buf[1] === 0x8b);
-  const bytes = isGz ? zlib.gunzipSync(buf) : buf;
-  return bytes.toString("utf8");
-}
-
-async function loadGrabDir(dir) {
-  const combined = { channels: new Map(), progByChannel: new Map() };
-  if (!dir) return combined;
-  let entries;
-  try {
-    entries = await fs.readdir(dir);
-  } catch {
-    return combined;
-  }
-  for (const f of entries) {
-    if (!f.toLowerCase().endsWith(".xml")) continue;
-    let xml;
-    try {
-      xml = await fs.readFile(path.join(dir, f), "utf8");
-    } catch {
-      continue;
-    }
-    const parsed = parseXmltv(xml);
-    for (const [id, data] of parsed.channels) {
-      if (!combined.channels.has(id)) combined.channels.set(id, data);
-    }
-    for (const p of parsed.programmes) {
-      if (!combined.progByChannel.has(p.channel))
-        combined.progByChannel.set(p.channel, []);
-      combined.progByChannel.get(p.channel).push(p);
-    }
-  }
-  return combined;
-}
-
-function parseXmltv(xml) {
-  const channels = new Map();
-  const programmes = [];
-
-  const chRe = /<channel\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/channel>/gi;
-  for (const m of xml.matchAll(chRe)) {
-    const id = m[1];
-    const body = m[2];
-    const names = [
-      ...body.matchAll(/<display-name[^>]*>([^<]+)<\/display-name>/gi),
-    ]
-      .map((n) => n[1].trim())
-      .filter(Boolean);
-    const icon = body.match(/<icon\s+src="([^"]+)"/i)?.[1] || "";
-    channels.set(id, { names, icon });
-  }
-
-  const prRe = /<programme\s+([^>]*)>([\s\S]*?)<\/programme>/gi;
-  for (const m of xml.matchAll(prRe)) {
-    const attrs = m[1];
-    const body = m[2];
-    const start = attrs.match(/start="([^"]+)"/i)?.[1];
-    const stop = attrs.match(/stop="([^"]+)"/i)?.[1];
-    const channel = attrs.match(/channel="([^"]+)"/i)?.[1];
-    if (!start || !stop || !channel) continue;
-    programmes.push({ start, stop, channel, body: body.trim() });
-  }
-
-  return { channels, programmes };
-}
 
 function normalizeForMatch(name) {
   let s = String(name || "")
@@ -743,106 +603,6 @@ function normalizeStripQuality(s) {
     .replace(/\s+/g, " ")
     .trim();
 }
-
-function buildMatchIndex(upstreamChannels) {
-  const idx = new Map();
-  for (const [id, data] of upstreamChannels) {
-    for (const raw of data.names) {
-      const k1 = normalizeForMatch(raw);
-      const k2 = normalizeStripQuality(k1);
-      if (k1 && !idx.has(k1)) idx.set(k1, id);
-      if (k2 && !idx.has(k2)) idx.set(k2, id);
-    }
-  }
-  return idx;
-}
-
-function matchUpstreamId(vavooName, idx) {
-  const k1 = normalizeForMatch(vavooName);
-  if (idx.has(k1)) return idx.get(k1);
-  const k2 = normalizeStripQuality(k1);
-  if (idx.has(k2)) return idx.get(k2);
-  return null;
-}
-
-function toXMLTV(
-  items,
-  vavooToEpgId,
-  idSource,
-  grabChannels,
-  grabProgByChannel,
-  upstreamChannels,
-  upstreamProgByChannel,
-  logoResolver
-) {
-  const seenChannel = new Set();
-  const channels = [];
-  const programmes = [];
-
-  for (const it of items) {
-    const vavooId = it?.ids?.id;
-    if (!vavooId) continue;
-    const name = sanitizeName(it.name);
-    if (!name) continue;
-
-    if (!categorize(name)) continue;
-
-    const routedId = vavooToEpgId.get(vavooId) || vavooId;
-    if (seenChannel.has(routedId)) continue;
-    seenChannel.add(routedId);
-
-    const src = idSource.get(routedId) || "inline";
-    let sourceCh = null;
-    let sourceProgs = [];
-    if (src === "grab") {
-      sourceCh = grabChannels.get(routedId) || null;
-      sourceProgs = grabProgByChannel.get(routedId) || [];
-    } else if (src === "epgshare01") {
-      sourceCh = upstreamChannels.get(routedId) || null;
-      sourceProgs = upstreamProgByChannel.get(routedId) || [];
-    }
-
-    const displayName = sourceCh?.names?.[0] || name;
-    const iptvorgLogo = logoResolver ? logoResolver(name) : "";
-    const icon = iptvorgLogo || sourceCh?.icon || it.logo || "";
-    const iconTag = icon ? `\n    <icon src="${xmlEscape(icon)}"/>` : "";
-    channels.push(
-      `  <channel id="${xmlEscape(routedId)}">\n` +
-      `    <display-name>${xmlEscape(displayName)}</display-name>${iconTag}\n` +
-      `  </channel>`
-    );
-
-    if (sourceProgs.length > 0) {
-      for (const p of sourceProgs) {
-        programmes.push(
-          `  <programme start="${xmlEscape(p.start)}" stop="${xmlEscape(p.stop)}" channel="${xmlEscape(routedId)}">\n    ${p.body}\n  </programme>`
-        );
-      }
-    } else if (Array.isArray(it.epg)) {
-      for (const p of it.epg) {
-        if (!p || typeof p.start !== "number" || typeof p.stop !== "number")
-          continue;
-        const title = String(p.name ?? "").trim();
-        if (!title) continue;
-        programmes.push(
-          `  <programme start="${xmltvTime(p.start)}" stop="${xmltvTime(p.stop)}" channel="${xmlEscape(routedId)}">\n    <title>${xmlEscape(title)}</title>\n  </programme>`
-        );
-      }
-    }
-  }
-
-  return (
-    `<?xml version="1.0" encoding="UTF-8"?>\n` +
-    `<tv generator-info-name="vavoo-iptv" generator-info-url="https://github.com/kadirmetin/vavoo-iptv">\n` +
-    `${channels.join("\n")}\n` +
-    `${programmes.join("\n")}\n` +
-    `</tv>\n`
-  );
-}
-
-// ═══════════════════════════════════════════════════════════════
-// iptv-org LOGOS
-// ═══════════════════════════════════════════════════════════════
 
 async function fetchJson(url) {
   const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
@@ -925,29 +685,7 @@ async function main() {
     return ai < bi ? -1 : ai > bi ? 1 : 0;
   });
 
-  // 3. EPG laden
-  let upstreamChannels = new Map();
-  let upstreamProgByChannel = new Map();
-  try {
-    console.log(`Loading upstream EPG from: ${EPG_UPSTREAM_URL}`);
-    const xml = await fetchUpstreamXmltv(EPG_UPSTREAM_URL);
-    const parsed = parseXmltv(xml);
-    upstreamChannels = parsed.channels;
-    for (const p of parsed.programmes) {
-      if (!upstreamProgByChannel.has(p.channel))
-        upstreamProgByChannel.set(p.channel, []);
-      upstreamProgByChannel.get(p.channel).push(p);
-    }
-    console.log(`Upstream EPG loaded: ${upstreamChannels.size} channels, ${parsed.programmes.length} programmes`);
-  } catch (err) {
-    console.warn(
-      `Upstream EPG unavailable (${err.message}); falling back to Vavoo inline EPG only.`
-    );
-  }
-
-  const grab = await loadGrabDir(IPTVORG_GRAB_DIR);
-
-  // 4. Logo-Index
+  // 3. Logo-Index laden
   let logoIdx = new Map();
   try {
     logoIdx = await buildLogoIndex();
@@ -956,41 +694,7 @@ async function main() {
   }
   const logoResolver = makeLogoResolver(logoIdx);
 
-  // 5. EPG-Matching
-  const grabIdx = buildMatchIndex(grab.channels);
-  const upstreamIdx = buildMatchIndex(upstreamChannels);
-  const vavooToEpgId = new Map();
-  const idSource = new Map();
-
-  let matchedCount = 0;
-  for (const it of items) {
-    const vavooId = it?.ids?.id;
-    if (!vavooId) continue;
-    const name = sanitizeName(it.name);
-    if (!name) continue;
-
-    const grabId = matchUpstreamId(name, grabIdx);
-    if (grabId) {
-      vavooToEpgId.set(vavooId, grabId);
-      idSource.set(grabId, "grab");
-      matchedCount++;
-    } else {
-      const upstreamId = matchUpstreamId(name, upstreamIdx);
-      if (upstreamId) {
-        vavooToEpgId.set(vavooId, upstreamId);
-        idSource.set(upstreamId, "epgshare01");
-        matchedCount++;
-      } else {
-        vavooToEpgId.set(vavooId, vavooId);
-      }
-    }
-  }
-
-  console.log(`EPG Matching: ${matchedCount} / ${items.length} channels matched to EPG data.`);
-
-  // ═══════════════════════════════════════════════════════════════
-  // 🆕 6. HINTERGRUND-LINK-CHECKER & AUTO-REPAIR
-  // ═══════════════════════════════════════════════════════════════
+  // 4. Link-Checker & Auto-Repair
   let finalItems = items;
   if (CHECK_ENABLED) {
     try {
@@ -1004,26 +708,12 @@ async function main() {
     console.log("⚠️ Link-Checker deaktiviert (CHECK_ENABLED=false)");
   }
 
-  // 7. M3U schreiben
-  const m3u = toM3U(finalItems, vavooToEpgId, logoResolver);
+  // 5. M3U schreiben
+  const m3u = toM3U(finalItems, logoResolver);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
   console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes)`);
 
-  // 8. EPG schreiben
-  const epg = toXMLTV(
-    finalItems,
-    vavooToEpgId,
-    idSource,
-    grab.channels,
-    grab.progByChannel,
-    upstreamChannels,
-    upstreamProgByChannel,
-    logoResolver
-  );
-  await fs.writeFile(EPG_FILE, epg, "utf8");
-  console.log(`Wrote ${EPG_FILE} successfully.`);
-
-  // 9. Statistik
+  // 6. Kategorie-Statistik
   const dist = new Map();
   for (const it of finalItems) {
     const name = sanitizeName(it?.name);
@@ -1038,7 +728,7 @@ async function main() {
     console.log(`  ${c.padEnd(20)}: ${n}`);
   }
 
-  // 10. Reparatur-Statistik
+  // 7. Reparatur-Statistik
   const repairedCount = finalItems.filter((it) => it._repaired).length;
   if (repairedCount > 0) {
     console.log(`\n🔧 ${repairedCount} Links wurden automatisch repariert!`);
