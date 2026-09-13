@@ -11,31 +11,48 @@ const GROUPS = ["Turkey", "Germany"];
 
 const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const EPG_FILE = path.join(__dirname, "..", "epg.xml");
+const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
 const FETCH_TIMEOUT_MS = 20000;
+
+// ═══════════════════════════════════════════════════════════════
+// 🔗 LINK-CHECKER KONFIGURATION
+// ═══════════════════════════════════════════════════════════════
+const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
+const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT || "5000", 10);
+const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "10", 10);
+const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 Stunden
+const STREAM_USER_AGENT = "VLC/3.0.20 LibVLC/3.0.20";
+
+// Vavoo Proxy-Server als Fallback
+const VAVOO_PROXIES = [
+  "https://vavoo-proxy.kadirmetin.workers.dev",
+  "https://vavoo-proxy.vercel.app",
+  "https://vavoo-proxy.netlify.app",
+];
+
+// Famelack CDN für Ersatz-Links
+const FAMELACK_DOMAINS = ["rnttwmjcin.turknet.ercdn.net"];
+const FAMELACK_PREFIXES = ["lcpmvefbyo"];
+const FAMELACK_QUALITIES = ["1080p", "720p", "576p"];
 
 // Upstream EPG (DE für bessere Abdeckung)
 const EPG_UPSTREAM_URL =
   process.env.EPG_UPSTREAM_URL || "https://epg.lat/files/de.xml.gz";
 
-// Optional directory of iptv-org/epg grab outputs (XMLTV per site).
 const IPTVORG_GRAB_DIR = process.env.IPTVORG_GRAB_DIR || "";
 
-// iptv-org public metadata for channel logos
 const IPTVORG_CHANNELS_URL =
   process.env.IPTVORG_CHANNELS_URL ||
   "https://iptv-org.github.io/api/channels.json";
 const IPTVORG_LOGOS_URL =
   process.env.IPTVORG_LOGOS_URL || "https://iptv-org.github.io/api/logos.json";
 
-// Cloudflare Workers proxy base (no trailing slash)
 const PROXY_BASE = (process.env.PROXY_BASE || "").replace(/\/+$/, "");
 
-// Where players should fetch the generated XMLTV EPG
 const EPG_URL =
   process.env.EPG_URL ||
   "https://raw.githubusercontent.com/kadirmetin/vavoo-iptv/main/epg.xml";
 
-// Vavoo browser-like headers
 const HEADERS = {
   "content-type": "application/json; charset=utf-8",
   accept: "*/*",
@@ -56,7 +73,306 @@ const HEADERS = {
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
 };
 
-// 🔧 ALLE deutschen Kanäle durchlassen
+// ═══════════════════════════════════════════════════════════════
+// 🔗 LINK-CHECKER
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Prüft ob ein Stream-Link funktioniert
+ */
+async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
+  if (!url || typeof url !== "string") return false;
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+
+    // Viele IPTV-Server erlauben kein HEAD -> gleich GET mit Range
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "User-Agent": STREAM_USER_AGENT,
+        Accept: "*/*",
+        Range: "bytes=0-2048",
+      },
+      signal: controller.signal,
+      redirect: "follow",
+    });
+
+    clearTimeout(timer);
+
+    // Erfolg: 200, 206 (Partial Content) oder Redirects die zu 200 führen
+    if ([200, 206].includes(res.status)) {
+      // Prüfen ob wirklich Inhalt kommt (nicht nur leere Antwort)
+      try {
+        const reader = res.body?.getReader();
+        if (reader) {
+          const { value } = await reader.read();
+          reader.cancel().catch(() => {});
+          return value && value.length > 0;
+        }
+      } catch {
+        return true; // wenn Body nicht lesbar, aber Status OK -> trotzdem als OK werten
+      }
+      return true;
+    }
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Extrahiert Vavoo-ID aus URL
+ */
+function extractVavooId(url) {
+  if (!url) return null;
+  const m = String(url).match(/\/play\/([a-fA-F0-9]+)/);
+  return m ? m[1] : null;
+}
+
+/**
+ * Versucht Vavoo-ID über einen Proxy-Server abzurufen
+ */
+async function tryVavooProxy(vavooId) {
+  if (!vavooId) return null;
+
+  for (const proxyBase of VAVOO_PROXIES) {
+    const base = proxyBase.replace(/\/+$/, "");
+    const candidates = [
+      `${base}/play/${vavooId}`,
+      `${base}/vavoo-iptv/play/${vavooId}`,
+    ];
+
+    for (const url of candidates) {
+      const ok = await checkLink(url, 6000);
+      if (ok) return url;
+    }
+  }
+  return null;
+}
+
+/**
+ * Erzeugt Namensvarianten für Famelack-Suche
+ */
+function famelackVariants(name) {
+  const clean = String(name || "")
+    .toLowerCase()
+    .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/i, "")
+    .replace(/\s*\.(?:b|c|s)\b/gi, "")
+    .replace(/\[[^\]]*\]/g, "")
+    .replace(/\([^)]*\)/g, "")
+    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const variants = new Set();
+  variants.add(clean);
+  variants.add(clean.replace(/\s+/g, ""));
+  variants.add(clean.replace(/\s+/g, "-"));
+
+  // Türkische Sonderzeichen normalisieren
+  const trMap = { ü: "u", ğ: "g", ş: "s", ı: "i", ö: "o", ç: "c" };
+  let normalized = clean;
+  for (const [old, neu] of Object.entries(trMap)) {
+    normalized = normalized.replace(new RegExp(old, "g"), neu);
+  }
+  if (normalized !== clean) {
+    variants.add(normalized);
+    variants.add(normalized.replace(/\s+/g, ""));
+  }
+
+  return Array.from(variants).filter(Boolean);
+}
+
+/**
+ * Sucht Ersatz-Link auf Famelack CDN
+ */
+async function tryFamelack(channelName) {
+  const variants = famelackVariants(channelName).slice(0, 3);
+
+  for (const domain of FAMELACK_DOMAINS) {
+    for (const prefix of FAMELACK_PREFIXES) {
+      for (const variant of variants) {
+        for (const quality of FAMELACK_QUALITIES) {
+          const url = `https://${domain}/${prefix}/${variant}/${variant}_${quality}.m3u8`;
+          const ok = await checkLink(url, 4000);
+          if (ok) return url;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * Repariert einen einzelnen Kanal
+ */
+async function repairLink(item) {
+  const originalUrl = item.url;
+  const name = item.name || "";
+
+  // 1. Original testen
+  if (await checkLink(originalUrl)) {
+    return { url: originalUrl, status: "ok" };
+  }
+
+  // 2. Vavoo-Proxy versuchen
+  const vavooId = extractVavooId(originalUrl);
+  if (vavooId) {
+    const proxyUrl = await tryVavooProxy(vavooId);
+    if (proxyUrl) {
+      return { url: proxyUrl, status: "proxy" };
+    }
+  }
+
+  // 3. Famelack versuchen
+  const famelackUrl = await tryFamelack(name);
+  if (famelackUrl) {
+    return { url: famelackUrl, status: "famelack" };
+  }
+
+  // 4. Nichts funktioniert -> Original behalten (nicht löschen!)
+  return { url: originalUrl, status: "dead" };
+}
+
+/**
+ * Cache laden / speichern
+ */
+async function loadLinkCache() {
+  try {
+    const raw = await fs.readFile(CACHE_FILE, "utf8");
+    const data = JSON.parse(raw);
+    return data && typeof data === "object" ? data : {};
+  } catch {
+    return {};
+  }
+}
+
+async function saveLinkCache(cache) {
+  try {
+    await fs.writeFile(CACHE_FILE, JSON.stringify(cache, null, 2), "utf8");
+  } catch (err) {
+    console.warn(`⚠️ Cache konnte nicht gespeichert werden: ${err.message}`);
+  }
+}
+
+/**
+ * Repariert alle Kanäle parallel
+ */
+async function repairAll(items) {
+  console.log("\n═══════════════════════════════════════════════════════");
+  console.log("🔗 STARTE HINTERGRUND-LINK-CHECKER");
+  console.log("═══════════════════════════════════════════════════════");
+  console.log(`📊 ${items.length} Kanäle zu prüfen`);
+  console.log(`⚙️  Parallel: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
+
+  const cache = await loadLinkCache();
+  const now = Date.now();
+
+  let okCount = 0;
+  let proxyCount = 0;
+  let famelackCount = 0;
+  let deadCount = 0;
+  let cacheHits = 0;
+  let processed = 0;
+
+  const results = new Array(items.length);
+
+  // Verarbeitung in Batches
+  for (let i = 0; i < items.length; i += CHECK_CONCURRENCY) {
+    const batch = [];
+    for (let j = i; j < Math.min(i + CHECK_CONCURRENCY, items.length); j++) {
+      batch.push({ index: j, item: items[j] });
+    }
+
+    const batchResults = await Promise.all(
+      batch.map(async ({ index, item }) => {
+        const cacheKey = item.url;
+        const cached = cache[cacheKey];
+
+        // Cache-Treffer
+        if (
+          cached &&
+          cached.timestamp &&
+          now - cached.timestamp < CACHE_TTL_MS
+        ) {
+          cacheHits++;
+          return { index, result: { url: cached.url, status: cached.status } };
+        }
+
+        const result = await repairLink(item);
+
+        // Cache speichern
+        cache[cacheKey] = {
+          url: result.url,
+          status: result.status,
+          timestamp: now,
+        };
+
+        return { index, result };
+      })
+    );
+
+    for (const { index, result } of batchResults) {
+      results[index] = result;
+
+      switch (result.status) {
+        case "ok":
+          okCount++;
+          break;
+        case "proxy":
+          proxyCount++;
+          break;
+        case "famelack":
+          famelackCount++;
+          break;
+        case "dead":
+          deadCount++;
+          break;
+      }
+    }
+
+    processed += batch.length;
+    const pct = Math.round((processed / items.length) * 100);
+    if (processed % (CHECK_CONCURRENCY * 5) === 0 || processed === items.length) {
+      console.log(
+        `  [${pct}%] ${processed}/${items.length} | ✅${okCount} 🔄${proxyCount + famelackCount} ❌${deadCount} 💾${cacheHits}`
+      );
+    }
+  }
+
+  // Cache speichern
+  await saveLinkCache(cache);
+
+  // Ergebnisse auf Items anwenden
+  for (let i = 0; i < items.length; i++) {
+    const r = results[i];
+    if (!r) continue;
+    items[i].url = r.url;
+    items[i]._repairStatus = r.status;
+    items[i]._repaired = r.status === "proxy" || r.status === "famelack";
+  }
+
+  console.log("\n═══════════════════════════════════════════════════════");
+  console.log("📊 LINK-CHECKER ERGEBNIS");
+  console.log("═══════════════════════════════════════════════════════");
+  console.log(`✅ Original funktioniert:    ${okCount}`);
+  console.log(`🔄 Via Vavoo-Proxy:           ${proxyCount}`);
+  console.log(`🔄 Via Famelack:              ${famelackCount}`);
+  console.log(`❌ Weiterhin defekt:          ${deadCount}`);
+  console.log(`💾 Aus Cache:                 ${cacheHits}`);
+  console.log(`🎯 Erfolgreich repariert:     ${proxyCount + famelackCount}`);
+  console.log("═══════════════════════════════════════════════════════\n");
+
+  return items;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// VAVOO API
+// ═══════════════════════════════════════════════════════════════
+
 function isAllowedGermanChannel(channelName) {
   return true;
 }
@@ -158,7 +474,9 @@ async function fetchAll() {
   return allItems;
 }
 
-// -- categorization --------------------------------------------------------
+// ═══════════════════════════════════════════════════════════════
+// KATEGORIEN
+// ═══════════════════════════════════════════════════════════════
 
 function normalizeForCategory(name) {
   let s = String(name || "")
@@ -188,15 +506,7 @@ function normalizeForCategory(name) {
   return s;
 }
 
-// ═══════════════════════════════════════════════════════════════
-// 🏷️ KATEGORIEN
-// ⚠️ WICHTIG: Deutsche Kategorien MÜSSEN vor "Spor" stehen!
-// ═══════════════════════════════════════════════════════════════
-
 const CATEGORY_RULES = [
-  // ─────────────────────────────────────────────────────────
-  // 🇩🇪 DEUTSCHE KATEGORIEN (zuerst prüfen!)
-  // ─────────────────────────────────────────────────────────
   {
     name: "Almanya Sport",
     re: /\b(DAZN|SKY SPORT|SKY BULI|SKY BUNDESLIGA|SKY PREMIER|BUNDESLIGA|PREMIER LEAGUE|MAGENTA SPORT|MAGENTASPORT|MAGENTA FUSSBALL|SPORT1|EUROSPORT|FUSSBALL|SPORTS TV|SPORTDIGITAL|RED BULL TV|BLUE SPORT|SKY SPORT MIX|SKY SPORT NEWS|SKY F1|SKY FORMEL 1|SPORTDEUTSCHLAND|LAOLA1)\b/i,
@@ -205,10 +515,6 @@ const CATEGORY_RULES = [
     name: "Almanya TV",
     re: /\b(ARD|ZDF|ZDF NEO|RTL|RTL PLUS|RTL\+|RTL PASSION|RTL NITRO|PRO SIEBEN|PRO7|SAT\.1|SAT1|VOX|KABEL 1|KABEL 1 DOKU|SUPER RTL|NICKELODEON DE|NICK DE|NDR|WDR|MDR|BR|SWR|HR|RBB|SR|PHOENIX|TAGESSCHAU24|WELT|N24|N-TV|TELE 5|SIXX|DISNEY CHANNEL DE|TOGGO|KIKA|DEUTSCH|GERMAN|DEUTSCHLAND|DAS ERSTE|ONE|ARTE|3SAT|ZDF INFO|ZDF KULTUR|WDR|BR ALPHA|ARD ALPHA|RTL ZWEI|RTL2)\b/i,
   },
-
-  // ─────────────────────────────────────────────────────────
-  // 🇹🇷 TÜRKISCHE KATEGORIEN
-  // ─────────────────────────────────────────────────────────
   {
     name: "Ulusal",
     re: /\b(TRT|MECLİS|TABII|SHOW|STAR|ATV|KANAL D|NOW TV|EXXEN|TV ?8|TEVE 2|BEYAZ|360|SKY 360|A2 TV|EURO D|KANAL 7|DMAX TURKIYE|BENGUTÜRK|ULUSAL|KANAL|TÜRK|TURK)\b/i,
@@ -239,20 +545,17 @@ const CATEGORY_RULES = [
   }
 ];
 
-// 🔥 ALLE Kanäle werden behalten – KEIN Kanal wird verworfen!
 function categorize(name) {
   const s = normalizeForCategory(name);
-  
-  // 1. Versuche, den Kanal in eine der Kategorien einzuordnen
   for (const rule of CATEGORY_RULES) {
     if (rule.re.test(s)) return rule.name;
   }
-  
-  // 2. Fallback: Alles andere landet in "Sonstige" (bleibt erhalten!)
   return "Sonstige";
 }
 
-// -- M3U -------------------------------------------------------------------
+// ═══════════════════════════════════════════════════════════════
+// M3U
+// ═══════════════════════════════════════════════════════════════
 
 function escapeAttr(value) {
   return String(value ?? "")
@@ -267,6 +570,9 @@ function sanitizeName(name) {
 }
 
 function toStreamUrl(item) {
+  // Wenn bereits repariert, die reparierte URL verwenden
+  if (item._repaired && item.url) return item.url;
+
   const id = item?.ids?.id;
   if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
   return item.url;
@@ -279,7 +585,7 @@ function toM3U(items, vavooToEpgId, logoResolver) {
     if (!it || !it.url) continue;
     const name = sanitizeName(it.name);
     if (!name) continue;
-    
+
     const group = categorize(name);
     if (!group) continue;
 
@@ -287,8 +593,10 @@ function toM3U(items, vavooToEpgId, logoResolver) {
     const logo = resolveLogo(name, it.logo, logoResolver);
     const tvgId = (vavooToEpgId && vavooToEpgId.get(vavooId)) || vavooId;
 
+    const repairAttr = it._repaired ? ` repair="${it._repairStatus}"` : "";
+
     lines.push(
-      `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}",${name}`
+      `#EXTINF:-1 tvg-id="${escapeAttr(tvgId)}" tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairAttr},${name}`
     );
     lines.push(toStreamUrl(it));
   }
@@ -304,7 +612,9 @@ function resolveLogo(name, vavooLogo, logoResolver) {
   return vavooLogo || "";
 }
 
-// -- XMLTV EPG -------------------------------------------------------------
+// ═══════════════════════════════════════════════════════════════
+// XMLTV / EPG
+// ═══════════════════════════════════════════════════════════════
 
 function xmlEscape(v) {
   return String(v ?? "").replace(/[&<>"']/g, (c) =>
@@ -328,8 +638,6 @@ function xmltvTime(sec) {
     `${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())} +0000`
   );
 }
-
-// -- Upstream EPG ----------------------------------------------------------
 
 async function fetchUpstreamXmltv(url) {
   const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
@@ -532,7 +840,9 @@ function toXMLTV(
   );
 }
 
-// -- iptv-org logo index ---------------------------------------------------
+// ═══════════════════════════════════════════════════════════════
+// iptv-org LOGOS
+// ═══════════════════════════════════════════════════════════════
 
 async function fetchJson(url) {
   const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
@@ -584,7 +894,13 @@ function makeLogoResolver(idx) {
   };
 }
 
+// ═══════════════════════════════════════════════════════════════
+// MAIN
+// ═══════════════════════════════════════════════════════════════
+
 async function main() {
+  const startTime = Date.now();
+
   console.log(`Fetching groups=${JSON.stringify(GROUPS)} from ${CATALOG_URL} ...`);
   if (PROXY_BASE) {
     console.log(`Using PROXY_BASE=${PROXY_BASE}`);
@@ -594,9 +910,11 @@ async function main() {
     );
   }
 
+  // 1. Kanäle holen
   const items = await fetchAll();
   console.log(`Total fetched items combined: ${items.length}`);
 
+  // 2. Sortieren
   items.sort((a, b) => {
     const an = String(a.name ?? "").toLocaleLowerCase("tr-TR");
     const bn = String(b.name ?? "").toLocaleLowerCase("tr-TR");
@@ -607,6 +925,7 @@ async function main() {
     return ai < bi ? -1 : ai > bi ? 1 : 0;
   });
 
+  // 3. EPG laden
   let upstreamChannels = new Map();
   let upstreamProgByChannel = new Map();
   try {
@@ -628,6 +947,7 @@ async function main() {
 
   const grab = await loadGrabDir(IPTVORG_GRAB_DIR);
 
+  // 4. Logo-Index
   let logoIdx = new Map();
   try {
     logoIdx = await buildLogoIndex();
@@ -636,6 +956,7 @@ async function main() {
   }
   const logoResolver = makeLogoResolver(logoIdx);
 
+  // 5. EPG-Matching
   const grabIdx = buildMatchIndex(grab.channels);
   const upstreamIdx = buildMatchIndex(upstreamChannels);
   const vavooToEpgId = new Map();
@@ -667,12 +988,30 @@ async function main() {
 
   console.log(`EPG Matching: ${matchedCount} / ${items.length} channels matched to EPG data.`);
 
-  const m3u = toM3U(items, vavooToEpgId, logoResolver);
+  // ═══════════════════════════════════════════════════════════════
+  // 🆕 6. HINTERGRUND-LINK-CHECKER & AUTO-REPAIR
+  // ═══════════════════════════════════════════════════════════════
+  let finalItems = items;
+  if (CHECK_ENABLED) {
+    try {
+      finalItems = await repairAll(items);
+    } catch (err) {
+      console.warn(`⚠️ Link-Checker fehlgeschlagen: ${err.message}`);
+      console.warn("   Verwende Original-Links.");
+      finalItems = items;
+    }
+  } else {
+    console.log("⚠️ Link-Checker deaktiviert (CHECK_ENABLED=false)");
+  }
+
+  // 7. M3U schreiben
+  const m3u = toM3U(finalItems, vavooToEpgId, logoResolver);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
   console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes)`);
 
+  // 8. EPG schreiben
   const epg = toXMLTV(
-    items,
+    finalItems,
     vavooToEpgId,
     idSource,
     grab.channels,
@@ -684,8 +1023,9 @@ async function main() {
   await fs.writeFile(EPG_FILE, epg, "utf8");
   console.log(`Wrote ${EPG_FILE} successfully.`);
 
+  // 9. Statistik
   const dist = new Map();
-  for (const it of items) {
+  for (const it of finalItems) {
     const name = sanitizeName(it?.name);
     if (!name) continue;
     const c = categorize(name);
@@ -697,6 +1037,15 @@ async function main() {
   for (const [c, n] of [...dist.entries()].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${c.padEnd(20)}: ${n}`);
   }
+
+  // 10. Reparatur-Statistik
+  const repairedCount = finalItems.filter((it) => it._repaired).length;
+  if (repairedCount > 0) {
+    console.log(`\n🔧 ${repairedCount} Links wurden automatisch repariert!`);
+  }
+
+  const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+  console.log(`\n⏱️  Gesamtdauer: ${duration}s`);
 }
 
 main().catch((err) => {
