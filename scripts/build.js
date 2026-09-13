@@ -13,13 +13,153 @@ const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
 const FETCH_TIMEOUT_MS = 20000;
 
 // ═══════════════════════════════════════════════════════════════
-// 🔗 LINK-CHECKER KONFIGURATION
 // ═══════════════════════════════════════════════════════════════
-const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
-const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT || "5000", 10);
-const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "10", 10);
-const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 Stunden
-const STREAM_USER_AGENT = "VLC/3.0.20 LibVLC/3.0.20";
+// 🔗 LINK-CHECKER (verbessert)
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Entfernt Pipe-Parameter und gibt sie separat zurück
+ */
+function splitPipeParams(url) {
+  if (!url || !url.includes("|")) return { url, params: {} };
+  const [base, paramStr] = url.split("|", 2);
+  const params = {};
+  for (const part of paramStr.split("&")) {
+    const [k, v] = part.split("=", 2);
+    if (k) params[k] = v || "";
+  }
+  return { url: base.trim(), params };
+}
+
+/**
+ * Browser-Headers die Cloudflare nicht blockiert
+ */
+function buildBrowserHeaders(extra = {}) {
+  return {
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    Accept: "*/*",
+    "Accept-Language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    Origin: "https://vavoo.to",
+    Referer: "https://vavoo.to/",
+    "sec-ch-ua":
+      '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    Connection: "keep-alive",
+    ...extra,
+  };
+}
+
+/**
+ * Prüft einen Link – erkennt echte Streams korrekt
+ */
+async function checkLink(rawUrl, timeout = CHECK_TIMEOUT_MS) {
+  if (!rawUrl || typeof rawUrl !== "string") return false;
+
+  // Pipe-Parameter extrahieren
+  const { url, params } = splitPipeParams(rawUrl);
+  if (!url) return false;
+
+  // Headers aus URL-Parametern übernehmen
+  const headers = buildBrowserHeaders();
+  if (params["User-Agent"]) headers["User-Agent"] = params["User-Agent"];
+  if (params["Referer"]) headers["Referer"] = params["Referer"];
+  if (params["Origin"]) headers["Origin"] = params["Origin"];
+
+  // Nur wenn es KEINE .m3u8 ist, Range-Header hinzufügen
+  const isM3U8 = /\.m3u8(\?|$)/i.test(url);
+  if (!isM3U8) {
+    headers["Range"] = "bytes=0-1024";
+  }
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers,
+      signal: controller.signal,
+      redirect: "follow",
+    });
+
+    clearTimeout(timer);
+
+    // 200/206 = OK
+    if (res.status === 200 || res.status === 206) {
+      // Body lesen (auch kleine Menge)
+      try {
+        const reader = res.body?.getReader();
+        if (reader) {
+          const { value } = await reader.read();
+          reader.cancel().catch(() => {});
+          // Wenigstens 1 Byte empfangen
+          return !!value && value.length > 0;
+        }
+      } catch {
+        return true;
+      }
+      return true;
+    }
+
+    // 301/302/307/308 = Redirect ohne follow (selten)
+    if ([301, 302, 307, 308].includes(res.status)) {
+      return true;
+    }
+
+    // 403 = Cloudflare-Block (kann trotzdem funktionieren!)
+    // Manche Server senden 403 auf HEAD, aber 200 auf GET im Player
+    // Wir behandeln 403 NICHT als "OK", aber loggen es
+    if (res.status === 403) {
+      return false;
+    }
+
+    // 405 = Method Not Allowed (sehr oft bei IPTV-Servern)
+    // -> Als "wahrscheinlich OK" werten
+    if (res.status === 405) {
+      return true;
+    }
+
+    return false;
+  } catch (err) {
+    // Netzwerkfehler / Timeout
+    return false;
+  }
+}
+
+/**
+ * Alternative Prüfung: Nur HEAD-Request (schneller)
+ * Manche Server unterstützen nur HEAD
+ */
+async function checkLinkHead(rawUrl, timeout = 4000) {
+  const { url, params } = splitPipeParams(rawUrl);
+  if (!url) return false;
+
+  const headers = buildBrowserHeaders();
+  if (params["User-Agent"]) headers["User-Agent"] = params["User-Agent"];
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+
+    const res = await fetch(url, {
+      method: "HEAD",
+      headers,
+      signal: controller.signal,
+      redirect: "follow",
+    });
+
+    clearTimeout(timer);
+    return [200, 206, 301, 302, 307, 308, 405].includes(res.status);
+  } catch {
+    return false;
+  }
+}
 
 // Vavoo Proxy-Server als Fallback
 const VAVOO_PROXIES = [
