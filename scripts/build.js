@@ -107,13 +107,6 @@ async function checkLink(rawUrl, timeout = CHECK_TIMEOUT_MS) {
   }
 }
 
-// Vavoo Proxy fallback
-const VAVOO_PROXIES = [
-  "https://vavoo-proxy.kadirmetin.workers.dev",
-  "https://vavoo-proxy.vercel.app",
-  "https://vavoo-proxy.netlify.app",
-];
-
 // Famelack CDN fallback
 const FAMELACK_DOMAINS = ["rnttwmjcin.turknet.ercdn.net"];
 const FAMELACK_PREFIXES = ["lcpmvefbyo"];
@@ -145,30 +138,6 @@ const HEADERS = {
   "sec-fetch-site": "same-origin",
   "user-agent": STREAM_USER_AGENT,
 };
-
-function extractVavooId(url) {
-  if (!url) return null;
-  const m = String(url).match(/\/play\/([a-fA-F0-9]+)/);
-  return m ? m[1] : null;
-}
-
-async function tryVavooProxy(vavooId) {
-  if (!vavooId) return null;
-
-  for (const proxyBase of VAVOO_PROXIES) {
-    const base = proxyBase.replace(/\/+$/, "");
-    const candidates = [
-      `${base}/play/${vavooId}`,
-      `${base}/vavoo-iptv/play/${vavooId}`,
-    ];
-
-    for (const url of candidates) {
-      const ok = await checkLink(url, 6000);
-      if (ok) return url;
-    }
-  }
-  return null;
-}
 
 function famelackVariants(name) {
   const clean = String(name || "")
@@ -216,27 +185,37 @@ async function tryFamelack(channelName) {
   return null;
 }
 
+function getProxyUrl(item) {
+  const id = item?.ids?.id;
+  if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
+  return null;
+}
+
 async function repairLink(item) {
   const originalUrl = item.url;
   const name = item.name || "";
+  const vavooId = item?.ids?.id;
 
+  // 1. For vavoo items: test the proxy URL
+  if (vavooId && PROXY_BASE) {
+    const proxyUrl = `${PROXY_BASE}/play/${vavooId}`;
+    if (await checkLink(proxyUrl)) {
+      return { url: proxyUrl, status: "ok" };
+    }
+  }
+
+  // 2. For direct URLs (or fallback): test original
   if (await checkLink(originalUrl)) {
     return { url: originalUrl, status: "ok" };
   }
 
-  const vavooId = extractVavooId(originalUrl);
-  if (vavooId) {
-    const proxyUrl = await tryVavooProxy(vavooId);
-    if (proxyUrl) {
-      return { url: proxyUrl, status: "proxy" };
-    }
-  }
-
+  // 3. Try Famelack as second source
   const famelackUrl = await tryFamelack(name);
   if (famelackUrl) {
     return { url: famelackUrl, status: "famelack" };
   }
 
+  // 4. Nothing works — keep original (Worker will try at runtime)
   return { url: originalUrl, status: "dead" };
 }
 
@@ -262,7 +241,9 @@ async function repairAll(items) {
   console.log("\n═══════════════════════════════════════════════════════");
   console.log("LINK CHECKER STARTING");
   console.log("═══════════════════════════════════════════════════════");
-  console.log(`${items.length} channels to check`);
+  console.log(`${items.length} channels total`);
+  console.log(`Vavoo channels: tested via proxy URL`);
+  console.log(`Fallback source: Famelack CDN`);
   console.log(`Concurrency: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
 
   const cache = await loadLinkCache();
@@ -562,10 +543,14 @@ function sanitizeName(name) {
 }
 
 function toStreamUrl(item) {
+  // If repair already set a working URL (proxy or famelack), use it
   if (item._repaired && item.url) return item.url;
 
+  // Vavoo items → proxy URL
   const id = item?.ids?.id;
   if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
+
+  // Direct URL fallback
   return item.url;
 }
 
