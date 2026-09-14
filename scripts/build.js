@@ -5,21 +5,25 @@ const path = require("node:path");
 
 const CATALOG_URL = "https://vavoo.to/mediahubmx-catalog.json";
 
-// Gruppen, die abgerufen werden sollen
 const GROUPS = ["Turkey", "Germany"];
 
 const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
+
+// ─── Configuration ──────────────────────────────────────────
 const FETCH_TIMEOUT_MS = 20000;
+const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
+const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "8", 10);
+const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "6000", 10);
+const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(24 * 60 * 60 * 1000), 10);
+
+const STREAM_USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
 // ═══════════════════════════════════════════════════════════════
-// ═══════════════════════════════════════════════════════════════
-// 🔗 LINK-CHECKER (verbessert)
+// LINK CHECKER
 // ═══════════════════════════════════════════════════════════════
 
-/**
- * Entfernt Pipe-Parameter und gibt sie separat zurück
- */
 function splitPipeParams(url) {
   if (!url || !url.includes("|")) return { url, params: {} };
   const [base, paramStr] = url.split("|", 2);
@@ -31,13 +35,9 @@ function splitPipeParams(url) {
   return { url: base.trim(), params };
 }
 
-/**
- * Browser-Headers die Cloudflare nicht blockiert
- */
 function buildBrowserHeaders(extra = {}) {
   return {
-    "User-Agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "User-Agent": STREAM_USER_AGENT,
     Accept: "*/*",
     "Accept-Language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
     "Accept-Encoding": "gzip, deflate, br",
@@ -55,26 +55,20 @@ function buildBrowserHeaders(extra = {}) {
   };
 }
 
-/**
- * Prüft einen Link – erkennt echte Streams korrekt
- */
 async function checkLink(rawUrl, timeout = CHECK_TIMEOUT_MS) {
   if (!rawUrl || typeof rawUrl !== "string") return false;
 
-  // Pipe-Parameter extrahieren
   const { url, params } = splitPipeParams(rawUrl);
   if (!url) return false;
 
-  // Headers aus URL-Parametern übernehmen
   const headers = buildBrowserHeaders();
   if (params["User-Agent"]) headers["User-Agent"] = params["User-Agent"];
   if (params["Referer"]) headers["Referer"] = params["Referer"];
   if (params["Origin"]) headers["Origin"] = params["Origin"];
 
-  // Nur wenn es KEINE .m3u8 ist, Range-Header hinzufügen
   const isM3U8 = /\.m3u8(\?|$)/i.test(url);
   if (!isM3U8) {
-    headers["Range"] = "bytes=0-1024";
+    headers["Range"] = "bytes=0-8192";
   }
 
   try {
@@ -90,15 +84,12 @@ async function checkLink(rawUrl, timeout = CHECK_TIMEOUT_MS) {
 
     clearTimeout(timer);
 
-    // 200/206 = OK
     if (res.status === 200 || res.status === 206) {
-      // Body lesen (auch kleine Menge)
       try {
         const reader = res.body?.getReader();
         if (reader) {
           const { value } = await reader.read();
           reader.cancel().catch(() => {});
-          // Wenigstens 1 Byte empfangen
           return !!value && value.length > 0;
         }
       } catch {
@@ -107,68 +98,23 @@ async function checkLink(rawUrl, timeout = CHECK_TIMEOUT_MS) {
       return true;
     }
 
-    // 301/302/307/308 = Redirect ohne follow (selten)
-    if ([301, 302, 307, 308].includes(res.status)) {
-      return true;
-    }
-
-    // 403 = Cloudflare-Block (kann trotzdem funktionieren!)
-    // Manche Server senden 403 auf HEAD, aber 200 auf GET im Player
-    // Wir behandeln 403 NICHT als "OK", aber loggen es
-    if (res.status === 403) {
-      return false;
-    }
-
-    // 405 = Method Not Allowed (sehr oft bei IPTV-Servern)
-    // -> Als "wahrscheinlich OK" werten
-    if (res.status === 405) {
-      return true;
-    }
+    if ([301, 302, 307, 308].includes(res.status)) return true;
+    if (res.status === 405) return true;
 
     return false;
-  } catch (err) {
-    // Netzwerkfehler / Timeout
-    return false;
-  }
-}
-
-/**
- * Alternative Prüfung: Nur HEAD-Request (schneller)
- * Manche Server unterstützen nur HEAD
- */
-async function checkLinkHead(rawUrl, timeout = 4000) {
-  const { url, params } = splitPipeParams(rawUrl);
-  if (!url) return false;
-
-  const headers = buildBrowserHeaders();
-  if (params["User-Agent"]) headers["User-Agent"] = params["User-Agent"];
-
-  try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeout);
-
-    const res = await fetch(url, {
-      method: "HEAD",
-      headers,
-      signal: controller.signal,
-      redirect: "follow",
-    });
-
-    clearTimeout(timer);
-    return [200, 206, 301, 302, 307, 308, 405].includes(res.status);
   } catch {
     return false;
   }
 }
 
-// Vavoo Proxy-Server als Fallback
+// Vavoo Proxy fallback
 const VAVOO_PROXIES = [
   "https://vavoo-proxy.kadirmetin.workers.dev",
   "https://vavoo-proxy.vercel.app",
   "https://vavoo-proxy.netlify.app",
 ];
 
-// Famelack CDN für Ersatz-Links
+// Famelack CDN fallback
 const FAMELACK_DOMAINS = ["rnttwmjcin.turknet.ercdn.net"];
 const FAMELACK_PREFIXES = ["lcpmvefbyo"];
 const FAMELACK_QUALITIES = ["1080p", "720p", "576p"];
@@ -197,53 +143,8 @@ const HEADERS = {
   "sec-fetch-dest": "empty",
   "sec-fetch-mode": "cors",
   "sec-fetch-site": "same-origin",
-  "user-agent":
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+  "user-agent": STREAM_USER_AGENT,
 };
-
-// ═══════════════════════════════════════════════════════════════
-// 🔗 LINK-CHECKER
-// ═══════════════════════════════════════════════════════════════
-
-async function checkLink(url, timeout = CHECK_TIMEOUT_MS) {
-  if (!url || typeof url !== "string") return false;
-
-  try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeout);
-
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        "User-Agent": STREAM_USER_AGENT,
-        Accept: "*/*",
-        Range: "bytes=0-2048",
-      },
-      signal: controller.signal,
-      redirect: "follow",
-    });
-
-    clearTimeout(timer);
-
-    if ([200, 206].includes(res.status)) {
-      try {
-        const reader = res.body?.getReader();
-        if (reader) {
-          const { value } = await reader.read();
-          reader.cancel().catch(() => {});
-          return value && value.length > 0;
-        }
-      } catch {
-        return true;
-      }
-      return true;
-    }
-
-    return false;
-  } catch {
-    return false;
-  }
-}
 
 function extractVavooId(url) {
   if (!url) return null;
@@ -319,12 +220,10 @@ async function repairLink(item) {
   const originalUrl = item.url;
   const name = item.name || "";
 
-  // 1. Original testen
   if (await checkLink(originalUrl)) {
     return { url: originalUrl, status: "ok" };
   }
 
-  // 2. Vavoo-Proxy versuchen
   const vavooId = extractVavooId(originalUrl);
   if (vavooId) {
     const proxyUrl = await tryVavooProxy(vavooId);
@@ -333,13 +232,11 @@ async function repairLink(item) {
     }
   }
 
-  // 3. Famelack versuchen
   const famelackUrl = await tryFamelack(name);
   if (famelackUrl) {
     return { url: famelackUrl, status: "famelack" };
   }
 
-  // 4. Nichts funktioniert -> Original behalten
   return { url: originalUrl, status: "dead" };
 }
 
@@ -357,16 +254,16 @@ async function saveLinkCache(cache) {
   try {
     await fs.writeFile(CACHE_FILE, JSON.stringify(cache, null, 2), "utf8");
   } catch (err) {
-    console.warn(`⚠️ Cache konnte nicht gespeichert werden: ${err.message}`);
+    console.warn(`Cache save failed: ${err.message}`);
   }
 }
 
 async function repairAll(items) {
   console.log("\n═══════════════════════════════════════════════════════");
-  console.log("🔗 STARTE HINTERGRUND-LINK-CHECKER");
+  console.log("LINK CHECKER STARTING");
   console.log("═══════════════════════════════════════════════════════");
-  console.log(`📊 ${items.length} Kanäle zu prüfen`);
-  console.log(`⚙️  Parallel: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
+  console.log(`${items.length} channels to check`);
+  console.log(`Concurrency: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
 
   const cache = await loadLinkCache();
   const now = Date.now();
@@ -435,7 +332,7 @@ async function repairAll(items) {
     const pct = Math.round((processed / items.length) * 100);
     if (processed % (CHECK_CONCURRENCY * 5) === 0 || processed === items.length) {
       console.log(
-        `  [${pct}%] ${processed}/${items.length} | ✅${okCount} 🔄${proxyCount + famelackCount} ❌${deadCount} 💾${cacheHits}`
+        `  [${pct}%] ${processed}/${items.length} | ok:${okCount} proxy:${proxyCount + famelackCount} dead:${deadCount} cached:${cacheHits}`
       );
     }
   }
@@ -451,14 +348,14 @@ async function repairAll(items) {
   }
 
   console.log("\n═══════════════════════════════════════════════════════");
-  console.log("📊 LINK-CHECKER ERGEBNIS");
+  console.log("LINK CHECKER RESULTS");
   console.log("═══════════════════════════════════════════════════════");
-  console.log(`✅ Original funktioniert:    ${okCount}`);
-  console.log(`🔄 Via Vavoo-Proxy:           ${proxyCount}`);
-  console.log(`🔄 Via Famelack:              ${famelackCount}`);
-  console.log(`❌ Weiterhin defekt:          ${deadCount}`);
-  console.log(`💾 Aus Cache:                 ${cacheHits}`);
-  console.log(`🎯 Erfolgreich repariert:     ${proxyCount + famelackCount}`);
+  console.log(`Original OK:        ${okCount}`);
+  console.log(`Via Vavoo Proxy:    ${proxyCount}`);
+  console.log(`Via Famelack:       ${famelackCount}`);
+  console.log(`Still dead:         ${deadCount}`);
+  console.log(`From cache:         ${cacheHits}`);
+  console.log(`Repaired:           ${proxyCount + famelackCount}`);
   console.log("═══════════════════════════════════════════════════════\n");
 
   return items;
@@ -570,7 +467,7 @@ async function fetchAll() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// KATEGORIEN
+// CATEGORIES
 // ═══════════════════════════════════════════════════════════════
 
 function normalizeForCategory(name) {
@@ -649,7 +546,7 @@ function categorize(name) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// M3U
+// M3U GENERATION (optimized for Televizo)
 // ═══════════════════════════════════════════════════════════════
 
 function escapeAttr(value) {
@@ -673,9 +570,8 @@ function toStreamUrl(item) {
 }
 
 function toM3U(items, logoResolver) {
-  // OHNE EPG-Attribute (url-tvg / x-tvg-url entfernt)
-  const header = `#EXTM3U`;
-  const lines = [header];
+  const lines = ["#EXTM3U"];
+
   for (const it of items) {
     if (!it || !it.url) continue;
     const name = sanitizeName(it.name);
@@ -685,15 +581,20 @@ function toM3U(items, logoResolver) {
     if (!group) continue;
 
     const logo = resolveLogo(name, it.logo, logoResolver);
-
-    // tvg-id entfernt (kein EPG)
+    const streamUrl = toStreamUrl(it);
     const repairAttr = it._repaired ? ` repair="${it._repairStatus}"` : "";
 
     lines.push(
       `#EXTINF:-1 tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairAttr},${name}`
     );
-    lines.push(toStreamUrl(it));
+
+    // Televizo / VLC optimization: set network caching for smoother playback
+    lines.push(`#EXTVLCOPT:network-caching=1000`);
+    lines.push(`#EXTVLCOPT:live-caching=1000`);
+
+    lines.push(streamUrl);
   }
+
   lines.push("");
   return lines.join("\n");
 }
@@ -707,7 +608,7 @@ function resolveLogo(name, vavooLogo, logoResolver) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// iptv-org LOGOS
+// IPTV-ORG LOGOS
 // ═══════════════════════════════════════════════════════════════
 
 function normalizeForMatch(name) {
@@ -810,11 +711,9 @@ async function main() {
     );
   }
 
-  // 1. Kanäle holen
   const items = await fetchAll();
   console.log(`Total fetched items combined: ${items.length}`);
 
-  // 2. Sortieren
   items.sort((a, b) => {
     const an = String(a.name ?? "").toLocaleLowerCase("tr-TR");
     const bn = String(b.name ?? "").toLocaleLowerCase("tr-TR");
@@ -825,7 +724,6 @@ async function main() {
     return ai < bi ? -1 : ai > bi ? 1 : 0;
   });
 
-  // 3. Logo-Index laden
   let logoIdx = new Map();
   try {
     logoIdx = await buildLogoIndex();
@@ -834,26 +732,23 @@ async function main() {
   }
   const logoResolver = makeLogoResolver(logoIdx);
 
-  // 4. Link-Checker & Auto-Repair
   let finalItems = items;
   if (CHECK_ENABLED) {
     try {
       finalItems = await repairAll(items);
     } catch (err) {
-      console.warn(`⚠️ Link-Checker fehlgeschlagen: ${err.message}`);
-      console.warn("   Verwende Original-Links.");
+      console.warn(`Link-Checker failed: ${err.message}`);
+      console.warn("   Using original links.");
       finalItems = items;
     }
   } else {
-    console.log("⚠️ Link-Checker deaktiviert (CHECK_ENABLED=false)");
+    console.log("Link-Checker disabled (CHECK_ENABLED=false)");
   }
 
-  // 5. M3U schreiben
   const m3u = toM3U(finalItems, logoResolver);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
   console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes)`);
 
-  // 6. Kategorie-Statistik
   const dist = new Map();
   for (const it of finalItems) {
     const name = sanitizeName(it?.name);
@@ -868,14 +763,13 @@ async function main() {
     console.log(`  ${c.padEnd(20)}: ${n}`);
   }
 
-  // 7. Reparatur-Statistik
   const repairedCount = finalItems.filter((it) => it._repaired).length;
   if (repairedCount > 0) {
-    console.log(`\n🔧 ${repairedCount} Links wurden automatisch repariert!`);
+    console.log(`\n${repairedCount} links were automatically repaired!`);
   }
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log(`\n⏱️  Gesamtdauer: ${duration}s`);
+  console.log(`\nTotal duration: ${duration}s`);
 }
 
 main().catch((err) => {
