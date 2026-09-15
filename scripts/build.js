@@ -223,9 +223,12 @@ async function tryCustomLinks(channelName) {
     }
   }
 
-  // Partial match — channel name contains key or vice versa
+  // Partial match — require strict similarity (name lengths within 30%)
   for (const [key, urls] of index) {
     if (normalized.includes(key) || key.includes(normalized)) {
+      const longer = Math.max(normalized.length, key.length);
+      const shorter = Math.min(normalized.length, key.length);
+      if (shorter / longer < 0.7) continue;
       for (const url of urls) {
         if (await checkLink(url, 4000)) return url;
       }
@@ -281,6 +284,7 @@ async function loadFamelackData() {
       for (const ch of channels) {
         if (!ch?.name || !ch?.sources?.streams?.length) continue;
         if (ch.isGeoBlocked) continue;
+        if (isBlockedChannel(ch.name)) continue;
 
         const key = normalizeChannelName(ch.name);
         if (!key) continue;
@@ -435,10 +439,15 @@ async function repairAll(items) {
         if (cached && cached.timestamp) {
           const age = now - cached.timestamp;
           const isHealthy = cached.status === "ok" || cached.status === "proxy";
-          const ttl = isHealthy ? CACHE_TTL_MS * 3 : CACHE_TTL_MS;
-          if (age < ttl) {
-            cacheHits++;
-            return { index, result: { url: cached.url, status: cached.status } };
+          // Fallback URLs (custom/famelack) should always be re-verified
+          if (!isHealthy) {
+            // Don't cache fallbacks — re-check every run
+          } else {
+            const ttl = CACHE_TTL_MS * 3;
+            if (age < ttl) {
+              cacheHits++;
+              return { index, result: { url: cached.url, status: cached.status } };
+            }
           }
         }
 
@@ -522,6 +531,12 @@ function isAllowedGermanChannel(channelName) {
   return true;
 }
 
+const BLOCKED_CHANNELS = /alanya|izmir\s+tv|antalya\s+tv|bursa\s+tv|ankara\s+tv|istanbul\s+tv|eskisehir\s+tv|konya\s+tv|trabzon\s+tv|izmir\s+haber/i;
+
+function isBlockedChannel(name) {
+  return BLOCKED_CHANNELS.test(String(name || ""));
+}
+
 function buildBody(group, cursor) {
   return JSON.stringify({
     language: "de",
@@ -578,6 +593,7 @@ async function fetchAllForGroup(group) {
     const data = await fetchPage(group, cursor);
     if (Array.isArray(data.items)) {
       for (const item of data.items) {
+        if (isBlockedChannel(item.name)) continue;
         if (group === "Germany") {
           if (isAllowedGermanChannel(item.name)) {
             items.push(item);
