@@ -318,9 +318,12 @@ async function tryFamelackData(channelName) {
     }
   }
 
-  // Partial match
+  // Partial match — require strict similarity (name lengths within 30%)
   for (const [key, entry] of index) {
     if (normalized.includes(key) || key.includes(normalized)) {
+      const longer = Math.max(normalized.length, key.length);
+      const shorter = Math.min(normalized.length, key.length);
+      if (shorter / longer < 0.7) continue; // too different in length
       for (const url of entry.streams) {
         if (await checkLink(url, 4000)) return url;
       }
@@ -658,8 +661,16 @@ const CATEGORY_RULES = [
     re: /\b(ARD|ZDF|ZDF NEO|RTL|RTL PLUS|RTL\+|RTL PASSION|RTL NITRO|PRO SIEBEN|PRO7|SAT\.1|SAT1|VOX|KABEL 1|KABEL 1 DOKU|SUPER RTL|NICKELODEON DE|NICK DE|NDR|WDR|MDR|BR|SWR|HR|RBB|SR|PHOENIX|TAGESSCHAU24|WELT|N24|N-TV|TELE 5|SIXX|DISNEY CHANNEL DE|TOGGO|KIKA|DEUTSCH|GERMAN|DEUTSCHLAND|DAS ERSTE|ONE|ARTE|3SAT|ZDF INFO|ZDF KULTUR|WDR|BR ALPHA|ARD ALPHA|RTL ZWEI|RTL2)\b/i,
   },
   {
+    name: "Radio",
+    re: /\b(RADYO|RADIO|FM)\b/i,
+  },
+  {
+    name: "Yerel",
+    re: /\b(YEREL|REGIONAL|YÖRESEL|BELEDİYE|Muğla|Antalya|İzmir|Ankara|İstanbul|Bursa|Konya|Gaziantep|Kayseri|Mersin|Diyarbakır|Trabzon|Samsun|Eskişehir|Denizli|Malatya|Erzurum|Van|Batman|Şanlıurfa|Hatay|Manisa|Aydın|Tekirdağ|Edirne|Çanakkale|Balıkesir|Bolu|Sakarya|Düzce|Karabük|Bartın|Isparta|Burdur|Afyon|Uşak|Kütahya|Bilecik|Yalova|Kocaeli|Kırklareli|Kırşehir|Kırıkkale|Aksaray|Niğde|Nevşehir|Kırşehir|Yozgat|Sivas|Tokat|Amasya|Çorum|Kastamonu|Sinop|Ordu|Giresun|Artvin|Rize|Gümüşhane|Bayburt|Erzincan|Tunceli|Elazığ|Malatya|Adıyaman|Şırnak|Siirt|Bitlis|Muş| Ağrı|Iğdır|Kars|Ardahan|Gümüşhane)\b/i,
+  },
+  {
     name: "Ulusal",
-    re: /\b(TRT|MECLİS|TABII|SHOW|STAR|ATV|KANAL D|NOW TV|EXXEN|TV ?8|TEVE 2|BEYAZ|360|SKY 360|A2 TV|EURO D|KANAL 7|DMAX TURKIYE|BENGUTÜRK|ULUSAL|KANAL|TÜRK|TURK)\b/i,
+    re: /\b(TRT|MECLİS|TABII|SHOW ?TV|STAR ?TV|ATV(?!\s+ALANYA)|KANAL D|NOW TV|EXXEN|TV ?8|TEVE 2|BEYAZ ?TV|360|SKY 360|A2 TV|EURO D|KANAL 7|DMAX TURKIYE|BENG[UÜ]T[UÜ]RK|ULUSAL|KANAL FIRAT|KANAL V|KANAL 23|KANAL 26|KANAL 33|KANAL 34|KANAL 58|KANAL 12|KANAL 15|KANAL 19|KANAL AVRUPA)\b/i,
   },
   {
     name: "Haber",
