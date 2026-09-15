@@ -2,8 +2,8 @@ name: Build IPTV M3U
 
 on:
   schedule:
-    # Every Monday at 03:00 UTC (06:00 TR)
-    - cron: "0 3 * * 1"
+    # Every day at 01:00 UTC (04:00 TR)
+    - cron: "0 1 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -31,7 +31,15 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Generate iptv.m3u
+      - name: Generate iptv.m3u (nightly fresh)
+        if: github.event_name == 'schedule'
+        env:
+          PROXY_BASE: ${{ vars.PROXY_BASE }}
+          CACHE_TTL_MS: "0"
+        run: npm run build
+
+      - name: Generate iptv.m3u (fast cached)
+        if: github.event_name != 'schedule'
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
         run: npm run build
@@ -40,10 +48,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain iptv.m3u)" ]]; then
-            git add iptv.m3u
-            git commit -m "chore: update iptv.m3u ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git add iptv.m3u link_cache.json
+          if [[ -n "$(git status --porcelain iptv.m3u link_cache.json)" ]]; then
+            git commit -m "chore: update iptv.m3u + cache ($(date -u +'%Y-%m-%d %H:%M UTC'))"
             git push
           else
-            echo "No changes in iptv.m3u"
+            echo "No changes"
           fi
