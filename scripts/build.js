@@ -112,6 +112,7 @@ const FAMELACK_DOMAINS = ["rnttwmjcin.turknet.ercdn.net"];
 const FAMELACK_PREFIXES = ["lcpmvefbyo"];
 const FAMELACK_QUALITIES = ["1080p", "720p", "576p"];
 
+const CUSTOM_LINKS_FILE = path.join(__dirname, "..", "custom_links.json");
 const IPTVORG_CHANNELS_URL =
   process.env.IPTVORG_CHANNELS_URL ||
   "https://iptv-org.github.io/api/channels.json";
@@ -185,6 +186,150 @@ async function tryFamelack(channelName) {
   return null;
 }
 
+// ─── Custom Links (direct m3u8 URLs from custom_links.json) ──
+let _customLinksIndex = null;
+
+async function loadCustomLinks() {
+  if (_customLinksIndex) return _customLinksIndex;
+  try {
+    const raw = await fs.readFile(CUSTOM_LINKS_FILE, "utf8");
+    const data = JSON.parse(raw);
+    _customLinksIndex = new Map();
+    for (const [name, urls] of Object.entries(data)) {
+      if (Array.isArray(urls) && urls.length > 0) {
+        _customLinksIndex.set(name.toLowerCase().trim(), urls);
+      }
+    }
+    console.log(`  Custom links loaded: ${_customLinksIndex.size} channels`);
+    return _customLinksIndex;
+  } catch {
+    _customLinksIndex = new Map();
+    return _customLinksIndex;
+  }
+}
+
+async function tryCustomLinks(channelName) {
+  const index = await loadCustomLinks();
+  const normalized = channelName.toLowerCase()
+    .replace(/\bhd\b|\bfhd\b|\buhd\b|\b4k\b|\bsraw\b|\bsb\b|\bs\b|\bc\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  // Exact match
+  if (index.has(normalized)) {
+    const urls = index.get(normalized);
+    for (const url of urls) {
+      if (await checkLink(url, 4000)) return url;
+    }
+  }
+
+  // Partial match — channel name contains key or vice versa
+  for (const [key, urls] of index) {
+    if (normalized.includes(key) || key.includes(normalized)) {
+      for (const url of urls) {
+        if (await checkLink(url, 4000)) return url;
+      }
+    }
+  }
+
+  return null;
+}
+
+// ─── Famelack Data (curated TV streams from GitHub) ──────────
+const FAMELACK_DATA_URL =
+  "https://raw.githubusercontent.com/famelack/famelack-data/main/tv/raw/countries";
+let _famelackDataIndex = null;
+
+function normalizeChannelName(name) {
+  let s = String(name || "")
+    .toLowerCase()
+    .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/i, "")
+    .replace(/\s*\.(?:b|c|s)\b/gi, "")
+    .replace(/\[[^\]]*\]/g, "")
+    .replace(/\([^)]*\)/g, "")
+    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const trMap = { ü: "u", ğ: "g", ş: "s", ı: "i", ö: "o", ç: "c" };
+  for (const [old, neu] of Object.entries(trMap)) {
+    s = s.replace(new RegExp(old, "g"), neu);
+  }
+
+  return s;
+}
+
+async function loadFamelackData() {
+  if (_famelackDataIndex) return _famelackDataIndex;
+
+  console.log("  Fetching famelack-data index...");
+  const countries = ["tr", "de"];
+  _famelackDataIndex = new Map();
+
+  for (const country of countries) {
+    try {
+      const url = `${FAMELACK_DATA_URL}/${country}.json`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
+      if (!res.ok) {
+        console.warn(`    ${country.toUpperCase()}: HTTP ${res.status}`);
+        continue;
+      }
+
+      const channels = await res.json();
+      if (!Array.isArray(channels)) continue;
+
+      for (const ch of channels) {
+        if (!ch?.name || !ch?.sources?.streams?.length) continue;
+        if (ch.isGeoBlocked) continue;
+
+        const key = normalizeChannelName(ch.name);
+        if (!key) continue;
+
+        // Store streams array, skip if already exists
+        if (!_famelackDataIndex.has(key)) {
+          _famelackDataIndex.set(key, {
+            name: ch.name,
+            streams: ch.sources.streams,
+            country: ch.country,
+          });
+        }
+      }
+      console.log(`    ${country.toUpperCase()}: ${channels.length} channels indexed`);
+    } catch (err) {
+      console.warn(`    ${country.toUpperCase()} fetch failed: ${err.message || err}`);
+    }
+  }
+
+  console.log(`  Famelack-data loaded: ${_famelackDataIndex.size} channels`);
+  return _famelackDataIndex;
+}
+
+async function tryFamelackData(channelName) {
+  const index = await loadFamelackData();
+  if (index.size === 0) return null;
+
+  const normalized = normalizeChannelName(channelName);
+
+  // Exact match
+  if (index.has(normalized)) {
+    const entry = index.get(normalized);
+    for (const url of entry.streams) {
+      if (await checkLink(url, 4000)) return url;
+    }
+  }
+
+  // Partial match
+  for (const [key, entry] of index) {
+    if (normalized.includes(key) || key.includes(normalized)) {
+      for (const url of entry.streams) {
+        if (await checkLink(url, 4000)) return url;
+      }
+    }
+  }
+
+  return null;
+}
+
 function getProxyUrl(item) {
   const id = item?.ids?.id;
   if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
@@ -209,13 +354,25 @@ async function repairLink(item) {
     return { url: originalUrl, status: "ok" };
   }
 
-  // 3. Try Famelack as second source
+  // 3. Try Famelack Data (curated TV streams from GitHub)
+  const famelackDataUrl = await tryFamelackData(name);
+  if (famelackDataUrl) {
+    return { url: famelackDataUrl, status: "famelack-data" };
+  }
+
+  // 4. Try custom_links.json (direct m3u8 URLs)
+  const customUrl = await tryCustomLinks(name);
+  if (customUrl) {
+    return { url: customUrl, status: "custom" };
+  }
+
+  // 5. Try Famelack CDN pattern
   const famelackUrl = await tryFamelack(name);
   if (famelackUrl) {
     return { url: famelackUrl, status: "famelack" };
   }
 
-  // 4. Nothing works — keep original (Worker will try at runtime)
+  // 6. Nothing works — keep original (Worker will try at runtime)
   return { url: originalUrl, status: "dead" };
 }
 
@@ -243,7 +400,7 @@ async function repairAll(items) {
   console.log("═══════════════════════════════════════════════════════");
   console.log(`${items.length} channels total`);
   console.log(`Vavoo channels: tested via proxy URL`);
-  console.log(`Fallback source: Famelack CDN`);
+  console.log(`Fallback sources: Famelack Data → Custom Links → Famelack CDN`);
   console.log(`Concurrency: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
 
   const cache = await loadLinkCache();
@@ -251,6 +408,8 @@ async function repairAll(items) {
 
   let okCount = 0;
   let proxyCount = 0;
+  let famelackDataCount = 0;
+  let customCount = 0;
   let famelackCount = 0;
   let deadCount = 0;
   let cacheHits = 0;
@@ -300,6 +459,12 @@ async function repairAll(items) {
         case "proxy":
           proxyCount++;
           break;
+        case "famelack-data":
+          famelackDataCount++;
+          break;
+        case "custom":
+          customCount++;
+          break;
         case "famelack":
           famelackCount++;
           break;
@@ -313,7 +478,7 @@ async function repairAll(items) {
     const pct = Math.round((processed / items.length) * 100);
     if (processed % (CHECK_CONCURRENCY * 5) === 0 || processed === items.length) {
       console.log(
-        `  [${pct}%] ${processed}/${items.length} | ok:${okCount} proxy:${proxyCount + famelackCount} dead:${deadCount} cached:${cacheHits}`
+        `  [${pct}%] ${processed}/${items.length} | ok:${okCount} proxy:${proxyCount} famelack-data:${famelackDataCount} custom:${customCount} famelack:${famelackCount} dead:${deadCount} cached:${cacheHits}`
       );
     }
   }
@@ -325,18 +490,20 @@ async function repairAll(items) {
     if (!r) continue;
     items[i].url = r.url;
     items[i]._repairStatus = r.status;
-    items[i]._repaired = r.status === "proxy" || r.status === "famelack";
+    items[i]._repaired = r.status === "proxy" || r.status === "famelack-data" || r.status === "famelack" || r.status === "custom";
   }
 
   console.log("\n═══════════════════════════════════════════════════════");
   console.log("LINK CHECKER RESULTS");
   console.log("═══════════════════════════════════════════════════════");
   console.log(`Original OK:        ${okCount}`);
-  console.log(`Via Vavoo Proxy:    ${proxyCount}`);
-  console.log(`Via Famelack:       ${famelackCount}`);
+  console.log(`Via Proxy:          ${proxyCount}`);
+  console.log(`Via Famelack Data:  ${famelackDataCount}`);
+  console.log(`Via Custom Links:   ${customCount}`);
+  console.log(`Via Famelack CDN:   ${famelackCount}`);
   console.log(`Still dead:         ${deadCount}`);
   console.log(`From cache:         ${cacheHits}`);
-  console.log(`Repaired:           ${proxyCount + famelackCount}`);
+  console.log(`Repaired:           ${proxyCount + famelackDataCount + customCount + famelackCount}`);
   console.log("═══════════════════════════════════════════════════════\n");
 
   return items;
@@ -720,6 +887,8 @@ async function main() {
   let finalItems = items;
   if (CHECK_ENABLED) {
     try {
+      // Pre-load famelack-data index before starting concurrent repairs
+      await loadFamelackData();
       finalItems = await repairAll(items);
     } catch (err) {
       console.warn(`Link-Checker failed: ${err.message}`);
