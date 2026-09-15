@@ -13,9 +13,9 @@ const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
 // ─── Configuration ──────────────────────────────────────────
 const FETCH_TIMEOUT_MS = 20000;
 const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
-const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "8", 10);
-const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "6000", 10);
-const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(24 * 60 * 60 * 1000), 10);
+const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "32", 10);
+const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "3000", 10);
+const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(3 * 24 * 60 * 60 * 1000), 10);
 
 const STREAM_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -428,13 +428,15 @@ async function repairAll(items) {
         const cacheKey = item.url;
         const cached = cache[cacheKey];
 
-        if (
-          cached &&
-          cached.timestamp &&
-          now - cached.timestamp < CACHE_TTL_MS
-        ) {
-          cacheHits++;
-          return { index, result: { url: cached.url, status: cached.status } };
+        // Fast path: skip re-checking channels that were recently working
+        if (cached && cached.timestamp) {
+          const age = now - cached.timestamp;
+          const isHealthy = cached.status === "ok" || cached.status === "proxy";
+          const ttl = isHealthy ? CACHE_TTL_MS * 3 : CACHE_TTL_MS;
+          if (age < ttl) {
+            cacheHits++;
+            return { index, result: { url: cached.url, status: cached.status } };
+          }
         }
 
         const result = await repairLink(item);
