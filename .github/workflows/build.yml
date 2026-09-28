@@ -1,9 +1,16 @@
+In beide Generate-Steps, jeweils in den env:-Block.
+
+---
+
+📦 Komplette build.yml
+
+```yaml
 name: Build IPTV M3U
 
 on:
   schedule:
-    # Every day at 01:00 UTC (04:00 TR)
-    - cron: "0 1 * * *"
+    # alle 30 Min
+    - cron: "*/30 * * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -35,13 +42,16 @@ jobs:
         if: github.event_name == 'schedule'
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
-          CACHE_TTL_MS: "0"
+          CACHE_TTL_MS: "600000"
+          CHECK_TIMEOUT_MS: "8000"
         run: npm run build
 
       - name: Generate iptv.m3u (fast cached)
         if: github.event_name != 'schedule'
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
+          CACHE_TTL_MS: "600000"
+          CHECK_TIMEOUT_MS: "8000"
         run: npm run build
 
       - name: Commit and push if changed
@@ -56,3 +66,30 @@ jobs:
           else
             echo "No changes"
           fi
+```
+
+---
+
+🎯 Die zwei Stellen
+
+1. Im Step Generate iptv.m3u (nightly fresh) (Zeile ~30):
+
+```yaml
+        env:
+          PROXY_BASE: ${{ vars.PROXY_BASE }}
+          CACHE_TTL_MS: "600000"
+          CHECK_TIMEOUT_MS: "8000"     ← HIER
+```
+
+2. Im Step Generate iptv.m3u (fast cached) (Zeile ~38):
+
+```yaml
+        env:
+          PROXY_BASE: ${{ vars.PROXY_BASE }}
+          CACHE_TTL_MS: "600000"
+          CHECK_TIMEOUT_MS: "8000"     ← HIER
+```
+
+---
+
+Einfach die komplette Datei mit meiner Version ersetzen – fertig.
