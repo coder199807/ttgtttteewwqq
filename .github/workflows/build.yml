@@ -1,15 +1,7 @@
-In beide Generate-Steps, jeweils in den env:-Block.
-
----
-
-📦 Komplette build.yml
-
-```yaml
 name: Build IPTV M3U
 
 on:
   schedule:
-    # alle 30 Min
     - cron: "*/30 * * * *"
   workflow_dispatch:
   push:
@@ -66,30 +58,4 @@ jobs:
           else
             echo "No changes"
           fi
-```
-
----
-
-🎯 Die zwei Stellen
-
-1. Im Step Generate iptv.m3u (nightly fresh) (Zeile ~30):
-
-```yaml
-        env:
-          PROXY_BASE: ${{ vars.PROXY_BASE }}
-          CACHE_TTL_MS: "600000"
-          CHECK_TIMEOUT_MS: "8000"     ← HIER
-```
-
-2. Im Step Generate iptv.m3u (fast cached) (Zeile ~38):
-
-```yaml
-        env:
-          PROXY_BASE: ${{ vars.PROXY_BASE }}
-          CACHE_TTL_MS: "600000"
-          CHECK_TIMEOUT_MS: "8000"     ← HIER
-```
-
----
-
 Einfach die komplette Datei mit meiner Version ersetzen – fertig.
