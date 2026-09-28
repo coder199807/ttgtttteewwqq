@@ -13,8 +13,8 @@ const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
 // ─── Configuration ──────────────────────────────────────────
 const FETCH_TIMEOUT_MS = 20000;
 const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
-const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "32", 10);
-const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "8000", 10);
+const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "16", 10);
+const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "6000", 10);
 const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(10 * 60 * 1000), 10);
 
 const STREAM_USER_AGENT =
@@ -215,7 +215,6 @@ async function tryCustomLinks(channelName) {
     .replace(/\s+/g, " ")
     .trim();
 
-  // Exact match
   if (index.has(normalized)) {
     const urls = index.get(normalized);
     for (const url of urls) {
@@ -223,7 +222,6 @@ async function tryCustomLinks(channelName) {
     }
   }
 
-  // Partial match — require strict similarity (name lengths within 30%)
   for (const [key, urls] of index) {
     if (normalized.includes(key) || key.includes(normalized)) {
       const longer = Math.max(normalized.length, key.length);
@@ -289,7 +287,6 @@ async function loadFamelackData() {
         const key = normalizeChannelName(ch.name);
         if (!key) continue;
 
-        // Store streams array, skip if already exists
         if (!_famelackDataIndex.has(key)) {
           _famelackDataIndex.set(key, {
             name: ch.name,
@@ -314,7 +311,6 @@ async function tryFamelackData(channelName) {
 
   const normalized = normalizeChannelName(channelName);
 
-  // Exact match
   if (index.has(normalized)) {
     const entry = index.get(normalized);
     for (const url of entry.streams) {
@@ -322,12 +318,11 @@ async function tryFamelackData(channelName) {
     }
   }
 
-  // Partial match — require strict similarity (name lengths within 30%)
   for (const [key, entry] of index) {
     if (normalized.includes(key) || key.includes(normalized)) {
       const longer = Math.max(normalized.length, key.length);
       const shorter = Math.min(normalized.length, key.length);
-      if (shorter / longer < 0.7) continue; // too different in length
+      if (shorter / longer < 0.7) continue;
       for (const url of entry.streams) {
         if (await checkLink(url, 6000)) return url;
       }
@@ -348,9 +343,9 @@ async function repairLink(item) {
   const name = item.name || "";
   const vavooId = item?.ids?.id;
 
-// 1. For vavoo items: use the proxy URL directly (no check — proxy resolves live)
-if (vavooId && PROXY_BASE) {
-  return { url: `${PROXY_BASE}/play/${vavooId}`, status: "proxy" };
+  // 1. For vavoo items: use the proxy URL directly (no check — proxy resolves live)
+  if (vavooId && PROXY_BASE) {
+    return { url: `${PROXY_BASE}/play/${vavooId}`, status: "proxy" };
   }
 
   // 2. For direct URLs (or fallback): test original
@@ -376,7 +371,7 @@ if (vavooId && PROXY_BASE) {
     return { url: famelackUrl, status: "famelack" };
   }
 
-  // 6. Nothing works — keep original (Worker will try at runtime)
+  // 6. Nothing works
   return { url: originalUrl, status: "dead" };
 }
 
@@ -403,7 +398,7 @@ async function repairAll(items) {
   console.log("LINK CHECKER STARTING");
   console.log("═══════════════════════════════════════════════════════");
   console.log(`${items.length} channels total`);
-  console.log(`Vavoo channels: tested via proxy URL`);
+  console.log(`Vavoo channels: routed through proxy`);
   console.log(`Fallback sources: Famelack Data → Custom Links → Famelack CDN`);
   console.log(`Concurrency: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
 
@@ -432,13 +427,11 @@ async function repairAll(items) {
         const cacheKey = item.url;
         const cached = cache[cacheKey];
 
-        // Fast path: skip re-checking channels that were recently working
         if (cached && cached.timestamp) {
           const age = now - cached.timestamp;
           const isHealthy = cached.status === "ok" || cached.status === "proxy";
-          // Fallback URLs (custom/famelack) should always be re-verified
           if (!isHealthy) {
-            // Don't cache fallbacks — re-check every run
+            // Fallbacks always re-verified
           } else {
             const ttl = CACHE_TTL_MS;
             if (age < ttl) {
@@ -464,24 +457,12 @@ async function repairAll(items) {
       results[index] = result;
 
       switch (result.status) {
-        case "ok":
-          okCount++;
-          break;
-        case "proxy":
-          proxyCount++;
-          break;
-        case "famelack-data":
-          famelackDataCount++;
-          break;
-        case "custom":
-          customCount++;
-          break;
-        case "famelack":
-          famelackCount++;
-          break;
-        case "dead":
-          deadCount++;
-          break;
+        case "ok": okCount++; break;
+        case "proxy": proxyCount++; break;
+        case "famelack-data": famelackDataCount++; break;
+        case "custom": customCount++; break;
+        case "famelack": famelackCount++; break;
+        case "dead": deadCount++; break;
       }
     }
 
@@ -678,10 +659,6 @@ const CATEGORY_RULES = [
     re: /\b(RADYO|RADIO|FM)\b/i,
   },
   {
-    name: "Yerel",
-    re: /\b(YEREL|REGIONAL|YÖRESEL|BELEDİYE|Muğla|Antalya|İzmir|Ankara|İstanbul|Bursa|Konya|Gaziantep|Kayseri|Mersin|Diyarbakır|Trabzon|Samsun|Eskişehir|Denizli|Malatya|Erzurum|Van|Batman|Şanlıurfa|Hatay|Manisa|Aydın|Tekirdağ|Edirne|Çanakkale|Balıkesir|Bolu|Sakarya|Düzce|Karabük|Bartın|Isparta|Burdur|Afyon|Uşak|Kütahya|Bilecik|Yalova|Kocaeli|Kırklareli|Kırşehir|Kırıkkale|Aksaray|Niğde|Nevşehir|Kırşehir|Yozgat|Sivas|Tokat|Amasya|Çorum|Kastamonu|Sinop|Ordu|Giresun|Artvin|Rize|Gümüşhane|Bayburt|Erzincan|Tunceli|Elazığ|Malatya|Adıyaman|Şırnak|Siirt|Bitlis|Muş| Ağrı|Iğdır|Kars|Ardahan|Gümüşhane)\b/i,
-  },
-  {
     name: "Ulusal",
     re: /\b(TRT|MECLİS|TABII|SHOW ?TV|STAR ?TV|ATV(?!\s+ALANYA)|KANAL D|NOW TV|EXXEN|TV ?8|TEVE 2|BEYAZ ?TV|360|SKY 360|A2 TV|EURO D|KANAL 7|DMAX TURKIYE|BENG[UÜ]T[UÜ]RK|ULUSAL|KANAL FIRAT|KANAL V|KANAL 23|KANAL 26|KANAL 33|KANAL 34|KANAL 58|KANAL 12|KANAL 15|KANAL 19|KANAL AVRUPA)\b/i,
   },
@@ -716,7 +693,7 @@ function categorize(name) {
   for (const rule of CATEGORY_RULES) {
     if (rule.re.test(s)) return rule.name;
   }
-  return "Sonstige";
+  return "Diğer";
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -736,14 +713,11 @@ function sanitizeName(name) {
 }
 
 function toStreamUrl(item) {
-  // If repair already set a working URL (proxy or famelack), use it
   if (item._repaired && item.url) return item.url;
 
-  // Vavoo items → proxy URL
   const id = item?.ids?.id;
   if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
 
-  // Direct URL fallback
   return item.url;
 }
 
@@ -756,8 +730,6 @@ function toM3U(items, logoResolver) {
     if (!name) continue;
 
     const group = categorize(name);
-    if (!group) continue;
-
     const logo = resolveLogo(name, it.logo, logoResolver);
     const streamUrl = toStreamUrl(it);
     const repairAttr = it._repaired ? ` repair="${it._repairStatus}"` : "";
@@ -765,11 +737,9 @@ function toM3U(items, logoResolver) {
     lines.push(
       `#EXTINF:-1 tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairAttr},${name}`
     );
-
-    // Televizo / VLC optimization: set network caching for smoother playback
+    lines.push(`#EXTGRP:${group}`);
     lines.push(`#EXTVLCOPT:network-caching=1000`);
     lines.push(`#EXTVLCOPT:live-caching=1000`);
-
     lines.push(streamUrl);
   }
 
@@ -913,7 +883,6 @@ async function main() {
   let finalItems = items;
   if (CHECK_ENABLED) {
     try {
-      // Pre-load famelack-data index before starting concurrent repairs
       await loadFamelackData();
       finalItems = await repairAll(items);
     } catch (err) {
