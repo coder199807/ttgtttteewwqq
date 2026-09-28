@@ -14,8 +14,8 @@ const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
 const FETCH_TIMEOUT_MS = 20000;
 const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
 const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "32", 10);
-const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "3000", 10);
-const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(3 * 24 * 60 * 60 * 1000), 10);
+const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "8000", 10);
+const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(10 * 60 * 1000), 10);
 
 const STREAM_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -177,7 +177,7 @@ async function tryFamelack(channelName) {
       for (const variant of variants) {
         for (const quality of FAMELACK_QUALITIES) {
           const url = `https://${domain}/${prefix}/${variant}/${variant}_${quality}.m3u8`;
-          const ok = await checkLink(url, 4000);
+          const ok = await checkLink(url, 6000);
           if (ok) return url;
         }
       }
@@ -219,7 +219,7 @@ async function tryCustomLinks(channelName) {
   if (index.has(normalized)) {
     const urls = index.get(normalized);
     for (const url of urls) {
-      if (await checkLink(url, 4000)) return url;
+      if (await checkLink(url, 6000)) return url;
     }
   }
 
@@ -230,7 +230,7 @@ async function tryCustomLinks(channelName) {
       const shorter = Math.min(normalized.length, key.length);
       if (shorter / longer < 0.7) continue;
       for (const url of urls) {
-        if (await checkLink(url, 4000)) return url;
+        if (await checkLink(url, 6000)) return url;
       }
     }
   }
@@ -318,7 +318,7 @@ async function tryFamelackData(channelName) {
   if (index.has(normalized)) {
     const entry = index.get(normalized);
     for (const url of entry.streams) {
-      if (await checkLink(url, 4000)) return url;
+      if (await checkLink(url, 6000)) return url;
     }
   }
 
@@ -329,7 +329,7 @@ async function tryFamelackData(channelName) {
       const shorter = Math.min(normalized.length, key.length);
       if (shorter / longer < 0.7) continue; // too different in length
       for (const url of entry.streams) {
-        if (await checkLink(url, 4000)) return url;
+        if (await checkLink(url, 6000)) return url;
       }
     }
   }
@@ -443,7 +443,7 @@ async function repairAll(items) {
           if (!isHealthy) {
             // Don't cache fallbacks — re-check every run
           } else {
-            const ttl = CACHE_TTL_MS * 3;
+            const ttl = CACHE_TTL_MS;
             if (age < ttl) {
               cacheHits++;
               return { index, result: { url: cached.url, status: cached.status } };
