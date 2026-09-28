@@ -35,7 +35,8 @@ jobs:
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
           CACHE_TTL_MS: "600000"
-          CHECK_TIMEOUT_MS: "8000"
+          CHECK_TIMEOUT_MS: "6000"
+          CHECK_CONCURRENCY: "16"
         run: npm run build
 
       - name: Generate iptv.m3u (fast cached)
@@ -43,7 +44,8 @@ jobs:
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
           CACHE_TTL_MS: "600000"
-          CHECK_TIMEOUT_MS: "8000"
+          CHECK_TIMEOUT_MS: "6000"
+          CHECK_CONCURRENCY: "16"
         run: npm run build
 
       - name: Commit and push if changed
