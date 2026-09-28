@@ -3,8 +3,9 @@
 // Optimized for Televizo and similar IPTV players
 // ============================================================
 
-const CACHE_TTL = 600;
+const CACHE_TTL = 900;
 const CHANNELS_CACHE_KEY = 'vavoo_channels';
+const RESOLVE_CACHE_TTL = 600;
 const LANGUAGE = 'tr';
 const REGION = 'TR';
 const GROUP = 'Turkey';
@@ -172,7 +173,7 @@ async function fetchWithRetry(url, options = {}) {
       const response = await fetch(url, {
         method: options.method || 'GET',
         headers: options.headers || {},
-        signal: AbortSignal.timeout(options.timeout || 15000),
+        signal: AbortSignal.timeout(options.timeout || 20000),
       });
       return response;
     } catch (err) {
@@ -325,6 +326,10 @@ async function findChannel(id) {
 }
 
 async function resolveStream(channel) {
+  const cacheKey = `resolve_${channel.vavooId}`;
+  const cached = await VAVOO_KV?.get(cacheKey);
+  if (cached) return cached;
+
   const signature = await getAddonSignature();
 
   for (const baseUrl of BASE_SITES) {
@@ -343,9 +348,15 @@ async function resolveStream(channel) {
         retries: 1,
       });
 
-      if (Array.isArray(body) && body[0]?.url) return body[0].url;
-      if (body?.url) return body.url;
-      if (body?.streamUrl) return body.streamUrl;
+      let streamUrl = null;
+      if (Array.isArray(body) && body[0]?.url) streamUrl = body[0].url;
+      else if (body?.url) streamUrl = body.url;
+      else if (body?.streamUrl) streamUrl = body.streamUrl;
+
+      if (streamUrl) {
+        await VAVOO_KV?.put(cacheKey, streamUrl, { expirationTtl: RESOLVE_CACHE_TTL });
+        return streamUrl;
+      }
     } catch (error) {
       console.log(`[vavoo] Resolve failed (${baseUrl}): ${error.message}`);
     }
@@ -472,14 +483,14 @@ export default {
 
         let response = await fetchWithRetry(upstreamUrl, {
           headers: upstreamHeaders,
-          timeout: 15000,
+          timeout: 20000,
           retries: 1,
         });
 
         if (response.status === 403 || response.status === 401) {
           response = await fetchWithRetry(upstreamUrl, {
             headers: { ...getPlaylistHeaders(), ...(rangeHeader ? { Range: rangeHeader } : {}) },
-            timeout: 15000,
+            timeout: 20000,
             retries: 1,
           });
         }
@@ -551,7 +562,7 @@ async function proxyStream(baseUrl, streamUrl, clientRequest) {
 
   const response = await fetchWithRetry(streamUrl, {
     headers: upstreamHeaders,
-    timeout: 15000,
+    timeout: 20000,
     retries: 1,
   });
 
