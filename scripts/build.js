@@ -348,12 +348,9 @@ async function repairLink(item) {
   const name = item.name || "";
   const vavooId = item?.ids?.id;
 
-  // 1. For vavoo items: test the proxy URL
-  if (vavooId && PROXY_BASE) {
-    const proxyUrl = `${PROXY_BASE}/play/${vavooId}`;
-    if (await checkLink(proxyUrl)) {
-      return { url: proxyUrl, status: "ok" };
-    }
+// 1. For vavoo items: use the proxy URL directly (no check — proxy resolves live)
+if (vavooId && PROXY_BASE) {
+  return { url: `${PROXY_BASE}/play/${vavooId}`, status: "proxy" };
   }
 
   // 2. For direct URLs (or fallback): test original
