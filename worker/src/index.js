@@ -1,26 +1,16 @@
 // ============================================================
-// VAVOO.TO IPTV PROXY — MediaHubMX-native
-// Resolver + HLS rewriter für Televizo & Co.
+// VAVOO.TO IPTV PROXY — /play/<id> resolver + HLS rewriter
+// Optimized for Televizo and similar IPTV players
 // ============================================================
 
-const CACHE_TTL = 900;
+const CACHE_TTL = 600;
 const CHANNELS_CACHE_KEY = 'vavoo_channels';
-const RESOLVE_CACHE_TTL = 600;
-
-// MediaHubMX erwartet konsistente Werte in ALLEN Requests
-const MHUB_LANGUAGE = 'de';
-const MHUB_REGION = 'DE';
-const MHUB_GROUP = 'Turkey';
-const MHUB_CLIENT_VERSION = '3.0.2';
-const MHUB_APP_PACKAGE = 'tv.vavoo.app';
-const MHUB_APP_VERSION = '3.1.8';
+const LANGUAGE = 'tr';
+const REGION = 'TR';
+const GROUP = 'Turkey';
 
 const BASE_SITES = ['https://vavoo.to', 'https://kool.to'];
-const PING_URLS = [
-  'https://www.vavoo.tv/api/app/ping',
-  'https://vavoo.tv/api/app/ping',
-  'https://www.lokke.app/api/app/ping'
-];
+const PING_URL = 'https://www.vavoo.tv/api/app/ping';
 const RESOLVE_PATH = '/mediahubmx-resolve.json';
 const CATALOG_PATH = '/mediahubmx-catalog.json';
 
@@ -28,6 +18,7 @@ const ALLOWED_EXTENSIONS = new Set([
   '.m3u8', '.ts', '.aac', '.mp3', '.m4s', '.mp4', '.m4a', '.key', '.vtt', '.webvtt'
 ]);
 
+// Standard media player User-Agent — not blocked by CDNs
 const STREAM_USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 
@@ -49,7 +40,7 @@ function getStreamHeaders() {
   return {
     'User-Agent': STREAM_USER_AGENT,
     'Accept': '*/*',
-    'Accept-Language': `${MHUB_LANGUAGE}-${MHUB_REGION},${MHUB_LANGUAGE};q=0.9`,
+    'Accept-Language': LANGUAGE,
     'Origin': 'https://vavoo.to',
     'Referer': 'https://vavoo.to/',
     'Connection': 'keep-alive',
@@ -60,7 +51,7 @@ function getPlaylistHeaders() {
   return {
     'User-Agent': STREAM_USER_AGENT,
     'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
-    'Accept-Language': `${MHUB_LANGUAGE}-${MHUB_REGION},${MHUB_LANGUAGE};q=0.9`,
+    'Accept-Language': LANGUAGE,
     'Origin': 'https://vavoo.to',
     'Referer': 'https://vavoo.to/',
     'Connection': 'keep-alive',
@@ -108,6 +99,7 @@ function shouldRewriteUri(uri) {
 
 function rewritePlaylistUri(baseUrl, playlistBase, uri) {
   if (!shouldRewriteUri(uri)) return uri;
+  // Already proxied — skip
   if (uri.includes('/hls-proxy?')) return uri;
   try {
     const absolute = new URL(uri, playlistBase).toString();
@@ -125,11 +117,13 @@ function rewritePlaylist(baseUrl, upstreamUrl, playlist) {
       if (!trimmed) return line;
 
       if (trimmed.startsWith('#')) {
+        // Rewrite URI="..." in any HLS tag (KEY, MAP, MEDIA, STREAM-INF, etc.)
         return line.replace(/URI="([^"]+)"/g, (match, uri) => {
           return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri)}"`;
         });
       }
 
+      // Segment URI line — rewrite
       return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed);
     })
     .join('\n');
@@ -178,7 +172,7 @@ async function fetchWithRetry(url, options = {}) {
       const response = await fetch(url, {
         method: options.method || 'GET',
         headers: options.headers || {},
-        signal: AbortSignal.timeout(options.timeout || 20000),
+        signal: AbortSignal.timeout(options.timeout || 15000),
       });
       return response;
     } catch (err) {
@@ -192,21 +186,18 @@ async function fetchWithRetry(url, options = {}) {
 }
 
 // ============================================================
-// MEDIAHUBMX SIGNATURE (perfekt formatiert)
+// VAVOO API
 // ============================================================
 
-function getMHubHeaders(signature) {
-  const h = {
+function getCatalogHeaders(signature) {
+  return {
     'Content-Type': 'application/json; charset=utf-8',
-    'Accept': '*/*',
-    'Accept-Language': `${MHUB_LANGUAGE}-${MHUB_REGION},${MHUB_LANGUAGE};q=0.9`,
-    'Accept-Encoding': 'gzip, deflate',
+    'mediahubmx-signature': signature,
     'User-Agent': 'MediaHubMX/2',
-    'Origin': 'https://vavoo.to',
-    'Referer': 'https://vavoo.to/',
+    'Accept': '*/*',
+    'Accept-Language': LANGUAGE,
+    'Accept-Encoding': 'gzip, deflate',
   };
-  if (signature) h['mediahubmx-signature'] = signature;
-  return h;
 }
 
 async function getAddonSignature() {
@@ -214,46 +205,13 @@ async function getAddonSignature() {
   if (cached) return cached;
 
   const payload = {
-    token: '',
     reason: 'app-focus',
-    locale: MHUB_LANGUAGE,
+    locale: LANGUAGE,
     theme: 'dark',
     metadata: {
-      device: {
-        type: 'Handset',
-        brand: 'google',
-        model: 'Nexus',
-        name: '21081111RG',
-        uniqueId: `cf-${Date.now()}`
-      },
-      os: {
-        name: 'android',
-        version: '13',
-        abis: ['arm64-v8a'],
-        host: 'android'
-      },
-      app: {
-        platform: 'android',
-        version: MHUB_APP_VERSION,
-        buildId: '97215000',
-        engine: 'hbc85',
-        signatures: [],
-        installer: 'com.android.vending'
-      },
-      version: {
-        package: MHUB_APP_PACKAGE,
-        binary: MHUB_APP_VERSION,
-        js: MHUB_APP_VERSION
-      },
-      platform: {
-        isAndroid: true,
-        isIOS: false,
-        isTV: false,
-        isWeb: false,
-        isMobile: true,
-        isWebTV: false,
-        isElectron: false
-      }
+      device: { type: 'desktop', uniqueId: `cf-${Date.now()}` },
+      os: { name: 'linux', version: 'Linux', abis: ['x64'], host: 'cloudflare' },
+      app: { platform: 'electron' }
     },
     appFocusTime: 0,
     playerActive: false,
@@ -261,85 +219,59 @@ async function getAddonSignature() {
     devMode: false,
     hasAddon: true,
     castConnected: false,
-    package: MHUB_APP_PACKAGE,
-    version: MHUB_APP_VERSION,
+    package: 'tv.vavoo.app',
+    version: '3.1.8',
     process: 'app',
-    firstAppStart: Date.now() - 86400000,
+    firstAppStart: Date.now(),
     lastAppStart: Date.now(),
     ipLocation: null,
-    adblockEnabled: false,
-    proxy: {
-      supported: ['ss', 'openvpn'],
-      engine: 'openvpn',
-      ssVersion: 1,
-      enabled: false,
-      autoServer: true,
-      id: 'fi-hel'
-    },
-    iap: { supported: true }
+    adblockEnabled: true,
+    proxy: { supported: ['ss'], engine: 'Mu', enabled: false, autoServer: true },
+    iap: { supported: false }
   };
 
-  let lastErr;
-  for (const pingUrl of PING_URLS) {
-    try {
-      const body = await fetchJson(pingUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          'User-Agent': 'okhttp/4.11.0',
-          'Accept': 'application/json',
-          'Accept-Encoding': 'gzip'
-        },
-        body: payload,
-        timeout: 15000
-      });
+  try {
+    const body = await fetchJson(PING_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: payload
+    });
 
-      const signature = body?.addonSig || body?.signature || body?.token;
-      if (signature && typeof signature === 'string' && signature.length > 20) {
-        await VAVOO_KV?.put('signature', signature, { expirationTtl: CACHE_TTL });
-        console.log(`[mhub] signature obtained from ${pingUrl}`);
-        return signature;
-      }
-    } catch (error) {
-      lastErr = error;
-      console.log(`[mhub] ping failed (${pingUrl}): ${error.message}`);
+    const signature = body?.addonSig;
+    if (signature) {
+      await VAVOO_KV?.put('signature', signature, { expirationTtl: CACHE_TTL });
+      return signature;
     }
+  } catch (error) {
+    console.log(`[vavoo] addonSig failed: ${error.message}`);
   }
 
-  throw new Error(`Signature could not be obtained: ${lastErr?.message || 'all endpoints failed'}`);
+  throw new Error('Addon signature could not be obtained');
 }
-
-// ============================================================
-// MEDIAHUBMX CATALOG
-// ============================================================
 
 async function loadCatalog(baseUrl, signature) {
   const catalogUrl = `${baseUrl.replace(/\/$/, '')}${CATALOG_PATH}`;
-  const headers = getMHubHeaders(signature);
+  const headers = getCatalogHeaders(signature);
   const channels = [];
   let cursor = null;
-  let page = 0;
 
-  while (page < 200) {
-    page++;
+  while (true) {
     try {
       const body = await fetchJson(catalogUrl, {
         method: 'POST',
         headers,
         body: {
-          language: MHUB_LANGUAGE,
-          region: MHUB_REGION,
+          language: LANGUAGE,
+          region: REGION,
           catalogId: 'iptv',
           id: 'iptv',
           adult: false,
           search: '',
           sort: '',
-          filter: { group: MHUB_GROUP },
+          filter: { group: GROUP },
           cursor,
-          clientVersion: MHUB_CLIENT_VERSION
-        },
-        timeout: 20000,
-        retries: 2
+          clientVersion: '3.0.2'
+        }
       });
 
       const items = Array.isArray(body?.items) ? body.items : [];
@@ -358,7 +290,7 @@ async function loadCatalog(baseUrl, signature) {
       if (!body?.nextCursor) break;
       cursor = body.nextCursor;
     } catch (error) {
-      console.log(`[mhub] Catalog page ${page} failed: ${error.message}`);
+      console.log(`[vavoo] Catalog load failed: ${error.message}`);
       break;
     }
   }
@@ -380,7 +312,7 @@ async function getChannels() {
         return channels;
       }
     } catch (error) {
-      console.log(`[mhub] Catalog failed (${baseUrl}): ${error.message}`);
+      console.log(`[vavoo] Catalog failed (${baseUrl}): ${error.message}`);
     }
   }
 
@@ -392,15 +324,7 @@ async function findChannel(id) {
   return channels.find(c => String(c.vavooId) === String(id));
 }
 
-// ============================================================
-// MEDIAHUBMX RESOLVE
-// ============================================================
-
 async function resolveStream(channel) {
-  const cacheKey = `resolve_${channel.vavooId}`;
-  const cached = await VAVOO_KV?.get(cacheKey);
-  if (cached) return cached;
-
   const signature = await getAddonSignature();
 
   for (const baseUrl of BASE_SITES) {
@@ -409,28 +333,21 @@ async function resolveStream(channel) {
     try {
       const body = await fetchJson(resolveUrl, {
         method: 'POST',
-        headers: getMHubHeaders(signature),
+        headers: getCatalogHeaders(signature),
         body: {
-          language: MHUB_LANGUAGE,
-          region: MHUB_REGION,
+          language: LANGUAGE,
+          region: REGION,
           url: channel.url,
-          clientVersion: MHUB_CLIENT_VERSION
+          clientVersion: '3.0.2'
         },
-        timeout: 20000,
-        retries: 2
+        retries: 1,
       });
 
-      let streamUrl = null;
-      if (Array.isArray(body) && body[0]?.url) streamUrl = body[0].url;
-      else if (body?.url) streamUrl = body.url;
-      else if (body?.streamUrl) streamUrl = body.streamUrl;
-
-      if (streamUrl) {
-        await VAVOO_KV?.put(cacheKey, streamUrl, { expirationTtl: RESOLVE_CACHE_TTL });
-        return streamUrl;
-      }
+      if (Array.isArray(body) && body[0]?.url) return body[0].url;
+      if (body?.url) return body.url;
+      if (body?.streamUrl) return body.streamUrl;
     } catch (error) {
-      console.log(`[mhub] Resolve failed (${baseUrl}): ${error.message}`);
+      console.log(`[vavoo] Resolve failed (${baseUrl}): ${error.message}`);
     }
   }
 
@@ -438,40 +355,29 @@ async function resolveStream(channel) {
 }
 
 async function resolveDirect(id) {
-  const cacheKey = `resolve_direct_${id}`;
-  const cached = await VAVOO_KV?.get(cacheKey);
-  if (cached) return cached;
-
   const signature = await getAddonSignature();
-  const directUrl = `https://vavoo.to/vavoo-iptv/play/${id}`;
+  const directUrl = `https://vavoo.to/watch?live=${id}`;
 
   for (const baseUrl of BASE_SITES) {
     const resolveUrl = `${baseUrl.replace(/\/$/, '')}${RESOLVE_PATH}`;
     try {
       const body = await fetchJson(resolveUrl, {
         method: 'POST',
-        headers: getMHubHeaders(signature),
+        headers: getCatalogHeaders(signature),
         body: {
-          language: MHUB_LANGUAGE,
-          region: MHUB_REGION,
+          language: LANGUAGE,
+          region: REGION,
           url: directUrl,
-          clientVersion: MHUB_CLIENT_VERSION
+          clientVersion: '3.0.2'
         },
-        timeout: 20000,
-        retries: 2
+        retries: 1,
       });
 
-      let streamUrl = null;
-      if (Array.isArray(body) && body[0]?.url) streamUrl = body[0].url;
-      else if (body?.url) streamUrl = body.url;
-      else if (body?.streamUrl) streamUrl = body.streamUrl;
-
-      if (streamUrl) {
-        await VAVOO_KV?.put(cacheKey, streamUrl, { expirationTtl: RESOLVE_CACHE_TTL });
-        return streamUrl;
-      }
+      if (Array.isArray(body) && body[0]?.url) return body[0].url;
+      if (body?.url) return body.url;
+      if (body?.streamUrl) return body.streamUrl;
     } catch (error) {
-      console.log(`[mhub] Direct resolve failed (${baseUrl}): ${error.message}`);
+      console.log(`[vavoo] Direct resolve failed (${baseUrl}): ${error.message}`);
     }
   }
 
@@ -486,7 +392,7 @@ function corsHeaders() {
   return {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Range, User-Agent, Accept, Origin, Referer, mediahubmx-signature',
+    'Access-Control-Allow-Headers': 'Content-Type, Range, User-Agent, Accept, Origin, Referer',
     'Access-Control-Expose-Headers': 'Content-Length, Content-Range, Content-Type, Accept-Ranges',
   };
 }
@@ -527,13 +433,13 @@ export default {
         }
 
         if (channel) {
-          console.log(`[mhub] "${channel.name}" → ${describeUrl(streamUrl)}`);
+          console.log(`[vavoo] "${channel.name}" resolved: ${describeUrl(streamUrl)}`);
         }
 
         return await proxyStream(baseUrl, streamUrl, request);
 
       } catch (error) {
-        console.log(`[mhub] Play error: ${error.message}`);
+        console.log(`[vavoo] Play error: ${error.message}`);
         return new Response(`Stream error: ${error.message}`, { status: 500, headers: corsHeaders() });
       }
     }
@@ -557,6 +463,7 @@ export default {
           return new Response('Unsupported file type', { status: 403, headers: corsHeaders() });
         }
 
+        // Build upstream headers — forward Range for .ts segments
         const upstreamHeaders = { ...getStreamHeaders() };
         const rangeHeader = request.headers.get('Range') || request.headers.get('range');
         if (rangeHeader && (ext === '.ts' || ext === '.aac' || ext === '.mp4' || ext === '.m4s')) {
@@ -565,19 +472,19 @@ export default {
 
         let response = await fetchWithRetry(upstreamUrl, {
           headers: upstreamHeaders,
-          timeout: 20000,
+          timeout: 15000,
           retries: 1,
         });
 
         if (response.status === 403 || response.status === 401) {
           response = await fetchWithRetry(upstreamUrl, {
             headers: { ...getPlaylistHeaders(), ...(rangeHeader ? { Range: rangeHeader } : {}) },
-            timeout: 20000,
+            timeout: 15000,
             retries: 1,
           });
         }
 
-        console.log(`[mhub] hls-proxy ${describeUrl(upstreamUrl)} → ${response.status}`);
+        console.log(`[vavoo] hls-proxy ${describeUrl(upstreamUrl)} -> ${response.status}`);
 
         if (!response.ok) {
           return new Response(`Upstream error: ${response.status}`, { status: response.status, headers: corsHeaders() });
@@ -598,6 +505,7 @@ export default {
           });
         }
 
+        // Segment / binary response
         const respHeaders = {
           'Content-Type': contentType || 'video/mp2t',
           'Content-Length': response.headers.get('content-length') || '',
@@ -614,11 +522,14 @@ export default {
         });
 
       } catch (error) {
-        console.log(`[mhub] Proxy error: ${error.message}`);
+        console.log(`[vavoo] Proxy error: ${error.message}`);
         return new Response(`Proxy error: ${error.message}`, { status: 500, headers: corsHeaders() });
       }
     }
 
+    // ============================================================
+    // FALLBACK
+    // ============================================================
     return new Response('Usage: /play/<id>', {
       status: 404,
       headers: corsHeaders()
@@ -631,6 +542,7 @@ export default {
 // ============================================================
 
 async function proxyStream(baseUrl, streamUrl, clientRequest) {
+  // Forward Range header from client for seeking support
   const upstreamHeaders = { ...getStreamHeaders() };
   const rangeHeader = clientRequest?.headers?.get('Range') || clientRequest?.headers?.get('range');
   if (rangeHeader) {
@@ -639,11 +551,11 @@ async function proxyStream(baseUrl, streamUrl, clientRequest) {
 
   const response = await fetchWithRetry(streamUrl, {
     headers: upstreamHeaders,
-    timeout: 20000,
+    timeout: 15000,
     retries: 1,
   });
 
-  console.log(`[mhub] play ${describeUrl(streamUrl)} → ${response.status} (${response.headers.get('content-type') || 'no ct'})`);
+  console.log(`[vavoo] play ${describeUrl(streamUrl)} -> ${response.status} (${response.headers.get('content-type') || 'no ct'})`);
 
   if (!response.ok) {
     return new Response(`Stream error: ${response.status}`, { status: response.status, headers: corsHeaders() });
@@ -664,6 +576,7 @@ async function proxyStream(baseUrl, streamUrl, clientRequest) {
     });
   }
 
+  // Binary segment — return with proper headers
   const respHeaders = {
     'Content-Type': contentType || 'video/mp2t',
     'Content-Length': response.headers.get('content-length') || '',
