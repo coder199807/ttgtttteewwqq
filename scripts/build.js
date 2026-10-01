@@ -13,6 +13,10 @@ const CUSTOM_LINKS_FILE = path.join(__dirname, "..", "custom_links.json");
 const FAMELACK_DATA_URL =
   "https://raw.githubusercontent.com/famelack/famelack-data/main/tv/raw/countries";
 
+const LIVETV_M3U_URL =
+  process.env.LIVETV_M3U_URL ||
+  "https://raw.githubusercontent.com/kadirsener1/livetv/be5ade66482707a4eb9a5934836275562250fc57/tv247tr.m3u";
+
 const IPTVORG_CHANNELS_URL =
   process.env.IPTVORG_CHANNELS_URL || "https://iptv-org.github.io/api/channels.json";
 const IPTVORG_LOGOS_URL =
@@ -169,6 +173,40 @@ async function loadFallbackIndex() {
     } catch (err) {
       console.warn(`    famelack-data ${country.toUpperCase()} failed: ${err.message}`);
     }
+  }
+
+  // Static community list - lowest priority, only fills what the curated sources miss
+  try {
+    const res = await fetch(LIVETV_M3U_URL, { signal: AbortSignal.timeout(60000) });
+    if (res.ok) {
+      const lines = (await res.text()).split(/\r?\n/);
+      let pending = null;
+      let added = 0;
+
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t) continue;
+        if (t.startsWith("#EXTINF")) {
+          pending = t.split(",").pop().trim();
+          continue;
+        }
+        if (!pending || t.startsWith("#")) continue;
+
+        if (!isBlockedChannel(pending) && /^https?:\/\//i.test(t)) {
+          const key = normalizeChannelName(pending);
+          if (key && !_fallbackIndex.has(key)) {
+            _fallbackIndex.set(key, { name: pending, streams: [t] });
+            added++;
+          }
+        }
+        pending = null;
+      }
+      console.log(`    livetv m3u: ${added} channels`);
+    } else {
+      console.warn(`    livetv m3u: HTTP ${res.status}`);
+    }
+  } catch (err) {
+    console.warn(`    livetv m3u failed: ${err.message}`);
   }
 
   // Hand-curated overrides win over upstream data
