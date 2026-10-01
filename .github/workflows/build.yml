@@ -2,7 +2,8 @@ name: Build IPTV M3U
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # Every day at 01:00 UTC (04:00 TR)
+    - cron: "0 1 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -34,18 +35,13 @@ jobs:
         if: github.event_name == 'schedule'
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
-          CACHE_TTL_MS: "600000"
-          CHECK_TIMEOUT_MS: "6000"
-          CHECK_CONCURRENCY: "16"
+          CACHE_TTL_MS: "0"
         run: npm run build
 
       - name: Generate iptv.m3u (fast cached)
         if: github.event_name != 'schedule'
         env:
           PROXY_BASE: ${{ vars.PROXY_BASE }}
-          CACHE_TTL_MS: "600000"
-          CHECK_TIMEOUT_MS: "6000"
-          CHECK_CONCURRENCY: "16"
         run: npm run build
 
       - name: Commit and push if changed
