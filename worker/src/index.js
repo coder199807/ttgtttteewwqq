@@ -7,7 +7,7 @@ const CACHE_TTL = 600;
 const CHANNELS_CACHE_KEY = 'vavoo_channels';
 const LANGUAGE = 'tr';
 const REGION = 'TR';
-const GROUP = 'Turkey';
+const GROUPS = ['Turkey', 'Germany'];
 
 const BASE_SITES = ['https://vavoo.to', 'https://kool.to'];
 const PING_URL = 'https://www.vavoo.tv/api/app/ping';
@@ -253,45 +253,48 @@ async function loadCatalog(baseUrl, signature) {
   const catalogUrl = `${baseUrl.replace(/\/$/, '')}${CATALOG_PATH}`;
   const headers = getCatalogHeaders(signature);
   const channels = [];
-  let cursor = null;
 
-  while (true) {
-    try {
-      const body = await fetchJson(catalogUrl, {
-        method: 'POST',
-        headers,
-        body: {
-          language: LANGUAGE,
-          region: REGION,
-          catalogId: 'iptv',
-          id: 'iptv',
-          adult: false,
-          search: '',
-          sort: '',
-          filter: { group: GROUP },
-          cursor,
-          clientVersion: '3.0.2'
-        }
-      });
+  for (const group of GROUPS) {
+    let cursor = null;
 
-      const items = Array.isArray(body?.items) ? body.items : [];
-      for (const item of items) {
-        const vavooId = item?.ids?.id || item?.id;
-        if (item?.type === 'iptv' && item?.url && vavooId) {
-          channels.push({
-            url: item.url,
-            name: item.name || 'Unknown',
-            logo: item.logo || '',
-            vavooId
-          });
+    while (true) {
+      try {
+        const body = await fetchJson(catalogUrl, {
+          method: 'POST',
+          headers,
+          body: {
+            language: LANGUAGE,
+            region: REGION,
+            catalogId: 'iptv',
+            id: 'iptv',
+            adult: false,
+            search: '',
+            sort: '',
+            filter: { group },
+            cursor,
+            clientVersion: '3.0.2'
+          }
+        });
+
+        const items = Array.isArray(body?.items) ? body.items : [];
+        for (const item of items) {
+          const vavooId = item?.ids?.id || item?.id;
+          if (item?.type === 'iptv' && item?.url && vavooId) {
+            channels.push({
+              url: item.url,
+              name: item.name || 'Unknown',
+              logo: item.logo || '',
+              vavooId
+            });
+          }
         }
+
+        if (!body?.nextCursor) break;
+        cursor = body.nextCursor;
+      } catch (error) {
+        console.log(`[vavoo] Catalog load failed (${group}): ${error.message}`);
+        break;
       }
-
-      if (!body?.nextCursor) break;
-      cursor = body.nextCursor;
-    } catch (error) {
-      console.log(`[vavoo] Catalog load failed: ${error.message}`);
-      break;
     }
   }
 
