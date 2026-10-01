@@ -4,25 +4,58 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 
 const CATALOG_URL = "https://vavoo.to/mediahubmx-catalog.json";
-
 const GROUPS = ["Turkey", "Germany"];
 
 const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
+const CUSTOM_LINKS_FILE = path.join(__dirname, "..", "custom_links.json");
 
-// ─── Configuration ──────────────────────────────────────────
+const FAMELACK_DATA_URL =
+  "https://raw.githubusercontent.com/famelack/famelack-data/main/tv/raw/countries";
+
+const IPTVORG_CHANNELS_URL =
+  process.env.IPTVORG_CHANNELS_URL || "https://iptv-org.github.io/api/channels.json";
+const IPTVORG_LOGOS_URL =
+  process.env.IPTVORG_LOGOS_URL || "https://iptv-org.github.io/api/logos.json";
+
+// -- Configuration --
 const FETCH_TIMEOUT_MS = 20000;
 const CHECK_ENABLED = process.env.CHECK_ENABLED !== "false";
 const CHECK_CONCURRENCY = parseInt(process.env.CHECK_CONCURRENCY || "32", 10);
 const CHECK_TIMEOUT_MS = parseInt(process.env.CHECK_TIMEOUT_MS || "3000", 10);
-const CACHE_TTL_MS = parseInt(process.env.CACHE_TTL_MS || String(3 * 24 * 60 * 60 * 1000), 10);
+const CACHE_TTL_MS = parseInt(
+  process.env.CACHE_TTL_MS || String(3 * 24 * 60 * 60 * 1000),
+  10
+);
+
+const PROXY_BASE = (process.env.PROXY_BASE || "").replace(/\/+$/, "");
 
 const STREAM_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
-// ═══════════════════════════════════════════════════════════════
+const HEADERS = {
+  "content-type": "application/json; charset=utf-8",
+  accept: "*/*",
+  "accept-language": "en-US,en;q=0.9,tr;q=0.8",
+  "cache-control": "no-cache",
+  pragma: "no-cache",
+  origin: "https://vavoo.to",
+  referer: "https://vavoo.to/live",
+  dnt: "1",
+  "user-agent": STREAM_USER_AGENT,
+};
+
+// Channels the user does not want in the playlist
+const BLOCKED_CHANNELS =
+  /alanya|izmir\s+tv|antalya\s+tv|bursa\s+tv|ankara\s+tv|istanbul\s+tv|eskisehir\s+tv|konya\s+tv|trabzon\s+tv|izmir\s+haber/i;
+
+function isBlockedChannel(name) {
+  return BLOCKED_CHANNELS.test(String(name || ""));
+}
+
+// ==================================================================
 // LINK CHECKER
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
 
 function splitPipeParams(url) {
   if (!url || !url.includes("|")) return { url, params: {} };
@@ -35,358 +68,176 @@ function splitPipeParams(url) {
   return { url: base.trim(), params };
 }
 
-function buildBrowserHeaders(extra = {}) {
-  return {
-    "User-Agent": STREAM_USER_AGENT,
-    Accept: "*/*",
-    "Accept-Language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding": "gzip, deflate, br",
-    Origin: "https://vavoo.to",
-    Referer: "https://vavoo.to/",
-    "sec-ch-ua":
-      '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": '"Windows"',
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-site",
-    Connection: "keep-alive",
-    ...extra,
-  };
-}
-
 async function checkLink(rawUrl, timeout = CHECK_TIMEOUT_MS) {
   if (!rawUrl || typeof rawUrl !== "string") return false;
 
   const { url, params } = splitPipeParams(rawUrl);
   if (!url) return false;
 
-  const headers = buildBrowserHeaders();
-  if (params["User-Agent"]) headers["User-Agent"] = params["User-Agent"];
-  if (params["Referer"]) headers["Referer"] = params["Referer"];
-  if (params["Origin"]) headers["Origin"] = params["Origin"];
-
-  const isM3U8 = /\.m3u8(\?|$)/i.test(url);
-  if (!isM3U8) {
-    headers["Range"] = "bytes=0-8192";
-  }
+  const headers = {
+    "User-Agent": params["User-Agent"] || STREAM_USER_AGENT,
+    Accept: "*/*",
+    Origin: params["Origin"] || "https://vavoo.to",
+    Referer: params["Referer"] || "https://vavoo.to/",
+    Connection: "keep-alive",
+  };
 
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeout);
-
     const res = await fetch(url, {
       method: "GET",
       headers,
-      signal: controller.signal,
+      signal: AbortSignal.timeout(timeout),
       redirect: "follow",
     });
 
-    clearTimeout(timer);
-
-    if (res.status === 200 || res.status === 206) {
-      try {
-        const reader = res.body?.getReader();
-        if (reader) {
-          const { value } = await reader.read();
-          reader.cancel().catch(() => {});
-          return !!value && value.length > 0;
-        }
-      } catch {
-        return true;
-      }
+    if (res.ok || [301, 302, 307, 308, 405].includes(res.status)) {
+      res.body?.cancel().catch(() => {});
       return true;
     }
-
-    if ([301, 302, 307, 308].includes(res.status)) return true;
-    if (res.status === 405) return true;
-
     return false;
   } catch {
     return false;
   }
 }
 
-// Famelack CDN fallback
-const FAMELACK_DOMAINS = ["rnttwmjcin.turknet.ercdn.net"];
-const FAMELACK_PREFIXES = ["lcpmvefbyo"];
-const FAMELACK_QUALITIES = ["1080p", "720p", "576p"];
+// ==================================================================
+// FALLBACK INDEX  (famelack-data + custom_links.json)
+// ==================================================================
 
-const CUSTOM_LINKS_FILE = path.join(__dirname, "..", "custom_links.json");
-const IPTVORG_CHANNELS_URL =
-  process.env.IPTVORG_CHANNELS_URL ||
-  "https://iptv-org.github.io/api/channels.json";
-const IPTVORG_LOGOS_URL =
-  process.env.IPTVORG_LOGOS_URL || "https://iptv-org.github.io/api/logos.json";
+let _fallbackIndex = null;
 
-const PROXY_BASE = (process.env.PROXY_BASE || "").replace(/\/+$/, "");
-
-const HEADERS = {
-  "content-type": "application/json; charset=utf-8",
-  accept: "*/*",
-  "accept-language": "en-US,en;q=0.9,tr;q=0.8",
-  "cache-control": "no-cache",
-  pragma: "no-cache",
-  origin: "https://vavoo.to",
-  referer: "https://vavoo.to/live",
-  dnt: "1",
-  "sec-ch-ua":
-    '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
-  "sec-ch-ua-mobile": "?0",
-  "sec-ch-ua-platform": '"macOS"',
-  "sec-fetch-dest": "empty",
-  "sec-fetch-mode": "cors",
-  "sec-fetch-site": "same-origin",
-  "user-agent": STREAM_USER_AGENT,
-};
-
-function famelackVariants(name) {
-  const clean = String(name || "")
-    .toLowerCase()
-    .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/i, "")
-    .replace(/\s*\.(?:b|c|s)\b/gi, "")
-    .replace(/\[[^\]]*\]/g, "")
-    .replace(/\([^)]*\)/g, "")
-    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/gi, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const variants = new Set();
-  variants.add(clean);
-  variants.add(clean.replace(/\s+/g, ""));
-  variants.add(clean.replace(/\s+/g, "-"));
-
-  const trMap = { ü: "u", ğ: "g", ş: "s", ı: "i", ö: "o", ç: "c" };
-  let normalized = clean;
-  for (const [old, neu] of Object.entries(trMap)) {
-    normalized = normalized.replace(new RegExp(old, "g"), neu);
-  }
-  if (normalized !== clean) {
-    variants.add(normalized);
-    variants.add(normalized.replace(/\s+/g, ""));
-  }
-
-  return Array.from(variants).filter(Boolean);
-}
-
-async function tryFamelack(channelName) {
-  const variants = famelackVariants(channelName).slice(0, 3);
-
-  for (const domain of FAMELACK_DOMAINS) {
-    for (const prefix of FAMELACK_PREFIXES) {
-      for (const variant of variants) {
-        for (const quality of FAMELACK_QUALITIES) {
-          const url = `https://${domain}/${prefix}/${variant}/${variant}_${quality}.m3u8`;
-          const ok = await checkLink(url, 4000);
-          if (ok) return url;
-        }
-      }
-    }
-  }
-  return null;
-}
-
-// ─── Custom Links (direct m3u8 URLs from custom_links.json) ──
-let _customLinksIndex = null;
-
-async function loadCustomLinks() {
-  if (_customLinksIndex) return _customLinksIndex;
-  try {
-    const raw = await fs.readFile(CUSTOM_LINKS_FILE, "utf8");
-    const data = JSON.parse(raw);
-    _customLinksIndex = new Map();
-    for (const [name, urls] of Object.entries(data)) {
-      if (Array.isArray(urls) && urls.length > 0) {
-        _customLinksIndex.set(name.toLowerCase().trim(), urls);
-      }
-    }
-    console.log(`  Custom links loaded: ${_customLinksIndex.size} channels`);
-    return _customLinksIndex;
-  } catch {
-    _customLinksIndex = new Map();
-    return _customLinksIndex;
-  }
-}
-
-async function tryCustomLinks(channelName) {
-  const index = await loadCustomLinks();
-  const normalized = channelName.toLowerCase()
-    .replace(/\bhd\b|\bfhd\b|\buhd\b|\b4k\b|\bsraw\b|\bsb\b|\bs\b|\bc\b/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  // Exact match
-  if (index.has(normalized)) {
-    const urls = index.get(normalized);
-    for (const url of urls) {
-      if (await checkLink(url, 4000)) return url;
-    }
-  }
-
-  // Partial match — require strict similarity (name lengths within 30%)
-  for (const [key, urls] of index) {
-    if (normalized.includes(key) || key.includes(normalized)) {
-      const longer = Math.max(normalized.length, key.length);
-      const shorter = Math.min(normalized.length, key.length);
-      if (shorter / longer < 0.7) continue;
-      for (const url of urls) {
-        if (await checkLink(url, 4000)) return url;
-      }
-    }
-  }
-
-  return null;
-}
-
-// ─── Famelack Data (curated TV streams from GitHub) ──────────
-const FAMELACK_DATA_URL =
-  "https://raw.githubusercontent.com/famelack/famelack-data/main/tv/raw/countries";
-let _famelackDataIndex = null;
-
+// Folds case, quality tags and Turkish diacritics so "CNN TÜRK" === "CNN Turk"
 function normalizeChannelName(name) {
-  let s = String(name || "")
+  return String(name || "")
     .toLowerCase()
-    .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/i, "")
-    .replace(/\s*\.(?:b|c|s)\b/gi, "")
+    .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/, "")
+    .replace(/\s*\.(?:b|c|s)\b/g, "")
     .replace(/\[[^\]]*\]/g, "")
     .replace(/\([^)]*\)/g, "")
-    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/gi, "")
+    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/g, "")
+    .replace(/ü/g, "u")
+    .replace(/ğ/g, "g")
+    .replace(/ş/g, "s")
+    .replace(/ı/g, "i")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
     .replace(/\s+/g, " ")
     .trim();
-
-  const trMap = { ü: "u", ğ: "g", ş: "s", ı: "i", ö: "o", ç: "c" };
-  for (const [old, neu] of Object.entries(trMap)) {
-    s = s.replace(new RegExp(old, "g"), neu);
-  }
-
-  return s;
 }
 
-async function loadFamelackData() {
-  if (_famelackDataIndex) return _famelackDataIndex;
+// Two names only match if they are near-identical in length,
+// otherwise "ATV" would pick up the "ATV Alanya" stream.
+function isSimilarName(a, b) {
+  if (a === b) return true;
+  if (!a.includes(b) && !b.includes(a)) return false;
+  const longer = Math.max(a.length, b.length);
+  const shorter = Math.min(a.length, b.length);
+  return shorter / longer >= 0.7;
+}
 
-  console.log("  Fetching famelack-data index...");
-  const countries = ["tr", "de"];
-  _famelackDataIndex = new Map();
+async function loadFallbackIndex() {
+  if (_fallbackIndex) return _fallbackIndex;
 
-  for (const country of countries) {
+  console.log("  Loading fallback sources...");
+  _fallbackIndex = new Map();
+
+  for (const country of ["tr", "de"]) {
     try {
-      const url = `${FAMELACK_DATA_URL}/${country}.json`;
-      const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
+      const res = await fetch(`${FAMELACK_DATA_URL}/${country}.json`, {
+        signal: AbortSignal.timeout(30000),
+      });
       if (!res.ok) {
         console.warn(`    ${country.toUpperCase()}: HTTP ${res.status}`);
         continue;
       }
-
       const channels = await res.json();
       if (!Array.isArray(channels)) continue;
 
+      let added = 0;
       for (const ch of channels) {
-        if (!ch?.name || !ch?.sources?.streams?.length) continue;
-        if (ch.isGeoBlocked) continue;
-        if (isBlockedChannel(ch.name)) continue;
+        const streams = ch?.sources?.streams;
+        if (!ch?.name || !Array.isArray(streams) || streams.length === 0) continue;
+        if (ch.isGeoBlocked || isBlockedChannel(ch.name)) continue;
 
         const key = normalizeChannelName(ch.name);
-        if (!key) continue;
-
-        // Store streams array, skip if already exists
-        if (!_famelackDataIndex.has(key)) {
-          _famelackDataIndex.set(key, {
-            name: ch.name,
-            streams: ch.sources.streams,
-            country: ch.country,
-          });
+        if (key && !_fallbackIndex.has(key)) {
+          _fallbackIndex.set(key, { name: ch.name, streams });
+          added++;
         }
       }
-      console.log(`    ${country.toUpperCase()}: ${channels.length} channels indexed`);
+      console.log(`    famelack-data ${country.toUpperCase()}: ${added} channels`);
     } catch (err) {
-      console.warn(`    ${country.toUpperCase()} fetch failed: ${err.message || err}`);
+      console.warn(`    famelack-data ${country.toUpperCase()} failed: ${err.message}`);
     }
   }
 
-  console.log(`  Famelack-data loaded: ${_famelackDataIndex.size} channels`);
-  return _famelackDataIndex;
+  // Hand-curated overrides win over upstream data
+  try {
+    const raw = await fs.readFile(CUSTOM_LINKS_FILE, "utf8");
+    const data = JSON.parse(raw);
+    let added = 0;
+    for (const [name, urls] of Object.entries(data)) {
+      if (!Array.isArray(urls) || urls.length === 0) continue;
+      if (isBlockedChannel(name)) continue;
+      const key = normalizeChannelName(name);
+      if (key) {
+        _fallbackIndex.set(key, { name, streams: urls });
+        added++;
+      }
+    }
+    console.log(`    custom_links.json: ${added} channels`);
+  } catch (err) {
+    console.warn(`    custom_links.json unavailable: ${err.message}`);
+  }
+
+  console.log(`  Fallback index ready: ${_fallbackIndex.size} channels`);
+  return _fallbackIndex;
 }
 
-async function tryFamelackData(channelName) {
-  const index = await loadFamelackData();
-  if (index.size === 0) return null;
-
+async function findFallback(channelName) {
+  const index = await loadFallbackIndex();
   const normalized = normalizeChannelName(channelName);
 
-  // Exact match
-  if (index.has(normalized)) {
-    const entry = index.get(normalized);
+  for (const [key, entry] of index) {
+    if (!isSimilarName(normalized, key)) continue;
     for (const url of entry.streams) {
       if (await checkLink(url, 4000)) return url;
     }
   }
-
-  // Partial match — require strict similarity (name lengths within 30%)
-  for (const [key, entry] of index) {
-    if (normalized.includes(key) || key.includes(normalized)) {
-      const longer = Math.max(normalized.length, key.length);
-      const shorter = Math.min(normalized.length, key.length);
-      if (shorter / longer < 0.7) continue; // too different in length
-      for (const url of entry.streams) {
-        if (await checkLink(url, 4000)) return url;
-      }
-    }
-  }
-
   return null;
 }
 
-function getProxyUrl(item) {
-  const id = item?.ids?.id;
-  if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
-  return null;
-}
+// ==================================================================
+// REPAIR
+// ==================================================================
 
 async function repairLink(item) {
   const originalUrl = item.url;
   const name = item.name || "";
   const vavooId = item?.ids?.id;
 
-  // 1. For vavoo items: test the proxy URL
+  // 1. Vavoo channels resolve through the Worker at runtime
   if (vavooId && PROXY_BASE) {
-    const proxyUrl = `${PROXY_BASE}/play/${vavooId}`;
-    if (await checkLink(proxyUrl)) {
-      return { url: proxyUrl, status: "ok" };
-    }
+    return { url: `${PROXY_BASE}/play/${vavooId}`, status: "proxy" };
   }
 
-  // 2. For direct URLs (or fallback): test original
+  // 2. Direct URL still alive?
   if (await checkLink(originalUrl)) {
     return { url: originalUrl, status: "ok" };
   }
 
-  // 3. Try Famelack Data (curated TV streams from GitHub)
-  const famelackDataUrl = await tryFamelackData(name);
-  if (famelackDataUrl) {
-    return { url: famelackDataUrl, status: "famelack-data" };
+  // 3. Curated fallback index
+  const fallbackUrl = await findFallback(name);
+  if (fallbackUrl) {
+    return { url: fallbackUrl, status: "fallback" };
   }
 
-  // 4. Try custom_links.json (direct m3u8 URLs)
-  const customUrl = await tryCustomLinks(name);
-  if (customUrl) {
-    return { url: customUrl, status: "custom" };
-  }
-
-  // 5. Try Famelack CDN pattern
-  const famelackUrl = await tryFamelack(name);
-  if (famelackUrl) {
-    return { url: famelackUrl, status: "famelack" };
-  }
-
-  // 6. Nothing works — keep original (Worker will try at runtime)
   return { url: originalUrl, status: "dead" };
 }
 
 async function loadLinkCache() {
   try {
-    const raw = await fs.readFile(CACHE_FILE, "utf8");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(await fs.readFile(CACHE_FILE, "utf8"));
     return data && typeof data === "object" ? data : {};
   } catch {
     return {};
@@ -402,27 +253,14 @@ async function saveLinkCache(cache) {
 }
 
 async function repairAll(items) {
-  console.log("\n═══════════════════════════════════════════════════════");
-  console.log("LINK CHECKER STARTING");
-  console.log("═══════════════════════════════════════════════════════");
-  console.log(`${items.length} channels total`);
-  console.log(`Vavoo channels: tested via proxy URL`);
-  console.log(`Fallback sources: Famelack Data → Custom Links → Famelack CDN`);
-  console.log(`Concurrency: ${CHECK_CONCURRENCY} | Timeout: ${CHECK_TIMEOUT_MS}ms`);
+  console.log("\nLINK CHECKER");
+  console.log(`${items.length} channels | concurrency ${CHECK_CONCURRENCY} | timeout ${CHECK_TIMEOUT_MS}ms`);
 
   const cache = await loadLinkCache();
   const now = Date.now();
-
-  let okCount = 0;
-  let proxyCount = 0;
-  let famelackDataCount = 0;
-  let customCount = 0;
-  let famelackCount = 0;
-  let deadCount = 0;
-  let cacheHits = 0;
-  let processed = 0;
-
   const results = new Array(items.length);
+  const counts = { proxy: 0, ok: 0, fallback: 0, dead: 0, cached: 0 };
+  let processed = 0;
 
   for (let i = 0; i < items.length; i += CHECK_CONCURRENCY) {
     const batch = [];
@@ -430,112 +268,58 @@ async function repairAll(items) {
       batch.push({ index: j, item: items[j] });
     }
 
-    const batchResults = await Promise.all(
+    const done = await Promise.all(
       batch.map(async ({ index, item }) => {
-        const cacheKey = item.url;
-        const cached = cache[cacheKey];
+        const key = item.url;
+        const hit = cache[key];
 
-        // Fast path: skip re-checking channels that were recently working
-        if (cached && cached.timestamp) {
-          const age = now - cached.timestamp;
-          const isHealthy = cached.status === "ok" || cached.status === "proxy";
-          // Fallback URLs (custom/famelack) should always be re-verified
-          if (!isHealthy) {
-            // Don't cache fallbacks — re-check every run
-          } else {
-            const ttl = CACHE_TTL_MS * 3;
-            if (age < ttl) {
-              cacheHits++;
-              return { index, result: { url: cached.url, status: cached.status } };
-            }
+        // Only healthy links are cached; fallbacks are re-verified every run
+        if (hit && (hit.status === "ok" || hit.status === "proxy")) {
+          if (now - hit.timestamp < CACHE_TTL_MS) {
+            return { index, result: { url: hit.url, status: hit.status }, cached: true };
           }
         }
 
         const result = await repairLink(item);
-
-        cache[cacheKey] = {
-          url: result.url,
-          status: result.status,
-          timestamp: now,
-        };
-
-        return { index, result };
+        cache[key] = { url: result.url, status: result.status, timestamp: now };
+        return { index, result, cached: false };
       })
     );
 
-    for (const { index, result } of batchResults) {
+    for (const { index, result, cached } of done) {
       results[index] = result;
-
-      switch (result.status) {
-        case "ok":
-          okCount++;
-          break;
-        case "proxy":
-          proxyCount++;
-          break;
-        case "famelack-data":
-          famelackDataCount++;
-          break;
-        case "custom":
-          customCount++;
-          break;
-        case "famelack":
-          famelackCount++;
-          break;
-        case "dead":
-          deadCount++;
-          break;
-      }
+      if (cached) counts.cached++;
+      else counts[result.status]++;
     }
 
     processed += batch.length;
-    const pct = Math.round((processed / items.length) * 100);
-    if (processed % (CHECK_CONCURRENCY * 5) === 0 || processed === items.length) {
+    if (processed % (CHECK_CONCURRENCY * 10) === 0 || processed === items.length) {
       console.log(
-        `  [${pct}%] ${processed}/${items.length} | ok:${okCount} proxy:${proxyCount} famelack-data:${famelackDataCount} custom:${customCount} famelack:${famelackCount} dead:${deadCount} cached:${cacheHits}`
+        `  [${Math.round((processed / items.length) * 100)}%] ${processed}/${items.length} | ` +
+          `proxy:${counts.proxy} ok:${counts.ok} fallback:${counts.fallback} dead:${counts.dead} cached:${counts.cached}`
       );
     }
   }
 
   await saveLinkCache(cache);
 
-  for (let i = 0; i < items.length; i++) {
-    const r = results[i];
-    if (!r) continue;
-    items[i].url = r.url;
-    items[i]._repairStatus = r.status;
-    items[i]._repaired = r.status === "proxy" || r.status === "famelack-data" || r.status === "famelack" || r.status === "custom";
-  }
+  items.forEach((item, i) => {
+    if (!results[i]) return;
+    item.url = results[i].url;
+    item._repairStatus = results[i].status;
+    item._repaired = results[i].status === "proxy" || results[i].status === "fallback";
+  });
 
-  console.log("\n═══════════════════════════════════════════════════════");
-  console.log("LINK CHECKER RESULTS");
-  console.log("═══════════════════════════════════════════════════════");
-  console.log(`Original OK:        ${okCount}`);
-  console.log(`Via Proxy:          ${proxyCount}`);
-  console.log(`Via Famelack Data:  ${famelackDataCount}`);
-  console.log(`Via Custom Links:   ${customCount}`);
-  console.log(`Via Famelack CDN:   ${famelackCount}`);
-  console.log(`Still dead:         ${deadCount}`);
-  console.log(`From cache:         ${cacheHits}`);
-  console.log(`Repaired:           ${proxyCount + famelackDataCount + customCount + famelackCount}`);
-  console.log("═══════════════════════════════════════════════════════\n");
-
+  console.log(
+    `\n  proxy:${counts.proxy} ok:${counts.ok} fallback:${counts.fallback} ` +
+      `dead:${counts.dead} from-cache:${counts.cached}\n`
+  );
   return items;
 }
 
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
 // VAVOO API
-// ═══════════════════════════════════════════════════════════════
-
-function isAllowedGermanChannel(channelName) {
-  return true;
-}
-
-const BLOCKED_CHANNELS = /alanya|izmir\s+tv|antalya\s+tv|bursa\s+tv|ankara\s+tv|istanbul\s+tv|eskisehir\s+tv|konya\s+tv|trabzon\s+tv|izmir\s+haber/i;
-
-function isBlockedChannel(name) {
-  return BLOCKED_CHANNELS.test(String(name || ""));
-}
+// ==================================================================
 
 function buildBody(group, cursor) {
   return JSON.stringify({
@@ -554,6 +338,7 @@ function buildBody(group, cursor) {
 async function fetchPage(group, cursor) {
   const body = buildBody(group, cursor);
   let lastErr;
+
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
       const res = await fetch(CATALOG_URL, {
@@ -562,20 +347,14 @@ async function fetchPage(group, cursor) {
         body,
         signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
       });
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status} ${res.statusText}`);
-      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      if (data && data.error) {
-        throw new Error(`Vavoo error: ${data.error}`);
-      }
+      if (data?.error) throw new Error(`Vavoo: ${data.error}`);
       return data;
     } catch (err) {
       lastErr = err;
       const wait = 1000 * attempt;
-      console.warn(
-        `[${group}] Attempt ${attempt} failed (${err.message}). Retrying in ${wait}ms...`
-      );
+      console.warn(`[${group}] attempt ${attempt} failed (${err.message}), retry in ${wait}ms`);
       await new Promise((r) => setTimeout(r, wait));
     }
   }
@@ -586,249 +365,118 @@ async function fetchAllForGroup(group) {
   const items = [];
   let cursor = null;
   let page = 0;
-  const MAX_PAGES = 200;
 
   do {
     page++;
     const data = await fetchPage(group, cursor);
-    if (Array.isArray(data.items)) {
-      for (const item of data.items) {
-        if (isBlockedChannel(item.name)) continue;
-        if (group === "Germany") {
-          if (isAllowedGermanChannel(item.name)) {
-            items.push(item);
-          }
-        } else {
-          items.push(item);
-        }
-      }
+    for (const item of data.items || []) {
+      if (isBlockedChannel(item.name)) continue;
+      items.push(item);
     }
-    console.log(
-      `Group ${group} - Page ${page}: fetched ${data.items?.length ?? 0} items, added ${items.length} total.`
-    );
+    console.log(`  ${group} page ${page}: ${items.length} total`);
     cursor = data.nextCursor ?? null;
-    if (page >= MAX_PAGES) {
-      console.warn(`[${group}] Reached MAX_PAGES (${MAX_PAGES}), stopping.`);
-      break;
-    }
-  } while (cursor !== null && cursor !== undefined);
+  } while (cursor != null && page < 200);
 
   return items;
 }
 
 async function fetchAll() {
-  const allItems = [];
-  const seenIds = new Set();
+  const all = [];
+  const seen = new Set();
 
   for (const group of GROUPS) {
-    console.log(`Fetching catalog for group="${group}"...`);
-    const groupItems = await fetchAllForGroup(group);
-    for (const item of groupItems) {
-      const itemId = item?.ids?.id;
-      if (itemId && !seenIds.has(itemId)) {
-        seenIds.add(itemId);
-        allItems.push(item);
+    for (const item of await fetchAllForGroup(group)) {
+      const id = item?.ids?.id;
+      if (id && !seen.has(id)) {
+        seen.add(id);
+        all.push(item);
       }
     }
   }
-
-  return allItems;
+  return all;
 }
 
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
 // CATEGORIES
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
 
-function normalizeForCategory(name) {
-  let s = String(name || "")
+function categorize(name) {
+  const s = String(name || "")
     .replace(/^\s*(?:4K TR:|DE:|AT:|CH:)\s*/i, "")
     .replace(/\s+(?:UHD|FHD|HD\+|HD|SD|HEVC|RAW|H265|H\.265|FEED)(?=\s|$)/gi, " ")
     .replace(/\s*\.(?:b|c|s)\b/gi, "")
     .replace(/\s+/g, " ")
     .trim();
 
-  s = s
-    .replace(/\bT RK\b/g, "TURK")
-    .replace(/\bT RKIYEM\b/g, "TURKIYEM")
-    .replace(/\bBENG\b/g, "BENGU")
-    .replace(/\bBENGT\b/g, "BENGUT")
-    .replace(/\bAK T\b/g, "AKIT")
-    .replace(/\bS NEMA\b/g, "SINEMA")
-    .replace(/\bM N KA\b/g, "MINIKA")
-    .replace(/\bOCUK\b/g, "COCUK")
-    .replace(/\bM Z K\b/g, "MUZIK")
-    .replace(/\bS ZC\b/g, "SOZCU")
-    .replace(/\bSZC\b/g, "SOZCU")
-    .replace(/\bLKE\b/g, "ULKE")
-    .replace(/\bYE IL AM\b/g, "YESILCAM")
-    .replace(/\bYE IL[ ]?CAM\b/g, "YESILCAM")
-    .replace(/\bT[ÜU]RK\b/gi, "TURK");
+  const rules = [
+    [
+      "Almanya Sport",
+      /\b(DAZN|SKY SPORT|SKY BULI|SKY BUNDESLIGA|SKY PREMIER|BUNDESLIGA|PREMIER LEAGUE|MAGENTA SPORT|MAGENTASPORT|MAGENTA FUSSBALL|SPORT1|EUROSPORT|FUSSBALL|SPORTS TV|SPORTDIGITAL|RED BULL TV|BLUE SPORT|SKY SPORT MIX|SKY SPORT NEWS|SKY F1|SKY FORMEL 1|SPORTDEUTSCHLAND|LAOLA1)\b/i,
+    ],
+    [
+      "Almanya TV",
+      /\b(ARD|ZDF|ZDF NEO|RTL|RTL PLUS|RTL\+|RTL PASSION|RTL NITRO|PRO SIEBEN|PRO7|SAT\.1|SAT1|VOX|KABEL 1|KABEL 1 DOKU|SUPER RTL|NICKELODEON DE|NICK DE|NDR|WDR|MDR|BR|SWR|HR|RBB|SR|PHOENIX|TAGESSCHAU24|WELT|N24|N-TV|TELE 5|SIXX|DISNEY CHANNEL DE|TOGGO|KIKA|DEUTSCH|GERMAN|DEUTSCHLAND|DAS ERSTE|ONE|ARTE|3SAT|ZDF INFO|ZDF KULTUR|BR ALPHA|ARD ALPHA|RTL ZWEI|RTL2)\b/i,
+    ],
+    ["Radio", /\b(RADYO|RADIO|FM)\b/i],
+    [
+      "Yerel",
+      /\b(YEREL|REGIONAL|YÖRESEL|BELEDİYE|Muğla|Antalya|İzmir|Ankara|İstanbul|Bursa|Konya|Gaziantep|Kayseri|Mersin|Diyarbakır|Trabzon|Samsun|Eskişehir|Denizli|Malatya|Erzurum|Van|Batman|Şanlıurfa|Hatay|Manisa|Aydın|Tekirdağ|Edirne|Çanakkale|Balıkesir|Bolu|Sakarya|Düzce|Karabük|Bartın|Isparta|Burdur|Afyon|Uşak|Kütahya|Bilecik|Yalova|Kocaeli|Kırklareli|Kırşehir|Kırıkkale|Aksaray|Niğde|Nevşehir|Yozgat|Sivas|Tokat|Amasya|Çorum|Kastamonu|Sinop|Ordu|Giresun|Artvin|Rize|Gümüşhane|Bayburt|Erzincan|Tunceli|Elazığ|Adıyaman|Şırnak|Siirt|Bitlis|Muş|Ağrı|Iğdır|Kars|Ardahan)\b/i,
+    ],
+    [
+      "Ulusal",
+      /\b(TRT|MECLİS|TABII|SHOW ?TV|STAR ?TV|ATV(?!\s+ALANYA)|KANAL D|NOW TV|EXXEN|TV ?8|TEVE 2|BEYAZ ?TV|360|SKY 360|A2 TV|EURO D|KANAL 7|DMAX TURKIYE|BENG[UÜ]T[UÜ]RK|ULUSAL|KANAL FIRAT|KANAL V|KANAL 23|KANAL 26|KANAL 33|KANAL 34|KANAL 58|KANAL 12|KANAL 15|KANAL 19|KANAL AVRUPA)\b/i,
+    ],
+    [
+      "Haber",
+      /\b(HABER|NEWS|CNN|NTV|A HABER|BLOOMBERG|HALK TV|SÖZCÜ|LIDER|FLASH|GLOBAL|TV 100|TGRT HABER|ÜLKE|DHA|KANAL B|KANAL 24|TV NET|AKIT|ANADOLU|HABERTÜRK|HABER GLOBAL|TÜRK HABER)\b/i,
+    ],
+    [
+      "Belgesel",
+      /\b(BELGESEL|DOKU|DOCU|DISCOVERY|NATIONAL GEOGRAPHIC|NAT GEO|HISTORY|ANIMAL PLANET|BBC EARTH|TLC|TRT BELGESEL|TGRT BELGESEL|VIASAT|DA VINCI|DOCUBOX|FASHION|BEIN IZ|GURME|DOCUMENTARY|WILD)\b/i,
+    ],
+    [
+      "Spor",
+      /\b(SPOR|SPORT|A SPOR|TRT SPOR|S SPORT|TIVIBU|TABII SPOR|BEIN SPORTS|NBA|EXXEN SPORTS|FB TV|GS TV|SPOR SMART|BASKETBOL|VOLEYBOL|TENIS|FUTBOL|IDMAN|EXXEN SPO)\b/i,
+    ],
+    [
+      "Çocuk",
+      /\b(ÇOCUK|COCUK|KINDER|KIDS|CARTOON|DISNEY|NICK|BABY|MINIKA|TOGGO|TRT ÇOCUK|BABY TV|NICK JR|NICKELODEON)\b/i,
+    ],
+    [
+      "Film",
+      /\b(SINEMA|CINEMA|MOVIE|FILM|YESILCAM|BOX OFFICE|SHOWMAX|KINGBOX|ARENA BOX|BEIN MOVIES|MOVIEMAX|MOVIESMART|SINEVIZYON|SINEMAX)\b/i,
+    ],
+    [
+      "Dini",
+      /\b(DİYANET|MEHTAP|HİLAL|KUDUS|SEMERKAND|MERCAN|VUSLAT|KARDELEN|DOST TV|YOL TV|TVNET|DINI|İSLAM|KURAN)\b/i,
+    ],
+  ];
 
-  return s;
-}
-
-const CATEGORY_RULES = [
-  {
-    name: "Almanya Sport",
-    re: /\b(DAZN|SKY SPORT|SKY BULI|SKY BUNDESLIGA|SKY PREMIER|BUNDESLIGA|PREMIER LEAGUE|MAGENTA SPORT|MAGENTASPORT|MAGENTA FUSSBALL|SPORT1|EUROSPORT|FUSSBALL|SPORTS TV|SPORTDIGITAL|RED BULL TV|BLUE SPORT|SKY SPORT MIX|SKY SPORT NEWS|SKY F1|SKY FORMEL 1|SPORTDEUTSCHLAND|LAOLA1)\b/i,
-  },
-  {
-    name: "Almanya TV",
-    re: /\b(ARD|ZDF|ZDF NEO|RTL|RTL PLUS|RTL\+|RTL PASSION|RTL NITRO|PRO SIEBEN|PRO7|SAT\.1|SAT1|VOX|KABEL 1|KABEL 1 DOKU|SUPER RTL|NICKELODEON DE|NICK DE|NDR|WDR|MDR|BR|SWR|HR|RBB|SR|PHOENIX|TAGESSCHAU24|WELT|N24|N-TV|TELE 5|SIXX|DISNEY CHANNEL DE|TOGGO|KIKA|DEUTSCH|GERMAN|DEUTSCHLAND|DAS ERSTE|ONE|ARTE|3SAT|ZDF INFO|ZDF KULTUR|WDR|BR ALPHA|ARD ALPHA|RTL ZWEI|RTL2)\b/i,
-  },
-  {
-    name: "Radio",
-    re: /\b(RADYO|RADIO|FM)\b/i,
-  },
-  {
-    name: "Yerel",
-    re: /\b(YEREL|REGIONAL|YÖRESEL|BELEDİYE|Muğla|Antalya|İzmir|Ankara|İstanbul|Bursa|Konya|Gaziantep|Kayseri|Mersin|Diyarbakır|Trabzon|Samsun|Eskişehir|Denizli|Malatya|Erzurum|Van|Batman|Şanlıurfa|Hatay|Manisa|Aydın|Tekirdağ|Edirne|Çanakkale|Balıkesir|Bolu|Sakarya|Düzce|Karabük|Bartın|Isparta|Burdur|Afyon|Uşak|Kütahya|Bilecik|Yalova|Kocaeli|Kırklareli|Kırşehir|Kırıkkale|Aksaray|Niğde|Nevşehir|Kırşehir|Yozgat|Sivas|Tokat|Amasya|Çorum|Kastamonu|Sinop|Ordu|Giresun|Artvin|Rize|Gümüşhane|Bayburt|Erzincan|Tunceli|Elazığ|Malatya|Adıyaman|Şırnak|Siirt|Bitlis|Muş| Ağrı|Iğdır|Kars|Ardahan|Gümüşhane)\b/i,
-  },
-  {
-    name: "Ulusal",
-    re: /\b(TRT|MECLİS|TABII|SHOW ?TV|STAR ?TV|ATV(?!\s+ALANYA)|KANAL D|NOW TV|EXXEN|TV ?8|TEVE 2|BEYAZ ?TV|360|SKY 360|A2 TV|EURO D|KANAL 7|DMAX TURKIYE|BENG[UÜ]T[UÜ]RK|ULUSAL|KANAL FIRAT|KANAL V|KANAL 23|KANAL 26|KANAL 33|KANAL 34|KANAL 58|KANAL 12|KANAL 15|KANAL 19|KANAL AVRUPA)\b/i,
-  },
-  {
-    name: "Haber",
-    re: /\b(HABER|NEWS|CNN|NTV|A HABER|BLOOMBERG|HALK TV|SÖZCÜ|LIDER|FLASH|GLOBAL|TV 100|TGRT HABER|ÜLKE|DHA|KANAL B|KANAL 24|TV NET|AKIT|ANADOLU|HABERTÜRK|HABER GLOBAL|KANAL AVRUPA|BENGUTÜRK|TÜRK HABER)\b/i,
-  },
-  {
-    name: "Belgesel",
-    re: /\b(BELGESEL|DOKU|DOCU|DISCOVERY|NATIONAL GEOGRAPHIC|NAT GEO|HISTORY|ANIMAL PLANET|BBC EARTH|TLC|TRT BELGESEL|TGRT BELGESEL|VIASAT|DA VINCI|DOCUBOX|FASHION|BEIN IZ|GURME|DOCUMENTARY|WILD)\b/i,
-  },
-  {
-    name: "Spor",
-    re: /\b(SPOR|SPORT|A SPOR|TRT SPOR|S SPORT|TIVIBU|TABII SPOR|BEIN SPORTS|NBA|EXXEN SPORTS|FB TV|GS TV|SPOR SMART|BASKETBOL|VOLEYBOL|TENIS|FUTBOL|IDMAN|EXXEN SPO)\b/i,
-  },
-  {
-    name: "Çocuk",
-    re: /\b(ÇOCUK|COCUK|KINDER|KIDS|CARTOON|DISNEY|NICK|BABY|MINIKA|TOGGO|TRT ÇOCUK|BABY TV|NICK JR|NICKELODEON|DISNEY CHANNEL)\b/i,
-  },
-  {
-    name: "Film",
-    re: /\b(SINEMA|CINEMA|MOVIE|FILM|YESILCAM|BOX OFFICE|FX|SHOWMAX|KINGBOX|ARENA BOX|BEIN MOVIES|MOVIEMAX|MOVIESMART|SINEVIZYON|SINEMAX|PROTURK)\b/i,
-  },
-  {
-    name: "Dini",
-    re: /\b(DİYANET|AKIT|MEHTAP|HİLAL|KUDUS|SEMERKAND|MERCAN|VUSLAT|KARDELEN|DOST TV|YOL TV|TVNET|DINI|İSLAM|KURAN|KUR'AN)\b/i,
-  }
-];
-
-function categorize(name) {
-  const s = normalizeForCategory(name);
-  for (const rule of CATEGORY_RULES) {
-    if (rule.re.test(s)) return rule.name;
-  }
+  for (const [name, re] of rules) if (re.test(s)) return name;
   return "Sonstige";
 }
 
-// ═══════════════════════════════════════════════════════════════
-// M3U GENERATION (optimized for Televizo)
-// ═══════════════════════════════════════════════════════════════
-
-function escapeAttr(value) {
-  return String(value ?? "")
-    .replace(/\r?\n/g, " ")
-    .replace(/"/g, "'");
-}
-
-function sanitizeName(name) {
-  return String(name ?? "")
-    .replace(/\r?\n/g, " ")
-    .trim();
-}
-
-function toStreamUrl(item) {
-  // If repair already set a working URL (proxy or famelack), use it
-  if (item._repaired && item.url) return item.url;
-
-  // Vavoo items → proxy URL
-  const id = item?.ids?.id;
-  if (PROXY_BASE && id) return `${PROXY_BASE}/play/${id}`;
-
-  // Direct URL fallback
-  return item.url;
-}
-
-function toM3U(items, logoResolver) {
-  const lines = ["#EXTM3U"];
-
-  for (const it of items) {
-    if (!it || !it.url) continue;
-    const name = sanitizeName(it.name);
-    if (!name) continue;
-
-    const group = categorize(name);
-    if (!group) continue;
-
-    const logo = resolveLogo(name, it.logo, logoResolver);
-    const streamUrl = toStreamUrl(it);
-    const repairAttr = it._repaired ? ` repair="${it._repairStatus}"` : "";
-
-    lines.push(
-      `#EXTINF:-1 tvg-name="${escapeAttr(name)}" tvg-logo="${escapeAttr(logo)}" group-title="${escapeAttr(group)}"${repairAttr},${name}`
-    );
-
-    // Televizo / VLC optimization: set network caching for smoother playback
-    lines.push(`#EXTVLCOPT:network-caching=1000`);
-    lines.push(`#EXTVLCOPT:live-caching=1000`);
-
-    lines.push(streamUrl);
-  }
-
-  lines.push("");
-  return lines.join("\n");
-}
-
-function resolveLogo(name, vavooLogo, logoResolver) {
-  if (logoResolver) {
-    const l = logoResolver(name);
-    if (l) return l;
-  }
-  return vavooLogo || "";
-}
-
-// ═══════════════════════════════════════════════════════════════
-// IPTV-ORG LOGOS
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
+// LOGOS
+// ==================================================================
 
 function normalizeForMatch(name) {
-  let s = String(name || "")
+  return String(name || "")
     .toUpperCase()
     .replace(/^\s*(?:4K\s*TR:|4K:|TR:|DE:|AT:|CH:)\s*/i, "")
     .replace(/\s*\.(?:B|C|S)\b/gi, "")
-    .replace(/\[[^\]]*\]/g, " ")
-    .replace(/\([^\)]*\)/g, " ")
-    .replace(/\bT RK\b/g, "TURK")
-    .replace(/\bAK T\b/g, "AKIT")
-    .replace(/\bS NEMA\b/g, "SINEMA")
-    .replace(/\bM N KA\b/g, "MINIKA")
-    .replace(/\bOCUK\b/g, "COCUK")
-    .replace(/\bM Z K\b/g, "MUZIK")
-    .replace(/\bBENG\b/g, "BENGU");
-  s = s
-    .replace(/[İI]/g, "I")
-    .replace(/Ü/g, "U")
-    .replace(/Ö/g, "O")
-    .replace(/Ç/g, "C")
-    .replace(/Ş/g, "S")
-    .replace(/Ğ/g, "G")
+    .replace(/[İIÜÖÇŞĞ]/g, (c) => ({ İ: "I", I: "I", Ü: "U", Ö: "O", Ç: "C", Ş: "S", Ğ: "G" })[c])
     .replace(/[^A-Z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  return s;
 }
 
-function normalizeStripQuality(s) {
-  return s
-    .replace(/\b(?:UHD|FHD|HD\+|HD|SD|HEVC|RAW|H265|4K|8K|FEED|LIVE|BACKUP)\b/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+const stripQuality = (s) =>
+  s.replace(/\b(UHD|FHD|HD\+|HD|SD|HEVC|RAW|H265|4K|8K|LIVE|BACKUP)\b/g, "").replace(/\s+/g, " ").trim();
 
 async function fetchJson(url) {
   const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
-  if (!res.ok) throw new Error(`${url} → HTTP ${res.status}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
 
@@ -837,125 +485,145 @@ async function buildLogoIndex() {
     fetchJson(IPTVORG_CHANNELS_URL),
     fetchJson(IPTVORG_LOGOS_URL),
   ]);
-  const trChannels = channels.filter((c) => c && (c.country === "TR" || c.country === "DE"));
-  const trIds = new Set(trChannels.map((c) => c.id));
 
-  const chosen = new Map();
+  const relevant = channels.filter((c) => c && (c.country === "TR" || c.country === "DE"));
+  const ids = new Set(relevant.map((c) => c.id));
+
+  const best = new Map();
   for (const l of logos) {
-    if (!l || !trIds.has(l.channel) || !l.url) continue;
-    const current = chosen.get(l.channel);
-    if (!current || (l.in_use && !current.in_use)) {
-      chosen.set(l.channel, l);
-    }
+    if (!l?.url || !ids.has(l.channel)) continue;
+    const cur = best.get(l.channel);
+    if (!cur || (l.in_use && !cur.in_use)) best.set(l.channel, l);
   }
 
   const idx = new Map();
-  for (const c of trChannels) {
-    const l = chosen.get(c.id);
-    if (!l) continue;
-    const names = [c.name, ...(Array.isArray(c.alt_names) ? c.alt_names : [])];
-    for (const n of names) {
+  for (const c of relevant) {
+    const logo = best.get(c.id);
+    if (!logo) continue;
+    for (const n of [c.name, ...(c.alt_names || [])]) {
       if (!n) continue;
-      const k1 = normalizeForMatch(n);
-      const k2 = normalizeStripQuality(k1);
-      if (k1 && !idx.has(k1)) idx.set(k1, l.url);
-      if (k2 && !idx.has(k2)) idx.set(k2, l.url);
+      const k = normalizeForMatch(n);
+      if (k && !idx.has(k)) idx.set(k, logo.url);
+      const sq = stripQuality(k);
+      if (sq && !idx.has(sq)) idx.set(sq, logo.url);
     }
   }
   return idx;
 }
 
 function makeLogoResolver(idx) {
-  if (!idx || idx.size === 0) return null;
-  return (vavooName) => {
-    const k1 = normalizeForMatch(vavooName);
-    if (idx.has(k1)) return idx.get(k1);
-    const k2 = normalizeStripQuality(k1);
-    if (idx.has(k2)) return idx.get(k2);
-    return "";
+  if (!idx?.size) return () => "";
+  return (name) => {
+    const k = normalizeForMatch(name);
+    return idx.get(k) || idx.get(stripQuality(k)) || "";
   };
 }
 
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
+// M3U OUTPUT
+// ==================================================================
+
+const escapeAttr = (v) =>
+  String(v ?? "").replace(/\r?\n/g, " ").replace(/"/g, "'");
+
+function toM3U(items, resolveLogo) {
+  const lines = ["#EXTM3U"];
+
+  for (const it of items) {
+    const name = String(it?.name ?? "").replace(/\r?\n/g, " ").trim();
+    if (!name || !it.url) continue;
+
+    const group = categorize(name);
+    const logo = escapeAttr(resolveLogo(name) || it.logo || "");
+    const repair = it._repaired ? ` repair="${it._repairStatus}"` : "";
+
+    lines.push(
+      `#EXTINF:-1 tvg-name="${escapeAttr(name)}" tvg-logo="${logo}" group-title="${escapeAttr(group)}"${repair},${name}`
+    );
+    lines.push(`#EXTGRP:${group}`);
+    lines.push(`#EXTVLCOPT:network-caching=1000`);
+    lines.push(`#EXTVLCOPT:live-caching=1000`);
+    lines.push(it.url);
+  }
+
+  lines.push("");
+  return lines.join("\n");
+}
+
+// ==================================================================
 // MAIN
-// ═══════════════════════════════════════════════════════════════
+// ==================================================================
 
 async function main() {
-  const startTime = Date.now();
+  const started = Date.now();
 
-  console.log(`Fetching groups=${JSON.stringify(GROUPS)} from ${CATALOG_URL} ...`);
-  if (PROXY_BASE) {
-    console.log(`Using PROXY_BASE=${PROXY_BASE}`);
-  } else {
-    console.warn(
-      "WARNING: PROXY_BASE is empty. Raw vavoo.to URLs will be written; players without VPN may fail."
-    );
-  }
+  console.log(`Fetching ${JSON.stringify(GROUPS)} from vavoo.to`);
+  if (PROXY_BASE) console.log(`PROXY_BASE=${PROXY_BASE}`);
+  else console.warn("WARNING: PROXY_BASE empty - raw vavoo URLs will be written");
 
   const items = await fetchAll();
-  console.log(`Total fetched items combined: ${items.length}`);
+  console.log(`Total: ${items.length} channels`);
 
-  items.sort((a, b) => {
-    const an = String(a.name ?? "").toLocaleLowerCase("tr-TR");
-    const bn = String(b.name ?? "").toLocaleLowerCase("tr-TR");
-    if (an < bn) return -1;
-    if (an > bn) return 1;
-    const ai = a.ids?.id ?? "";
-    const bi = b.ids?.id ?? "";
-    return ai < bi ? -1 : ai > bi ? 1 : 0;
-  });
+  items.sort((a, b) =>
+    String(a.name ?? "").localeCompare(String(b.name ?? ""), "tr-TR")
+  );
 
-  let logoIdx = new Map();
+  let resolveLogo = () => "";
   try {
-    logoIdx = await buildLogoIndex();
+    resolveLogo = makeLogoResolver(await buildLogoIndex());
   } catch (err) {
-    console.warn(`Logo index unavailable (${err.message}); logos will be empty.`);
+    console.warn(`Logos unavailable (${err.message})`);
   }
-  const logoResolver = makeLogoResolver(logoIdx);
 
-  let finalItems = items;
+  let final = items;
   if (CHECK_ENABLED) {
     try {
-      // Pre-load famelack-data index before starting concurrent repairs
-      await loadFamelackData();
-      finalItems = await repairAll(items);
+      final = await repairAll(items);
     } catch (err) {
-      console.warn(`Link-Checker failed: ${err.message}`);
-      console.warn("   Using original links.");
-      finalItems = items;
+      console.warn(`Link checker failed (${err.message}); keeping original links`);
     }
   } else {
-    console.log("Link-Checker disabled (CHECK_ENABLED=false)");
+    console.log("Link checker disabled");
   }
 
-  const m3u = toM3U(finalItems, logoResolver);
+  const m3u = toM3U(final, resolveLogo);
   await fs.writeFile(M3U_FILE, m3u, "utf8");
   console.log(`Wrote ${M3U_FILE} (${m3u.length} bytes)`);
 
   const dist = new Map();
-  for (const it of finalItems) {
-    const name = sanitizeName(it?.name);
-    if (!name) continue;
-    const c = categorize(name);
-    if (c) {
-      dist.set(c, (dist.get(c) || 0) + 1);
-    }
+  for (const it of final) {
+    const g = categorize(String(it?.name ?? ""));
+    dist.set(g, (dist.get(g) || 0) + 1);
   }
-  console.log("\nActive category distribution:");
-  for (const [c, n] of [...dist.entries()].sort((a, b) => b[1] - a[1])) {
-    console.log(`  ${c.padEnd(20)}: ${n}`);
+  console.log("\nCategories:");
+  for (const [c, n] of [...dist].sort((a, b) => b[1] - a[1])) {
+    console.log(`  ${c.padEnd(16)} ${n}`);
   }
 
-  const repairedCount = finalItems.filter((it) => it._repaired).length;
-  if (repairedCount > 0) {
-    console.log(`\n${repairedCount} links were automatically repaired!`);
-  }
-
-  const duration = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log(`\nTotal duration: ${duration}s`);
+  console.log(`\nDone in ${((Date.now() - started) / 1000).toFixed(1)}s`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// ponytail: self-check for name matching, the part that silently mislabels channels
+if (process.env.SELFCHECK) {
+  const assert = require("node:assert");
+  assert.strictEqual(normalizeChannelName("CNN TÜRK"), "cnn turk");
+  assert.strictEqual(normalizeChannelName("ATV HD"), "atv");
+  assert.strictEqual(normalizeChannelName("ATV Alanya"), "atv alanya");
+  assert.strictEqual(normalizeChannelName("4K TR: Show TV"), "show tv");
+  assert.ok(!isSimilarName("atv", "atv alanya"), "ATV must not match ATV Alanya");
+  assert.ok(!isSimilarName("trt 1", "trt 2"), "TRT 1 must not match TRT 2");
+  assert.ok(!isSimilarName("show tv", "show max"), "SHOW TV must not match Show Max");
+  assert.ok(
+    isSimilarName(normalizeChannelName("cnn türk"), normalizeChannelName("CNN TÜRK")),
+    "diacritics fold both ways"
+  );
+  assert.ok(isSimilarName("halk tv", "halk tv hd"), "quality suffix matches");
+  assert.ok(isBlockedChannel("ATV Alanya"), "ATV Alanya blocked");
+  assert.ok(!isBlockedChannel("ATV"), "ATV kept");
+  console.log("selfcheck OK");
+} else {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
