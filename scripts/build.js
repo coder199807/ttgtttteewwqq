@@ -8,7 +8,10 @@ const GROUPS = ["Turkey", "Germany"];
 
 const M3U_FILE = path.join(__dirname, "..", "iptv.m3u");
 const CACHE_FILE = path.join(__dirname, "..", "link_cache.json");
+const FALLBACKS_FILE = path.join(__dirname, "..", "fallbacks.json");
 const CUSTOM_LINKS_FILE = path.join(__dirname, "..", "custom_links.json");
+
+const FALLBACK_URLS_PER_CHANNEL = 3;
 
 const FAMELACK_DATA_URL =
   "https://raw.githubusercontent.com/famelack/famelack-data/main/tv/raw/countries";
@@ -119,12 +122,12 @@ function normalizeChannelName(name) {
     .replace(/\[[^\]]*\]/g, "")
     .replace(/\([^)]*\)/g, "")
     .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/g, "")
-    .replace(/ü/g, "u")
-    .replace(/ğ/g, "g")
-    .replace(/ş/g, "s")
-    .replace(/ı/g, "i")
-    .replace(/ö/g, "o")
-    .replace(/ç/g, "c")
+    .replace(/\u00fc/g, "u")
+    .replace(/\u011f/g, "g")
+    .replace(/\u015f/g, "s")
+    .replace(/\u0131/g, "i")
+    .replace(/\u00f6/g, "o")
+    .replace(/\u00e7/g, "c")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -232,17 +235,26 @@ async function loadFallbackIndex() {
   return _fallbackIndex;
 }
 
-async function findFallback(channelName) {
-  const index = await loadFallbackIndex();
-  const normalized = normalizeChannelName(channelName);
+// Famelack streams are objects, livetv entries are plain strings — normalise both.
+function pickFallbackUrls(entry) {
+  return (entry?.streams || [])
+    .map((u) => (typeof u === "string" ? u : u?.url))
+    .filter((u) => typeof u === "string" && /^https?:\/\//i.test(u))
+    .slice(0, FALLBACK_URLS_PER_CHANNEL);
+}
 
+// The Worker owns the runtime chain (vavoo -> this index -> original).
+// Build just has to ship the index; it must not try to resolve channels itself.
+async function writeFallbackIndex() {
+  const index = await loadFallbackIndex();
+  const out = {};
   for (const [key, entry] of index) {
-    if (!isSimilarName(normalized, key)) continue;
-    for (const url of entry.streams) {
-      if (await checkLink(url, 4000)) return url;
-    }
+    const urls = pickFallbackUrls(entry);
+    if (urls.length) out[key] = urls;
   }
-  return null;
+  await fs.writeFile(FALLBACKS_FILE, JSON.stringify(out), "utf8");
+  const bytes = (await fs.stat(FALLBACKS_FILE)).size;
+  console.log(`  fallbacks.json: ${Object.keys(out).length} channels, ${bytes} bytes`);
 }
 
 // ==================================================================
@@ -251,23 +263,16 @@ async function findFallback(channelName) {
 
 async function repairLink(item) {
   const originalUrl = item.url;
-  const name = item.name || "";
   const vavooId = item?.ids?.id;
 
-  // 1. Vavoo channels resolve through the Worker at runtime
+  // Every channel goes through the Worker, which holds the fallback chain.
   if (vavooId && PROXY_BASE) {
     return { url: `${PROXY_BASE}/play/${vavooId}`, status: "proxy" };
   }
 
-  // 2. Direct URL still alive?
+  // No proxy configured: keep the direct link only if it answers now.
   if (await checkLink(originalUrl)) {
     return { url: originalUrl, status: "ok" };
-  }
-
-  // 3. Curated fallback index
-  const fallbackUrl = await findFallback(name);
-  if (fallbackUrl) {
-    return { url: fallbackUrl, status: "fallback" };
   }
 
   return { url: originalUrl, status: "dead" };
@@ -602,6 +607,12 @@ async function main() {
   const items = await fetchAll();
   console.log(`Total: ${items.length} channels`);
 
+  try {
+    await writeFallbackIndex();
+  } catch (err) {
+    console.warn(`Fallback index not written: ${err.message}`);
+  }
+
   items.sort((a, b) =>
     String(a.name ?? "").localeCompare(String(b.name ?? ""), "tr-TR")
   );
@@ -658,6 +669,14 @@ if (process.env.SELFCHECK) {
   assert.ok(isSimilarName("halk tv", "halk tv hd"), "quality suffix matches");
   assert.ok(isBlockedChannel("ATV Alanya"), "ATV Alanya blocked");
   assert.ok(!isBlockedChannel("ATV"), "ATV kept");
+  // fallbacks.json shape: object streams from famelack, plain strings from livetv
+  assert.deepStrictEqual(
+    pickFallbackUrls({ streams: [{ url: "https://a/1.m3u8" }, { url: "not-a-url" }, "https://b/2.m3u8", "ftp://x/3.m3u8", "https://c/4.m3u8", "https://d/5.m3u8"] }),
+    ["https://a/1.m3u8", "https://b/2.m3u8", "https://c/4.m3u8"],
+    "only http(s), capped at FALLBACK_URLS_PER_CHANNEL"
+  );
+  assert.deepStrictEqual(pickFallbackUrls({ streams: [] }), [], "empty entry yields nothing");
+  assert.deepStrictEqual(pickFallbackUrls(null), [], "null entry yields nothing");
   console.log("selfcheck OK");
 } else {
   main().catch((err) => {
