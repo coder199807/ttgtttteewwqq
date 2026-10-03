@@ -1,5 +1,5 @@
 // ============================================================
-// VAVOO.TO IPTV PROXY — /play/<id> resolver + HLS rewriter
+// VAVOO.TO IPTV PROXY â€” /play/<id> resolver + HLS rewriter
 // Optimized for Televizo and similar IPTV players
 // ============================================================
 
@@ -18,9 +18,34 @@ const ALLOWED_EXTENSIONS = new Set([
   '.m3u8', '.ts', '.aac', '.mp3', '.m4s', '.mp4', '.m4a', '.key', '.vtt', '.webvtt'
 ]);
 
-// Standard media player User-Agent — not blocked by CDNs
+// Standard media player User-Agent â€” not blocked by CDNs
 const STREAM_USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+
+const FALLBACK_INDEX_URL =
+  'https://raw.githubusercontent.com/coder199807/ttgtttteewwqq/main/fallbacks.json';
+const FALLBACK_CACHE_KEY = 'fallbacks';
+const FALLBACK_CACHE_TTL = 86400;
+const VAVOO_HOSTS = new Set(['vavoo.to', 'kool.to', 'www.vavoo.tv', 'vavoo.tv']);
+
+function hostOf(urlString) {
+  try {
+    return new URL(urlString).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+// Origin/Referer must match the upstream or foreign CDNs reject the request.
+// Sending the vavoo origin to a fallback CDN was silently killing every fallback.
+function refererFor(urlString) {
+  const host = hostOf(urlString);
+  if (!host) return {};
+  if (VAVOO_HOSTS.has(host)) {
+    return { 'Origin': 'https://vavoo.to', 'Referer': 'https://vavoo.to/' };
+  }
+  return { 'Referer': `https://${host}/` };
+}
 
 function pathExtension(urlString) {
   try {
@@ -36,25 +61,23 @@ function pathExtension(urlString) {
 // HEADER BUILDERS
 // ============================================================
 
-function getStreamHeaders() {
+function getStreamHeaders(upstreamUrl) {
   return {
     'User-Agent': STREAM_USER_AGENT,
     'Accept': '*/*',
     'Accept-Language': LANGUAGE,
-    'Origin': 'https://vavoo.to',
-    'Referer': 'https://vavoo.to/',
     'Connection': 'keep-alive',
+    ...refererFor(upstreamUrl),
   };
 }
 
-function getPlaylistHeaders() {
+function getPlaylistHeaders(upstreamUrl) {
   return {
     'User-Agent': STREAM_USER_AGENT,
     'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
     'Accept-Language': LANGUAGE,
-    'Origin': 'https://vavoo.to',
-    'Referer': 'https://vavoo.to/',
     'Connection': 'keep-alive',
+    ...refererFor(upstreamUrl),
   };
 }
 
@@ -99,7 +122,7 @@ function shouldRewriteUri(uri) {
 
 function rewritePlaylistUri(baseUrl, playlistBase, uri) {
   if (!shouldRewriteUri(uri)) return uri;
-  // Already proxied — skip
+  // Already proxied â€” skip
   if (uri.includes('/hls-proxy?')) return uri;
   try {
     const absolute = new URL(uri, playlistBase).toString();
@@ -123,7 +146,7 @@ function rewritePlaylist(baseUrl, upstreamUrl, playlist) {
         });
       }
 
-      // Segment URI line — rewrite
+      // Segment URI line â€” rewrite
       return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed);
     })
     .join('\n');
@@ -388,6 +411,71 @@ async function resolveDirect(id) {
 }
 
 // ============================================================
+// FALLBACK INDEX  (shipped by scripts/build.js as fallbacks.json)
+// ============================================================
+
+// Kept in sync with normalizeChannelName() in scripts/build.js â€” both sides
+// must fold diacritics the same way or every lookup misses.
+function normalizeChannelName(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/, '')
+    .replace(/\s*\.(?:b|c|s)\b/g, '')
+    .replace(/\[[^\]]*\]/g, '')
+    .replace(/\([^)]*\)/g, '')
+    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/g, '')
+    .replace(/\u00fc/g, 'u')
+    .replace(/\u011f/g, 'g')
+    .replace(/\u015f/g, 's')
+    .replace(/\u0131/g, 'i')
+    .replace(/\u00f6/g, 'o')
+    .replace(/\u00e7/g, 'c')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Guards against ATV picking up ATV Alanya.
+function isSimilarName(a, b) {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  if (!a.includes(b) && !b.includes(a)) return false;
+  const longer = Math.max(a.length, b.length);
+  const shorter = Math.min(a.length, b.length);
+  return shorter / longer >= 0.7;
+}
+
+function lookupFallbackUrls(index, channelName) {
+  if (!index || typeof index !== 'object') return [];
+  const key = normalizeChannelName(channelName);
+  if (!key) return [];
+
+  if (Array.isArray(index[key])) return index[key];
+
+  const urls = [];
+  for (const [candidate, list] of Object.entries(index)) {
+    if (Array.isArray(list) && isSimilarName(key, candidate)) urls.push(...list);
+  }
+  return urls.slice(0, 3);
+}
+
+async function getFallbackIndex() {
+  const cached = await VAVOO_KV?.get(FALLBACK_CACHE_KEY, 'json');
+  if (cached && typeof cached === 'object' && Object.keys(cached).length) return cached;
+
+  const response = await fetchWithRetry(FALLBACK_INDEX_URL, { timeout: 20000, retries: 1 });
+  if (!response.ok) throw new Error(`fallback index HTTP ${response.status}`);
+
+  const index = await response.json();
+  if (!index || typeof index !== 'object') throw new Error('fallback index malformed');
+
+  await VAVOO_KV?.put(FALLBACK_CACHE_KEY, JSON.stringify(index), {
+    expirationTtl: FALLBACK_CACHE_TTL
+  });
+  console.log(`[vavoo] fallback index cached: ${Object.keys(index).length} channels`);
+  return index;
+}
+
+// ============================================================
 // CORS HEADERS
 // ============================================================
 
@@ -404,6 +492,8 @@ function corsHeaders() {
 // WORKER MAIN HANDLER
 // ============================================================
 
+export { normalizeChannelName, isSimilarName, lookupFallbackUrls, refererFor };
+
 export default {
   async fetch(request, env) {
     globalThis.VAVOO_KV = env?.VAVOO_KV;
@@ -417,7 +507,7 @@ export default {
     const path = url.pathname;
 
     // ============================================================
-    // PLAY — resolves /play/<vavooId> to actual stream
+    // PLAY â€” resolves /play/<vavooId> to actual stream
     // ============================================================
     if (path.startsWith('/play/')) {
       const channelId = path.split('/')[2]?.split('|')[0];
@@ -425,30 +515,71 @@ export default {
         return new Response('Channel ID missing', { status: 400, headers: corsHeaders() });
       }
 
+      // Candidate order: vavoo resolve -> curated fallback index -> direct watch url.
+      // Every candidate is actually fetched, because the upstream can return 403
+      // even when the resolve call succeeded â€” that is the case the old code lost.
+      const candidates = [];
+      let channelName = '';
+
       try {
         const channel = await findChannel(channelId);
-        const streamUrl = channel
-          ? await resolveStream(channel)
-          : await resolveDirect(channelId);
-
-        if (!streamUrl) {
-          return new Response(`Stream not found: ${channelId}`, { status: 404, headers: corsHeaders() });
-        }
-
         if (channel) {
-          console.log(`[vavoo] "${channel.name}" resolved: ${describeUrl(streamUrl)}`);
+          channelName = channel.name || '';
+          const resolved = await resolveStream(channel).catch(err => {
+            console.log(`[vavoo] resolve failed: ${err.message}`);
+            return null;
+          });
+          if (resolved) candidates.push({ url: resolved, via: 'vavoo' });
+        }
+      } catch (error) {
+        console.log(`[vavoo] catalog lookup failed: ${error.message}`);
+      }
+
+      try {
+        const index = await getFallbackIndex();
+        for (const url of lookupFallbackUrls(index, channelName)) {
+          candidates.push({ url, via: 'fallback' });
+        }
+      } catch (error) {
+        console.log(`[vavoo] fallback index unavailable: ${error.message}`);
+      }
+
+      if (candidates.length === 0) {
+        const direct = await resolveDirect(channelId).catch(() => null);
+        if (direct) candidates.push({ url: direct, via: 'direct' });
+      }
+
+      let lastStatus = 0;
+      for (const candidate of candidates) {
+        let response;
+        try {
+          response = await proxyStream(baseUrl, candidate.url, request);
+        } catch (error) {
+          console.log(`[vavoo] ${candidate.via} threw: ${error.message}`);
+          lastStatus = 502;
+          continue;
         }
 
-        return await proxyStream(baseUrl, streamUrl, request);
+        if (response.status < 400) {
+          if (candidate.via !== 'vavoo') {
+            console.log(`[vavoo] "${channelName || channelId}" recovered via ${candidate.via}: ${describeUrl(candidate.url)}`);
+          }
+          return response;
+        }
 
-      } catch (error) {
-        console.log(`[vavoo] Play error: ${error.message}`);
-        return new Response(`Stream error: ${error.message}`, { status: 500, headers: corsHeaders() });
+        lastStatus = response.status;
+        console.log(`[vavoo] ${candidate.via} ${describeUrl(candidate.url)} -> ${response.status}, trying next`);
       }
+
+      console.log(`[vavoo] all sources failed for "${channelName || channelId}" (last ${lastStatus})`);
+      return new Response(
+        `No working source for ${channelName || channelId} (last upstream ${lastStatus || 'none'})`,
+        { status: 502, headers: corsHeaders() }
+      );
     }
 
     // ============================================================
-    // HLS PROXY — proxies .m3u8 and .ts segments
+    // HLS PROXY â€” proxies .m3u8 and .ts segments
     // ============================================================
     if (path === '/hls-proxy') {
       const upstreamUrl = url.searchParams.get('url');
@@ -466,8 +597,8 @@ export default {
           return new Response('Unsupported file type', { status: 403, headers: corsHeaders() });
         }
 
-        // Build upstream headers — forward Range for .ts segments
-        const upstreamHeaders = { ...getStreamHeaders() };
+        // Build upstream headers â€” forward Range for .ts segments
+const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
         const rangeHeader = request.headers.get('Range') || request.headers.get('range');
         if (rangeHeader && (ext === '.ts' || ext === '.aac' || ext === '.mp4' || ext === '.m4s')) {
           upstreamHeaders['Range'] = rangeHeader;
@@ -481,7 +612,7 @@ export default {
 
         if (response.status === 403 || response.status === 401) {
           response = await fetchWithRetry(upstreamUrl, {
-            headers: { ...getPlaylistHeaders(), ...(rangeHeader ? { Range: rangeHeader } : {}) },
+            headers: { ...getPlaylistHeaders(upstreamUrl), ...(rangeHeader ? { Range: rangeHeader } : {}) },
             timeout: 15000,
             retries: 1,
           });
@@ -541,12 +672,12 @@ export default {
 };
 
 // ============================================================
-// STREAM PROXY — fetches upstream and rewrites HLS playlists
+// STREAM PROXY â€” fetches upstream and rewrites HLS playlists
 // ============================================================
 
 async function proxyStream(baseUrl, streamUrl, clientRequest) {
   // Forward Range header from client for seeking support
-  const upstreamHeaders = { ...getStreamHeaders() };
+  const upstreamHeaders = { ...getStreamHeaders(streamUrl) };
   const rangeHeader = clientRequest?.headers?.get('Range') || clientRequest?.headers?.get('range');
   if (rangeHeader) {
     upstreamHeaders['Range'] = rangeHeader;
@@ -579,7 +710,7 @@ async function proxyStream(baseUrl, streamUrl, clientRequest) {
     });
   }
 
-  // Binary segment — return with proper headers
+  // Binary segment â€” return with proper headers
   const respHeaders = {
     'Content-Type': contentType || 'video/mp2t',
     'Content-Length': response.headers.get('content-length') || '',
