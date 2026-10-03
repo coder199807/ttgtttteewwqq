@@ -110,8 +110,10 @@ function describeUrl(url) {
   }
 }
 
-function getProxiedUrl(baseUrl, upstreamUrl) {
-  return `${baseUrl}/hls-proxy?url=${encodeURIComponent(upstreamUrl)}`;
+// channelId rides along so an expired segment can be re-resolved at request time.
+function getProxiedUrl(baseUrl, upstreamUrl, channelId) {
+  const id = channelId ? `&id=${encodeURIComponent(channelId)}` : '';
+  return `${baseUrl}/hls-proxy?url=${encodeURIComponent(upstreamUrl)}${id}`;
 }
 
 function shouldRewriteUri(uri) {
@@ -120,34 +122,34 @@ function shouldRewriteUri(uri) {
   return !/^(data|urn|skd):/i.test(trimmed);
 }
 
-function rewritePlaylistUri(baseUrl, playlistBase, uri) {
+function rewritePlaylistUri(baseUrl, playlistBase, uri, channelId) {
   if (!shouldRewriteUri(uri)) return uri;
-  // Already proxied â€” skip
+  // Already proxied — skip
   if (uri.includes('/hls-proxy?')) return uri;
   try {
     const absolute = new URL(uri, playlistBase).toString();
-    return getProxiedUrl(baseUrl, absolute);
+    return getProxiedUrl(baseUrl, absolute, channelId);
   } catch {
     return uri;
   }
 }
 
-function rewritePlaylist(baseUrl, upstreamUrl, playlist) {
+function rewritePlaylist(baseUrl, upstreamUrl, playlist, channelId) {
   return String(playlist)
     .split(/\r?\n/)
     .map(line => {
       const trimmed = line.trim();
       if (!trimmed) return line;
 
-      if (trimmed.startsWith('#')) {
+if (trimmed.startsWith('#')) {
         // Rewrite URI="..." in any HLS tag (KEY, MAP, MEDIA, STREAM-INF, etc.)
         return line.replace(/URI="([^"]+)"/g, (match, uri) => {
-          return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri)}"`;
+          return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri, channelId)}"`;
         });
       }
 
-      // Segment URI line â€” rewrite
-      return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed);
+      // Segment URI line — rewrite
+      return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed, channelId);
     })
     .join('\n');
 }
@@ -475,6 +477,70 @@ async function getFallbackIndex() {
   return index;
 }
 
+// Single place that turns an upstream segment response into a client response.
+// Both /play/ and /hls-proxy must use it — a header dropped here aborts the
+// stream mid-playback, and it used to be duplicated so fixes landed in one path only.
+function segmentResponse(response) {
+  const headers = {
+    'Content-Type': response.headers.get('content-type') || 'video/mp2t',
+    'Accept-Ranges': 'bytes',
+    'Cache-Control': 'public, max-age=86400',
+    ...corsHeaders()
+  };
+
+  // Never send an empty Content-Length: players treat that as a short frame and stop.
+  const length = response.headers.get('content-length');
+  if (length) headers['Content-Length'] = length;
+
+  // Dropped headers corrupt the body: gzip segments without this header never decode.
+  const encoding = response.headers.get('content-encoding');
+  if (encoding) headers['Content-Encoding'] = encoding;
+
+  const range = response.headers.get('content-range');
+  if (range) headers['Content-Range'] = range;
+
+  return new Response(response.body, { status: response.status, headers });
+}
+
+// ==================================================================
+// HLS PLAYLIST RESPONSE
+// ==================================================================
+
+function playlistResponse(playlist) {
+  return new Response(playlist, {
+    headers: {
+      'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      ...corsHeaders()
+    }
+  });
+}
+
+async function streamUrlForChannel(channelId) {
+  const channel = await findChannel(channelId);
+  if (!channel) return null;
+  return await resolveStream(channel);
+}
+
+// Vavoo stream URLs carry an expiry. When a segment starts 403ing the token is
+// gone, and no amount of retrying that URL helps — only a fresh resolve does.
+// One redirect per channel per window, otherwise a playlist that keeps listing
+// the same dead segment loops forever.
+const REDIRECT_COOLDOWN_MS = 60000;
+
+async function claimRedirectBudget(channelId) {
+  const key = `redir:${channelId}`;
+  try {
+    const last = Number(await VAVOO_KV?.get(key));
+    if (last && Date.now() - last < REDIRECT_COOLDOWN_MS) return false;
+    await VAVOO_KV?.put(key, String(Date.now()), { expirationTtl: 120 });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 // ============================================================
 // CORS HEADERS
 // ============================================================
@@ -529,7 +595,7 @@ export default {
             console.log(`[vavoo] resolve failed: ${err.message}`);
             return null;
           });
-          if (resolved) candidates.push({ url: resolved, via: 'vavoo' });
+          if (resolved) candidates.push({ url: resolved, via: 'vavoo', channelId });
         }
       } catch (error) {
         console.log(`[vavoo] catalog lookup failed: ${error.message}`);
@@ -538,7 +604,7 @@ export default {
       try {
         const index = await getFallbackIndex();
         for (const url of lookupFallbackUrls(index, channelName)) {
-          candidates.push({ url, via: 'fallback' });
+          candidates.push({ url, via: 'fallback', channelId });
         }
       } catch (error) {
         console.log(`[vavoo] fallback index unavailable: ${error.message}`);
@@ -546,14 +612,14 @@ export default {
 
       if (candidates.length === 0) {
         const direct = await resolveDirect(channelId).catch(() => null);
-        if (direct) candidates.push({ url: direct, via: 'direct' });
+        if (direct) candidates.push({ url: direct, via: 'direct', channelId });
       }
 
       let lastStatus = 0;
       for (const candidate of candidates) {
         let response;
         try {
-          response = await proxyStream(baseUrl, candidate.url, request);
+          response = await proxyStream(baseUrl, candidate.url, request, candidate.channelId);
         } catch (error) {
           console.log(`[vavoo] ${candidate.via} threw: ${error.message}`);
           lastStatus = 502;
@@ -581,8 +647,9 @@ export default {
     // ============================================================
     // HLS PROXY â€” proxies .m3u8 and .ts segments
     // ============================================================
-    if (path === '/hls-proxy') {
+if (path === '/hls-proxy') {
       const upstreamUrl = url.searchParams.get('url');
+      const channelId = url.searchParams.get('id');
       if (!upstreamUrl) {
         return new Response('URL parameter missing', { status: 400, headers: corsHeaders() });
       }
@@ -597,8 +664,8 @@ export default {
           return new Response('Unsupported file type', { status: 403, headers: corsHeaders() });
         }
 
-        // Build upstream headers â€” forward Range for .ts segments
-const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
+        // Build upstream headers — forward Range for .ts segments
+        const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
         const rangeHeader = request.headers.get('Range') || request.headers.get('range');
         if (rangeHeader && (ext === '.ts' || ext === '.aac' || ext === '.mp4' || ext === '.m4s')) {
           upstreamHeaders['Range'] = rangeHeader;
@@ -620,6 +687,24 @@ const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
 
         console.log(`[vavoo] hls-proxy ${describeUrl(upstreamUrl)} -> ${response.status}`);
 
+        // Still blocked after the header retry: the token is dead, not the request.
+        // Re-resolve and send the player back for a playlist with fresh segment URLs.
+        if (!response.ok && (response.status === 403 || response.status === 401) && channelId) {
+          const fresh = await streamUrlForChannel(channelId).catch(() => null);
+          if (fresh && await claimRedirectBudget(channelId)) {
+            console.log(`[vavoo] token expired on ${describeUrl(upstreamUrl)}, re-resolved for ${channelId}`);
+            return new Response(null, {
+              status: 302,
+              headers: {
+                Location: `${baseUrl}/play/${encodeURIComponent(channelId)}`,
+                'Cache-Control': 'no-store',
+                ...corsHeaders()
+              }
+            });
+          }
+          console.log(`[vavoo] re-resolve gave nothing for ${channelId}, passing ${response.status} through`);
+        }
+
         if (!response.ok) {
           return new Response(`Upstream error: ${response.status}`, { status: response.status, headers: corsHeaders() });
         }
@@ -627,33 +712,10 @@ const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
         const contentType = response.headers.get('content-type') || '';
 
         if (isM3u8Response(upstreamUrl, contentType)) {
-          const playlist = await response.text();
-          const rewritten = rewritePlaylist(baseUrl, upstreamUrl, playlist);
-          return new Response(rewritten, {
-            headers: {
-              'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
-              'Cache-Control': 'no-cache, no-store, must-revalidate',
-              'Pragma': 'no-cache',
-              ...corsHeaders()
-            }
-          });
+          return playlistResponse(rewritePlaylist(baseUrl, upstreamUrl, await response.text(), channelId));
         }
 
-        // Segment / binary response
-        const respHeaders = {
-          'Content-Type': contentType || 'video/mp2t',
-          'Content-Length': response.headers.get('content-length') || '',
-          'Accept-Ranges': 'bytes',
-          'Cache-Control': 'public, max-age=86400',
-          ...corsHeaders()
-        };
-        const cr = response.headers.get('content-range');
-        if (cr) respHeaders['Content-Range'] = cr;
-
-        return new Response(response.body, {
-          status: response.status,
-          headers: respHeaders,
-        });
+        return segmentResponse(response);
 
       } catch (error) {
         console.log(`[vavoo] Proxy error: ${error.message}`);
@@ -675,7 +737,7 @@ const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
 // STREAM PROXY â€” fetches upstream and rewrites HLS playlists
 // ============================================================
 
-async function proxyStream(baseUrl, streamUrl, clientRequest) {
+async function proxyStream(baseUrl, streamUrl, clientRequest, channelId) {
   // Forward Range header from client for seeking support
   const upstreamHeaders = { ...getStreamHeaders(streamUrl) };
   const rangeHeader = clientRequest?.headers?.get('Range') || clientRequest?.headers?.get('range');
@@ -698,31 +760,8 @@ async function proxyStream(baseUrl, streamUrl, clientRequest) {
   const contentType = response.headers.get('content-type') || '';
 
   if (isM3u8Response(streamUrl, contentType)) {
-    const playlist = await response.text();
-    const rewritten = rewritePlaylist(baseUrl, streamUrl, playlist);
-    return new Response(rewritten, {
-      headers: {
-        'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        ...corsHeaders()
-      }
-    });
+    return playlistResponse(rewritePlaylist(baseUrl, streamUrl, await response.text(), channelId));
   }
 
-  // Binary segment â€” return with proper headers
-  const respHeaders = {
-    'Content-Type': contentType || 'video/mp2t',
-    'Content-Length': response.headers.get('content-length') || '',
-    'Accept-Ranges': 'bytes',
-    'Cache-Control': 'public, max-age=86400',
-    ...corsHeaders()
-  };
-  const cr = response.headers.get('content-range');
-  if (cr) respHeaders['Content-Range'] = cr;
-
-  return new Response(response.body, {
-    status: response.status,
-    headers: respHeaders,
-  });
+  return segmentResponse(response);
 }
