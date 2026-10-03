@@ -36,15 +36,17 @@ function hostOf(urlString) {
   }
 }
 
-// Origin/Referer must match the upstream or foreign CDNs reject the request.
-// Sending the vavoo origin to a fallback CDN was silently killing every fallback.
-function refererFor(urlString) {
+// Origin/Referer must match where the URL came from, not what the host is called.
+// A resolved vavoo stream lives on a third-party CDN that REQUIRES the vavoo
+// Origin; only curated fallbacks must not receive it.
+function refererFor(urlString, via) {
   const host = hostOf(urlString);
   if (!host) return {};
-  if (VAVOO_HOSTS.has(host)) {
-    return { 'Origin': 'https://vavoo.to', 'Referer': 'https://vavoo.to/' };
-  }
-  return { 'Referer': `https://${host}/` };
+  // Curated fallbacks must not receive the vavoo Origin.
+  if (via === 'fallback') return { 'Referer': `https://${host}/` };
+  // Everything the vavoo resolver handed us keeps the vavoo Origin, whatever
+  // CDN it lives on.
+  return { 'Origin': 'https://vavoo.to', 'Referer': 'https://vavoo.to/' };
 }
 
 function pathExtension(urlString) {
@@ -61,23 +63,23 @@ function pathExtension(urlString) {
 // HEADER BUILDERS
 // ============================================================
 
-function getStreamHeaders(upstreamUrl) {
+function getStreamHeaders(upstreamUrl, via) {
   return {
     'User-Agent': STREAM_USER_AGENT,
     'Accept': '*/*',
     'Accept-Language': LANGUAGE,
     'Connection': 'keep-alive',
-    ...refererFor(upstreamUrl),
+    ...refererFor(upstreamUrl, via),
   };
 }
 
-function getPlaylistHeaders(upstreamUrl) {
+function getPlaylistHeaders(upstreamUrl, via) {
   return {
     'User-Agent': STREAM_USER_AGENT,
     'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
     'Accept-Language': LANGUAGE,
     'Connection': 'keep-alive',
-    ...refererFor(upstreamUrl),
+    ...refererFor(upstreamUrl, via),
   };
 }
 
@@ -111,9 +113,11 @@ function describeUrl(url) {
 }
 
 // channelId rides along so an expired segment can be re-resolved at request time.
-function getProxiedUrl(baseUrl, upstreamUrl, channelId) {
+// via rides along so a segment keeps the Origin its own source requires.
+function getProxiedUrl(baseUrl, upstreamUrl, channelId, via) {
   const id = channelId ? `&id=${encodeURIComponent(channelId)}` : '';
-  return `${baseUrl}/hls-proxy?url=${encodeURIComponent(upstreamUrl)}${id}`;
+  const src = via && via !== 'vavoo' ? `&v=${encodeURIComponent(via)}` : '';
+  return `${baseUrl}/hls-proxy?url=${encodeURIComponent(upstreamUrl)}${id}${src}`;
 }
 
 function shouldRewriteUri(uri) {
@@ -122,19 +126,19 @@ function shouldRewriteUri(uri) {
   return !/^(data|urn|skd):/i.test(trimmed);
 }
 
-function rewritePlaylistUri(baseUrl, playlistBase, uri, channelId) {
+function rewritePlaylistUri(baseUrl, playlistBase, uri, channelId, via) {
   if (!shouldRewriteUri(uri)) return uri;
-  // Already proxied — skip
+  // Already proxied - skip
   if (uri.includes('/hls-proxy?')) return uri;
   try {
     const absolute = new URL(uri, playlistBase).toString();
-    return getProxiedUrl(baseUrl, absolute, channelId);
+    return getProxiedUrl(baseUrl, absolute, channelId, via);
   } catch {
     return uri;
   }
 }
 
-function rewritePlaylist(baseUrl, upstreamUrl, playlist, channelId) {
+function rewritePlaylist(baseUrl, upstreamUrl, playlist, channelId, via) {
   return String(playlist)
     .split(/\r?\n/)
     .map(line => {
@@ -144,12 +148,12 @@ function rewritePlaylist(baseUrl, upstreamUrl, playlist, channelId) {
 if (trimmed.startsWith('#')) {
         // Rewrite URI="..." in any HLS tag (KEY, MAP, MEDIA, STREAM-INF, etc.)
         return line.replace(/URI="([^"]+)"/g, (match, uri) => {
-          return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri, channelId)}"`;
+          return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri, channelId, via)}"`;
         });
       }
 
       // Segment URI line — rewrite
-      return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed, channelId);
+      return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed, channelId, via);
     })
     .join('\n');
 }
@@ -619,7 +623,7 @@ export default {
       for (const candidate of candidates) {
         let response;
         try {
-          response = await proxyStream(baseUrl, candidate.url, request, candidate.channelId);
+          response = await proxyStream(baseUrl, candidate.url, request, candidate.channelId, candidate.via);
         } catch (error) {
           console.log(`[vavoo] ${candidate.via} threw: ${error.message}`);
           lastStatus = 502;
@@ -650,6 +654,7 @@ export default {
 if (path === '/hls-proxy') {
       const upstreamUrl = url.searchParams.get('url');
       const channelId = url.searchParams.get('id');
+      const via = url.searchParams.get('v') || 'vavoo';
       if (!upstreamUrl) {
         return new Response('URL parameter missing', { status: 400, headers: corsHeaders() });
       }
@@ -665,7 +670,7 @@ if (path === '/hls-proxy') {
         }
 
         // Build upstream headers — forward Range for .ts segments
-        const upstreamHeaders = { ...getStreamHeaders(upstreamUrl) };
+        const upstreamHeaders = { ...getStreamHeaders(upstreamUrl, via) };
         const rangeHeader = request.headers.get('Range') || request.headers.get('range');
         if (rangeHeader && (ext === '.ts' || ext === '.aac' || ext === '.mp4' || ext === '.m4s')) {
           upstreamHeaders['Range'] = rangeHeader;
@@ -679,7 +684,7 @@ if (path === '/hls-proxy') {
 
         if (response.status === 403 || response.status === 401) {
           response = await fetchWithRetry(upstreamUrl, {
-            headers: { ...getPlaylistHeaders(upstreamUrl), ...(rangeHeader ? { Range: rangeHeader } : {}) },
+            headers: { ...getPlaylistHeaders(upstreamUrl, via), ...(rangeHeader ? { Range: rangeHeader } : {}) },
             timeout: 15000,
             retries: 1,
           });
@@ -712,7 +717,7 @@ if (path === '/hls-proxy') {
         const contentType = response.headers.get('content-type') || '';
 
         if (isM3u8Response(upstreamUrl, contentType)) {
-          return playlistResponse(rewritePlaylist(baseUrl, upstreamUrl, await response.text(), channelId));
+          return playlistResponse(rewritePlaylist(baseUrl, upstreamUrl, await response.text(), channelId, via));
         }
 
         return segmentResponse(response);
@@ -737,9 +742,9 @@ if (path === '/hls-proxy') {
 // STREAM PROXY â€” fetches upstream and rewrites HLS playlists
 // ============================================================
 
-async function proxyStream(baseUrl, streamUrl, clientRequest, channelId) {
+async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via) {
   // Forward Range header from client for seeking support
-  const upstreamHeaders = { ...getStreamHeaders(streamUrl) };
+  const upstreamHeaders = { ...getStreamHeaders(streamUrl, via) };
   const rangeHeader = clientRequest?.headers?.get('Range') || clientRequest?.headers?.get('range');
   if (rangeHeader) {
     upstreamHeaders['Range'] = rangeHeader;
@@ -760,7 +765,7 @@ async function proxyStream(baseUrl, streamUrl, clientRequest, channelId) {
   const contentType = response.headers.get('content-type') || '';
 
   if (isM3u8Response(streamUrl, contentType)) {
-    return playlistResponse(rewritePlaylist(baseUrl, streamUrl, await response.text(), channelId));
+    return playlistResponse(rewritePlaylist(baseUrl, streamUrl, await response.text(), channelId, via));
   }
 
   return segmentResponse(response);
