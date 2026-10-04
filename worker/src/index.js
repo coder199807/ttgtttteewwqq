@@ -584,8 +584,7 @@ export default {
     const baseUrl = `${url.protocol}//${url.host}`;
     const path = url.pathname;
 
-    // ============================================================
-    // PLAY â€” resolves /play/<vavooId> to actual stream
+    // PLAY — resolves /play/<vavooId> to actual stream
     // ============================================================
     if (path.startsWith('/play/')) {
       const channelId = path.split('/')[2]?.split('|')[0];
