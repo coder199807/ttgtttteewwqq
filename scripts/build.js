@@ -362,13 +362,18 @@ async function pruneIndex(index) {
 // playlist says just "NDR", and the 0.7 fuzzy ratio rejects a 3-char name against
 // an 11-char key. Register the first token as an alias, but only on a free slot:
 // that keeps ATV from ever resolving to ATV Alanya, which must never match.
+// Two-letter heads are ambiguous ("br" would grab bric/brtk/bridgeport), so only
+// these German public broadcasters are allowed to claim a two-letter alias.
+const SHORT_ALIAS_ALLOW = new Set(["br", "hr", "swr", "mdr", "ndr", "wdr"]);
+
 function addFirstTokenAliases(index) {
   let added = 0;
   for (const [key, entry] of [...index]) {
     const tokens = key.split(" ").filter(Boolean);
     if (tokens.length < 2) continue;
     const head = tokens[0];
-    if (head.length < 3) continue;
+    const allowed = head.length >= 3 || SHORT_ALIAS_ALLOW.has(head);
+    if (!allowed) continue;
     if (index.has(head)) continue;
     index.set(head, entry);
     added++;
