@@ -24,6 +24,8 @@ const IPTVORG_CHANNELS_URL =
   process.env.IPTVORG_CHANNELS_URL || "https://iptv-org.github.io/api/channels.json";
 const IPTVORG_LOGOS_URL =
   process.env.IPTVORG_LOGOS_URL || "https://iptv-org.github.io/api/logos.json";
+const IPTVORG_STREAMS_URL =
+  process.env.IPTVORG_STREAMS_URL || "https://iptv-org.github.io/api/streams.json";
 
 // -- Configuration --
 const FETCH_TIMEOUT_MS = 20000;
@@ -210,6 +212,44 @@ async function loadFallbackIndex() {
     }
   } catch (err) {
     console.warn(`    livetv m3u failed: ${err.message}`);
+  }
+
+  // iptv-org is the only source carrying real direct URLs for German channels,
+  // which the Turkish curated lists never covered. streams.json holds the urls,
+  // channels.json the country and closed flags - they join on channel id.
+  // Fills gaps only, curated entries keep priority.
+  try {
+    const [channels, streams] = await Promise.all([
+      fetchJson(IPTVORG_CHANNELS_URL),
+      fetchJson(IPTVORG_STREAMS_URL),
+    ]);
+    const meta = new Map();
+    for (const c of channels) {
+      if (c && c.id) meta.set(c.id, c);
+    }
+
+    let added = 0;
+    for (const s of streams) {
+      if (!s?.channel || s.closed) continue;
+      if (!/^https?:\/\//i.test(s.url || "")) continue;
+      const c = meta.get(s.channel);
+      if (!c || c.closed) continue;
+      if (c.country !== "DE" && c.country !== "TR") continue;
+      if (isBlockedChannel(c.name)) continue;
+
+      const key = normalizeChannelName(c.name);
+      if (!key) continue;
+      const existing = _fallbackIndex.get(key);
+      if (!existing) {
+        _fallbackIndex.set(key, { name: c.name, streams: [s.url] });
+        added++;
+      } else if (existing.streams.length < FALLBACK_URLS_PER_CHANNEL) {
+        existing.streams.push(s.url);
+      }
+    }
+    console.log(`    iptv-org TR/DE: ${added} channels added, gaps filled`);
+  } catch (err) {
+    console.warn(`    iptv-org failed: ${err.message}`);
   }
 
   // Hand-curated overrides win over upstream data

@@ -18,10 +18,6 @@ const ALLOWED_EXTENSIONS = new Set([
   '.m3u8', '.ts', '.aac', '.mp3', '.m4s', '.mp4', '.m4a', '.key', '.vtt', '.webvtt'
 ]);
 
-// Standard media player User-Agent â€” not blocked by CDNs
-const STREAM_USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
-
 const FALLBACK_INDEX_URL =
   'https://raw.githubusercontent.com/coder199807/ttgtttteewwqq/main/fallbacks.json';
 const FALLBACK_CACHE_KEY = 'fallbacks';
@@ -42,8 +38,8 @@ function hostOf(urlString) {
 function refererFor(urlString, via) {
   const host = hostOf(urlString);
   if (!host) return {};
-  // Curated fallbacks must not receive the vavoo Origin.
-  if (via === 'fallback') return { 'Referer': `https://${host}/` };
+  // Curated fallbacks and direct watch urls must not receive the vavoo Origin.
+  if (isForeignSource(via)) return { 'Referer': `https://${host}/` };
   // Everything the vavoo resolver handed us keeps the vavoo Origin, whatever
   // CDN it lives on.
   return { 'Origin': 'https://vavoo.to', 'Referer': 'https://vavoo.to/' };
@@ -63,22 +59,34 @@ function pathExtension(urlString) {
 // HEADER BUILDERS
 // ============================================================
 
+// The vavoo CDN expects the vavoo client's own User-Agent. The running worker
+// shipped distinct UAs for streams vs playlists on purpose - do not flatten these
+// to a browser UA, segments start 403ing.
+const VAVOO_STREAM_UA = 'VAVOO/2.6';
+const VAVOO_PLAYLIST_UA = 'libmpv';
+const FOREIGN_UA =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+
+function isForeignSource(via) {
+  return via === 'fallback' || via === 'direct';
+}
+
 function getStreamHeaders(upstreamUrl, via) {
   return {
-    'User-Agent': STREAM_USER_AGENT,
+    'User-Agent': isForeignSource(via) ? FOREIGN_UA : VAVOO_STREAM_UA,
     'Accept': '*/*',
     'Accept-Language': LANGUAGE,
-    'Connection': 'keep-alive',
+    'Connection': 'close',
     ...refererFor(upstreamUrl, via),
   };
 }
 
 function getPlaylistHeaders(upstreamUrl, via) {
   return {
-    'User-Agent': STREAM_USER_AGENT,
+    'User-Agent': isForeignSource(via) ? FOREIGN_UA : VAVOO_PLAYLIST_UA,
     'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
     'Accept-Language': LANGUAGE,
-    'Connection': 'keep-alive',
+    'Connection': 'close',
     ...refererFor(upstreamUrl, via),
   };
 }
@@ -562,7 +570,7 @@ function corsHeaders() {
 // WORKER MAIN HANDLER
 // ============================================================
 
-export { normalizeChannelName, isSimilarName, lookupFallbackUrls, refererFor };
+export { getStreamHeaders, getPlaylistHeaders, normalizeChannelName, isSimilarName, lookupFallbackUrls, refererFor };
 
 export default {
   async fetch(request, env) {
@@ -716,6 +724,12 @@ if (path === '/hls-proxy') {
 
         const contentType = response.headers.get('content-type') || '';
 
+        // Never pass an HTML error page through as a segment - the player hangs.
+        if (/^\s*text\/html/i.test(contentType)) {
+          console.log(`[vavoo] hls-proxy ${describeUrl(upstreamUrl)} returned HTML, not a stream`);
+          return new Response('Upstream returned HTML, not a stream', { status: 502, headers: corsHeaders() });
+        }
+
         if (isM3u8Response(upstreamUrl, contentType)) {
           return playlistResponse(rewritePlaylist(baseUrl, upstreamUrl, await response.text(), channelId, via));
         }
@@ -763,6 +777,14 @@ async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via) {
   }
 
   const contentType = response.headers.get('content-type') || '';
+
+  // A 200 that is not a stream is worse than a 403: the player gets HTML where
+  // it expects HLS and waits forever for a playlist that never arrives. Fail the
+  // candidate so /play/ moves on to the next source.
+  if (/^\s*text\/html/i.test(contentType)) {
+    console.log(`[vavoo] ${via} ${describeUrl(streamUrl)} returned HTML, not a stream`);
+    return new Response('Upstream returned HTML, not a stream', { status: 502, headers: corsHeaders() });
+  }
 
   if (isM3u8Response(streamUrl, contentType)) {
     return playlistResponse(rewritePlaylist(baseUrl, streamUrl, await response.text(), channelId, via));
