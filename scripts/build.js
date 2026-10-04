@@ -283,12 +283,82 @@ function pickFallbackUrls(entry) {
     .slice(0, FALLBACK_URLS_PER_CHANNEL);
 }
 
+const PRUNE_ENABLED = process.env.PRUNE_FALLBACKS !== "0";
+const PRUNE_CONCURRENCY = 24;
+const PRUNE_TIMEOUT_MS = 6000;
+const PROBE_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+
+// A fallback the Worker cannot reach is worse than none: it burns a fetch and
+// still returns 403. 58% of the index was a single dead host and for most
+// channels it was the only entry, so probe once per build and ship what answers.
+async function probeFallbackUrl(url) {
+  try {
+    const res = await fetch(url, {
+      redirect: "follow",
+      signal: AbortSignal.timeout(PRUNE_TIMEOUT_MS),
+      headers: { "User-Agent": PROBE_UA, Referer: new URL(url).origin + "/" },
+    });
+    if (!res.ok) return false;
+    const ct = res.headers.get("content-type") || "";
+    return /mpegurl|m3u/i.test(ct) || /\.m3u8(\?|$)/i.test(url);
+  } catch {
+    return false;
+  }
+}
+
+async function runPool(items, limit, workerFn) {
+  const results = new Array(items.length);
+  let next = 0;
+  const runners = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (next < items.length) {
+      const i = next++;
+      results[i] = await workerFn(items[i], i);
+    }
+  });
+  await Promise.all(runners);
+  return results;
+}
+
+async function pruneIndex(index) {
+  const urls = [...new Set(index.values().flatMap((e) => pickFallbackUrls(e)))];
+  console.log(`  probing ${urls.length} unique fallback urls...`);
+  const started = Date.now();
+
+  const verdicts = await runPool(urls, PRUNE_CONCURRENCY, probeFallbackUrl);
+  const alive = new Set(urls.filter((_, i) => verdicts[i]));
+
+  const pruned = new Map();
+  let kept = 0;
+  for (const [key, entry] of index) {
+    const good = pickFallbackUrls(entry).filter((u) => alive.has(u));
+    if (good.length) {
+      pruned.set(key, { name: entry.name, streams: good });
+      kept += good.length;
+    }
+  }
+  const hosts = {};
+  for (const u of alive) {
+    try {
+      const h = new URL(u).hostname;
+      hosts[h] = (hosts[h] || 0) + 1;
+    } catch {}
+  }
+  const top = Object.entries(hosts).sort((a, b) => b[1] - a[1])[0];
+  console.log(
+    `  alive: ${alive.size}/${urls.length} urls in ${((Date.now() - started) / 1000).toFixed(0)}s` +
+      (top ? `, top host ${top[0]} ${((top[1] / alive.size) * 100).toFixed(0)}%` : "")
+  );
+  return pruned;
+}
+
 // The Worker owns the runtime chain (vavoo -> this index -> original).
 // Build just has to ship the index; it must not try to resolve channels itself.
 async function writeFallbackIndex() {
   const index = await loadFallbackIndex();
+  const finalIndex = PRUNE_ENABLED ? await pruneIndex(index) : index;
   const out = {};
-  for (const [key, entry] of index) {
+  for (const [key, entry] of finalIndex) {
     const urls = pickFallbackUrls(entry);
     if (urls.length) out[key] = urls;
   }
