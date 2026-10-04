@@ -444,6 +444,8 @@ function normalizeChannelName(name) {
     .replace(/\u0131/g, 'i')
     .replace(/\u00f6/g, 'o')
     .replace(/\u00e7/g, 'c')
+    .replace(/\s-\s[a-z]{2,5}$/, '')
+    .replace(/[-_/]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
