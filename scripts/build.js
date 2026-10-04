@@ -283,7 +283,11 @@ function pickFallbackUrls(entry) {
     .slice(0, FALLBACK_URLS_PER_CHANNEL);
 }
 
-const PRUNE_ENABLED = process.env.PRUNE_FALLBACKS !== "0";
+// Opt-in: whether a url answers depends on the network probing it. GitHub Actions
+// and Cloudflare Workers are both datacenter egress and get blocked by some CDNs
+// that work fine from a home connection, so pruning by default threw away sources
+// that are perfectly usable from elsewhere. A dead fallback only costs one fetch.
+const PRUNE_ENABLED = process.env.PRUNE_FALLBACKS === "1";
 const PRUNE_CONCURRENCY = 24;
 const PRUNE_TIMEOUT_MS = 6000;
 const PROBE_UA =
