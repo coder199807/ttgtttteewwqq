@@ -358,10 +358,29 @@ async function pruneIndex(index) {
   return pruned;
 }
 
+// iptv-org lists regional variants ("NDR Hamburg", "NDR Niedersachsen") while the
+// playlist says just "NDR", and the 0.7 fuzzy ratio rejects a 3-char name against
+// an 11-char key. Register the first token as an alias, but only on a free slot:
+// that keeps ATV from ever resolving to ATV Alanya, which must never match.
+function addFirstTokenAliases(index) {
+  let added = 0;
+  for (const [key, entry] of [...index]) {
+    const tokens = key.split(" ").filter(Boolean);
+    if (tokens.length < 2) continue;
+    const head = tokens[0];
+    if (head.length < 3) continue;
+    if (index.has(head)) continue;
+    index.set(head, entry);
+    added++;
+  }
+  return added;
+}
+
 // The Worker owns the runtime chain (vavoo -> this index -> original).
 // Build just has to ship the index; it must not try to resolve channels itself.
 async function writeFallbackIndex() {
   const index = await loadFallbackIndex();
+  console.log(`  first-token aliases: ${addFirstTokenAliases(index)}`);
   const finalIndex = PRUNE_ENABLED ? await pruneIndex(index) : index;
   const out = {};
   for (const [key, entry] of finalIndex) {
