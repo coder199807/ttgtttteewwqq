@@ -12,8 +12,7 @@
     "https://ceokzokgtd.erbvr.com/tabiitv/tabiitv_1080p.m3u8"
   ],
   "trt 1": [
-    "https://trt.daioncdn.net/trt-1/master_1080p.m3u8?&sid=7ga96042p49d&app=ed3904e8-737b-4a5e-856a-1b0d7a0a94e2&ce=2",
-    "https://tv-trt1.medya.trt.com.tr/master.m3u8"
+    "https://trt1live.ercdn.net/trt1hd/master_1080p.m3u8"
   ],
   "trt türk": [
     "https://tv-trtturk.medya.trt.com.tr/master.m3u8"
@@ -108,5 +107,8 @@
   ],
   "telekom sport": [
     "https://turkmedya-live.ercdn.net/tv24/tv24_720p.m3u8"
+  ],
+  "tabii spor 1": [
+    "https://trt.daioncdn.net/tabiisporeu/tabiisporeu_1080p.m3u8"
   ]
 }
