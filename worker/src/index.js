@@ -427,7 +427,7 @@ function normalizeChannelName(name) {
     .toLowerCase()
     .replace(/^\s*(?:4k\s*tr|4k|tr|de|at|ch)\s*:\s*/, '')
     .replace(/\s*\.(?:b|c|s)\b/g, '')
-    .replace(/\[[^\]]*\]/g, '')
+    .replace(/[\[\]]+/g, ' ').replace(/\[[^\]]*\]/g, '')
     .replace(/\([^)]*\)/g, '')
     .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/g, '')
     .replace(/\u00fc/g, 'u')
