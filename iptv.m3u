@@ -1,4 +1,9 @@
 #EXTM3U
+#EXTINF:-1 tvg-name="[[[ TELEKOM SPORT ]]] .b" tvg-logo="" group-title="Spor" repair="proxy",[[[ TELEKOM SPORT ]]] .b
+#EXTGRP:Spor
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2183387385c42f139237
 #EXTINF:-1 tvg-name="✦ ✦ NETFLIX STORE ✦ ✦ .b" tvg-logo="" group-title="Sonstige" repair="proxy",✦ ✦ NETFLIX STORE ✦ ✦ .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -149,6 +154,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1771137539fa2adff8ebd5
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/201905527745e40d41f657
+#EXTINF:-1 tvg-name="4K TR: AK T TV HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",4K TR: AK T TV HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/344558568784e9a5583953
 #EXTINF:-1 tvg-name="4K TR: ATV HD .b" tvg-logo="https://i.imgur.com/HyVUwFC.png" group-title="Ulusal" repair="proxy",4K TR: ATV HD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -274,11 +284,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/11966263871c480a66a299
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4253369376912583d237b6
-#EXTINF:-1 tvg-name="4K TR: HALK TV .b" tvg-logo="https://i.imgur.com/xM0HA30.png" group-title="Haber" repair="proxy",4K TR: HALK TV .b
-#EXTGRP:Haber
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1320391955e6c5bb1bedb6
 #EXTINF:-1 tvg-name="4K TR: KANAL 7 HD .b" tvg-logo="https://i.imgur.com/0gq9xOm.png" group-title="Ulusal" repair="proxy",4K TR: KANAL 7 HD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -289,6 +294,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/109266795988e12fc489b6
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/16776796840463f6dcff41
+#EXTINF:-1 tvg-name="4K TR: KOZA TV .b" tvg-logo="https://i.imgur.com/jeFTUGp.png" group-title="Sonstige" repair="proxy",4K TR: KOZA TV .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2273502354418dc2fc25e3
 #EXTINF:-1 tvg-name="4K TR: KRT TV .b" tvg-logo="" group-title="Sonstige" repair="proxy",4K TR: KRT TV .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -339,7 +349,7 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/5455481338d50b246e682
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/988691374172058ef3d50
-#EXTINF:-1 tvg-name="4K TR: NOW HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",4K TR: NOW HD .b
+#EXTINF:-1 tvg-name="4K TR: NOW HD .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Sonstige" repair="proxy",4K TR: NOW HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
@@ -464,11 +474,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2429298798dcd505d1ab4b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/219297129315c074c03f8e
-#EXTINF:-1 tvg-name="4K TR: TELE 1 .b" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/4/43/Tele1_logosu.png" group-title="Sonstige" repair="proxy",4K TR: TELE 1 .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/298064721bb04fcaf61ab
 #EXTINF:-1 tvg-name="4K TR: TEVE2 HD .b" tvg-logo="https://i.imgur.com/rsoSLih.png" group-title="Sonstige" repair="proxy",4K TR: TEVE2 HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -569,11 +574,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/18867436247890d4c5bd71
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1738739277a6ed7f08cfb3
-#EXTINF:-1 tvg-name="4K TR: VIASAT EXPLORE .b" tvg-logo="https://i.imgur.com/DyT5pKB.png" group-title="Belgesel" repair="proxy",4K TR: VIASAT EXPLORE .b
-#EXTGRP:Belgesel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1451950581e94c106d97f3
 #EXTINF:-1 tvg-name="4K TR: VIASAT HISTORY HD .b" tvg-logo="https://i.imgur.com/wRP9XA7.png" group-title="Belgesel" repair="proxy",4K TR: VIASAT HISTORY HD .b
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
@@ -734,11 +734,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3055235391a02f432de784
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2080590427f1600b6211f
-#EXTINF:-1 tvg-name="AFYON T RK TV .b" tvg-logo="" group-title="Yerel" repair="proxy",AFYON T RK TV .b
-#EXTGRP:Yerel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/145755891783da06dac9f
 #EXTINF:-1 tvg-name="AFYON TURK .s" tvg-logo="" group-title="Yerel" repair="proxy",AFYON TURK .s
 #EXTGRP:Yerel
 #EXTVLCOPT:network-caching=1000
@@ -759,6 +754,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/29298467541e1d36e1991
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4093001640e8d2942477e2
+#EXTINF:-1 tvg-name="AKIT TV .b" tvg-logo="https://i.imgur.com/oGto929.png" group-title="Haber" repair="proxy",AKIT TV .b
+#EXTGRP:Haber
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2702391715e85c3d67a4ee
 #EXTINF:-1 tvg-name="AKIT TV .c" tvg-logo="https://i.imgur.com/oGto929.png" group-title="Haber" repair="proxy",AKIT TV .c
 #EXTGRP:Haber
 #EXTVLCOPT:network-caching=1000
@@ -769,6 +769,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/194868101172e4362de24e
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1862240206bdae999f9066
+#EXTINF:-1 tvg-name="AKLILI TV .s" tvg-logo="" group-title="Sonstige" repair="proxy",AKLILI TV .s
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3737299250dadf300b85e4
 #EXTINF:-1 tvg-name="AKSARAY KANAL 68 .b" tvg-logo="" group-title="Yerel" repair="proxy",AKSARAY KANAL 68 .b
 #EXTGRP:Yerel
 #EXTVLCOPT:network-caching=1000
@@ -969,11 +974,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1561291962cf8a0b135099
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/5117383846e61d78f1f9a
-#EXTINF:-1 tvg-name="ARD ALPHA .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/ARD_alpha.svg/960px-ARD_alpha.svg.png" group-title="Almanya TV" repair="proxy",ARD ALPHA .b
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/23303429766cb1c7046b8e
 #EXTINF:-1 tvg-name="ARD ALPHA .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/ARD_alpha.svg/960px-ARD_alpha.svg.png" group-title="Almanya TV" repair="proxy",ARD ALPHA .c
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -1019,6 +1019,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/939454216138fadd4971d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1216857802522b47439ecd
+#EXTINF:-1 tvg-name="ARTE FHD .b" tvg-logo="https://i.imgur.com/ecXMjNl.png" group-title="Almanya TV" repair="proxy",ARTE FHD .b
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/7119163154f1dbb121605
 #EXTINF:-1 tvg-name="ARTE HD .b" tvg-logo="https://i.imgur.com/ecXMjNl.png" group-title="Almanya TV" repair="proxy",ARTE HD .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -1099,11 +1104,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/129909794290450d5e2d1
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/35111504916c34560a3894
-#EXTINF:-1 tvg-name="ATV HEVC .b" tvg-logo="https://i.imgur.com/HyVUwFC.png" group-title="Ulusal" repair="proxy",ATV HEVC .b
-#EXTGRP:Ulusal
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/177420592600a2e624d998
 #EXTINF:-1 tvg-name="ATV RAW .b" tvg-logo="https://i.imgur.com/HyVUwFC.png" group-title="Ulusal" repair="proxy",ATV RAW .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -1249,11 +1249,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/391989972530bc54ebf66e
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/359825040596a46bfca38c
-#EXTINF:-1 tvg-name="BBC CBEEBIES TV .s" tvg-logo="" group-title="Sonstige" repair="proxy",BBC CBEEBIES TV .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/58015509b209433965b4
 #EXTINF:-1 tvg-name="BBC EARTH .c" tvg-logo="https://logo.huhu.to/logo?c=2618455562.png" group-title="Belgesel" repair="proxy",BBC EARTH .c
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
@@ -1584,6 +1579,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2938268353a63a37b4528e
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/267105889a25a483e5e80
+#EXTINF:-1 tvg-name="BEIN SPORTS 4K FEED(UYDU) .b" tvg-logo="" group-title="Spor" repair="proxy",BEIN SPORTS 4K FEED(UYDU) .b
+#EXTGRP:Spor
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1536730627bbf8f95ca477
 #EXTINF:-1 tvg-name="BEIN SPORTS 5 .c" tvg-logo="https://logo.huhu.to/logo?c=3831757618.png" group-title="Spor" repair="proxy",BEIN SPORTS 5 .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -1749,6 +1749,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2298271695faed3c96249f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1063857052f07e2eec0c52
+#EXTINF:-1 tvg-name="BEST LOCA 2 .b" tvg-logo="" group-title="Sonstige" repair="proxy",BEST LOCA 2 .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/20264594681bd1479ca3f0
+#EXTINF:-1 tvg-name="BEST LOCA 3 .b" tvg-logo="" group-title="Sonstige" repair="proxy",BEST LOCA 3 .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/116873446031ff5e217441
 #EXTINF:-1 tvg-name="BEST NETFLIX .b" tvg-logo="" group-title="Sonstige" repair="proxy",BEST NETFLIX .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -1759,11 +1769,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/35317279904b909276b540
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2585357317352fbfd92833
-#EXTINF:-1 tvg-name="BEST SALON 2 .b" tvg-logo="" group-title="Sonstige" repair="proxy",BEST SALON 2 .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/37198947412070cf7796ed
 #EXTINF:-1 tvg-name="BEST SALON 3 .b" tvg-logo="" group-title="Sonstige" repair="proxy",BEST SALON 3 .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -1779,11 +1784,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/13586163859ba90852bd44
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/11961982805779396d2f21
-#EXTINF:-1 tvg-name="BEST WESTERN .b" tvg-logo="" group-title="Sonstige" repair="proxy",BEST WESTERN .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1324126222234c1f7f8a74
 #EXTINF:-1 tvg-name="BEST YESILCAM .b" tvg-logo="" group-title="Film" repair="proxy",BEST YESILCAM .b
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -1999,11 +1999,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2183749540f025637bef0d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/199684316627f9a3c661c5
-#EXTINF:-1 tvg-name="BLUETV DOKU ʜᴅ .b" tvg-logo="" group-title="Belgesel" repair="proxy",BLUETV DOKU ʜᴅ .b
-#EXTGRP:Belgesel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1314250328a4919a1c430a
 #EXTINF:-1 tvg-name="BLUETV DRAMA ʜᴅ .b" tvg-logo="" group-title="Sonstige" repair="proxy",BLUETV DRAMA ʜᴅ .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -2014,6 +2009,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3248359584e5235268edd0
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1335837286ea234257fb85
+#EXTINF:-1 tvg-name="BLUETV FAMILIE 2 ʜᴅ .b" tvg-logo="" group-title="Sonstige" repair="proxy",BLUETV FAMILIE 2 ʜᴅ .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/359852554389c3b62437d4
 #EXTINF:-1 tvg-name="BLUETV FANTASY ʜᴅ .b" tvg-logo="" group-title="Sonstige" repair="proxy",BLUETV FANTASY ʜᴅ .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -2074,6 +2074,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2482888149df41762b0265
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/385860695721c17a4bba50
+#EXTINF:-1 tvg-name="BONUS MASAL DIYARI .b" tvg-logo="" group-title="Sonstige" repair="proxy",BONUS MASAL DIYARI .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1753590086d14bf2945f0e
 #EXTINF:-1 tvg-name="BOOMERANG .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Boomerang_2014_logo.svg/960px-Boomerang_2014_logo.svg.png" group-title="Sonstige" repair="proxy",BOOMERANG .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -2089,11 +2094,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/29439742084c66e3a8bcec
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/11430405657d34994142a8
-#EXTINF:-1 tvg-name="BOOMERANG (BACKUP 2) .b" tvg-logo="" group-title="Sonstige" repair="proxy",BOOMERANG (BACKUP 2) .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/325322989fc9ce2a56ea4
 #EXTINF:-1 tvg-name="BOOMERANG (BACKUP 3) .b" tvg-logo="" group-title="Sonstige" repair="proxy",BOOMERANG (BACKUP 3) .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -2174,11 +2174,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/134086061839e644f1eaa
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/222196845f62a75c4acf8
-#EXTINF:-1 tvg-name="CAILLOU .c" tvg-logo="https://logo.huhu.to/logo?c=4136709820.png" group-title="Sonstige" repair="proxy",CAILLOU .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/4136709820104f9b927f66
 #EXTINF:-1 tvg-name="CAILLOU TV .s" tvg-logo="" group-title="Sonstige" repair="proxy",CAILLOU TV .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -2504,6 +2499,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/247446075793cebf0be6
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1379426871a9aa5d9f2169
+#EXTINF:-1 tvg-name="CLASSICA HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",CLASSICA HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/147346125573492494e9e9
 #EXTINF:-1 tvg-name="CNN T RK HD+ SD .b" tvg-logo="" group-title="Haber" repair="proxy",CNN T RK HD+ SD .b
 #EXTGRP:Haber
 #EXTVLCOPT:network-caching=1000
@@ -2579,6 +2579,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/44085489319a6a03af7f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/22100538378e83093b0a58
+#EXTINF:-1 tvg-name="COMEDY CENTRAL HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Comedy_Central_2018.svg/960px-Comedy_Central_2018.svg.png" group-title="Sonstige" repair="proxy",COMEDY CENTRAL HEVC .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4008133421a48d7c94a69e
 #EXTINF:-1 tvg-name="CRIME & INVESTIGATION .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/4d/Crime_%2B_Investigation_Logo_10.2019.svg" group-title="Sonstige" repair="proxy",CRIME & INVESTIGATION .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -2659,6 +2664,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2814908252b478398f430e
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2781626432d1535952983f
+#EXTINF:-1 tvg-name="DAS ERSTE [SAT] [] .c" tvg-logo="https://logo.huhu.to/logo?c=2595606142.png" group-title="Almanya TV" repair="proxy",DAS ERSTE [SAT] [] .c
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/259560614200209e77dfb0
 #EXTINF:-1 tvg-name="DAS ERSTE FHD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="Almanya TV" repair="proxy",DAS ERSTE FHD .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -2684,6 +2694,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/53342635423e807a3368b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2961846095f79ed41f117c
+#EXTINF:-1 tvg-name="DAZN 1 -HD (LOCAL) HEVC H.265 .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",DAZN 1 -HD (LOCAL) HEVC H.265 .s
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/7381458303e3123a48188
 #EXTINF:-1 tvg-name="DAZN 1 .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",DAZN 1 .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -2889,11 +2904,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1869814941aa982b6bd0a0
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4037648131b097a22b145c
-#EXTINF:-1 tvg-name="DAZN BAR 1 [] .c" tvg-logo="https://logo.huhu.to/logo?c=1474536713.png" group-title="Almanya Sport" repair="proxy",DAZN BAR 1 [] .c
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/14745367131ac295081561
 #EXTINF:-1 tvg-name="DAZN BAR 1 FHD .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",DAZN BAR 1 FHD .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -2904,6 +2914,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/30757699713fe2a8880b52
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/24877931690bfe8def3a83
+#EXTINF:-1 tvg-name="DAZN BAR 2 [] .c" tvg-logo="https://logo.huhu.to/logo?c=3647775466.png" group-title="Almanya Sport" repair="proxy",DAZN BAR 2 [] .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3647775466b603a5ae8272
 #EXTINF:-1 tvg-name="DAZN BAR 2 FHD .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",DAZN BAR 2 FHD .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -3039,6 +3054,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2833035201254713df8805
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1476666167a4181c256f0d
+#EXTINF:-1 tvg-name="DAZN NBA HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",DAZN NBA HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/6746639090a3d1d6793e1
 #EXTINF:-1 tvg-name="DAZN NFL NETWORK HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",DAZN NFL NETWORK HD .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -3079,6 +3099,21 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3654985152b903b48cb843
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/300144653b62fc1429a44
+#EXTINF:-1 tvg-name="DB LIGA 1 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",DB LIGA 1 HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/544779527fee9e3400fd8
+#EXTINF:-1 tvg-name="DB LIGA 1 HD+ .b" tvg-logo="" group-title="Sonstige" repair="proxy",DB LIGA 1 HD+ .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/7631349038330da5c93e7
+#EXTINF:-1 tvg-name="DB LIGA 10 FHD .b" tvg-logo="" group-title="Sonstige" repair="proxy",DB LIGA 10 FHD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/126269879536d0953d790c
 #EXTINF:-1 tvg-name="DB LIGA 10 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",DB LIGA 10 HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3134,11 +3169,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/19715004849e71f0a39a39
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/16605269833f4928bfeca7
-#EXTINF:-1 tvg-name="DB LIGA 7 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",DB LIGA 7 HD .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/38603091203c8aa5b2b224
 #EXTINF:-1 tvg-name="DB LIGA 8 FHD .b" tvg-logo="" group-title="Sonstige" repair="proxy",DB LIGA 8 FHD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3324,6 +3354,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4329132861bddbfa6bb96
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/306993094f3cd5715860a
+#EXTINF:-1 tvg-name="DINAMIK VIZYON .b" tvg-logo="" group-title="Sonstige" repair="proxy",DINAMIK VIZYON .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3331045719b0c99b128adf
 #EXTINF:-1 tvg-name="DINAMIK WESTERN .b" tvg-logo="" group-title="Sonstige" repair="proxy",DINAMIK WESTERN .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3474,6 +3509,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4108765291d43a8a0a8088
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1772892321058f7001d327
+#EXTINF:-1 tvg-name="DISNEY JUNIOR (BACKUP 2) .b" tvg-logo="" group-title="Çocuk" repair="proxy",DISNEY JUNIOR (BACKUP 2) .b
+#EXTGRP:Çocuk
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3313774694ba71c4bbb2d4
 #EXTINF:-1 tvg-name="DISNEY JUNIOR (BACKUP) .b" tvg-logo="" group-title="Çocuk" repair="proxy",DISNEY JUNIOR (BACKUP) .b
 #EXTGRP:Çocuk
 #EXTVLCOPT:network-caching=1000
@@ -3539,11 +3579,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/249877866360e578051afe
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/315721043612919a3e4725
-#EXTINF:-1 tvg-name="DMAX .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Sonstige" repair="proxy",DMAX .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/635686224fedfdfe5b2d7
 #EXTINF:-1 tvg-name="DMAX .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DMAX_BLACK.svg/960px-DMAX_BLACK.svg.png" group-title="Sonstige" repair="proxy",DMAX .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3614,6 +3649,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/36503860629402933193b7
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/196474343111e0f530a0c6
+#EXTINF:-1 tvg-name="DOKUSAT .c" tvg-logo="https://i.imgur.com/GadfTwF.png" group-title="Sonstige" repair="proxy",DOKUSAT .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/132574514201bf552e252b
 #EXTINF:-1 tvg-name="DOST TV .b" tvg-logo="https://dosttv.com/wp-content/uploads/2022/02/dost_logo.png" group-title="Dini" repair="proxy",DOST TV .b
 #EXTGRP:Dini
 #EXTVLCOPT:network-caching=1000
@@ -3674,11 +3714,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/382239321182403c667cfc
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/373642004344d287985a44
-#EXTINF:-1 tvg-name="DREAM BEIN OFFICE 4 .b" tvg-logo="" group-title="Sonstige" repair="proxy",DREAM BEIN OFFICE 4 .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1821762267544ae2fe57ce
 #EXTINF:-1 tvg-name="DREAM BEIN OFFICE 5 .b" tvg-logo="" group-title="Sonstige" repair="proxy",DREAM BEIN OFFICE 5 .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3719,6 +3754,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/855745980e86f566e4e12
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3548409764f53722499655
+#EXTINF:-1 tvg-name="DREAM KEMAL SUNAL .b" tvg-logo="" group-title="Sonstige" repair="proxy",DREAM KEMAL SUNAL .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/95010505e71c34846cce
 #EXTINF:-1 tvg-name="DREAM KOMEDI .b" tvg-logo="" group-title="Sonstige" repair="proxy",DREAM KOMEDI .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3734,6 +3774,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/263155556411d21a29172d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/263575868806b9d7bd7df4
+#EXTINF:-1 tvg-name="DREAM LOCA 2 .b" tvg-logo="" group-title="Sonstige" repair="proxy",DREAM LOCA 2 .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3669624496050e9be68346
 #EXTINF:-1 tvg-name="DREAM LOCA 3 .b" tvg-logo="" group-title="Sonstige" repair="proxy",DREAM LOCA 3 .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -3839,11 +3884,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1053421622be467146c6a1
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/42463225237f7f47aea6f7
-#EXTINF:-1 tvg-name="DYN SPORT 11 .c" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 11 .c
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/61462918049652d2ae63
 #EXTINF:-1 tvg-name="DYN SPORT 12 .c" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 12 .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -3904,6 +3944,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/18914380569db0b4099019
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3580820101e75e5ac0a03f
+#EXTINF:-1 tvg-name="DYN SPORT 3 .s" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 3 .s
+#EXTGRP:Spor
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1739667375b70564ce305e
 #EXTINF:-1 tvg-name="DYN SPORT 4 .c" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 4 .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -3914,6 +3959,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/173317493312b7702c8294
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/35831100797b94777c5371
+#EXTINF:-1 tvg-name="DYN SPORT 5 .s" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 5 .s
+#EXTGRP:Spor
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/39081579678c20f5025270
 #EXTINF:-1 tvg-name="DYN SPORT 6 .c" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 6 .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -3949,11 +3999,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/274794174aa92a1662e08
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2682184228a169bff16c5b
-#EXTINF:-1 tvg-name="DYN SPORT 9 .s" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT 9 .s
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/7550523023dc07e7b57da
 #EXTINF:-1 tvg-name="DYN SPORT MIX .c" tvg-logo="" group-title="Spor" repair="proxy",DYN SPORT MIX .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -4064,6 +4109,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/41417308173a4f22777c48
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/10145176681bcf2233febf
+#EXTINF:-1 tvg-name="EAGLE MASHA UND DER B HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",EAGLE MASHA UND DER B HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/26941571285a9aa56b11bd
 #EXTINF:-1 tvg-name="EAGLE PEPPA WUTZ HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",EAGLE PEPPA WUTZ HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -4124,11 +4174,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3469011566b87dc382123d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/658726604ae88a8e690ef
-#EXTINF:-1 tvg-name="EGE ILE GAGA .s" tvg-logo="" group-title="Sonstige" repair="proxy",EGE ILE GAGA .s
-#EXTGRP:Sonstige
+#EXTINF:-1 tvg-name="EFKAR FM CANLI RADYO .b" tvg-logo="" group-title="Radio" repair="proxy",EFKAR FM CANLI RADYO .b
+#EXTGRP:Radio
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2625879722d77e234c308c
+https://young-dew-a7a9.pandatiger.workers.dev/play/2156922182c4160baf6fa4
 #EXTINF:-1 tvg-name="EGE TURK TV .b" tvg-logo="https://i.imgur.com/TLUKrMb.png" group-title="Sonstige" repair="proxy",EGE TURK TV .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -4219,6 +4269,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1308622951209d3f676d87
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/633768195851d6f914620
+#EXTINF:-1 tvg-name="ENO ANIMASYON .c" tvg-logo="" group-title="Sonstige" repair="proxy",ENO ANIMASYON .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/6596944878e4d33423978
 #EXTINF:-1 tvg-name="ENO ANIMASYON .s" tvg-logo="" group-title="Sonstige" repair="proxy",ENO ANIMASYON .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -4274,11 +4329,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2176192715addf7772f995
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3323357723a9a1a6c8339f
-#EXTINF:-1 tvg-name="ENO VIZYON 7 .s" tvg-logo="" group-title="Sonstige" repair="proxy",ENO VIZYON 7 .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/4218831787cff46d390bb0
 #EXTINF:-1 tvg-name="ENO VIZYON 8 .s" tvg-logo="" group-title="Sonstige" repair="proxy",ENO VIZYON 8 .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -4424,6 +4474,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/415823579839aead361169
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/34586314617a4110b16336
+#EXTINF:-1 tvg-name="EUROSPORT 1 .c" tvg-logo="https://logo.huhu.to/logo?c=1222315896.png" group-title="Almanya Sport" repair="proxy",EUROSPORT 1 .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1222315896dcc6e31f3735
 #EXTINF:-1 tvg-name="EUROSPORT 1 .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 1 .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -4444,6 +4499,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2092513479e79a5733f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/7317968734462dc6304a4
+#EXTINF:-1 tvg-name="EUROSPORT 1 HD (BACKUP 2) .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 1 HD (BACKUP 2) .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2876480347b900ec2a253b
 #EXTINF:-1 tvg-name="EUROSPORT 1 HD (BACKUP 3) .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 1 HD (BACKUP 3) .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -4459,11 +4519,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1988924073cc27ed47d566
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/662162280d76be75a18a5
-#EXTINF:-1 tvg-name="EUROSPORT 1 HEVC .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 1 HEVC .b
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1224726847974efb8f8e99
 #EXTINF:-1 tvg-name="EUROSPORT 1 RAW .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 1 RAW .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -4524,6 +4579,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/622250285676d0314d4af
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/5197638858db091050a1e
+#EXTINF:-1 tvg-name="EUROSPORT 2 HEVC .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 2 HEVC .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/27478185563812f29ae860
 #EXTINF:-1 tvg-name="EUROSPORT 2 RAW .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 2 RAW .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -4579,11 +4639,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/27304417886ccf0cf19185
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2789130686711975bca9f
-#EXTINF:-1 tvg-name="EUROSPORT 360 HD 15 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 360 HD 15 .b
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/7717380127de6c0e762bd
 #EXTINF:-1 tvg-name="EUROSPORT 360 HD 16 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 360 HD 16 .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -4609,6 +4664,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/36755317391a3736695ded
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/38663619638634dbe0b8ca
+#EXTINF:-1 tvg-name="EUROSPORT 360 HD 6 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 360 HD 6 .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2715056827a74c954bc614
 #EXTINF:-1 tvg-name="EUROSPORT 360 HD 7 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 360 HD 7 .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -4619,11 +4679,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2629063435e21d72406265
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/518309082e3dac33da059
-#EXTINF:-1 tvg-name="EUROSPORT 360 HD 9 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",EUROSPORT 360 HD 9 .b
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/595914090ca0bbf8798b4
 #EXTINF:-1 tvg-name="EUROSPORT1 HD .b" tvg-logo="https://logo.huhu.to/logo?c=3793200644.png" group-title="Sonstige" repair="proxy",EUROSPORT1 HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -4704,6 +4759,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3333902867e8eeb6c13355
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/10914039127b6d2cb4f9b1
+#EXTINF:-1 tvg-name="EXXEN TV SPOR 1 HD .b" tvg-logo="" group-title="Ulusal" repair="proxy",EXXEN TV SPOR 1 HD .b
+#EXTGRP:Ulusal
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/12042008015aa1fc47965f
 #EXTINF:-1 tvg-name="EXXEN TV SPOR 1 UHD .b" tvg-logo="" group-title="Ulusal" repair="proxy",EXXEN TV SPOR 1 UHD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -4924,6 +4984,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/239201347a28a02eb2603
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/411086166261597686dd33
+#EXTINF:-1 tvg-name="FIX&FOXI .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Fix_and_Fox_Channel_Logo.png/250px-Fix_and_Fox_Channel_Logo.png" group-title="Sonstige" repair="proxy",FIX&FOXI .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3567855153b279660bfce4
 #EXTINF:-1 tvg-name="FLASH HABER TV .c" tvg-logo="https://logo.huhu.to/logo?c=3806979011.png" group-title="Haber" repair="proxy",FLASH HABER TV .c
 #EXTGRP:Haber
 #EXTVLCOPT:network-caching=1000
@@ -4979,6 +5044,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/31503810386e1be804a835
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1518951988862c0b272d05
+#EXTINF:-1 tvg-name="FOX HD (BACKUP) .b" tvg-logo="https://i.imgur.com/kXoadQC.png" group-title="Sonstige" repair="proxy",FOX HD (BACKUP) .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4039824657d8d147dea527
 #EXTINF:-1 tvg-name="FOX HD+ .b" tvg-logo="https://i.imgur.com/kXoadQC.png" group-title="Sonstige" repair="proxy",FOX HD+ .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -5019,6 +5089,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/361794399071cb992be53b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/105402393077ac9669bee0
+#EXTINF:-1 tvg-name="FUSSBALL TV 3 UHD .c" tvg-logo="" group-title="Almanya Sport" repair="proxy",FUSSBALL TV 3 UHD .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/6988894011980cb6b8342
 #EXTINF:-1 tvg-name="FX .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/FX_International_logo.svg/960px-FX_International_logo.svg.png" group-title="Sonstige" repair="proxy",FX .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -5344,11 +5419,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3418321101129cac18a668
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/100522527494c56fa895b3
-#EXTINF:-1 tvg-name="HGTV .s" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/HGTV_logo.svg/960px-HGTV_logo.svg.png" group-title="Sonstige" repair="proxy",HGTV .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/11648706186d33b0f2013b
 #EXTINF:-1 tvg-name="HISTORY .b" tvg-logo="https://i.imgur.com/P5aKEES.png" group-title="Belgesel" repair="proxy",HISTORY .b
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
@@ -5444,6 +5514,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/8665801640be72ea9f7d6
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/40343131292ab47952d825
+#EXTINF:-1 tvg-name="HR-FERNSEHEN HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/HR-Fernsehen_Logo_2023.svg/960px-HR-Fernsehen_Logo_2023.svg.png" group-title="Almanya TV" repair="proxy",HR-FERNSEHEN HD .b
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/15837360750065fb4250da
 #EXTINF:-1 tvg-name="HR-FERNSEHEN HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/HR-Fernsehen_Logo_2023.svg/960px-HR-Fernsehen_Logo_2023.svg.png" group-title="Almanya TV" repair="proxy",HR-FERNSEHEN HD (BACKUP) .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -5454,6 +5529,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3578764950c87898f033c6
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2826493312357d40edbc08
+#EXTINF:-1 tvg-name="HSE .c" tvg-logo="https://i.imgur.com/IecRNCk.png" group-title="Sonstige" repair="proxy",HSE .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1901642755a8909d8992af
 #EXTINF:-1 tvg-name="HSE .s" tvg-logo="https://i.imgur.com/IecRNCk.png" group-title="Sonstige" repair="proxy",HSE .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -5479,11 +5559,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2877260651b135f69cb88d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3970741463def7ddd2dabd
-#EXTINF:-1 tvg-name="HSE TREND .c" tvg-logo="https://i.imgur.com/qwh2urX.png" group-title="Sonstige" repair="proxy",HSE TREND .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3146392775e1da82ce9ca5
 #EXTINF:-1 tvg-name="HSE24 EXTRA .b" tvg-logo="https://i.imgur.com/nvMpbip.png" group-title="Sonstige" repair="proxy",HSE24 EXTRA .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -5634,16 +5709,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1727959936f497566c9447
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/709698855fbcab28c7d6e
-#EXTINF:-1 tvg-name="K-TV .c" tvg-logo="https://i.imgur.com/2Fhbmdk.png" group-title="Sonstige" repair="proxy",K-TV .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/260667758441784ec66dfc
-#EXTINF:-1 tvg-name="KABEL 1 .s" tvg-logo="" group-title="Almanya TV" repair="proxy",KABEL 1 .s
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3390031045c0fa916eb545
 #EXTINF:-1 tvg-name="KABEL 1 CLASSICS .b" tvg-logo="" group-title="Almanya TV" repair="proxy",KABEL 1 CLASSICS .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -5864,11 +5929,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/28027024539d984983ade4
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/56371887593c852f21e1a
-#EXTINF:-1 tvg-name="KANAL 7 .c" tvg-logo="https://i.imgur.com/0gq9xOm.png" group-title="Ulusal" repair="proxy",KANAL 7 .c
-#EXTGRP:Ulusal
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/284204601910a1d31e579f
 #EXTINF:-1 tvg-name="KANAL 7 .s" tvg-logo="https://i.imgur.com/0gq9xOm.png" group-title="Ulusal" repair="proxy",KANAL 7 .s
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -5994,6 +6054,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/22154054220264091689b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4014377632f76bd61156e
+#EXTINF:-1 tvg-name="KANAL12 SPREMBERG TV .c" tvg-logo="https://i.ibb.co/1LzJz7Y/Channels4-profile-7.jpg" group-title="Sonstige" repair="proxy",KANAL12 SPREMBERG TV .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2298389338c43334e0b24a
 #EXTINF:-1 tvg-name="KARADENIZ BRTV .b" tvg-logo="" group-title="Sonstige" repair="proxy",KARADENIZ BRTV .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -6089,11 +6154,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/162124518c6ac036885e3
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3645283043839c06f50d86
-#EXTINF:-1 tvg-name="KINDER SENDER .b" tvg-logo="" group-title="Çocuk" repair="proxy",KINDER SENDER .b
-#EXTGRP:Çocuk
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/10572654605e6e19b95e93
 #EXTINF:-1 tvg-name="KINDERM RCHEN 1 .b" tvg-logo="" group-title="Sonstige" repair="proxy",KINDERM RCHEN 1 .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -6429,6 +6489,66 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3291391060b3bb793b0ba
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/87891604188ab6611993a
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 3 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 3 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4173934935dd37fb153922
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 4 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 4 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4060887118df811fcd6cf3
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 5 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 5 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1051080912f676967c765b
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 6 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 6 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2955493171f860d30a5ab5
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 7 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 7 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2088976301e5cc2c41e12f
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 8 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 8 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/27789345299cfeb2d38d51
+#EXTINF:-1 tvg-name="MAGENTA FUSSBALL 9 HD .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA FUSSBALL 9 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1762209183bf88316e4d91
+#EXTINF:-1 tvg-name="MAGENTA MUSIK 2 .c" tvg-logo="" group-title="Sonstige" repair="proxy",MAGENTA MUSIK 2 .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/179731963501bd939a26b9
+#EXTINF:-1 tvg-name="MAGENTA SPORT 1 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 1 .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2683029961e9f853e1cccf
+#EXTINF:-1 tvg-name="MAGENTA SPORT 1 .c" tvg-logo="https://logo.huhu.to/logo?c=3432695221.png" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 1 .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3432695221f8e5de131638
+#EXTINF:-1 tvg-name="MAGENTA SPORT 1 .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 1 .s
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1810523752094405320ffe
+#EXTINF:-1 tvg-name="MAGENTA SPORT 10 .c" tvg-logo="https://logo.huhu.to/logo?c=1438750126.png" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 10 .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/143875012688d67c96d41d
 #EXTINF:-1 tvg-name="MAGENTA SPORT 10 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 10 [LIVE DURING EVENTS ONLY] .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -6544,16 +6664,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3545622272c7a59aad977f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/38448401058066b4e83ced
-#EXTINF:-1 tvg-name="MAGENTA SPORT 3 .c" tvg-logo="https://logo.huhu.to/logo?c=3059390165.png" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 3 .c
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3059390165e8da43c8870c
-#EXTINF:-1 tvg-name="MAGENTA SPORT 3 .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 3 .s
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/287978760d084d97c8959
 #EXTINF:-1 tvg-name="MAGENTA SPORT 4 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 4 .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -6584,6 +6694,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/958030709ce51a4c1eb0c
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2657796264bdb87c7b7d2e
+#EXTINF:-1 tvg-name="MAGENTA SPORT 6 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 6 .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/768284121965d97f6be4d
 #EXTINF:-1 tvg-name="MAGENTA SPORT 6 .c" tvg-logo="https://logo.huhu.to/logo?c=2126125477.png" group-title="Almanya Sport" repair="proxy",MAGENTA SPORT 6 .c
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -7294,6 +7409,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/216938993712354d07de62
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/184566063009c2eced111a
+#EXTINF:-1 tvg-name="NAT GEO .c" tvg-logo="https://logo.huhu.to/logo?c=999974349.png" group-title="Belgesel" repair="proxy",NAT GEO .c
+#EXTGRP:Belgesel
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/999974349f42b3e1dcc2c
 #EXTINF:-1 tvg-name="NAT GEO .s" tvg-logo="" group-title="Belgesel" repair="proxy",NAT GEO .s
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
@@ -7314,6 +7434,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/373099596d06a1963288f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3427032590b4a304b4200a
+#EXTINF:-1 tvg-name="NAT GEO HEVC .b" tvg-logo="https://logo.huhu.to/logo?c=3972345543.png" group-title="Belgesel" repair="proxy",NAT GEO HEVC .b
+#EXTGRP:Belgesel
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/39723455439278fa8ee588
 #EXTINF:-1 tvg-name="NAT GEO RAW .b" tvg-logo="https://logo.huhu.to/logo?c=1661272563.png" group-title="Belgesel" repair="proxy",NAT GEO RAW .b
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
@@ -7644,7 +7769,7 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1749202311bc578dc5e15f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/29976201795010432fe668
-#EXTINF:-1 tvg-name="NOW .c" tvg-logo="" group-title="Sonstige" repair="proxy",NOW .c
+#EXTINF:-1 tvg-name="NOW .c" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Sonstige" repair="proxy",NOW .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
@@ -7654,32 +7779,32 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/31051840561fc5d2fb58a5
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/13415207383cfe6fb9dcde
-#EXTINF:-1 tvg-name="NOW TV FHD .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal" repair="proxy",NOW TV FHD .b
+#EXTINF:-1 tvg-name="NOW TV FHD .b" tvg-logo="" group-title="Ulusal" repair="proxy",NOW TV FHD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/919108696a1b98997373b
-#EXTINF:-1 tvg-name="NOW TV HD .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal" repair="proxy",NOW TV HD .b
+#EXTINF:-1 tvg-name="NOW TV HD .b" tvg-logo="" group-title="Ulusal" repair="proxy",NOW TV HD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/161305206673e7c4b7739
-#EXTINF:-1 tvg-name="NOW TV HD (H265) .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal" repair="proxy",NOW TV HD (H265) .b
+#EXTINF:-1 tvg-name="NOW TV HD (H265) .b" tvg-logo="" group-title="Ulusal" repair="proxy",NOW TV HD (H265) .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/9989683045db00316f92d
-#EXTINF:-1 tvg-name="NOW TV HEVC .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal" repair="proxy",NOW TV HEVC .b
+#EXTINF:-1 tvg-name="NOW TV HEVC .b" tvg-logo="" group-title="Ulusal" repair="proxy",NOW TV HEVC .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/117018314962b4e9489718
-#EXTINF:-1 tvg-name="NOW TV RAW .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal" repair="proxy",NOW TV RAW .b
+#EXTINF:-1 tvg-name="NOW TV RAW .b" tvg-logo="" group-title="Ulusal" repair="proxy",NOW TV RAW .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2769713183b7a2cf8dde9b
-#EXTINF:-1 tvg-name="NOW TV SD .b" tvg-logo="https://i.imgur.com/5EYjWK7.png" group-title="Ulusal" repair="proxy",NOW TV SD .b
+#EXTINF:-1 tvg-name="NOW TV SD .b" tvg-logo="" group-title="Ulusal" repair="proxy",NOW TV SD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
@@ -7814,11 +7939,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/20764044869ff73befc7ec
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/30882627633d0a20bb7571
-#EXTINF:-1 tvg-name="OF TV OFFENBACH .c" tvg-logo="https://i.imgur.com/WAcxCJr.png" group-title="Sonstige" repair="proxy",OF TV OFFENBACH .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1027321034d7b634a17d6f
 #EXTINF:-1 tvg-name="OFFENER KANAL MAGDEBURG .c" tvg-logo="https://logo.huhu.to/logo?c=934282597.png" group-title="Sonstige" repair="proxy",OFFENER KANAL MAGDEBURG .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -7839,6 +7959,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3903816526b392ff9978f9
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4179937549e2703b340130
+#EXTINF:-1 tvg-name="OK KAISERSLAUTERN .c" tvg-logo="https://i.imgur.com/MRrETTh.png" group-title="Sonstige" repair="proxy",OK KAISERSLAUTERN .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/112289314263c0d0542233
+#EXTINF:-1 tvg-name="OK KASSEL .c" tvg-logo="https://i.imgur.com/igZ9sx2.png" group-title="Sonstige" repair="proxy",OK KASSEL .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/29557660703f011ff71613
 #EXTINF:-1 tvg-name="OK KIEL .c" tvg-logo="https://i.imgur.com/eToHabX.png" group-title="Sonstige" repair="proxy",OK KIEL .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8194,6 +8324,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/307968823132893a1190d4
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/402968856753b5596bb516
+#EXTINF:-1 tvg-name="POPCORN SELECT 7 .c" tvg-logo="" group-title="Sonstige" repair="proxy",POPCORN SELECT 7 .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3444572999e9bdd980f3ff
 #EXTINF:-1 tvg-name="POPCORN SELECT 9 .c" tvg-logo="" group-title="Sonstige" repair="proxy",POPCORN SELECT 9 .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8224,6 +8359,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/23667904081b95cae45de4
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/178350880905c3993617e6
+#EXTINF:-1 tvg-name="POWER T RK T RK E POP .b" tvg-logo="" group-title="Sonstige" repair="proxy",POWER T RK T RK E POP .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2703806315a67a7c89a263
 #EXTINF:-1 tvg-name="POWER TURK .s" tvg-logo="" group-title="Sonstige" repair="proxy",POWER TURK .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8424,11 +8564,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/6325334db60702466d4
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4028396893e0f2a47263a9
-#EXTINF:-1 tvg-name="PROTURK GERILIM .c" tvg-logo="" group-title="Sonstige" repair="proxy",PROTURK GERILIM .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/129320848377c2dbe97032
 #EXTINF:-1 tvg-name="PROTURK KEMAL SUNAL .c" tvg-logo="" group-title="Sonstige" repair="proxy",PROTURK KEMAL SUNAL .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8559,11 +8694,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/233231403d15439780dce
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/11320013868192fe65af1
-#EXTINF:-1 tvg-name="RAKUTEN TV CRIME SERIES GERMANY .c" tvg-logo="" group-title="Sonstige" repair="proxy",RAKUTEN TV CRIME SERIES GERMANY .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3289361213e96f999b395c
 #EXTINF:-1 tvg-name="RAKUTEN TV DRAMA MOVIES GERMANY .c" tvg-logo="" group-title="Sonstige" repair="proxy",RAKUTEN TV DRAMA MOVIES GERMANY .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8699,11 +8829,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/427642906149a590d1792
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/84689081f2b25f7cc1f6
-#EXTINF:-1 tvg-name="RFO .c" tvg-logo="https://i.imgur.com/902BHGL.png" group-title="Sonstige" repair="proxy",RFO .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/287503463494d792853b58
 #EXTINF:-1 tvg-name="RFO .s" tvg-logo="https://i.imgur.com/902BHGL.png" group-title="Sonstige" repair="proxy",RFO .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8739,11 +8864,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2698399676a912d07b3ba1
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2202614857343679030680
-#EXTINF:-1 tvg-name="RNF .c" tvg-logo="https://i.imgur.com/CRk9usN.png" group-title="Sonstige" repair="proxy",RNF .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1243507734d2ec6a85be90
 #EXTINF:-1 tvg-name="ROCK ANTENNE .b" tvg-logo="https://i.imgur.com/nvFXRjH.png" group-title="Sonstige" repair="proxy",ROCK ANTENNE .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -8789,6 +8909,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/42115788997e87b43aa70c
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/136740906076a5d2e48971
+#EXTINF:-1 tvg-name="RTL .c" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Almanya TV" repair="proxy",RTL .c
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2732807498359af08f17a8
 #EXTINF:-1 tvg-name="RTL .s" tvg-logo="https://i.imgur.com/94K94k2.png" group-title="Almanya TV" repair="proxy",RTL .s
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9019,6 +9144,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/289174175313063e65f7dc
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/160203873fc8ecba6377a
+#EXTINF:-1 tvg-name="RTL+ EVENT 3 .c" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ EVENT 3 .c
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2496619116dae91d7b1dc6
+#EXTINF:-1 tvg-name="RTL+ EVENT 5 .c" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ EVENT 5 .c
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4623953409d29fe46912c
 #EXTINF:-1 tvg-name="RTL+ HUNDKATZEMAUS .c" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ HUNDKATZEMAUS .c
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9079,11 +9214,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/20248491742c30cbaa06a4
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/332619566454d37b4b3c0b
-#EXTINF:-1 tvg-name="RTL+ SPORT EVENT 10 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 10 [LIVE DURING EVENTS ONLY] .s
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/153051689093b694159ad5
 #EXTINF:-1 tvg-name="RTL+ SPORT EVENT 2 .b" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 2 .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9119,11 +9249,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1065842008098021675bdc
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3548335857138d7fcf15f9
-#EXTINF:-1 tvg-name="RTL+ SPORT EVENT 3 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 3 [LIVE DURING EVENTS ONLY] .s
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3324699628ff3450ced582
 #EXTINF:-1 tvg-name="RTL+ SPORT EVENT 4 .b" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 4 .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9144,11 +9269,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/30651771375f472c894398
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4003297755fc9aae9dbc5a
-#EXTINF:-1 tvg-name="RTL+ SPORT EVENT 5 .b" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 5 .b
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2616874478a509fa680f79
 #EXTINF:-1 tvg-name="RTL+ SPORT EVENT 5 .c" tvg-logo="https://logo.huhu.to/logo?c=2965864696.png" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 5 .c
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9159,11 +9279,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/296586469609a0168e166b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/7338079436fdc2174d328
-#EXTINF:-1 tvg-name="RTL+ SPORT EVENT 5 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 5 [LIVE DURING EVENTS ONLY] .s
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/37661289064df1bbad44e8
 #EXTINF:-1 tvg-name="RTL+ SPORT EVENT 6 .b" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 6 .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9174,11 +9289,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3696897854d84c4123c6a6
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/415078660068d2ad057fe3
-#EXTINF:-1 tvg-name="RTL+ SPORT EVENT 6 (BACKUP) .b" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 6 (BACKUP) .b
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1474044060b6823790050c
 #EXTINF:-1 tvg-name="RTL+ SPORT EVENT 6 [LIVE DURING EVENTS ONLY] .s" tvg-logo="" group-title="Almanya TV" repair="proxy",RTL+ SPORT EVENT 6 [LIVE DURING EVENTS ONLY] .s
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -9249,6 +9359,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/170828735047f8a4008e74
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/17166562170588f2eba0c
+#EXTINF:-1 tvg-name="RTLZWEI .b" tvg-logo="" group-title="Sonstige" repair="proxy",RTLZWEI .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/64089998273565972fb1d
 #EXTINF:-1 tvg-name="RTLZWEI HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",RTLZWEI HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -9294,11 +9409,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1313768516926dc999c43b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1234604880d226de6d47be
-#EXTINF:-1 tvg-name="S SPORT+3 MAC SAATI .b" tvg-logo="https://logo.huhu.to/logo?c=3269372326.png" group-title="Spor" repair="proxy",S SPORT+3 MAC SAATI .b
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3269372326de5ff1a4d9d7
 #EXTINF:-1 tvg-name="S SPORT+4 MAC SAATI .b" tvg-logo="https://logo.huhu.to/logo?c=1507829436.png" group-title="Spor" repair="proxy",S SPORT+4 MAC SAATI .b
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -9409,11 +9519,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/265983091989ca76c7602c
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3953049103f74277c6ee88
-#EXTINF:-1 tvg-name="S. SPORT 11 HD .b" tvg-logo="" group-title="Spor" repair="proxy",S. SPORT 11 HD .b
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1378077721a926ab11da69
 #EXTINF:-1 tvg-name="S. SPORT 2 FHD .b" tvg-logo="https://i.imgur.com/2jIItAy.png" group-title="Spor" repair="proxy",S. SPORT 2 FHD .b
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -9599,6 +9704,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/266658353694ea7a9ecdb9
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2217333005768ebcd45bd0
+#EXTINF:-1 tvg-name="SALON 1 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",SALON 1 HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/12165418955d92bd545267
 #EXTINF:-1 tvg-name="SALON 10 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",SALON 10 HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -9634,6 +9744,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1456645748ff34de7d4e2d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/36300148716d4630336614
+#EXTINF:-1 tvg-name="SALON 17 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",SALON 17 HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/351772937233d26096292
 #EXTINF:-1 tvg-name="SALON 18 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",SALON 18 HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -9644,11 +9759,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3453465509feff2ce320bf
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/25015099ab9477fb2b92
-#EXTINF:-1 tvg-name="SALON 2 .c" tvg-logo="" group-title="Sonstige" repair="proxy",SALON 2 .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3645943584c869227b2d53
 #EXTINF:-1 tvg-name="SALON 2 .s" tvg-logo="" group-title="Sonstige" repair="proxy",SALON 2 .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -9769,11 +9879,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/10888662250a023b27deec
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3970917582f5afd8e329b9
-#EXTINF:-1 tvg-name="SAT 1 GOLD HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sat.1_Gold_Logo_2019.svg/960px-Sat.1_Gold_Logo_2019.svg.png" group-title="Sonstige" repair="proxy",SAT 1 GOLD HD+ .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3473419882262991952206
 #EXTINF:-1 tvg-name="SAT 1 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Neues_Sat._1_Logo_transparent.png/960px-Neues_Sat._1_Logo_transparent.png" group-title="Sonstige" repair="proxy",SAT 1 HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -9874,6 +9979,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2278409507e40ad2db5066
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3786765901ef2771647ac5
+#EXTINF:-1 tvg-name="SELDA BAGCAN .b" tvg-logo="" group-title="Sonstige" repair="proxy",SELDA BAGCAN .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/245160041554c8e8517107
 #EXTINF:-1 tvg-name="SEMERKAND .s" tvg-logo="" group-title="Dini" repair="proxy",SEMERKAND .s
 #EXTGRP:Dini
 #EXTVLCOPT:network-caching=1000
@@ -9884,11 +9994,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2341562915776a2be51890
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/372623895787d90dff9a7c
-#EXTINF:-1 tvg-name="SEMERKAND TV .c" tvg-logo="https://i.imgur.com/UVGGrQd.png" group-title="Dini" repair="proxy",SEMERKAND TV .c
-#EXTGRP:Dini
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/786317112675e7c9749f1
 #EXTINF:-1 tvg-name="SENDER NEU JERUSALEM .c" tvg-logo="" group-title="Sonstige" repair="proxy",SENDER NEU JERUSALEM .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -9939,36 +10044,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/216930103234ea38029848
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4039013331ee4596a80703
-#EXTINF:-1 tvg-name="SEVIMLI DOSTLAR .s" tvg-logo="" group-title="Sonstige" repair="proxy",SEVIMLI DOSTLAR .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/4154723330aa1af89e5782
-#EXTINF:-1 tvg-name="SEZEN AKSU .b" tvg-logo="" group-title="Sonstige" repair="proxy",SEZEN AKSU .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/256280452446a20320e0a2
-#EXTINF:-1 tvg-name="SHOW HD (H265) .b" tvg-logo="https://logo.huhu.to/logo?c=3537232978.png" group-title="Sonstige" repair="proxy",SHOW HD (H265) .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3537232978db7b25368a4b
-#EXTINF:-1 tvg-name="SHOW MAX .c" tvg-logo="https://i.imgur.com/456FWA7.png" group-title="Sonstige" repair="proxy",SHOW MAX .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1495761327668bcd5072dc
-#EXTINF:-1 tvg-name="SHOW MAX .s" tvg-logo="https://i.imgur.com/456FWA7.png" group-title="Sonstige" repair="proxy",SHOW MAX .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/21962786526c864f9c84d4
-#EXTINF:-1 tvg-name="SHOW RADYO .b" tvg-logo="" group-title="Radio" repair="proxy",SHOW RADYO .b
-#EXTGRP:Radio
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/35098991442bd9c175ff50
 #EXTINF:-1 tvg-name="SHOW RADYO T RK E POP .b" tvg-logo="" group-title="Radio" repair="proxy",SHOW RADYO T RK E POP .b
 #EXTGRP:Radio
 #EXTVLCOPT:network-caching=1000
@@ -10164,11 +10239,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/38334830340b3e0ebfcab
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/17662417455982b1730d90
-#EXTINF:-1 tvg-name="SIVAS .b" tvg-logo="" group-title="Yerel" repair="proxy",SIVAS .b
-#EXTGRP:Yerel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/9857690718548a212a15f
 #EXTINF:-1 tvg-name="SIVAS VIZYON 58 TV .b" tvg-logo="" group-title="Yerel" repair="proxy",SIVAS VIZYON 58 TV .b
 #EXTGRP:Yerel
 #EXTVLCOPT:network-caching=1000
@@ -10309,6 +10379,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1376270745b0627d14387d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/350456154001728f296c1e
+#EXTINF:-1 tvg-name="SKY ATLANTIC HD+ (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Sonstige" repair="proxy",SKY ATLANTIC HD+ (BACKUP) .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2798401146ec7e7d28c11f
 #EXTINF:-1 tvg-name="SKY ATLANTIC RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg/960px-Sky_Atlantic_-_Logo_2020_%28TV_channel%29.svg.png" group-title="Sonstige" repair="proxy",SKY ATLANTIC RAW .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -10674,6 +10749,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/335503483919500c5ae02c
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/50922349169aa87b096d6
+#EXTINF:-1 tvg-name="SKY BUNDESLIGA 1 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Almanya Sport" repair="proxy",SKY BUNDESLIGA 1 HD (BACKUP) .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/24341172320b3b5be01233
 #EXTINF:-1 tvg-name="SKY BUNDESLIGA 1 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/de/c/ca/Sky_Sport_Bundesliga_2020.svg" group-title="Almanya Sport" repair="proxy",SKY BUNDESLIGA 1 HD+ .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -11019,6 +11099,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4037225133c9c481dd1b08
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4031812330dfae8cf7458e
+#EXTINF:-1 tvg-name="SKY BUNDESLIGA 8 RAW .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",SKY BUNDESLIGA 8 RAW .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1595002135a29ebf8cb96b
 #EXTINF:-1 tvg-name="SKY BUNDESLIGA 9 (MATCH TIME) .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",SKY BUNDESLIGA 9 (MATCH TIME) .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -11079,11 +11164,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3948160239d040a5149193
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/191409797064b6f3435b97
-#EXTINF:-1 tvg-name="SKY CINEMA 1 .s" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA 1 .s
-#EXTGRP:Film
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/12794606493d8d8cd3b4fd
 #EXTINF:-1 tvg-name="SKY CINEMA 1+ .s" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA 1+ .s
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11144,6 +11224,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/7675679855208c3fbe478
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4183661289bea5151c6e22
+#EXTINF:-1 tvg-name="SKY CINEMA BEST OF HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Film" repair="proxy",SKY CINEMA BEST OF HD (BACKUP) .b
+#EXTGRP:Film
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/7283995247e7623d8c809
 #EXTINF:-1 tvg-name="SKY CINEMA BEST OF HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sky_Cinema_Best_Of_DE_Logo_2020.svg/960px-Sky_Cinema_Best_Of_DE_Logo_2020.svg.png" group-title="Film" repair="proxy",SKY CINEMA BEST OF HD+ .b
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11204,6 +11289,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/75068099388ef97789690
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1260704553a0fd2c0d406
+#EXTINF:-1 tvg-name="SKY CINEMA EMOTION .s" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA EMOTION .s
+#EXTGRP:Film
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1938198164e418a3832636
 #EXTINF:-1 tvg-name="SKY CINEMA FAMILY .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sky_Cinema_Family_-_Logo_2021.svg/960px-Sky_Cinema_Family_-_Logo_2021.svg.png" group-title="Film" repair="proxy",SKY CINEMA FAMILY .b
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11254,6 +11344,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1988576664bc95fd40c86d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2536879797b1c98070188
+#EXTINF:-1 tvg-name="SKY CINEMA FUN HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png" group-title="Film" repair="proxy",SKY CINEMA FUN HD .b
+#EXTGRP:Film
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2703750927c3c65ac8a7d0
 #EXTINF:-1 tvg-name="SKY CINEMA HIGHLIGHTS .c" tvg-logo="https://logo.huhu.to/logo?c=824805225.png" group-title="Film" repair="proxy",SKY CINEMA HIGHLIGHTS .c
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11314,6 +11409,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3965128200ab108788f108
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/491492893ab12d2da98a7
+#EXTINF:-1 tvg-name="SKY CINEMA PREMIEREN +24 HEVC .b" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA PREMIEREN +24 HEVC .b
+#EXTGRP:Film
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1606366206fb96e8c26931
 #EXTINF:-1 tvg-name="SKY CINEMA PREMIEREN +24 RAW .b" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA PREMIEREN +24 RAW .b
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11369,11 +11469,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/190424654415f652ff4baf
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3112374461ac05f3404c9a
-#EXTINF:-1 tvg-name="SKY CINEMA SPECIAL HEVC .b" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA SPECIAL HEVC .b
-#EXTGRP:Film
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/32018298233ee62d907934
 #EXTINF:-1 tvg-name="SKY CINEMA SPECIAL RAW .b" tvg-logo="" group-title="Film" repair="proxy",SKY CINEMA SPECIAL RAW .b
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11399,11 +11494,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1185697855fe058226715e
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/8552034080630b565e22
-#EXTINF:-1 tvg-name="SKY CINEMA THRILLER HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png" group-title="Film" repair="proxy",SKY CINEMA THRILLER HEVC .b
-#EXTGRP:Film
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2315930044d6c692f148fa
 #EXTINF:-1 tvg-name="SKY CINEMA THRILLER RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sky_Cinema_Thriller_DE_Logo_2020.svg/960px-Sky_Cinema_Thriller_DE_Logo_2020.svg.png" group-title="Film" repair="proxy",SKY CINEMA THRILLER RAW .b
 #EXTGRP:Film
 #EXTVLCOPT:network-caching=1000
@@ -11429,6 +11519,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3449280759fea746b40b42
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1977732328b6aabb16714d
+#EXTINF:-1 tvg-name="SKY COMEDY HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sky_Cinema_Fun_DE_Logo_2020.svg/960px-Sky_Cinema_Fun_DE_Logo_2020.svg.png" group-title="Sonstige" repair="proxy",SKY COMEDY HEVC .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1783272659c93b1ef442c8
+#EXTINF:-1 tvg-name="SKY CRIME .c" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png" group-title="Sonstige" repair="proxy",SKY CRIME .c
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4064931426eff4b3b91a74
 #EXTINF:-1 tvg-name="SKY CRIME HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Sky_Crime_logo_2020.svg/960px-Sky_Crime_logo_2020.svg.png" group-title="Sonstige" repair="proxy",SKY CRIME HD .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -11499,6 +11599,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/25921202527f426e83343f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/655217723907016af2820
+#EXTINF:-1 tvg-name="SKY JUNIOR .b" tvg-logo="" group-title="Sonstige" repair="proxy",SKY JUNIOR .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/4463465606b88f8281cb2
 #EXTINF:-1 tvg-name="SKY KRIMI .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Sky_Krimi_2020.svg/960px-Sky_Krimi_2020.svg.png" group-title="Sonstige" repair="proxy",SKY KRIMI .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -12109,6 +12214,46 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/41721755119dc46e523d3e
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2382703781584c6286b6e8
+#EXTINF:-1 tvg-name="SKY SPORT 2 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2042960675a0a00c6fbc62
+#EXTINF:-1 tvg-name="SKY SPORT 2 (MATCH TIME) .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 (MATCH TIME) .s
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1870973910f25bfb936300
+#EXTINF:-1 tvg-name="SKY SPORT 2 HD .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 HD .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2681634527bbf39411d248
+#EXTINF:-1 tvg-name="SKY SPORT 2 HD (BACKUP) .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 HD (BACKUP) .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/627555880a78576fcd1f8
+#EXTINF:-1 tvg-name="SKY SPORT 2 HD+ .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 HD+ .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/27815750422e46c3bed720
+#EXTINF:-1 tvg-name="SKY SPORT 2 HEVC .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 HEVC .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/1448629491caaddcc2c73
+#EXTINF:-1 tvg-name="SKY SPORT 2 RAW .b" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sky_Sport_2_DE_Logo_2020.svg/960px-Sky_Sport_2_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 2 RAW .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/176826495e611e2af5da3
+#EXTINF:-1 tvg-name="SKY SPORT 3 .c" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sky_Sport_3_DE_Logo_2020.svg/960px-Sky_Sport_3_DE_Logo_2020.svg.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 3 .c
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/115167707545661f258b17
 #EXTINF:-1 tvg-name="SKY SPORT 3 (MATCH TIME) .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",SKY SPORT 3 (MATCH TIME) .s
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -12209,11 +12354,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/463237157314e6d840607
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/13816956759d45612328d0
-#EXTINF:-1 tvg-name="SKY SPORT 6 HD (BACKUP) .b" tvg-logo="https://i.imgur.com/WfeyX8D.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 6 HD (BACKUP) .b
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1450154471bf23820b345b
 #EXTINF:-1 tvg-name="SKY SPORT 6 HD+ .b" tvg-logo="https://i.imgur.com/WfeyX8D.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 6 HD+ .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -12224,11 +12364,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/4163315342e3dfa44378db
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2972030035baf7f7dca0a2
-#EXTINF:-1 tvg-name="SKY SPORT 7 (MATCH TIME) .s" tvg-logo="" group-title="Almanya Sport" repair="proxy",SKY SPORT 7 (MATCH TIME) .s
-#EXTGRP:Almanya Sport
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2340334129c662ead592c0
 #EXTINF:-1 tvg-name="SKY SPORT 7 HD .b" tvg-logo="https://i.imgur.com/XeflUV9.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 7 HD .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -12279,6 +12414,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2454960312cf3871fa5939
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/32671258975ee204f512e7
+#EXTINF:-1 tvg-name="SKY SPORT 9 HD (BACKUP) .b" tvg-logo="https://i.imgur.com/NQMl2hn.png" group-title="Almanya Sport" repair="proxy",SKY SPORT 9 HD (BACKUP) .b
+#EXTGRP:Almanya Sport
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2431494706163357c90f68
 #EXTINF:-1 tvg-name="SKY SPORT AUSTRIA 1 .b" tvg-logo="" group-title="Almanya Sport" repair="proxy",SKY SPORT AUSTRIA 1 .b
 #EXTGRP:Almanya Sport
 #EXTVLCOPT:network-caching=1000
@@ -12594,11 +12734,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/241854275488d7967fc501
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3618304940b7286728a4cf
-#EXTINF:-1 tvg-name="SONNENKLAR TV .c" tvg-logo="https://i.imgur.com/g4QeXwF.png" group-title="Sonstige" repair="proxy",SONNENKLAR TV .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3495440592709bab73596d
 #EXTINF:-1 tvg-name="SONNENKLAR TV .s" tvg-logo="https://i.imgur.com/g4QeXwF.png" group-title="Sonstige" repair="proxy",SONNENKLAR TV .s
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -12719,16 +12854,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/2094185132db4ce28c0842
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3947804295e226cf27afee
+#EXTINF:-1 tvg-name="SPONGEBOB HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",SPONGEBOB HD .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/2520302204f235e56dd105
 #EXTINF:-1 tvg-name="SPOR SMART .c" tvg-logo="https://i.imgur.com/blu6v6P.png" group-title="Spor" repair="proxy",SPOR SMART .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1771511397d05184d3e443
-#EXTINF:-1 tvg-name="SPOR SMART 1 .s" tvg-logo="" group-title="Spor" repair="proxy",SPOR SMART 1 .s
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3278735965dfe5a38d92ee
 #EXTINF:-1 tvg-name="SPOR SMART 2 .c" tvg-logo="https://i.imgur.com/qyUKCUa.png" group-title="Spor" repair="proxy",SPOR SMART 2 .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -12739,11 +12874,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/90716509593fd6426951b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2228088973f56fff74c71f
-#EXTINF:-1 tvg-name="SPOR SMART 2 HD .b" tvg-logo="https://i.imgur.com/qyUKCUa.png" group-title="Spor" repair="proxy",SPOR SMART 2 HD .b
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2726496671ea6fd3c6dc54
 #EXTINF:-1 tvg-name="SPOR SMART FHD .b" tvg-logo="https://i.imgur.com/blu6v6P.png" group-title="Spor" repair="proxy",SPOR SMART FHD .b
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -12774,11 +12904,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/51334617841ebc9d3984d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/22935495806e78b2c2639a
-#EXTINF:-1 tvg-name="SPORT DIGITAL FHD .b" tvg-logo="" group-title="Spor" repair="proxy",SPORT DIGITAL FHD .b
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/312645496b88d4bff5366
 #EXTINF:-1 tvg-name="SPORT DIGITAL HD .b" tvg-logo="" group-title="Spor" repair="proxy",SPORT DIGITAL HD .b
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -13289,11 +13414,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3764999351388d923b7bbb
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/26686580372b9b4202d380
-#EXTINF:-1 tvg-name="SYFY HD .b" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Sonstige" repair="proxy",SYFY HD .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1680063305516b13d90821
 #EXTINF:-1 tvg-name="SYFY HD (BACKUP) .b" tvg-logo="https://i.imgur.com/4fMWhUE.png" group-title="Sonstige" repair="proxy",SYFY HD (BACKUP) .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -13399,6 +13519,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/408817539739fafefc9d3b
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3035603077ef0df0e5da67
+#EXTINF:-1 tvg-name="TABII SPOR 5 HD .b" tvg-logo="https://logo.huhu.to/logo?c=2661933413.png" group-title="Ulusal" repair="proxy",TABII SPOR 5 HD .b
+#EXTGRP:Ulusal
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/26619334135baa08b0bc1a
 #EXTINF:-1 tvg-name="TABII SPOR 5 UHD .b" tvg-logo="https://logo.huhu.to/logo?c=3839332198.png" group-title="Ulusal" repair="proxy",TABII SPOR 5 UHD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -13419,6 +13544,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/270984838ca5cfbf75daa
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/37137089631c97c5b7ef8f
+#EXTINF:-1 tvg-name="TABII SPOR HD .b" tvg-logo="https://logo.huhu.to/logo?c=2259480087.png" group-title="Ulusal" repair="proxy",TABII SPOR HD .b
+#EXTGRP:Ulusal
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/225948008747f499d08214
 #EXTINF:-1 tvg-name="TABII SPOR SD .b" tvg-logo="https://logo.huhu.to/logo?c=4022148175.png" group-title="Ulusal" repair="proxy",TABII SPOR SD .b
 #EXTGRP:Ulusal
 #EXTVLCOPT:network-caching=1000
@@ -13459,11 +13589,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/3856957052050da882aa10
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/150823084612c089acb3d
-#EXTINF:-1 tvg-name="TASTEMADE .c" tvg-logo="" group-title="Sonstige" repair="proxy",TASTEMADE .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3126933663eafa7b5bb73b
 #EXTINF:-1 tvg-name="TATLISES TV .c" tvg-logo="https://i.imgur.com/et1sbyq.png" group-title="Sonstige" repair="proxy",TATLISES TV .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -13814,6 +13939,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/10743115406a66c8cf7f92
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2442914416a8ffad2b60ce
+#EXTINF:-1 tvg-name="THE NIGHT SHIFT 24/7 .b" tvg-logo="" group-title="Sonstige" repair="proxy",THE NIGHT SHIFT 24/7 .b
+#EXTGRP:Sonstige
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/42617572110dd24ecb0620
 #EXTINF:-1 tvg-name="THE WICKED TUNA .c" tvg-logo="" group-title="Sonstige" repair="proxy",THE WICKED TUNA .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -13859,11 +13989,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/37466838109fc1c67c228d
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4782547993a1194125c51
-#EXTINF:-1 tvg-name="TIVIBU SPOR 2 HD .s" tvg-logo="https://i.imgur.com/fZMSjNE.png" group-title="Spor" repair="proxy",TIVIBU SPOR 2 HD .s
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/415153448631eabe6978ed
 #EXTINF:-1 tvg-name="TIVIBU SPOR 3 .c" tvg-logo="https://i.imgur.com/xLrgt2O.png" group-title="Spor" repair="proxy",TIVIBU SPOR 3 .c
 #EXTGRP:Spor
 #EXTVLCOPT:network-caching=1000
@@ -14044,11 +14169,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1660689017237da1472fc
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/15370381947df4eaa74835
-#EXTINF:-1 tvg-name="TRABZON HABER 61 TV HD .b" tvg-logo="" group-title="Yerel" repair="proxy",TRABZON HABER 61 TV HD .b
-#EXTGRP:Yerel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1840643644b180a4d619d6
 #EXTINF:-1 tvg-name="TRAVELXP .c" tvg-logo="https://logo.huhu.to/logo?c=3367058532.png" group-title="Sonstige" repair="proxy",TRAVELXP .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -14459,11 +14579,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/9378185667186a6a69096
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1278410942dcdf0e759ea9
-#EXTINF:-1 tvg-name="TV 2 ZULU .b" tvg-logo="" group-title="Sonstige" repair="proxy",TV 2 ZULU .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1318804769d37322e5b7f8
 #EXTINF:-1 tvg-name="TV 264 .c" tvg-logo="https://i.imgur.com/tudXdOZ.png" group-title="Sonstige" repair="proxy",TV 264 .c
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -14589,61 +14704,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/427247780841181bd4210f
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/3676375271a8923c3f58de
-#EXTINF:-1 tvg-name="TV INGOLSTADT .s" tvg-logo="https://i.imgur.com/Ymh11VV.png" group-title="Sonstige" repair="proxy",TV INGOLSTADT .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/4030242361e526f8ada250
 #EXTINF:-1 tvg-name="TV KAYSERI .c" tvg-logo="https://i.imgur.com/2zsm7Jt.png" group-title="Yerel" repair="proxy",TV KAYSERI .c
 #EXTGRP:Yerel
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/2378683302a90688067b08
-#EXTINF:-1 tvg-name="TV MAINFRANKEN .c" tvg-logo="https://raw.githubusercontent.com/jnk22/kodinerds-iptv/master/logos/tv/tvmainfranken.png" group-title="Sonstige" repair="proxy",TV MAINFRANKEN .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/656561824e19af8506560
 #EXTINF:-1 tvg-name="TV NET .c" tvg-logo="https://logo.huhu.to/logo?c=1225673773.png" group-title="Haber" repair="proxy",TV NET .c
 #EXTGRP:Haber
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1225673773af8c29391e81
-#EXTINF:-1 tvg-name="TV OBERFRANKEN .c" tvg-logo="https://i.imgur.com/tjD9fX2.png" group-title="Sonstige" repair="proxy",TV OBERFRANKEN .c
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1617812332a22e062b19c8
-#EXTINF:-1 tvg-name="TV OBERFRANKEN .s" tvg-logo="https://i.imgur.com/tjD9fX2.png" group-title="Sonstige" repair="proxy",TV OBERFRANKEN .s
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/435447391d04e23618790
-#EXTINF:-1 tvg-name="TV3 HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",TV3 HD .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/4096804646a62b3d1f7ff1
-#EXTINF:-1 tvg-name="TV3 MAX .b" tvg-logo="" group-title="Sonstige" repair="proxy",TV3 MAX .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3712417544dd2df44df7ae
-#EXTINF:-1 tvg-name="TV3 PULS .b" tvg-logo="" group-title="Sonstige" repair="proxy",TV3 PULS .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2566182864ea369e25615c
-#EXTINF:-1 tvg-name="TV3 SPORT .b" tvg-logo="" group-title="Spor" repair="proxy",TV3 SPORT .b
-#EXTGRP:Spor
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/3307783229b070addd157d
-#EXTINF:-1 tvg-name="TV3+ HD .b" tvg-logo="" group-title="Sonstige" repair="proxy",TV3+ HD .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/389774673655d47b50b7c7
 #EXTINF:-1 tvg-name="TV5 .b" tvg-logo="" group-title="Sonstige" repair="proxy",TV5 .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -14759,11 +14829,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/317434201637fa05adb599
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/353794604875208baceee0
-#EXTINF:-1 tvg-name="ULTRA KORKU .b" tvg-logo="" group-title="Sonstige" repair="proxy",ULTRA KORKU .b
-#EXTGRP:Sonstige
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/356356254709757fc813c5
 #EXTINF:-1 tvg-name="ULTRA TURK .b" tvg-logo="" group-title="Sonstige" repair="proxy",ULTRA TURK .b
 #EXTGRP:Sonstige
 #EXTVLCOPT:network-caching=1000
@@ -14898,32 +14963,12 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1393508151b8c4f98870de
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/118325844000b303729ade
-#EXTINF:-1 tvg-name="VIASAT EXPLORE .b" tvg-logo="https://i.imgur.com/DyT5pKB.png" group-title="Belgesel" repair="proxy",VIASAT EXPLORE .b
-#EXTGRP:Belgesel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/117291557ba984e961de8
-#EXTINF:-1 tvg-name="VIASAT EXPLORE .c" tvg-logo="https://i.imgur.com/DyT5pKB.png" group-title="Belgesel" repair="proxy",VIASAT EXPLORE .c
-#EXTGRP:Belgesel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/10982410761d6faced1faa
 #EXTINF:-1 tvg-name="VIASAT EXPLORE .s" tvg-logo="https://i.imgur.com/DyT5pKB.png" group-title="Belgesel" repair="proxy",VIASAT EXPLORE .s
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/17854799144cbb1c340ac1
-#EXTINF:-1 tvg-name="VIASAT HISTORY .b" tvg-logo="https://i.imgur.com/wRP9XA7.png" group-title="Belgesel" repair="proxy",VIASAT HISTORY .b
-#EXTGRP:Belgesel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/91897476400c39f24eed6
-#EXTINF:-1 tvg-name="VIASAT HISTORY .c" tvg-logo="https://i.imgur.com/wRP9XA7.png" group-title="Belgesel" repair="proxy",VIASAT HISTORY .c
-#EXTGRP:Belgesel
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1900945213599b64fe115b
 #EXTINF:-1 tvg-name="VIASAT HISTORY HD+ .b" tvg-logo="https://i.imgur.com/wRP9XA7.png" group-title="Belgesel" repair="proxy",VIASAT HISTORY HD+ .b
 #EXTGRP:Belgesel
 #EXTVLCOPT:network-caching=1000
@@ -15159,16 +15204,16 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1373972750d789bb029818
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/64070984950d334ce25b4
-#EXTINF:-1 tvg-name="WDR FERNSEHEN AACHEN .c" tvg-logo="" group-title="Almanya TV" repair="proxy",WDR FERNSEHEN AACHEN .c
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/4027035620edc1b64e0478
 #EXTINF:-1 tvg-name="WDR FERNSEHEN BIELEFELD .c" tvg-logo="" group-title="Almanya TV" repair="proxy",WDR FERNSEHEN BIELEFELD .c
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/640496589abb3a9266b3a
+#EXTINF:-1 tvg-name="WDR FERNSEHEN BONN .c" tvg-logo="" group-title="Almanya TV" repair="proxy",WDR FERNSEHEN BONN .c
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/406305823067b328f45992
 #EXTINF:-1 tvg-name="WDR FERNSEHEN DORTMUND .c" tvg-logo="" group-title="Almanya TV" repair="proxy",WDR FERNSEHEN DORTMUND .c
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -15254,11 +15299,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/1148515000e3642f526e46
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/153559196441d430ab275d
-#EXTINF:-1 tvg-name="WELT DER WUNDER TV .c" tvg-logo="https://i.imgur.com/DLXssJe.png" group-title="Almanya TV" repair="proxy",WELT DER WUNDER TV .c
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/1891275530e9336f08b299
 #EXTINF:-1 tvg-name="WELT HD .b" tvg-logo="https://i.imgur.com/s4TZoxx.png" group-title="Almanya TV" repair="proxy",WELT HD .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -15384,11 +15424,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/245742586a1ae349871a9
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/4050722013efecdc85c9b
-#EXTINF:-1 tvg-name="YOL TV .b" tvg-logo="https://i.imgur.com/rTBX6lS.png" group-title="Dini" repair="proxy",YOL TV .b
-#EXTGRP:Dini
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/36035801315c2c657f7f29
 #EXTINF:-1 tvg-name="YOL TV .c" tvg-logo="https://i.imgur.com/rTBX6lS.png" group-title="Dini" repair="proxy",YOL TV .c
 #EXTGRP:Dini
 #EXTVLCOPT:network-caching=1000
@@ -15429,11 +15464,6 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/36308257510ea627445703
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/27736457088450539466b4
-#EXTINF:-1 tvg-name="ZDF FHD .b" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Almanya TV" repair="proxy",ZDF FHD .b
-#EXTGRP:Almanya TV
-#EXTVLCOPT:network-caching=1000
-#EXTVLCOPT:live-caching=1000
-https://young-dew-a7a9.pandatiger.workers.dev/play/2521267440402231fadbcb
 #EXTINF:-1 tvg-name="ZDF HD .b" tvg-logo="https://i.imgur.com/rtLb6m9.png" group-title="Almanya TV" repair="proxy",ZDF HD .b
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
@@ -15474,6 +15504,11 @@ https://young-dew-a7a9.pandatiger.workers.dev/play/205558050eee2081b3f92
 #EXTVLCOPT:network-caching=1000
 #EXTVLCOPT:live-caching=1000
 https://young-dew-a7a9.pandatiger.workers.dev/play/1860571224f867b6cef5ca
+#EXTINF:-1 tvg-name="ZDF NEO .c" tvg-logo="https://logo.huhu.to/logo?c=3560060644.png" group-title="Almanya TV" repair="proxy",ZDF NEO .c
+#EXTGRP:Almanya TV
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:live-caching=1000
+https://young-dew-a7a9.pandatiger.workers.dev/play/3560060644e3357f78cf88
 #EXTINF:-1 tvg-name="ZDF NEO .s" tvg-logo="" group-title="Almanya TV" repair="proxy",ZDF NEO .s
 #EXTGRP:Almanya TV
 #EXTVLCOPT:network-caching=1000
