@@ -701,31 +701,42 @@ async function resolveFallbackUrl(url) {
   if (!match) return { url, via: 'fallback' };
 
   const channelId = match[1];
-  try {
-    const response = await fetchWithRetry(`https://matchora.to/api/play/${channelId}`, {
-      headers: {
-        'User-Agent': STREAM_USER_AGENT,
-        'Accept': 'application/json',
-        'Referer': `https://matchora.to/embed/channel/${channelId}`
-      },
-      timeout: 8000,
-      retries: 0
-    });
-    if (!response.ok) {
-      console.log(`[vavoo] matchora ${channelId} -> HTTP ${response.status}`);
-      return null;
-    }
+  for (let round = 0; round < 2; round++) {
+    try {
+      const response = await fetchWithRetry(`https://matchora.to/api/play/${channelId}`, {
+        headers: {
+          'User-Agent': STREAM_USER_AGENT,
+          'Accept': 'application/json',
+          'Referer': `https://matchora.to/embed/channel/${channelId}`
+        },
+        timeout: 8000,
+        retries: 0
+      });
+      if (!response.ok) {
+        console.log(`[vavoo] matchora ${channelId} -> HTTP ${response.status}`);
+        return null;
+      }
 
-    const data = await response.json();
-    if (!data || typeof data.url !== 'string' || !/^https?:\/\//.test(data.url)) {
-      console.log(`[vavoo] matchora ${channelId} -> no stream url`);
+      const data = await response.json();
+      if (!data || typeof data.url !== 'string' || !/^https?:\/\//.test(data.url)) {
+        console.log(`[vavoo] matchora ${channelId} -> no stream url`);
+        return null;
+      }
+
+      // A stream that is still warming up has no segments yet. Asking again
+      // after a moment is cheaper than handing out a dead playlist.
+      if (data.ready === false && data.reason === 'warming' && round === 0) {
+        await new Promise(resolve => setTimeout(resolve, 2500));
+        continue;
+      }
+
+      return { url: data.url, via: 'matchora' };
+    } catch (error) {
+      console.log(`[vavoo] matchora ${channelId} failed: ${error.message}`);
       return null;
     }
-    return { url: data.url, via: 'matchora' };
-  } catch (error) {
-    console.log(`[vavoo] matchora ${channelId} failed: ${error.message}`);
-    return null;
   }
+  return null;
 }
 
 async function getFallbackIndex() {
