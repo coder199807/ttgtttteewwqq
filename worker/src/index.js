@@ -25,7 +25,9 @@ const STREAM_USER_AGENT =
 const FALLBACK_INDEX_URL =
   'https://raw.githubusercontent.com/coder199807/ttgtttteewwqq/main/fallbacks.json';
 const FALLBACK_CACHE_KEY = 'fallbacks';
-const FALLBACK_CACHE_TTL = 86400;
+// The index is rebuilt by the GitHub Action; an hour is enough to pick up a
+// new custom link without serving a stale one for a whole day.
+const FALLBACK_CACHE_TTL = 3600;
 const VAVOO_HOSTS = new Set(['vavoo.to', 'kool.to', 'www.vavoo.tv', 'vavoo.tv']);
 
 function hostOf(urlString) {
@@ -112,12 +114,23 @@ function describeUrl(url) {
   }
 }
 
+// ffmpeg (and every other strict HLS demuxer) refuses a segment whose URL
+// path has no allowed file extension: "URL ... is not in
+// allowed_segment_extensions" -> the whole stream fails to open. The proxy
+// path therefore has to carry the upstream extension.
+function proxyExtension(upstreamUrl, isVariant) {
+  const ext = pathExtension(upstreamUrl);
+  if (/^\.[a-z0-9]{1,5}$/.test(ext)) return ext;
+  // No extension to copy: a variant is always a playlist, a segment never is.
+  return isVariant ? '.m3u8' : '.ts';
+}
+
 // channelId rides along so an expired segment can be re-resolved at request time.
 // via rides along so a segment keeps the Origin its own source requires.
-function getProxiedUrl(baseUrl, upstreamUrl, channelId, via) {
+function getProxiedUrl(baseUrl, upstreamUrl, channelId, via, isVariant) {
   const id = channelId ? `&id=${encodeURIComponent(channelId)}` : '';
   const src = via && via !== 'vavoo' ? `&v=${encodeURIComponent(via)}` : '';
-  return `${baseUrl}/hls-proxy?url=${encodeURIComponent(upstreamUrl)}${id}${src}`;
+  return `${baseUrl}/hls-proxy${proxyExtension(upstreamUrl, isVariant)}?url=${encodeURIComponent(upstreamUrl)}${id}${src}`;
 }
 
 function shouldRewriteUri(uri) {
@@ -126,36 +139,149 @@ function shouldRewriteUri(uri) {
   return !/^(data|urn|skd):/i.test(trimmed);
 }
 
-function rewritePlaylistUri(baseUrl, playlistBase, uri, channelId, via) {
+function rewritePlaylistUri(baseUrl, playlistBase, uri, channelId, via, isVariant) {
   if (!shouldRewriteUri(uri)) return uri;
   // Already proxied - skip
-  if (uri.includes('/hls-proxy?')) return uri;
+  if (uri.includes('/hls-proxy')) return uri;
   try {
     const absolute = new URL(uri, playlistBase).toString();
-    return getProxiedUrl(baseUrl, absolute, channelId, via);
+    return getProxiedUrl(baseUrl, absolute, channelId, via, isVariant);
   } catch {
     return uri;
   }
 }
 
 function rewritePlaylist(baseUrl, upstreamUrl, playlist, channelId, via) {
-  return String(playlist)
-    .split(/\r?\n/)
+  const lines = String(playlist).split(/\r?\n/);
+  // A variant line belongs to the #EXT-X-STREAM-INF above it and is always a
+  // playlist, a plain URI line is a segment.
+  let variant = false;
+
+  return lines
     .map(line => {
       const trimmed = line.trim();
       if (!trimmed) return line;
 
-if (trimmed.startsWith('#')) {
+      if (trimmed.startsWith('#')) {
+        if (trimmed.startsWith('#EXT-X-STREAM-INF')) variant = true;
         // Rewrite URI="..." in any HLS tag (KEY, MAP, MEDIA, STREAM-INF, etc.)
         return line.replace(/URI="([^"]+)"/g, (match, uri) => {
-          return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri, channelId, via)}"`;
+          return `URI="${rewritePlaylistUri(baseUrl, upstreamUrl, uri, channelId, via, false)}"`;
         });
       }
 
-      // Segment URI line — rewrite
-      return rewritePlaylistUri(baseUrl, upstreamUrl, trimmed, channelId, via);
+      // Segment or variant URI line — rewrite
+      const rewritten = rewritePlaylistUri(baseUrl, upstreamUrl, trimmed, channelId, via, variant);
+      variant = false;
+      return rewritten;
     })
     .join('\n');
+}
+
+// ============================================================
+// NESTED PLAYLISTS
+// ============================================================
+
+// Some Turkish CDNs put a playlist where a segment belongs. A player cannot
+// read a playlist in a segment slot, so the inner playlist has to be handed
+// out instead of the outer one.
+function firstSegmentUri(upstreamUrl, playlist) {
+  // Only a media playlist has segment slots; a master playlist holds variants.
+  if (!/#EXTINF/.test(playlist)) return null;
+  for (const line of playlist.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    try {
+      return new URL(trimmed, upstreamUrl).toString();
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
+async function probeContentType(url, via) {
+  try {
+    const response = await fetchWithRetry(url, {
+      method: 'HEAD',
+      headers: getStreamHeaders(url, via),
+      timeout: 6000,
+      retries: 0,
+    });
+    if (response.ok) return String(response.headers.get('content-type') || '').toLowerCase();
+  } catch { }
+  return '';
+}
+
+// All variant uris of a master playlist, resolved against its base url.
+function variantUris(upstreamUrl, playlist) {
+  const uris = [];
+  let variant = false;
+  for (const line of playlist.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    if (trimmed.startsWith('#')) {
+      if (trimmed.startsWith('#EXT-X-STREAM-INF')) variant = true;
+      continue;
+    }
+    if (!variant) continue;
+    try {
+      uris.push(new URL(trimmed, upstreamUrl).toString());
+    } catch { }
+  }
+  return uris;
+}
+
+// Some CDNs answer a variant request with another master playlist (the
+// artidijital sources do, with a rotating session id) and some put a playlist
+// where a segment belongs. Both break the player, so the playlist is unwrapped
+// until a media playlist with real segments shows up.
+async function unwrapPlaylist(upstreamUrl, playlist, via, depth = 0) {
+  if (depth >= 3) return { url: upstreamUrl, text: playlist, playable: false };
+
+  if (/#EXT-X-STREAM-INF/.test(playlist)) {
+    for (const variant of variantUris(upstreamUrl, playlist).slice(0, 3)) {
+      const response = await fetchWithRetry(variant, {
+        headers: getPlaylistHeaders(variant, via),
+        timeout: 8000,
+        retries: 0,
+      }).catch(() => null);
+
+      if (!response || !response.ok) continue;
+      const text = await response.text();
+      if (!text.trimStart().startsWith('#EXTM3U')) continue;
+
+      const inner = await unwrapPlaylist(variant, text, via, depth + 1);
+      if (inner.playable) {
+        console.log(`[vavoo] master playlist resolved to media: ${describeUrl(inner.url)}`);
+        return inner;
+      }
+    }
+    return { url: upstreamUrl, text: playlist, playable: false };
+  }
+
+  const segment = firstSegmentUri(upstreamUrl, playlist);
+  if (segment) {
+    const contentType = await probeContentType(segment, via);
+    if (contentType.includes('mpegurl')) {
+      const inner = await fetchWithRetry(segment, {
+        headers: getPlaylistHeaders(segment, via),
+        timeout: 8000,
+        retries: 0,
+      }).catch(() => null);
+
+      if (inner && inner.ok) {
+        const text = await inner.text();
+        if (text.trimStart().startsWith('#EXTM3U')) {
+          console.log(`[vavoo] unwrapped nested playlist ${describeUrl(segment)}`);
+          const deeper = await unwrapPlaylist(segment, text, via, depth + 1);
+          if (deeper.playable) return deeper;
+        }
+      }
+    }
+  }
+
+  return { url: upstreamUrl, text: playlist, playable: true };
 }
 
 // ============================================================
@@ -203,6 +329,15 @@ async function fetchWithRetry(url, options = {}) {
         headers: options.headers || {},
         signal: AbortSignal.timeout(options.timeout || 15000),
       });
+      // The Turkish CDNs answer 502/503/504 out of the blue. Those are cheap to
+      // retry (they come back in ms) and a dead channel is the result if we do
+      // not try again.
+      if (response.status >= 500 && attempt < maxRetries) {
+        await response.body?.cancel();
+        await new Promise(r => setTimeout(r, 250 * (attempt + 1)));
+        continue;
+      }
+
       return response;
     } catch (err) {
       lastErr = err;
@@ -420,8 +555,9 @@ async function resolveDirect(id) {
 // FALLBACK INDEX  (shipped by scripts/build.js as fallbacks.json)
 // ============================================================
 
-// Kept in sync with normalizeChannelName() in scripts/build.js â€” both sides
-// must fold diacritics the same way or every lookup misses.
+// Folds the channel name into a comparable form. The worker normalises both
+// sides (its own channel name and every key of the fallback index), so the
+// index stays readable even when the build wrote it with its own rules.
 function normalizeChannelName(name) {
   return String(name || '')
     .toLowerCase()
@@ -429,25 +565,103 @@ function normalizeChannelName(name) {
     .replace(/\s*\.(?:b|c|s)\b/g, '')
     .replace(/[\[\]]+/g, ' ').replace(/\[[^\]]*\]/g, '')
     .replace(/\([^)]*\)/g, '')
-    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw)\b/g, '')
+    // "E X X E N" is one word, not five
+    .replace(/\b(?:[a-z0-9]\s+){2,}[a-z0-9]\b/g, (m) => m.replace(/\s+/g, ''))
+    .replace(/\b(hd|fhd|uhd|4k|sd|hevc|h265|h264|raw|mahsun)\b/g, '')
+    .replace(/\bsports?\b/g, 'spor')
     .replace(/\u00fc/g, 'u')
     .replace(/\u011f/g, 'g')
     .replace(/\u015f/g, 's')
     .replace(/\u0131/g, 'i')
     .replace(/\u00f6/g, 'o')
     .replace(/\u00e7/g, 'c')
+    .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-// Guards against ATV picking up ATV Alanya.
+// The user does not want radio. A radio entry in the index must never be used
+// as a fallback for a tv channel, and a radio stream is not playable as HLS.
+const RADIO_TOKENS = new Set(['radyo', 'radio']);
+
+function isRadioName(name) {
+  return String(name || '').split(' ').some(token => RADIO_TOKENS.has(token));
+}
+
+// Ranking of two normalized channel names. 0 means "different channel".
+// A trailing number marks a sibling channel ("TRT SPOR 2" is not "TRT SPOR"),
+// a trailing word marks a family member ("EXXEN TV SPOR 1" belongs to "EXXEN TV").
+// The overlap decides the order, the class only breaks ties: exact > one word
+// dropped > same words plus extras.
+function similarityScore(a, b) {
+  if (!a || !b) return 0;
+  if (isRadioName(a) !== isRadioName(b)) return 0;
+
+  const tokensA = new Set(a.split(' ').filter(Boolean));
+  const tokensB = new Set(b.split(' ').filter(Boolean));
+  if (!tokensA.size || !tokensB.size) return 0;
+  const shared = [...tokensA].filter(token => tokensB.has(token)).length;
+  const union = new Set([...tokensA, ...tokensB]).size;
+  const overlap = shared / union;
+
+  if (a === b) return 1200 + overlap * 1000;
+
+  const squashedA = a.replace(/\s+/g, '');
+  const squashedB = b.replace(/\s+/g, '');
+  if (squashedA === squashedB) return 1150 + overlap * 1000;
+
+  const longer = squashedA.length >= squashedB.length ? squashedA : squashedB;
+  const shorter = longer === squashedA ? squashedB : squashedA;
+  if (longer.startsWith(shorter) && !/^\d+$/.test(longer.slice(shorter.length))) {
+    if (overlap < 0.4) return 0;
+    return 1100 + overlap * 1000;
+  }
+
+  // The shorter name must be made of the same words as the longer one, so
+  // "EXXEN TV SPOR 1" never lands on "STC TV SPORTS 1".
+  const [small, big] = tokensA.size <= tokensB.size ? [tokensA, tokensB] : [tokensB, tokensA];
+  if (![...small].every(token => big.has(token))) return 0;
+  const extra = [...big].filter(token => !small.has(token));
+  if (extra.length && extra.every(token => /^\d+$/.test(token))) return 0;
+  if (overlap < 0.4) return 0;
+  return overlap * 1000;
+}
+
 function isSimilarName(a, b) {
-  if (a === b) return true;
-  if (!a || !b) return false;
-  if (!a.includes(b) && !b.includes(a)) return false;
-  const longer = Math.max(a.length, b.length);
-  const shorter = Math.min(a.length, b.length);
-  return shorter / longer >= 0.7;
+  return similarityScore(a, b) > 0;
+}
+
+// The index has its own entries for generic words ("spor", "tv"). Those would
+// send every sports channel to the same source, so they never match loosely.
+const GENERIC_TOKENS = new Set([
+  'tv', 'spor', 'sport', 'sports', 'radio', 'radyo', 'haber', 'news', 'live',
+  'yayin', 'canli', 'hd', 'fhd', 'uhd', 'sd', '4k', 'hevc', 'muzik', 'music',
+  'kanal', 'plus', 'raw', 'tr', 'de', 'at', 'ch', 'ilk', 'ortaokul'
+]);
+
+function isDistinctive(name) {
+  return name.split(' ').some(token => token && !GENERIC_TOKENS.has(token));
+}
+
+// The index is scanned on every /play request and has ~5k keys, so the
+// normalized form is memoized for a minute.
+let normalizedIndexMemo = { at: 0, entries: [] };
+const NORMALIZED_INDEX_TTL = 60000;
+
+function normalizedIndexEntries(index) {
+  const now = Date.now();
+  if (normalizedIndexMemo.entries.length && now - normalizedIndexMemo.at < NORMALIZED_INDEX_TTL) {
+    return normalizedIndexMemo.entries;
+  }
+  const entries = [];
+  for (const [candidate, list] of Object.entries(index)) {
+    if (!Array.isArray(list) || !list.length) continue;
+    const name = normalizeChannelName(candidate);
+    if (!isDistinctive(name)) continue;
+    entries.push({ name, list });
+  }
+  normalizedIndexMemo = { at: now, entries };
+  return entries;
 }
 
 function lookupFallbackUrls(index, channelName) {
@@ -455,13 +669,22 @@ function lookupFallbackUrls(index, channelName) {
   const key = normalizeChannelName(channelName);
   if (!key) return [];
 
-  if (Array.isArray(index[key])) return index[key];
+  const entries = normalizedIndexEntries(index);
+  const scored = [];
+  for (const entry of entries) {
+    const score = similarityScore(key, entry.name);
+    if (score > 0) scored.push({ score, list: entry.list });
+  }
+  scored.sort((a, b) => b.score - a.score);
 
   const urls = [];
-  for (const [candidate, list] of Object.entries(index)) {
-    if (Array.isArray(list) && isSimilarName(key, candidate)) urls.push(...list);
+  for (const entry of scored) {
+    for (const url of entry.list) {
+      if (!urls.includes(url)) urls.push(url);
+      if (urls.length >= 3) return urls;
+    }
   }
-  return urls.slice(0, 3);
+  return urls;
 }
 
 async function getFallbackIndex() {
@@ -492,13 +715,12 @@ function segmentResponse(response) {
     ...corsHeaders()
   };
 
-  // Never send an empty Content-Length: players treat that as a short frame and stop.
-  const length = response.headers.get('content-length');
-  if (length) headers['Content-Length'] = length;
-
-  // Dropped headers corrupt the body: gzip segments without this header never decode.
+  // The runtime already decodes gzip/br, so re-sending Content-Encoding would
+  // make the client decode plain bytes and Content-Length would then describe
+  // the compressed size -> truncated responses ("Malformed HTTP status line").
   const encoding = response.headers.get('content-encoding');
-  if (encoding) headers['Content-Encoding'] = encoding;
+  const length = response.headers.get('content-length');
+  if (!encoding && length) headers['Content-Length'] = length;
 
   const range = response.headers.get('content-range');
   if (range) headers['Content-Range'] = range;
@@ -587,58 +809,124 @@ export default {
 
       // Candidate order: vavoo resolve -> curated fallback index -> direct watch url.
       // Every candidate is actually fetched, because the upstream can return 403
-      // even when the resolve call succeeded â€” that is the case the old code lost.
-      const candidates = [];
+      // even when the resolve call succeeded — that is the case the old code lost.
       let channelName = '';
+      let channel = null;
 
       try {
-        const channel = await findChannel(channelId);
-        if (channel) {
-          channelName = channel.name || '';
-          const resolved = await resolveStream(channel).catch(err => {
-            console.log(`[vavoo] resolve failed: ${err.message}`);
-            return null;
-          });
-          if (resolved) candidates.push({ url: resolved, via: 'vavoo', channelId });
-        }
+        channel = await findChannel(channelId);
+        if (channel) channelName = channel.name || '';
       } catch (error) {
         console.log(`[vavoo] catalog lookup failed: ${error.message}`);
       }
 
+      const fallbackUrls = [];
       try {
         const index = await getFallbackIndex();
-        for (const url of lookupFallbackUrls(index, channelName)) {
-          candidates.push({ url, via: 'fallback', channelId });
-        }
+        fallbackUrls.push(...lookupFallbackUrls(index, channelName));
       } catch (error) {
         console.log(`[vavoo] fallback index unavailable: ${error.message}`);
       }
 
-      if (candidates.length === 0) {
-        const direct = await resolveDirect(channelId).catch(() => null);
-        if (direct) candidates.push({ url: direct, via: 'direct', channelId });
-      }
-
       let lastStatus = 0;
-      for (const candidate of candidates) {
-        let response;
-        try {
-          response = await proxyStream(baseUrl, candidate.url, request, candidate.channelId, candidate.via);
-        } catch (error) {
-          console.log(`[vavoo] ${candidate.via} threw: ${error.message}`);
+      let passthrough = null;
+
+      // Fetch a candidate and report what came back. The edge cannot reach
+      // every source: Cloudflare answers 403 for the vavoo sunshine servers
+      // and 530 for dead hostnames. The player's own IP usually gets through,
+      // so such a source is handed over instead of failing the channel.
+      const attempt = async (url, via, validate) => {
+        const response = await proxyStream(baseUrl, url, request, channelId, via, { validateSegments: validate }).catch(error => {
+          console.log(`[vavoo] ${via} threw: ${error.message}`);
+          return null;
+        });
+
+        if (!response) {
           lastStatus = 502;
-          continue;
+          return { status: 502 };
         }
 
         if (response.status < 400) {
-          if (candidate.via !== 'vavoo') {
-            console.log(`[vavoo] "${channelName || channelId}" recovered via ${candidate.via}: ${describeUrl(candidate.url)}`);
+          const contentType = String(response.headers.get('content-type') || '').toLowerCase();
+          // A radio stream or an html page answers 200 but cannot be played as
+          // HLS, so it must not count as a recovered channel.
+          if (!isM3u8Response(url, contentType)) {
+            console.log(`[vavoo] ${via} ${describeUrl(url)} -> ${response.status} ${contentType || 'no ct'}, not a playlist`);
+            lastStatus = 502;
+            return { status: 502 };
           }
-          return response;
+          return { status: response.status, response };
         }
 
         lastStatus = response.status;
-        console.log(`[vavoo] ${candidate.via} ${describeUrl(candidate.url)} -> ${response.status}, trying next`);
+        // The edge is blocked for the vavoo sources, the player's own IP is
+        // not. Handing over the original url is the fastest way to a stream,
+        // so it wins over the slower curated fallbacks.
+        if (via === 'vavoo' && (response.status === 403 || response.status === 530)) {
+          passthrough = url;
+        }
+        console.log(`[vavoo] ${via} ${describeUrl(url)} -> ${response.status}, trying next`);
+        return { status: response.status };
+      };
+
+      // Vavoo first. The resolver also hands out dead sunshine servers, and a
+      // dead one answers 403/530 — that means "resolve again", not "give up on
+      // vavoo and fall back to the curated index".
+      if (channel) {
+        // The player waits for the answer, so the vavoo phase is bounded.
+        // A hanging source must not eat the whole budget.
+        const vavooDeadline = Date.now() + 8000;
+        for (let round = 0; round < 3; round++) {
+          if (Date.now() > vavooDeadline) break;
+          const resolved = await resolveStream(channel).catch(err => {
+            console.log(`[vavoo] resolve failed: ${err.message}`);
+            return null;
+          });
+          if (!resolved) break;
+
+          const result = await attempt(resolved, 'vavoo');
+          if (result.response) return result.response;
+          if (result.status !== 403 && result.status !== 530) break;
+          console.log(`[vavoo] vavoo source dead (${result.status}), resolving again`);
+        }
+      }
+
+      // The vavoo source is gone for good, so the curated index is the only
+      // chance left. A source that answers with a dead playlist is skipped,
+      // so every candidate is probed before it is handed out.
+      const fallbackDeadline = Date.now() + 6000;
+      for (const url of fallbackUrls) {
+        if (Date.now() > fallbackDeadline) {
+          console.log(`[vavoo] fallback time budget used up for "${channelName || channelId}"`);
+          break;
+        }
+        const result = await attempt(url, 'fallback', true);
+        if (result.response) {
+          console.log(`[vavoo] "${channelName || channelId}" recovered via fallback: ${describeUrl(url)}`);
+          return result.response;
+        }
+      }
+
+      // The vavoo source exists but the edge cannot reach it. The player can,
+      // so hand it over instead of failing the channel.
+      if (passthrough) {
+        console.log(`[vavoo] handing "${channelName || channelId}" to the client: ${describeUrl(passthrough)}`);
+        return new Response(null, {
+          status: 302,
+          headers: {
+            Location: passthrough,
+            'Cache-Control': 'no-store',
+            ...corsHeaders()
+          }
+        });
+      }
+
+      if (!channel && fallbackUrls.length === 0) {
+        const direct = await resolveDirect(channelId).catch(() => null);
+        if (direct) {
+          const result = await attempt(direct, 'direct');
+          if (result.response) return result.response;
+        }
       }
 
       console.log(`[vavoo] all sources failed for "${channelName || channelId}" (last ${lastStatus})`);
@@ -651,7 +939,7 @@ export default {
     // ============================================================
     // HLS PROXY â€” proxies .m3u8 and .ts segments
     // ============================================================
-if (path === '/hls-proxy') {
+if (path.startsWith('/hls-proxy')) {
       const upstreamUrl = url.searchParams.get('url');
       const channelId = url.searchParams.get('id');
       const via = url.searchParams.get('v') || 'vavoo';
@@ -698,10 +986,13 @@ if (path === '/hls-proxy') {
           const fresh = await streamUrlForChannel(channelId).catch(() => null);
           if (fresh && await claimRedirectBudget(channelId)) {
             console.log(`[vavoo] token expired on ${describeUrl(upstreamUrl)}, re-resolved for ${channelId}`);
+            // The nonce keeps the redirect target unique: a player that lands
+            // back on the same playlist URL counts as a redirect loop and gives
+            // up, and the fresh segment URLs only differ per re-resolve.
             return new Response(null, {
               status: 302,
               headers: {
-                Location: `${baseUrl}/play/${encodeURIComponent(channelId)}`,
+                Location: `${baseUrl}/play/${encodeURIComponent(channelId)}?r=${Date.now()}`,
                 'Cache-Control': 'no-store',
                 ...corsHeaders()
               }
@@ -716,8 +1007,15 @@ if (path === '/hls-proxy') {
 
         const contentType = response.headers.get('content-type') || '';
 
-        if (isM3u8Response(upstreamUrl, contentType)) {
-          return playlistResponse(rewritePlaylist(baseUrl, upstreamUrl, await response.text(), channelId, via));
+        // The proxy path carries the role that was assigned while rewriting:
+        // .m3u8 is a playlist, .ts and friends are media segments. Some CDNs
+        // answer a segment with a mpegurl content type, and serving that as a
+        // playlist breaks the player.
+        const role = pathExtension(path);
+        const asPlaylist = role === '.m3u8' || (!role && isM3u8Response(upstreamUrl, contentType));
+
+        if (asPlaylist) {
+          return playlistResponse(await playlistBody(baseUrl, upstreamUrl, await response.text(), channelId, via));
         }
 
         return segmentResponse(response);
@@ -742,17 +1040,36 @@ if (path === '/hls-proxy') {
 // STREAM PROXY â€” fetches upstream and rewrites HLS playlists
 // ============================================================
 
-async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via) {
-  // Forward Range header from client for seeking support
+// Checks that a segment really comes back. Curated sources often serve a
+// playlist whose segments all time out, and the player would report that as
+// "I/O error" without ever saying which source failed.
+async function segmentReachable(url, via) {
+  try {
+    const response = await fetchWithRetry(url, {
+      headers: { ...getStreamHeaders(url, via), Range: 'bytes=0-1023' },
+      timeout: 5000,
+      retries: 0,
+    });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via, options = {}) {
+  // Forward Range header from client for seeking support - but only for
+  // segments. A playlist answered with 206 comes back truncated, and a
+  // truncated master has a broken session id, which the variant then
+  // rejects with 403.
   const upstreamHeaders = { ...getStreamHeaders(streamUrl, via) };
   const rangeHeader = clientRequest?.headers?.get('Range') || clientRequest?.headers?.get('range');
-  if (rangeHeader) {
+  if (rangeHeader && !isM3u8Url(streamUrl)) {
     upstreamHeaders['Range'] = rangeHeader;
   }
 
   const response = await fetchWithRetry(streamUrl, {
     headers: upstreamHeaders,
-    timeout: 15000,
+    timeout: 10000,
     retries: 1,
   });
 
@@ -765,7 +1082,24 @@ async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via) {
   const contentType = response.headers.get('content-type') || '';
 
   if (isM3u8Response(streamUrl, contentType)) {
-    return playlistResponse(rewritePlaylist(baseUrl, streamUrl, await response.text(), channelId, via));
+    const resolved = await unwrapPlaylist(streamUrl, await response.text(), via);
+
+    if (!resolved.playable) {
+      console.log(`[vavoo] ${via} ${describeUrl(streamUrl)}: no media playlist behind it`);
+      return new Response('Stream error: no media playlist', { status: 502, headers: corsHeaders() });
+    }
+
+    if (options.validateSegments) {
+      // Probe the segment of the playlist the player will actually use, not
+      // of the outer one - the outer one may still be a master.
+      const segment = firstSegmentUri(resolved.url, resolved.text);
+      if (segment && !(await segmentReachable(segment, via))) {
+        console.log(`[vavoo] ${via} ${describeUrl(streamUrl)}: first segment unreachable, skipping source`);
+        return new Response('Stream error: segments unreachable', { status: 502, headers: corsHeaders() });
+      }
+    }
+
+    return playlistResponse(rewritePlaylist(baseUrl, resolved.url, resolved.text, channelId, via));
   }
 
   return segmentResponse(response);

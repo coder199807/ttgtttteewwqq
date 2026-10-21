@@ -56,7 +56,7 @@ const HEADERS = {
 
 // Channels the user does not want in the playlist
 const BLOCKED_CHANNELS =
-  /alanya|izmir\s+tv|antalya\s+tv|bursa\s+tv|ankara\s+tv|istanbul\s+tv|eskisehir\s+tv|konya\s+tv|trabzon\s+tv|izmir\s+haber/i;
+  /alanya|izmir\s+tv|antalya\s+tv|bursa\s+tv|ankara\s+tv|istanbul\s+tv|eskisehir\s+tv|konya\s+tv|trabzon\s+tv|izmir\s+haber|radyo|radio/i;
 
 function isBlockedChannel(name) {
   return BLOCKED_CHANNELS.test(String(name || ""));
