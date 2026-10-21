@@ -44,6 +44,9 @@ function hostOf(urlString) {
 function refererFor(urlString, via) {
   const host = hostOf(urlString);
   if (!host) return {};
+  // The matchora cdn rejects every request that carries its own host as
+  // referer and answers 403 "watch on matchora.to".
+  if (via === 'matchora') return { 'Referer': 'https://matchora.to/' };
   // Curated fallbacks must not receive the vavoo Origin.
   if (via === 'fallback') return { 'Referer': `https://${host}/` };
   // Everything the vavoo resolver handed us keeps the vavoo Origin, whatever
@@ -622,7 +625,9 @@ function similarityScore(a, b) {
   const [small, big] = tokensA.size <= tokensB.size ? [tokensA, tokensB] : [tokensB, tokensA];
   if (![...small].every(token => big.has(token))) return 0;
   const extra = [...big].filter(token => !small.has(token));
-  if (extra.length && extra.every(token => /^\d+$/.test(token))) return 0;
+  // A trailing number marks a sibling channel - "TRT SPOR 2" is not "TRT SPOR".
+  // The number 1 is the exception: "ATV 1" is just ATV.
+  if (extra.length && extra.every(token => /^\d+$/.test(token)) && !extra.every(token => token === '1')) return 0;
   if (overlap < 0.4) return 0;
   return overlap * 1000;
 }
@@ -685,6 +690,42 @@ function lookupFallbackUrls(index, channelName) {
     }
   }
   return urls;
+}
+
+// The matchora links in the index are player pages, not playlists. Their api
+// hands out the real hls url, which is valid for ten minutes.
+const MATCHORA_EMBED = /^https?:\/\/matchora\.to\/embed\/channel\/([\w-]+)/i;
+
+async function resolveFallbackUrl(url) {
+  const match = MATCHORA_EMBED.exec(url);
+  if (!match) return { url, via: 'fallback' };
+
+  const channelId = match[1];
+  try {
+    const response = await fetchWithRetry(`https://matchora.to/api/play/${channelId}`, {
+      headers: {
+        'User-Agent': STREAM_USER_AGENT,
+        'Accept': 'application/json',
+        'Referer': `https://matchora.to/embed/channel/${channelId}`
+      },
+      timeout: 8000,
+      retries: 0
+    });
+    if (!response.ok) {
+      console.log(`[vavoo] matchora ${channelId} -> HTTP ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+    if (!data || typeof data.url !== 'string' || !/^https?:\/\//.test(data.url)) {
+      console.log(`[vavoo] matchora ${channelId} -> no stream url`);
+      return null;
+    }
+    return { url: data.url, via: 'matchora' };
+  } catch (error) {
+    console.log(`[vavoo] matchora ${channelId} failed: ${error.message}`);
+    return null;
+  }
 }
 
 async function getFallbackIndex() {
@@ -836,7 +877,12 @@ export default {
       // and 530 for dead hostnames. The player's own IP usually gets through,
       // so such a source is handed over instead of failing the channel.
       const attempt = async (url, via, validate) => {
-        const response = await proxyStream(baseUrl, url, request, channelId, via, { validateSegments: validate }).catch(error => {
+        const response = await proxyStream(baseUrl, url, request, channelId, via, {
+          validateSegments: validate,
+          // A source that does not answer must not eat the whole budget.
+          timeout: via === 'vavoo' ? 7000 : 10000,
+          retries: 0,
+        }).catch(error => {
           console.log(`[vavoo] ${via} threw: ${error.message}`);
           return null;
         });
@@ -875,7 +921,7 @@ export default {
       if (channel) {
         // The player waits for the answer, so the vavoo phase is bounded.
         // A hanging source must not eat the whole budget.
-        const vavooDeadline = Date.now() + 8000;
+        const vavooDeadline = Date.now() + 6000;
         for (let round = 0; round < 3; round++) {
           if (Date.now() > vavooDeadline) break;
           const resolved = await resolveStream(channel).catch(err => {
@@ -887,6 +933,9 @@ export default {
           const result = await attempt(resolved, 'vavoo');
           if (result.response) return result.response;
           if (result.status !== 403 && result.status !== 530) break;
+          // A blocked source costs seconds. One more try, then the curated
+          // index - the player gets its answer faster that way.
+          if (Date.now() > vavooDeadline) break;
           console.log(`[vavoo] vavoo source dead (${result.status}), resolving again`);
         }
       }
@@ -894,17 +943,26 @@ export default {
       // The vavoo source is gone for good, so the curated index is the only
       // chance left. A source that answers with a dead playlist is skipped,
       // so every candidate is probed before it is handed out.
-      const fallbackDeadline = Date.now() + 6000;
-      for (const url of fallbackUrls) {
-        if (Date.now() > fallbackDeadline) {
-          console.log(`[vavoo] fallback time budget used up for "${channelName || channelId}"`);
-          break;
-        }
-        const result = await attempt(url, 'fallback', true);
-        if (result.response) {
-          console.log(`[vavoo] "${channelName || channelId}" recovered via fallback: ${describeUrl(url)}`);
-          return result.response;
-        }
+      // The candidates are checked in parallel: the first one that really
+      // works wins, and a slow dead source no longer eats the whole budget.
+      // When the player can fetch the vavoo stream itself, the curated index
+      // only gets a short budget - the player waits for the answer.
+      const fallbackDeadline = Date.now() + (passthrough ? 3500 : 9000);
+      const fallbackResults = await Promise.all(fallbackUrls.map(async url => {
+        if (Date.now() > fallbackDeadline) return null;
+        // Most index entries are player pages that hide the stream behind an
+        // api call. They are turned into the real playlist url first.
+        const candidate = await resolveFallbackUrl(url);
+        if (!candidate) return null;
+        const result = await attempt(candidate.url, candidate.via, true);
+        if (!result.response) return null;
+        return { candidate, response: result.response };
+      }));
+
+      for (const recovered of fallbackResults) {
+        if (!recovered) continue;
+        console.log(`[vavoo] "${channelName || channelId}" recovered via fallback: ${describeUrl(recovered.candidate.url)}`);
+        return recovered.response;
       }
 
       // The vavoo source exists but the edge cannot reach it. The player can,
@@ -1040,6 +1098,19 @@ if (path.startsWith('/hls-proxy')) {
 // STREAM PROXY â€” fetches upstream and rewrites HLS playlists
 // ============================================================
 
+// ffmpeg only accepts these segment extensions in an HLS playlist. The
+// turkish cdn "tracks-v1a1" sources serve jpeg segments, which no player can
+// demux - such a source is skipped instead of being handed out.
+const PLAYABLE_SEGMENT_EXTENSIONS = new Set([
+  'ts', 'm4s', 'mp4', 'm4a', 'm4v', 'aac', 'vtt', 'webvtt', 'cmfv', 'cmfa', 'fmp4'
+]);
+
+function segmentExtensionIsPlayable(url) {
+  const ext = pathExtension(url);
+  if (!ext) return true;
+  return PLAYABLE_SEGMENT_EXTENSIONS.has(ext.slice(1).toLowerCase());
+}
+
 // Checks that a segment really comes back. Curated sources often serve a
 // playlist whose segments all time out, and the player would report that as
 // "I/O error" without ever saying which source failed.
@@ -1069,8 +1140,8 @@ async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via, op
 
   const response = await fetchWithRetry(streamUrl, {
     headers: upstreamHeaders,
-    timeout: 10000,
-    retries: 1,
+    timeout: options.timeout ?? 10000,
+    retries: options.retries ?? 1,
   });
 
   console.log(`[vavoo] play ${describeUrl(streamUrl)} -> ${response.status} (${response.headers.get('content-type') || 'no ct'})`);
@@ -1089,10 +1160,16 @@ async function proxyStream(baseUrl, streamUrl, clientRequest, channelId, via, op
       return new Response('Stream error: no media playlist', { status: 502, headers: corsHeaders() });
     }
 
+    const segment = firstSegmentUri(resolved.url, resolved.text);
+
+    if (segment && !segmentExtensionIsPlayable(segment)) {
+      console.log(`[vavoo] ${via} ${describeUrl(streamUrl)}: segment type ${pathExtension(segment)} is not playable, skipping source`);
+      return new Response('Stream error: unusable segment type', { status: 502, headers: corsHeaders() });
+    }
+
     if (options.validateSegments) {
       // Probe the segment of the playlist the player will actually use, not
       // of the outer one - the outer one may still be a master.
-      const segment = firstSegmentUri(resolved.url, resolved.text);
       if (segment && !(await segmentReachable(segment, via))) {
         console.log(`[vavoo] ${via} ${describeUrl(streamUrl)}: first segment unreachable, skipping source`);
         return new Response('Stream error: segments unreachable', { status: 502, headers: corsHeaders() });
