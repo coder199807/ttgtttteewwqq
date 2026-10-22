@@ -726,7 +726,7 @@ async function resolveFallbackUrl(url) {
       // A stream that is still warming up has no segments yet. Asking again
       // after a moment is cheaper than handing out a dead playlist.
       if (data.ready === false && data.reason === 'warming' && round === 0) {
-        await new Promise(resolve => setTimeout(resolve, 2500));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         continue;
       }
 
@@ -891,7 +891,7 @@ export default {
         const response = await proxyStream(baseUrl, url, request, channelId, via, {
           validateSegments: validate,
           // A source that does not answer must not eat the whole budget.
-          timeout: via === 'vavoo' ? 7000 : 10000,
+          timeout: via === 'vavoo' ? 4000 : 10000,
           retries: 0,
         }).catch(error => {
           console.log(`[vavoo] ${via} threw: ${error.message}`);
@@ -931,9 +931,11 @@ export default {
       // vavoo and fall back to the curated index".
       if (channel) {
         // The player waits for the answer, so the vavoo phase is bounded.
-        // A hanging source must not eat the whole budget.
-        const vavooDeadline = Date.now() + 6000;
-        for (let round = 0; round < 3; round++) {
+        // When the edge is blocked (403/530) the passthrough is already set,
+        // so we go straight to the curated index instead of re-resolving
+        // three times (each resolve gives the same sunshine host anyway).
+        const vavooDeadline = Date.now() + 4000;
+        for (let round = 0; round < 2; round++) {
           if (Date.now() > vavooDeadline) break;
           const resolved = await resolveStream(channel).catch(err => {
             console.log(`[vavoo] resolve failed: ${err.message}`);
@@ -944,10 +946,11 @@ export default {
           const result = await attempt(resolved, 'vavoo');
           if (result.response) return result.response;
           if (result.status !== 403 && result.status !== 530) break;
-          // A blocked source costs seconds. One more try, then the curated
-          // index - the player gets its answer faster that way.
-          if (Date.now() > vavooDeadline) break;
-          console.log(`[vavoo] vavoo source dead (${result.status}), resolving again`);
+          // Edge-blocked: passthrough is set, no point re-resolving.
+          if (result.status === 403 || result.status === 530) {
+            console.log(`[vavoo] vavoo source ${result.status}, going to fallbacks`);
+            break;
+          }
         }
       }
 
@@ -958,7 +961,7 @@ export default {
       // works wins, and a slow dead source no longer eats the whole budget.
       // When the player can fetch the vavoo stream itself, the curated index
       // only gets a short budget - the player waits for the answer.
-      const fallbackDeadline = Date.now() + (passthrough ? 3500 : 9000);
+      const fallbackDeadline = Date.now() + (passthrough ? 5000 : 8000);
       const fallbackResults = await Promise.all(fallbackUrls.map(async url => {
         if (Date.now() > fallbackDeadline) return null;
         // Most index entries are player pages that hide the stream behind an
