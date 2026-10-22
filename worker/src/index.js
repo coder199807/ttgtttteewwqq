@@ -983,9 +983,9 @@ export default {
       // so hand it over instead of failing the channel.
       if (passthrough) {
         console.log("[vavoo] handing passthrough");
-        // Return the passthrough url as a minimal HLS playlist so the client
-        // gets a valid response instead of a 302 that Cloudflare blocks.
-        const playlist = `#EXTM3U\n#EXT-X-VERSION:3\n#EXTINF:-1,\n${passthrough}\n`;
+        // Return the passthrough url as a minimal but valid HLS playlist so the
+        // client gets a parseable manifest instead of a 302 that Cloudflare blocks.
+        const playlist = `#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:10\n#EXT-X-MEDIA-SEQUENCE:0\n#EXTINF:10.0,\n${passthrough}\n`;
         return new Response(playlist, {
           status: 200,
           headers: {
