@@ -216,6 +216,78 @@ async function loadFallbackIndex() {
     console.warn(`    livetv m3u failed: ${err.message}`);
   }
 
+  // iptv-org Turkish streams (raw m3u, more streams than the API)
+  try {
+    const res = await fetch("https://raw.githubusercontent.com/iptv-org/iptv/master/streams/tr.m3u", {
+      signal: AbortSignal.timeout(60000),
+    });
+    if (res.ok) {
+      const lines = (await res.text()).split(/\r?\n/);
+      let pending = null;
+      let added = 0;
+
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t) continue;
+        if (t.startsWith("#EXTINF")) {
+          pending = t.split(",").pop().trim();
+          continue;
+        }
+        if (!pending || t.startsWith("#")) continue;
+
+        if (!isBlockedChannel(pending) && /^https?:\/\//i.test(t)) {
+          const key = normalizeChannelName(pending);
+          if (key && !_fallbackIndex.has(key)) {
+            _fallbackIndex.set(key, { name: pending, streams: [t] });
+            added++;
+          }
+        }
+        pending = null;
+      }
+      console.log(`    iptv-org tr.m3u: ${added} channels`);
+    } else {
+      console.warn(`    iptv-org tr.m3u: HTTP ${res.status}`);
+    }
+  } catch (err) {
+    console.warn(`    iptv-org tr.m3u failed: ${err.message}`);
+  }
+
+  // Free-TV IPTV (community-maintained, many Turkish channels)
+  try {
+    const res = await fetch("https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_turkey.m3u8", {
+      signal: AbortSignal.timeout(60000),
+    });
+    if (res.ok) {
+      const lines = (await res.text()).split(/\r?\n/);
+      let pending = null;
+      let added = 0;
+
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t) continue;
+        if (t.startsWith("#EXTINF")) {
+          pending = t.split(",").pop().trim();
+          continue;
+        }
+        if (!pending || t.startsWith("#")) continue;
+
+        if (!isBlockedChannel(pending) && /^https?:\/\//i.test(t)) {
+          const key = normalizeChannelName(pending);
+          if (key && !_fallbackIndex.has(key)) {
+            _fallbackIndex.set(key, { name: pending, streams: [t] });
+            added++;
+          }
+        }
+        pending = null;
+      }
+      console.log(`    free-tv iptv: ${added} channels`);
+    } else {
+      console.warn(`    free-tv iptv: HTTP ${res.status}`);
+    }
+  } catch (err) {
+    console.warn(`    free-tv iptv failed: ${err.message}`);
+  }
+
   // iptv-org is the only source carrying real direct URLs for German channels,
   // which the Turkish curated lists never covered. streams.json holds the urls,
   // channels.json the country and closed flags - they join on channel id.
