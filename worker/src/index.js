@@ -1096,6 +1096,44 @@ if (path.startsWith('/hls-proxy')) {
     }
 
     // ============================================================
+    // STREAM PROXY — generic HTTPS proxy for any URL (bypass for mixed content)
+    // ============================================================
+    if (path.startsWith('/stream')) {
+      const upstreamUrl = url.searchParams.get('url');
+      const via = url.searchParams.get('v') || 'fallback';
+      if (!upstreamUrl) {
+        return new Response('URL parameter missing', { status: 400, headers: corsHeaders() });
+      }
+
+      try {
+        const parsed = new URL(upstreamUrl);
+        if (!['http:', 'https:'].includes(parsed.protocol)) {
+          return new Response('Unsupported protocol', { status: 400, headers: corsHeaders() });
+        }
+
+        const response = await fetchWithRetry(upstreamUrl, {
+          headers: getStreamHeaders(upstreamUrl, via),
+          timeout: 15000,
+          retries: 0,
+        });
+
+        if (!response.ok) {
+          return new Response(`Upstream error: ${response.status}`, { status: response.status, headers: corsHeaders() });
+        }
+
+        const contentType = response.headers.get('content-type') || '';
+        if (isM3u8Response(upstreamUrl, contentType)) {
+          return playlistResponse(rewritePlaylist(baseUrl, upstreamUrl, await response.text(), null, via));
+        }
+
+        return segmentResponse(response);
+      } catch (error) {
+        console.log(`[vavoo] stream proxy error: ${error.message}`);
+        return new Response(`Proxy error: ${error.message}`, { status: 500, headers: corsHeaders() });
+      }
+    }
+
+    // ============================================================
     // FALLBACK
     // ============================================================
     return new Response('Usage: /play/<id>', {
